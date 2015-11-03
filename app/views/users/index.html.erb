@@ -1,0 +1,15 @@
+<div class="col-md-8 col-md-offset-2">
+	<h1>Utilizadores</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr><td><%= user.nome_utilizador %></td></tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

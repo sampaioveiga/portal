@@ -1,0 +1,11 @@
+<div class="col-md-8 col-md-offset-2">
+	<h1>Iniciar sessão</h1>
+	<%= form_tag login_url() do %>
+		<%= label_tag :numero_mecanografico, "Número Mecanográfico" %>
+		<%= text_field_tag :numero_mecanografico, "",  class: 'form-control' %>
+		<%= label_tag :password %>
+		<% password_field_tag :password, "", class: 'form-control' %>
+		<%= submit_tag "Submeter", class: 'btn btn-primary' %>
+		<%= link_to "Cancelar", root_url(), class: 'btn btn-default' %>
+	<% end %>
+</div>

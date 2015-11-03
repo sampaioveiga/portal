@@ -1,0 +1,15 @@
+<div class="col-md-8 col-md-offset-2">
+	<h1>Novo utilizador</h1>
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', obj: @user %>
+		<%= f.label :nome_utilizador, "Nome do utilizador" %>
+		<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
+		<%= f.label :numero_mecanografico, "Número mecanográfico" %>
+		<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
+		<%= f.label :email %>
+		<%= f.text_field :email, class: 'form-control' %>
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		<%= link_to "Cancelar", root_url(), class: 'btn btn-default'  %>
+	<% end %>
+	<p>Os contactos aqui inseridos serão visiveis para os outros utilizadores</p>
+</div>
