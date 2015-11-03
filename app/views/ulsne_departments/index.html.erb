@@ -1,0 +1,21 @@
+<div class="col-md-8 col-md-offset-2">
+	<h1>Serviços</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Serviço</th>
+				<th><%= link_to "Novo", new_ulsne_department_path(), class: 'btn btn-success btn-xs' %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @ulsne_departments.each do |ulsne_department| %>
+				<tr>
+					<td><%= ulsne_department.nome_servico %></td>
+					<td>
+						<a href="<%= edit_ulsne_department_path(ulsne_department) %>"><span class="glyphicon glyphicon-pencil"></span></a>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create'
   resources :users
 
+  # departments
+  resources :ulsne_departments
+
+  # units
+  resources :ulsne_sites
+
   # sessions
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'

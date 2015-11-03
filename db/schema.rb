@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102152920) do
+ActiveRecord::Schema.define(version: 20151103155939) do
+
+  create_table "ulsne_departments", force: :cascade do |t|
+    t.string   "nome_servico"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "ulsne_sites", force: :cascade do |t|
+    t.string   "nome_unidade"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "nome_utilizador"

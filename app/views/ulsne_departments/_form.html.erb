@@ -1,0 +1,6 @@
+<%= form_for(@ulsne_department) do |f| %>
+	<%= render 'shared/error_messages' ,obj: @ulsne_department %>
+	<%= f.label :nome_servico, "Designação do serviço" %>
+	<%= f.text_field :nome_servico, class: 'form-control' %>
+	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+<% end %>
