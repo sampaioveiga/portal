@@ -8,6 +8,8 @@
 		<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 		<%= f.label :email %>
 		<%= f.text_field :email, class: 'form-control' %>
+		<%= f.label :ulsne_site_id, "Unidade ULSNE" %>
+		<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>
 		<%= link_to "Cancelar", root_url(), class: 'btn btn-default'  %>
 	<% end %>

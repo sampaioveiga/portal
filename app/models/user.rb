@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	belongs_to :ulsne_site
+
 	validates :nome_utilizador,
 		presence: true,
 		length: { maximum: 50 }

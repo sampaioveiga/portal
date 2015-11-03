@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103155939) do
+ActiveRecord::Schema.define(version: 20151103162514) do
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20151103155939) do
     t.string   "email"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "ulsne_site_id"
   end
+
+  add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id"
 
 end

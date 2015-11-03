@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :load_selects, only: [ :new, :create ]
 
 	def index
 		@users = User.order(:nome_utilizador)
@@ -21,9 +22,14 @@ class UsersController < ApplicationController
 
 	private
 
+	def load_selects
+		@ulsne_sites = UlsneSite.order(:nome_unidade)
+	end
+
 	def user_params
 		params.require(:user).permit(:nome_utilizador,
 									:numero_mecanografico,
-									:email)
+									:email,
+									:ulsne_site_id)
 	end
 end
