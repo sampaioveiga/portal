@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 	belongs_to :ulsne_site
+	has_many :u2d_associations
+	accepts_nested_attributes_for :u2d_associations, reject_if: :all_blank, allow_destroy: true
+	has_many :ulsne_departments, through: :u2d_associations
 
 	validates :nome_utilizador,
 		presence: true,

@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<th>Nome</th>
+				<th>Serviço</th>
 				<th>Unidade</th>
 			</tr>
 		</thead>
@@ -10,6 +11,11 @@
 			<% @users.each do |user| %>
 				<tr>
 					<td><%= user.nome_utilizador %></td>
+					<td>
+						<% user.ulsne_departments.each do |ulsne_department| %>
+							<%= ulsne_department.nome_servico %><br />
+						<% end %>
+					</td>
 					<td><%= user.ulsne_site.nome_unidade %></td>
 				</tr>
 			<% end %>

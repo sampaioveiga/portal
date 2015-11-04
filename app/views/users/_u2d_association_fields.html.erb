@@ -1,0 +1,7 @@
+<div class="nested-fields">
+	<div class="field">
+		<%= f.label :ulsne_department_id, "Serviço" %>
+		<%= f.collection_select :ulsne_department_id, @ulsne_departments, :id, :nome_servico, {}, class: 'form-control' %>
+	</div>
+	<%= link_to_remove_association "Remover serviço", f, class: 'text-danger' %>
+</div>

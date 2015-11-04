@@ -8,6 +8,14 @@
 		<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 		<%= f.label :email %>
 		<%= f.text_field :email, class: 'form-control' %>
+		<div id="u2d_associations" class="well">
+			<%= f.fields_for :u2d_associations do |u2d_association| %>
+				<%= render 'u2d_association_fields', f: u2d_association %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+			</div>
+		</div>
 		<%= f.label :ulsne_site_id, "Unidade ULSNE" %>
 		<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>

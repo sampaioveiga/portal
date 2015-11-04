@@ -24,12 +24,14 @@ class UsersController < ApplicationController
 
 	def load_selects
 		@ulsne_sites = UlsneSite.order(:nome_unidade)
+		@ulsne_departments = UlsneDepartment.order(:nome_servico)
 	end
 
 	def user_params
 		params.require(:user).permit(:nome_utilizador,
 									:numero_mecanografico,
 									:email,
-									:ulsne_site_id)
+									:ulsne_site_id,
+									u2d_associations_attributes: [ :id, :user_id, :ulsne_department_id, :_destroy ])
 	end
 end

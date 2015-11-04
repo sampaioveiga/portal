@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103162514) do
+ActiveRecord::Schema.define(version: 20151104113202) do
+
+  create_table "u2d_associations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ulsne_department_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id"
+  add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id"
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"
