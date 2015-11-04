@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 									:numero_mecanografico,
 									:email,
 									:ulsne_site_id,
-									u2d_associations_attributes: [ :id, :user_id, :ulsne_department_id, :_destroy ])
+									u2d_associations_attributes: [ :id, :user_id, :ulsne_department_id, :_destroy ],
+									user_phone_numbers_attributes: [ :id, :user_id, :numero_contacto, :_destroy])
 	end
 end

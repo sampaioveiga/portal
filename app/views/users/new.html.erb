@@ -8,6 +8,16 @@
 		<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 		<%= f.label :email %>
 		<%= f.text_field :email, class: 'form-control' %>
+
+		<div id="user_phone_numbers" class="well">
+			<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
+				<%= render 'user_phone_number_fields', f: user_phone_number %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+			</div>
+		</div>
+		
 		<div id="u2d_associations" class="well">
 			<%= f.fields_for :u2d_associations do |u2d_association| %>
 				<%= render 'u2d_association_fields', f: u2d_association %>
