@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-	before_action :load_selects, only: [ :new, :create ]
+	before_action :load_selects, only: [ :new, :create, :edit, :update ]
+	before_action :set_user, only: [ :show, :edit, :update ]
 
 	def index
-		@users = User.order(:nome_utilizador)
+		@users = User.order(:nome_utilizador).paginate(:page => params[:page], :per_page => 10 )
 	end
 
 	def new
@@ -20,6 +21,18 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @user.update(user_params)
+			flash[:success] = "#{@user.nome_utilizador} atualizado"
+			redirect_to users_path()
+		else
+			render :edit
+		end
+	end
+
 	private
 
 	def load_selects
@@ -27,8 +40,13 @@ class UsersController < ApplicationController
 		@ulsne_departments = UlsneDepartment.order(:nome_servico)
 	end
 
+	def set_user
+		@user = User.find(params[:id])
+	end
+
 	def user_params
-		params.require(:user).permit(:nome_utilizador,
+		params.require(:user).permit(:titulo,
+									:nome_utilizador,
 									:numero_mecanografico,
 									:email,
 									:ulsne_site_id,

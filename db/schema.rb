@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104121618) do
+ActiveRecord::Schema.define(version: 20151105140548) do
 
   create_table "u2d_associations", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20151104121618) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "ulsne_site_id"
+    t.string   "titulo"
   end
 
   add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id"

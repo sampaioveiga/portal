@@ -1,8 +1,9 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Nome</th>
+				<th>Contacto</th>
 				<th>Serviço</th>
 				<th>Unidade</th>
 			</tr>
@@ -10,7 +11,12 @@
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= user.nome_utilizador %></td>
+					<td><%= user.titulo %> <%= link_to user.nome_utilizador, edit_user_path(user) %></td>
+					<td>
+						<% user.user_phone_numbers.each do |user_phone_number| %>
+							<%= user_phone_number.numero_contacto %><br />
+						<% end %>
+					</td>
 					<td>
 						<% user.ulsne_departments.each do |ulsne_department| %>
 							<%= ulsne_department.nome_servico %><br />
@@ -21,4 +27,5 @@
 			<% end %>
 		</tbody>
 	</table>
+	<%= will_paginate @users %>
 </div>
