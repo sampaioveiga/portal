@@ -16,7 +16,13 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  root 'users#index'
+  # contact list
+  get 'people', to: 'contact_lists#people', as: 'people'
+  get 'person/:id' => 'contact_lists#person', as: 'person'
+  get 'people_departments', to: 'contact_lists#people_departments', as: 'people_departments'
+  get 'people_department/:id' => 'contact_lists#people_department', as: 'people_department'
+
+  root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

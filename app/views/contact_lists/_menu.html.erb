@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Contactos
+	</div>
+	<div class="panel-body">
+		<div class="dropdown">
+			<button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				Pessoas <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><%= link_to "Lista geral", people_path() %></li>
+				<li><%= link_to "Lista por serviços", people_departments_path() %></li>
+			</ul>
+		</div>
+		<div class="dropdown">
+			<button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				Serviços <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><%= link_to "Pessoas por serviços", people_departments_path() %></li>
+				<li><%= link_to "Gabinetes por serviços", people_departments_path() %></li>
+			</ul>
+		</div>
+	</div>
+</div>

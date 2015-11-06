@@ -1,0 +1,37 @@
+<aside class="col-md-2">
+	<%= render 'menu' %>
+</aside>
+<div class="col-md-10">
+	<div>
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active">
+				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">#</a>
+			</li>
+			<% @contacts_by_first_letter.each do |letter, contact| %>
+				<li role="presentation">
+					<a href=<%= '#' + letter %> aria-controls="settings" role="tab" data-toggle="tab"><%= letter.upcase %></a>
+				</li>
+			<% end %>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<% @contacts.each do |contact| %>
+					<p><%= contact.titulo %> <%= link_to contact.nome_utilizador, person_path(contact), remote: true %></p>
+				<% end %>
+			</div>
+			<% @contacts_by_first_letter.each do |letter, contacts| %>
+				<div role="tabpanel" class="tab-pane" id="<%= letter %>">
+					<% contacts.each do |contact| %>
+						<p><%= contact.titulo %> <%= link_to contact.nome_utilizador, person_path(contact), remote: true %></p>
+					<% end %>
+				</div>	
+			<% end %>
+			
+		</div>
+	</div>
+</div>
+
+<%= render 'modal' %>
