@@ -18,9 +18,9 @@ Rails.application.routes.draw do
 
   # contact list
   get 'people', to: 'contact_lists#people', as: 'people'
-  get 'person/:id' => 'contact_lists#person', as: 'person'
-  get 'people_departments', to: 'contact_lists#people_departments', as: 'people_departments'
-  get 'people_department/:id' => 'contact_lists#people_department', as: 'people_department'
+  get 'people/:id' => 'contact_lists#person', as: 'person'
+  get 'units/:id' => 'contact_lists#unit', as: 'unit'
+  get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
 
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.

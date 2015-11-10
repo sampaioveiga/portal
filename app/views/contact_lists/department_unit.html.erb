@@ -1,0 +1,50 @@
+<aside class="col-md-2">
+	<%= render 'menu' %>
+</aside>
+<div class="col-md-10">
+	<h1><small><%= @unit.nome_unidade %></small> <%= @department.nome_servico %></h1>
+	<div class="col-md-8">
+		<legend>Pessoas</legend>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Contacto</th>
+					<th>Email</th>
+				</tr>
+			</head>
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<td><strong><%= user.nome_utilizador %></strong></td>
+						<td>
+							<% user.user_phone_numbers.each do |phone| %>
+								<%= phone.numero_contacto %><br />
+							<% end %>
+						</td>
+						<td><%= user.email %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4">
+		<legend>Gabinetes</legend>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Gabinete</th>
+					<th>Número</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @offices.each do |office| %>
+					<tr>
+						<td><strong><%= office.nome_gabinete %></strong></td>
+						<td><%= office.numero_gabinete %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

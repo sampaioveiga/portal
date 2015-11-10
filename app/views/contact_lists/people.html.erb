@@ -18,15 +18,69 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="home">
-				<% @contacts.each do |contact| %>
-					<p><%= contact.titulo %> <%= link_to contact.nome_utilizador, person_path(contact), remote: true %></p>
-				<% end %>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Contacto</th>
+							<th>Email</th>
+							<th>Serviço</th>
+							<th>Unidade</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @contacts.each do |contact| %>
+							<tr>
+								<td><%= link_to "#{contact.titulo} #{contact.nome_utilizador}", person_path(contact), remote: true %></td>
+								<td>
+									<% contact.user_phone_numbers.each do |phone| %>
+										<%= phone.numero_contacto %><br />
+									<% end %>
+								</td>
+								<td><%= contact.email %></td>
+								<td>
+									<% contact.ulsne_departments.each do |department| %>
+										<%= department.nome_servico %><br />
+									<% end %>
+								</td>
+								<td><%= contact.ulsne_site.nome_unidade %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
 			</div>
 			<% @contacts_by_first_letter.each do |letter, contacts| %>
 				<div role="tabpanel" class="tab-pane" id="<%= letter %>">
-					<% contacts.each do |contact| %>
-						<p><%= contact.titulo %> <%= link_to contact.nome_utilizador, person_path(contact), remote: true %></p>
-					<% end %>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Contacto</th>
+								<th>Email</th>
+								<th>Serviço</th>
+								<th>Unidade</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% contacts.each do |contact| %>
+								<tr>
+									<td><%= link_to "#{contact.titulo} #{contact.nome_utilizador}", person_path(contact), remote: true %></td>
+									<td>
+										<% contact.user_phone_numbers.each do |phone| %>
+											<%= phone.numero_contacto %><br />
+										<% end %>
+									</td>
+									<td><%= contact.email %></td>
+									<td>
+										<% contact.ulsne_departments.each do |department| %>
+											<%= department.nome_servico %><br />
+										<% end %>
+									</td>
+									<td><%= contact.ulsne_site.nome_unidade %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
 				</div>	
 			<% end %>
 			

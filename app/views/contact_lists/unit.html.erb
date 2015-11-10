@@ -1,0 +1,20 @@
+<aside class="col-md-2">
+	<%= render 'menu' %>
+</aside>
+<div class="col-md-10">
+	<h1><%= @unit.nome_unidade %></h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Serviço</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @departments.each do |department| %>
+				<tr>
+					<td><%= link_to department.nome_servico, department_unit_path(@unit, department) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

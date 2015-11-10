@@ -1,5 +1,6 @@
 class UlsneDepartmentsController < ApplicationController
 	before_action :set_ulsne_department, only: [ :edit, :update ]
+	before_action :load_selects, only: [ :new, :create, :edit, :update ]
 
 	def index
 		@ulsne_departments = UlsneDepartment.order(:nome_servico)
@@ -35,10 +36,19 @@ class UlsneDepartmentsController < ApplicationController
 	private
 
 	def ulsne_department_params
-		params.require(:ulsne_department).permit(:nome_servico)
+		params.require(:ulsne_department).permit(:nome_servico,
+												office_phone_numbers_attributes: [:id, 
+													:nome_gabinete,
+													:numero_gabinete,
+													:ulsne_site_id,
+													:_destroy])
 	end
 
 	def set_ulsne_department
 		@ulsne_department = UlsneDepartment.find(params[:id])
+	end
+
+	def load_selects
+		@ulsne_sites = UlsneSite.order(:nome_unidade)
 	end
 end
