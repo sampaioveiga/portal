@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109142336) do
+ActiveRecord::Schema.define(version: 20151111091637) do
 
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
@@ -60,10 +60,11 @@ ActiveRecord::Schema.define(version: 20151109142336) do
     t.string   "nome_utilizador"
     t.integer  "numero_mecanografico"
     t.string   "email"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "ulsne_site_id"
     t.string   "titulo"
+    t.boolean  "administrator",        default: false
   end
 
   add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id"

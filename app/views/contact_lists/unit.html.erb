@@ -1,5 +1,6 @@
 <aside class="col-md-2">
 	<%= render 'menu' %>
+	<%= render 'shared/admin_menu' %>
 </aside>
 <div class="col-md-10">
 	<h1><%= @unit.nome_unidade %></h1>
@@ -17,4 +18,7 @@
 			<% end %>
 		</tbody>
 	</table>
+	<% @office_phone_numbers.each do |phone| %>
+		<%= phone.nome_gabinete %> <%= phone.numero_gabinete %> <% phone.ulsne_department.nome_servico %><br />
+	<% end %>
 </div>

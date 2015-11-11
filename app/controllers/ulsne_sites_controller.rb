@@ -1,5 +1,7 @@
 class UlsneSitesController < ApplicationController
+	before_action :authorize
 	before_action :set_ulsne_site, only: [ :edit, :update ]
+	before_action :is_admin
 
 	def index
 		@ulsne_sites = UlsneSite.order(:nome_unidade)
@@ -38,7 +40,7 @@ class UlsneSitesController < ApplicationController
 		params.require(:ulsne_site).permit(:nome_unidade)
 	end
 
-	def set_ulsne_department
+	def set_ulsne_site
 		@ulsne_site = UlsneSite.find(params[:id])
 	end
 end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # users
   get 'signup', to: 'users#new', as: 'signup'
   post 'users', to: 'users#create'
-  resources :users
+  resources :users do 
+    resources :user_apps
+  end
 
   # departments
   resources :ulsne_departments

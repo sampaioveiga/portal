@@ -1,4 +1,7 @@
-<div class="col-md-10 col-md-offset-1">
+<aside class="col-md-2">
+	<%= render 'shared/admin_menu' %>
+</aside>
+<div class="col-md-9">
 	<table class="table">
 		<thead>
 			<tr>
@@ -11,7 +14,7 @@
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= user.titulo %> <%= link_to user.nome_utilizador, edit_user_path(user) %></td>
+					<td><%= link_to "#{user.titulo} #{user.nome_utilizador}", user_path(user) %></td>
 					<td>
 						<% user.user_phone_numbers.each do |user_phone_number| %>
 							<%= user_phone_number.numero_contacto %><br />

@@ -1,6 +1,6 @@
 class OfficePhoneNumber < ActiveRecord::Base
-	belongs_to :ulsne_departments
-	belongs_to :ulsne_sites
+	belongs_to :ulsne_department
+	belongs_to :ulsne_site
 
 	validates :nome_gabinete,
 		presence: true,
