@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   # users
   get 'signup', to: 'users#new', as: 'signup'
   post 'users', to: 'users#create'
-  resources :users do 
-    resources :user_apps
-  end
+  resources :users
 
   # departments
   resources :ulsne_departments
@@ -23,6 +21,10 @@ Rails.application.routes.draw do
   get 'people/:id' => 'contact_lists#person', as: 'person'
   get 'units/:id' => 'contact_lists#unit', as: 'unit'
   get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
+
+  # Transportes
+  resources :transp_users
+  resources :transp_destinations
 
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.

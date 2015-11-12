@@ -24,7 +24,7 @@
 						<tr>
 							<th>Nome</th>
 							<th>Contacto</th>
-							<th>Email</th>
+							<!--<th>Email</th>-->
 							<th>Serviço</th>
 							<th>Unidade</th>
 						</tr>
@@ -38,7 +38,7 @@
 										<%= phone.numero_contacto %><br />
 									<% end %>
 								</td>
-								<td><%= contact.email %></td>
+								<!--<td><%= contact.email %></td>-->
 								<td>
 									<% contact.ulsne_departments.each do |department| %>
 										<%= department.nome_servico %><br />
@@ -57,7 +57,7 @@
 							<tr>
 								<th>Nome</th>
 								<th>Contacto</th>
-								<th>Email</th>
+								<!--<th>Email</th>-->
 								<th>Serviço</th>
 								<th>Unidade</th>
 							</tr>
@@ -71,7 +71,7 @@
 											<%= phone.numero_contacto %><br />
 										<% end %>
 									</td>
-									<td><%= contact.email %></td>
+									<!--<td><%= contact.email %></td>-->
 									<td>
 										<% contact.ulsne_departments.each do |department| %>
 											<%= department.nome_servico %><br />
@@ -89,4 +89,4 @@
 	</div>
 </div>
 
-<%= render 'modal' %>
+<%= render 'shared/modal' %>

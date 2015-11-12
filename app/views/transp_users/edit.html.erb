@@ -1,0 +1,25 @@
+<aside class="col-md-2">
+	<%= render 'shared/transp_menu' %>
+</aside>
+<div class="col-md-9">
+	<h1>Transportes</h1>
+	<h2>Editar permissões de <%= @user.user.nome_utilizador %></h2>
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', obj: @user %>
+		<div class="col-md-6">
+			<fieldset disabled>
+				<%= f.label :user_id, "Utilizador" %>
+				<%= f.text_field :user_id, value: @user.user.nome_utilizador, class: 'form-control' %>
+			</fieldset>
+		</div>
+		<div class="col-md-6">
+			<%= f.label :nivel_acesso %>
+			<% f.number_field :nivel_acesso, min: 0, max: 2, class: 'form-control' %>
+			<%= f.select :nivel_acesso, [['0 - Sem acesso', 0], ['1 - Utilizador', 1], ['2 - Supervisor', 2]], {}, class: 'form-control' %>
+		</div>
+		<div class="col-md-12">
+			<%= f.submit "Atualizar", class: 'btn btn-primary' %>
+			<%= link_to "Cancelar", transp_users_path(), class: 'btn btn-default' %>
+		</div>
+	<% end %>
+</div>

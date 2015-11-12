@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111091637) do
+ActiveRecord::Schema.define(version: 20151111172450) do
 
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20151111091637) do
 
   add_index "office_phone_numbers", ["ulsne_department_id"], name: "index_office_phone_numbers_on_ulsne_department_id"
   add_index "office_phone_numbers", ["ulsne_site_id"], name: "index_office_phone_numbers_on_ulsne_site_id"
+
+  create_table "transp_destinations", force: :cascade do |t|
+    t.string   "destino"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transp_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "nivel_acesso"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "transp_users", ["user_id"], name: "index_transp_users_on_user_id"
 
   create_table "u2d_associations", force: :cascade do |t|
     t.integer  "user_id"

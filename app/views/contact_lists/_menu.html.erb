@@ -1,9 +1,9 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">Contactos</div>
 	<div class="panel-body">
-		<p><%= link_to "Pessoas", people_path() %></p>
+		<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <%= link_to "Pessoas", people_path() %><br />
 		<% @units.each do |unit| %>
-			<p><%= link_to unit.nome_unidade, unit_path(unit) %></p>
+			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <%= link_to unit.nome_unidade, unit_path(unit) %><br />
 		<% end %>
 	</div>
 </div>

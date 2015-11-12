@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Transportes</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="#">Deslocações</a><br />
+			<span class="glyphicon glyphicon-road" aria-hidden="true"></span> <a href="#">Nova deslocação</a>
+		</li>
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="#">Material</a><br />
+			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <a href="#">Novo material</a>
+		</li>
+	</ul>
+</div>
+
+<% if current_user.administrator %>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Gestão</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<%= link_to "Destinos", transp_destinations_url() %><br />
+				<%= link_to "Utilizadores", transp_users_url() %>
+			</li>
+		</ul>
+	</div>
+<% end %>
