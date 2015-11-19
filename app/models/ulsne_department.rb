@@ -4,6 +4,7 @@ class UlsneDepartment < ActiveRecord::Base
 	has_many :ulsne_sites, through: :users
 	has_many :office_phone_numbers
 	accepts_nested_attributes_for :office_phone_numbers, reject_if: :all_blank, allow_destroy: true
+	has_many :transp_user_trips
 
 	validates :nome_servico,
 		presence: true,

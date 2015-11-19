@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	has_many :user_phone_numbers
 	accepts_nested_attributes_for :user_phone_numbers, reject_if: :all_blank, allow_destroy: true
 	has_one :transp_user
+	has_many :transp_user_trips
 
 	validates :nome_utilizador,
 		presence: true,

@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
 
   # Transportes
-  resources :transp_users
-  resources :transp_destinations
+  resources :transp_users, :transp_destinations, :transp_user_trips
 
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.

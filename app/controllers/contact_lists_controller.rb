@@ -12,10 +12,12 @@ class ContactListsController < ApplicationController
 
 	def unit
 		@unit = UlsneSite.find(params[:id])
+
+		# depart with people
 		@departments = @unit.ulsne_departments.group(:nome_servico)		
-		#departments = UlsneDepartment.all
-		#departments = office_phone_numbers.where("ulsne_site = ?", @unit)
-		#@office_phone_numbers = OfficePhoneNumber.all
+		
+		# tests
+		#@phones = OfficePhoneNumber.where("ulsne_site_id = ?", @unit.id)
 	end
 
 	def department_unit

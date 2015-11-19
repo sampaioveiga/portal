@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111172450) do
+ActiveRecord::Schema.define(version: 20151112163221) do
 
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(version: 20151111172450) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "transp_user_trips", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ulsne_department_id"
+    t.string   "assunto"
+    t.integer  "numero_passageiros"
+    t.integer  "transp_destination_id"
+    t.datetime "data_inicio"
+    t.integer  "local_inicio_id"
+    t.datetime "data_fim"
+    t.integer  "local_fim_id"
+    t.string   "condutor"
+    t.string   "observacoes"
+    t.boolean  "supervisor"
+    t.integer  "aprovacao"
+    t.string   "comentarios_supervisor"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "transp_user_trips", ["transp_destination_id"], name: "index_transp_user_trips_on_transp_destination_id"
+  add_index "transp_user_trips", ["ulsne_department_id"], name: "index_transp_user_trips_on_ulsne_department_id"
+  add_index "transp_user_trips", ["user_id"], name: "index_transp_user_trips_on_user_id"
 
   create_table "transp_users", force: :cascade do |t|
     t.integer  "user_id"
