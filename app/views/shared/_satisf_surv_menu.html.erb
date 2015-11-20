@@ -1,0 +1,20 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Inquérito de Satisfação</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <a href="<%= satisf_surv_surveys_path() %>">Inquéritos</a><br />
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_satisf_surv_survey_path() %>">Novo inquérito</a>
+		</li>
+	</ul>
+</div>
+
+<% if current_user.administrator %>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Gestão</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<%= link_to "Utilizadores", satisf_surv_users_url() %>
+			</li>
+		</ul>
+	</div>
+<% end %>

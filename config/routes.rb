@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   # Transportes
   resources :transp_users, :transp_destinations, :transp_user_trips
 
+  # Inquérito de satisfação utentes
+  resources :satisf_surv_users, :satisf_surv_surveys
+
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

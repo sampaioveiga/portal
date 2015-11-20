@@ -51,6 +51,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2015.7', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'nokogiri', '1.6.6.2'
+
 # My gems
 gem 'bootstrap-sass' , '3.3.5.1'
 gem 'rails-i18n', '4.0.6'

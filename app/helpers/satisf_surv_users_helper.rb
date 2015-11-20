@@ -1,0 +1,2 @@
+module SatisfSurvUsersHelper
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112163221) do
+ActiveRecord::Schema.define(version: 20151119144021) do
 
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
@@ -24,6 +24,48 @@ ActiveRecord::Schema.define(version: 20151112163221) do
 
   add_index "office_phone_numbers", ["ulsne_department_id"], name: "index_office_phone_numbers_on_ulsne_department_id"
   add_index "office_phone_numbers", ["ulsne_site_id"], name: "index_office_phone_numbers_on_ulsne_site_id"
+
+  create_table "satisf_surv_surveys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ulsne_department_id"
+    t.integer  "ulsne_site_id"
+    t.integer  "idade"
+    t.integer  "sexo"
+    t.integer  "escolaridade"
+    t.integer  "simpatia_disponibilidade"
+    t.integer  "informacao_esclarecimentos"
+    t.integer  "atencao_disponibilidade_medicos"
+    t.integer  "medicos_explicaram_doenca"
+    t.integer  "medicos_explicaram_medicacao"
+    t.integer  "desempenho_medicos"
+    t.integer  "atencao_disponibilizada_enfermeiros"
+    t.integer  "rapidez_servico_enfermagem"
+    t.integer  "desempenho_enfermeiros"
+    t.integer  "avaliacao_pessoal_auxiliar"
+    t.integer  "avaliacao_outros"
+    t.string   "outros"
+    t.integer  "conforto_enfermarias"
+    t.integer  "limpeza_higiene"
+    t.integer  "protecao_enfermarias"
+    t.integer  "recomendaria_servico"
+    t.integer  "globalmente_satisfeito"
+    t.string   "opiniao"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "satisf_surv_surveys", ["ulsne_department_id"], name: "index_satisf_surv_surveys_on_ulsne_department_id"
+  add_index "satisf_surv_surveys", ["ulsne_site_id"], name: "index_satisf_surv_surveys_on_ulsne_site_id"
+  add_index "satisf_surv_surveys", ["user_id"], name: "index_satisf_surv_surveys_on_user_id"
+
+  create_table "satisf_surv_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "nivel_acesso"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "satisf_surv_users", ["user_id"], name: "index_satisf_surv_users_on_user_id"
 
   create_table "transp_destinations", force: :cascade do |t|
     t.string   "destino"
