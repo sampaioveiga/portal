@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.string   "nome_utilizador"
     t.integer  "numero_mecanografico"
     t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "ulsne_site_id"

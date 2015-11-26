@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_secure_password
 	belongs_to :ulsne_site
 	has_many :u2d_associations
 	accepts_nested_attributes_for :u2d_associations, reject_if: :all_blank, allow_destroy: true
@@ -23,4 +24,7 @@ class User < ActiveRecord::Base
 		length: { maximum: 255 },
 		uniqueness: { case_sensitive: false },
 		format: { with: VALID_EMAIL_REGEX }
+	validates :password,
+		presence: true,
+		length: { minimum: 6 }
 end
