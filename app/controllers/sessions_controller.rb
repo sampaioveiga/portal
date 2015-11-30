@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
 	def create
 		user = User.find_by_numero_mecanografico(params[:numero_mecanografico])
-		if user #&& user.authenticate(params[:password])
+		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			flash[:success] = "Bem-vindo, #{current_user.nome_utilizador}"
 			redirect_to root_url()

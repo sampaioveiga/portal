@@ -12,7 +12,7 @@
 	<%= f.label :numero_mecanografico, "Número mecanográfico" %>
 	<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 	<%= f.label :email %>
-	<%= f.text_field :email, class: 'form-control' %>
+	<%= f.text_field :email, placeholder: 'Obrigatório', class: 'form-control' %>
 	<div id="user_phone_numbers" class="well">
 		<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
 			<%= render 'user_phone_number_fields', f: user_phone_number %>
@@ -31,6 +31,10 @@
 	</div>
 	<%= f.label :ulsne_site_id, "Unidade ULSNE" %>
 	<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
+	<%= f.label :password, "Senha" %>
+	<%= f.password_field :password, placeholder: 'Obrigatório', class: 'form-control' %>
+	<%= f.label :password_confirmation, "Confirmação" %>
+	<%= f.password_field :password_confirmation, placeholder: 'Obrigatório', class: 'form-control' %>
 	<%= f.submit "Submeter", class: 'btn btn-primary' %>
 	<%= link_to "Cancelar", root_url(), class: 'btn btn-default'  %>
 <% end %>

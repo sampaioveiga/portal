@@ -65,6 +65,8 @@ class UsersController < ApplicationController
 									:nome_utilizador,
 									:numero_mecanografico,
 									:email,
+									:password,
+									:password_confirmation,
 									:ulsne_site_id,
 									u2d_associations_attributes: [ :id, :user_id, :ulsne_department_id, :_destroy ],
 									user_phone_numbers_attributes: [ :id, :user_id, :numero_contacto, :_destroy])

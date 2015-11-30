@@ -24,15 +24,16 @@ cd ruby-2.2.3
 ./configure
 make
 sudo make install
+
+# Rails no doc
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 gem install bundler
-
-# Rails
-gem install --no-rdoc --no-ri rails
+gem install rails
 
 # DB Postgres
 sudo su - postgres -c 'createuser -s vagrant'
-sudo su - postgres -c 'createdb vagrant -O vagrant'
+sudo su - postgres -c 'createdb portal_dev -O vagrant'
+sudo service postgresql stop
 
 # Apache
 sudo apt-get install -y apache2
@@ -50,6 +51,7 @@ sudo apt-get update
 sudo apt-get install -y libapache2-mod-passenger
 sudo a2enmod passenger
 sudo apache2ctl restart
+sudo service apache2 stop
 
 cd /vagrant
 bundle update

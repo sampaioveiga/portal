@@ -4,7 +4,7 @@
 		<%= label_tag :numero_mecanografico, "Número Mecanográfico" %>
 		<%= text_field_tag :numero_mecanografico, "",  class: 'form-control' %>
 		<%= label_tag :password %>
-		<% password_field_tag :password, "", class: 'form-control' %>
+		<%= password_field_tag :password, "", class: 'form-control' %>
 		<%= submit_tag "Submeter", class: 'btn btn-primary' %>
 		<%= link_to "Cancelar", root_url(), class: 'btn btn-default' %>
 	<% end %>
