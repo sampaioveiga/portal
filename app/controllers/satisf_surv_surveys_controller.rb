@@ -5,7 +5,7 @@ class SatisfSurvSurveysController < ApplicationController
 	before_action :load_form_selects, only: [ :new, :create, :edit, :update ]
 
 	def index
-		@surveys = SatisfSurvSurvey.order(id: :desc)
+		@surveys = SatisfSurvSurvey.order(id: :desc).paginate(:page => params[:page])
 	end
 
 	def show

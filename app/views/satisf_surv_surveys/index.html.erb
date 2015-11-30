@@ -6,6 +6,7 @@
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Inserido por</th>
 				<th>Data registo</th>
 			</tr>
 		</thead>
@@ -13,9 +14,11 @@
 			<% @surveys.each do |s| %>
 				<tr>
 					<td><%= link_to s.id, satisf_surv_survey_path(s) %></td>
-					<td><%= s.created_at %></td>
+					<td><%= s.user.nome_utilizador %></td>
+					<td><%= s.updated_at %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+	<%= will_paginate @surveys %>
 </div>

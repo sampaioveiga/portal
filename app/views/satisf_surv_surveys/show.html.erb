@@ -3,7 +3,7 @@
 </aside>
 <div class="col-md-10">
 	<p>Id: <%= @survey.id %></p>
-	<p>Utilizador: <%= @survey.user.nome_utilizador %></p>
+	<p>Registado por: <%= @survey.user.nome_utilizador %></p>
 	<p>Serviço: <%= @survey.ulsne_department.nome_servico %></p>
 	<p>Unidade: <%= @survey.ulsne_site.nome_unidade %></p>
 	<p>Idade: <%= @survey.idade %></p>
@@ -18,73 +18,76 @@
 		<%= "Secundário" if @survey.escolaridade == 3 %>
 		<%= "Superior" if @survey.escolaridade == 4 %>
 	</p>
+	<hr/>
 
 	<h4>Questão 1<br />Que avaliação faz do atendimento do pessoal administrativo em termos de:</h4>
 	<p>1.1 Simpatia e disponibilidade:
-		<%= render 'answer', obj: @survey.simpatia_disponibilidade %>
+		<strong><%= render 'answer', obj: @survey.simpatia_disponibilidade %></strong>
 	</p>
 	<p>1.2 Informação e esclarecimentos prestados:
-		<%= render 'answer', obj: @survey.informacao_esclarecimentos %>
+		<strong><%= render 'answer', obj: @survey.informacao_esclarecimentos %></strong>
 	</p>
 
 	<h4>Questão 2<br />Que avaliação faz dos médicos que o seguiram no internamento relativamente a:</h4>
 	<p>2.1 Atenção e disponibilidade demonstrada pelos médicos:
-		<%= render 'answer', obj: @survey.atencao_disponibilidade_medicos %>
+		<strong><%= render 'answer', obj: @survey.atencao_disponibilidade_medicos %></strong>
 	</p>
 	<p>2.2 Forma como os médicos lhe explicaram a doença, sintomas e tratamento:
-		<%= render 'answer', obj: @survey.medicos_explicaram_doenca %>
+		<strong><%= render 'answer', obj: @survey.medicos_explicaram_doenca %></strong>
 	</p>
 	<p>2.3 Explicações dadas pelos médicos sobre a medicação e exames realizados:
-		<%= render 'answer', obj: @survey.medicos_explicaram_medicacao %>
+		<strong><%= render 'answer', obj: @survey.medicos_explicaram_medicacao %></strong>
 	</p>
 	<p>2.4 Em termos globais como avalia o desempenho do pessoal médico:
-		<%= render 'answer', obj: @survey.desempenho_medicos %>
+		<strong><%= render 'answer', obj: @survey.desempenho_medicos %></strong>
 	</p>
 
 	<h4>Questão 3<br />Que avaliação faz dos enfermeiros que o seguiram no seu internamento relativamente a:</h4>
 	<p>3.1 Atenção e disponibilidade demonstrada pelos enfermeiros:
-		<%= render 'answer', obj: @survey.atencao_disponibilizada_enfermeiros %>
+		<strong><%= render 'answer', obj: @survey.atencao_disponibilizada_enfermeiros %></strong>
 	</p>
 	<p>3.2 Rapidez na resposta do serviço de enfermagem:
-		<%= render 'answer', obj: @survey.rapidez_servico_enfermagem %>
+		<strong><%= render 'answer', obj: @survey.rapidez_servico_enfermagem %></strong>
 	</p>
 	<p>3.3 Em termos globais como avalia o desempenho do pessoal de enfermagem:
-		<%= render 'answer', obj: @survey.desempenho_enfermeiros %>
+		<strong><%= render 'answer', obj: @survey.desempenho_enfermeiros %></strong>
 	</p>
 
 	<h4>Questão 4<br />Que avaliação faz do restante pessoal que se relacionou consigo:</h4>
 	<p>4.1 Pessoal auxiliar:
-		<%= render 'answer', obj: @survey.avaliacao_pessoal_auxiliar %>
+		<strong><%= render 'answer', obj: @survey.avaliacao_pessoal_auxiliar %></strong>
 	</p>
 	<p>4.2 Outros:
-		<%= render 'answer', obj: @survey.avaliacao_outros %>
+		<strong><%= render 'answer', obj: @survey.avaliacao_outros %></strong>
 	</p>
 	<p>Quem:
-		<%= @survey.outros %>
+		<div class="well"><%= @survey.outros %></div>
 	</p>
 
 	<h4>Questão 5<br />Satisfação em termos de instalações:</h4>
 	<p>5.1 Conforto  e comodidade das enfermarias:
-		<%= render 'answer', obj: @survey.conforto_enfermarias %>
+		<strong><%= render 'answer', obj: @survey.conforto_enfermarias %></strong>
 	</p>
 	<p>5.2 Limpeza e higiene (enfermarias, sanitários, corredores e salas de refeições):
-		<%= render 'answer', obj: @survey.limpeza_higiene %>
+		<strong><%= render 'answer', obj: @survey.limpeza_higiene %></strong>
 	</p>
 	<p>5.3 Proteção e privacidade nas enfermarias:
-		<%= render 'answer', obj: @survey.protecao_enfermarias %>
+		<strong><%= render 'answer', obj: @survey.protecao_enfermarias %></strong>
 	</p>
 
 	<h4>Questão a avaliar</h4>
 	<p>6 Recomendaria o nosso serviço a familiares e amigos? 
-		<%= "Não" if @survey.recomendaria_servico == 0 %>
-		<%= "Sim" if @survey.recomendaria_servico == 1 %>
+		<strong><%= "Não" if @survey.recomendaria_servico == 0 %>
+		<%= "Sim" if @survey.recomendaria_servico == 1 %></strong>
 	</p>
 	<p>7 Ficou globalmente satisfeito? 
-		<%= "Não" if @survey.globalmente_satisfeito == 0 %>
-		<%= "Sim" if @survey.globalmente_satisfeito == 1 %>
+		<strong><%= "Não" if @survey.globalmente_satisfeito == 0 %>
+		<%= "Sim" if @survey.globalmente_satisfeito == 1 %></strong>
 	</p>
 
 	<h4>Questão 8<br />Em sua opinião, o que gostaria de ver alterado no serviço de internamento?</h4>
-	<p><%= @survey.opiniao %></p>
+	<div class="well">
+		<p><%= @survey.opiniao %></p>
+	</div>
 	<%= link_to "Editar", edit_satisf_surv_survey_path(@survey), class: 'btn btn-default' %>
 </div>

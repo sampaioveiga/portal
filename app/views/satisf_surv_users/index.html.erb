@@ -12,7 +12,7 @@
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= link_to user.user.nome_utilizador, edit_transp_user_path(user) %></td>
+					<td><%= link_to user.user.nome_utilizador, edit_satisf_surv_user_path(user) %></td>
 					<td>
 						<%= render 'shared/nivel_acesso', user: user %>
 					</td>
@@ -20,5 +20,5 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= render 'new' %>
+	<%= render 'new' unless @users_collection.empty? %>
 </div>
