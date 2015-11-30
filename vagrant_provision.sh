@@ -31,8 +31,10 @@ gem install bundler
 gem install rails
 
 # DB Postgres
-sudo su - postgres -c 'createuser -s vagrant'
-sudo su - postgres -c 'createdb portal_dev -O vagrant'
+#sudo su - postgres -c 'createuser -s vagrant'
+#sudo su - postgres -c 'createdb portal_dev -O vagrant'
+#CREATE USER ror_user WITH PASSWORD 'ror_user_password'
+#CREATE DATABASE portal WITH OWNER ror_user;
 sudo service postgresql stop
 
 # Apache

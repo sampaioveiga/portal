@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151119144021) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
     t.integer  "numero_gabinete"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "office_phone_numbers", ["ulsne_department_id"], name: "index_office_phone_numbers_on_ulsne_department_id"
-  add_index "office_phone_numbers", ["ulsne_site_id"], name: "index_office_phone_numbers_on_ulsne_site_id"
+  add_index "office_phone_numbers", ["ulsne_department_id"], name: "index_office_phone_numbers_on_ulsne_department_id", using: :btree
+  add_index "office_phone_numbers", ["ulsne_site_id"], name: "index_office_phone_numbers_on_ulsne_site_id", using: :btree
 
   create_table "satisf_surv_surveys", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,9 +57,9 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "satisf_surv_surveys", ["ulsne_department_id"], name: "index_satisf_surv_surveys_on_ulsne_department_id"
-  add_index "satisf_surv_surveys", ["ulsne_site_id"], name: "index_satisf_surv_surveys_on_ulsne_site_id"
-  add_index "satisf_surv_surveys", ["user_id"], name: "index_satisf_surv_surveys_on_user_id"
+  add_index "satisf_surv_surveys", ["ulsne_department_id"], name: "index_satisf_surv_surveys_on_ulsne_department_id", using: :btree
+  add_index "satisf_surv_surveys", ["ulsne_site_id"], name: "index_satisf_surv_surveys_on_ulsne_site_id", using: :btree
+  add_index "satisf_surv_surveys", ["user_id"], name: "index_satisf_surv_surveys_on_user_id", using: :btree
 
   create_table "satisf_surv_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "satisf_surv_users", ["user_id"], name: "index_satisf_surv_users_on_user_id"
+  add_index "satisf_surv_users", ["user_id"], name: "index_satisf_surv_users_on_user_id", using: :btree
 
   create_table "transp_destinations", force: :cascade do |t|
     t.string   "destino"
@@ -92,9 +95,9 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",             null: false
   end
 
-  add_index "transp_user_trips", ["transp_destination_id"], name: "index_transp_user_trips_on_transp_destination_id"
-  add_index "transp_user_trips", ["ulsne_department_id"], name: "index_transp_user_trips_on_ulsne_department_id"
-  add_index "transp_user_trips", ["user_id"], name: "index_transp_user_trips_on_user_id"
+  add_index "transp_user_trips", ["transp_destination_id"], name: "index_transp_user_trips_on_transp_destination_id", using: :btree
+  add_index "transp_user_trips", ["ulsne_department_id"], name: "index_transp_user_trips_on_ulsne_department_id", using: :btree
+  add_index "transp_user_trips", ["user_id"], name: "index_transp_user_trips_on_user_id", using: :btree
 
   create_table "transp_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -103,7 +106,7 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "transp_users", ["user_id"], name: "index_transp_users_on_user_id"
+  add_index "transp_users", ["user_id"], name: "index_transp_users_on_user_id", using: :btree
 
   create_table "u2d_associations", force: :cascade do |t|
     t.integer  "user_id"
@@ -112,8 +115,8 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id"
-  add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id"
+  add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id", using: :btree
+  add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id", using: :btree
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"
@@ -134,7 +137,7 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "user_phone_numbers", ["user_id"], name: "index_user_phone_numbers_on_user_id"
+  add_index "user_phone_numbers", ["user_id"], name: "index_user_phone_numbers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nome_utilizador"
@@ -148,6 +151,6 @@ ActiveRecord::Schema.define(version: 20151119144021) do
     t.boolean  "administrator",        default: false
   end
 
-  add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id"
+  add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id", using: :btree
 
 end
