@@ -1,4 +1,6 @@
 class HigMaosObservationsController < ApplicationController
+	before_action :authorize
+	before_action :check_user_privileges
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
 	before_action :set_observation, only: [ :show, :edit, :update ]
 
@@ -74,5 +76,13 @@ class HigMaosObservationsController < ApplicationController
 				]
 			]
 		)
+	end
+
+	def check_user_privileges
+		unless current_user.administrator
+			if current_user.hig_maos_user.nil? || current_user.hig_maos_user.nivel_acesso == 0
+				redirect_to root_url()
+			end
+		end
 	end
 end

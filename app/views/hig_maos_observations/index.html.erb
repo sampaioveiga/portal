@@ -2,14 +2,6 @@
 	<%= render 'shared/hig_maos_menu' %>
 </aside>
 <div class="col-md-10">
-	<h1>Observações</h1>
-	<% @observations.each do |obs| %>
-		<p>
-			ID: <%= link_to obs.id, hig_maos_observation_path(obs) %>
-			Auditor: <%= obs.user.nome_utilizador %> || 
-			Serviço: <%= obs.ulsne_department.nome_servico %> || 
-			Inicio sessão: <%= obs.inicio_sessao %> || 
-			Fim da sessão: <%= obs.fim_sessao %> || 
-		</p>
-	<% end %>
+	<div id="observations_calendar"></div>
 </div>
+<%= render 'shared/modal' %>

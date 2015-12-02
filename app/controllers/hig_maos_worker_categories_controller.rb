@@ -1,4 +1,6 @@
 class HigMaosWorkerCategoriesController < ApplicationController
+	before_action :authorize
+	before_action :check_user_privileges
 	before_action :load_categories, only: [ :index, :create ]
 	before_action :set_category, only: [ :edit, :update ]
 
@@ -41,5 +43,13 @@ class HigMaosWorkerCategoriesController < ApplicationController
 
 	def hig_maos_worker_categories_params
 		params.require(:hig_maos_worker_category).permit(:categoria_profissional)
+	end
+
+	def check_user_privileges
+		unless current_user.administrator
+			if current_user.hig_maos_user.nil? || current_user.hig_maos_user.nivel_acesso == 0
+				redirect_to root_url()
+			end
+		end
 	end
 end
