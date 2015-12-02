@@ -14,6 +14,7 @@ class SatisfSurvSurveysController < ApplicationController
 
 	def new
 		@survey = SatisfSurvSurvey.new
+		@survey.ulsne_site_id = current_user.ulsne_site.id
 	end
 
 	def create

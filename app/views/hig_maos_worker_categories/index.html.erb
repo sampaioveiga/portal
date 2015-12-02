@@ -1,0 +1,28 @@
+<aside class="col-md-2">
+	<%= render 'shared/hig_maos_menu' %>
+</aside>
+<div class="col-md-10">
+	<h1>Categorias profissionais</h1>
+	<div class="col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Categoria</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @categories.each do |cat| %>
+					<tr>
+						<td><%= cat.categoria_profissional %></td>
+						<td><a href="<%= edit_hig_maos_worker_category_path(cat) %>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4 well">
+		<h3>Nova categoria profissional</h3>
+		<%= render 'form' %>
+	</div>
+</div>

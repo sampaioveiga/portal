@@ -2,9 +2,15 @@
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aplicações <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<% if current_user.administrator %>
+			<li><%= link_to "Auditoria higiene das mãos", hig_maos_observations_url() %></li>
 			<li><%= link_to "Inquérito de satisfação de utentes", satisf_surv_surveys_url() %></li>
 			<li><%= link_to "Transportes", transp_users_url() %></li>
 		<% else %>
+			<% unless (current_user.hig_maos_user.nil? || current_user.hig_maos_user.nivel_acesso == 0) %>
+				<li><%= link_to "Auditoria higiene das mãos", hig_maos_observations_url() %></li>
+			<% else %>
+				<li class="disabled"><a>Auditoria higiene das mãos</a></li>
+			<% end %>
 			<% unless (current_user.satisf_surv_user.nil? || current_user.satisf_surv_user.nivel_acesso == 0)  %>
 				<li><%= link_to "Inquérito de satisfação de utentes", satisf_surv_surveys_url() %></li>
 			<% else %>

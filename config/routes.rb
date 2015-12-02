@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   # Transportes
   resources :transp_users, :transp_destinations, :transp_user_trips
 
+  # Auditorias higiene das mãos
+  resources :hig_maos_users, :hig_maos_observations, :hig_maos_worker_categories, :hig_maos_oportunities_clusters, :hig_maos_oportunities
+
   # Inquérito de satisfação utentes
   resources :satisf_surv_users, :satisf_surv_surveys
 

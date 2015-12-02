@@ -1,0 +1,2 @@
+module HigMaosUsersHelper
+end

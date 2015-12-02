@@ -1,0 +1,2 @@
+class HigMaosUsersController < ApplicationController
+end

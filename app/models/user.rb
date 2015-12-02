@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	has_one :transp_user
 	has_many :transp_user_trips
 	has_one :satisf_surv_user
+	has_one :hig_maos_user
 
 	validates :nome_utilizador,
 		presence: true,

@@ -1,0 +1,57 @@
+<div class="row nested-fields">
+	<div class="col-md-4">
+		<h3>Oportunidade</h3>
+		<%= link_to_remove_association "Eliminar oportunidade", f, class: 'btn btn-xs btn-danger' %>
+	</div>
+	<div class="col-md-4">
+		<h4>Indicações</h4>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :antes_doente %> Antes doente</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :antes_assetico %> Antes assép.</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :apos_sangue_fluido %> Após Sg Fluid.</abel>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :apos_doente %> Após doente</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :apos_ambiente %> Após Ambte</label>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h4>Acções</h4>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					<%= f.check_box :friccao_antisetica %> Fricção anti-sép.
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					<%= f.check_box :lavagem %> Lavagem
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><%= f.check_box :nao_realizado %>Não realizado</label>
+			</div>
+		</div>
+	</div>
+</div>
+<hr />

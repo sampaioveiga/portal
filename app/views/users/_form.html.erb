@@ -3,7 +3,7 @@
 	<%= f.label :nome_utilizador, "Nome do utilizador" %>
 	<div class="row">
 	<div class="col-md-2">
-		<%= f.select(:titulo, [["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
+		<%= f.select(:titulo, [[""],["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
 	</div>
 	<div class="col-md-10">
 		<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
@@ -32,9 +32,9 @@
 	<%= f.label :ulsne_site_id, "Unidade ULSNE" %>
 	<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
 	<%= f.label :password, "Senha" %>
-	<%= f.password_field :password, placeholder: 'Obrigatório', class: 'form-control' %>
+	<%= f.password_field :password, placeholder: 'Mínimo 6 caracteres', class: 'form-control' %>
 	<%= f.label :password_confirmation, "Confirmação" %>
-	<%= f.password_field :password_confirmation, placeholder: 'Obrigatório', class: 'form-control' %>
+	<%= f.password_field :password_confirmation, placeholder: 'Repetir senha', class: 'form-control' %>
 	<%= f.submit "Submeter", class: 'btn btn-primary' %>
 	<%= link_to "Cancelar", root_url(), class: 'btn btn-default'  %>
 <% end %>

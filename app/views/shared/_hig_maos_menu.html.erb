@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Inquéritos de auditoria</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= hig_maos_observations_path() %>">Observações</a><br />
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_hig_maos_observation_path() %>">Nova observação</a><br />
+			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="<%= hig_maos_worker_categories_path() %>">Categorias</a>
+		</li>
+	</ul>
+</div>
+
+<% if current_user.administrator %>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Gestão</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<%= link_to "Utilizadores", hig_maos_users_url() %>
+			</li>
+		</ul>
+	</div>
+<% end %>

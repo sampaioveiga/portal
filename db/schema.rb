@@ -11,10 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119144021) do
+ActiveRecord::Schema.define(version: 20151202104903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hig_maos_observations", force: :cascade do |t|
+    t.datetime "inicio_sessao"
+    t.datetime "fim_sessao"
+    t.integer  "ulsne_department_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "hig_maos_observations", ["ulsne_department_id"], name: "index_hig_maos_observations_on_ulsne_department_id", using: :btree
+  add_index "hig_maos_observations", ["user_id"], name: "index_hig_maos_observations_on_user_id", using: :btree
+
+  create_table "hig_maos_opportunities", force: :cascade do |t|
+    t.integer  "hig_maos_opportunities_cluster_id"
+    t.boolean  "antes_doente",                      default: false
+    t.boolean  "antes_assetico",                    default: false
+    t.boolean  "apos_sangue_fluido",                default: false
+    t.boolean  "apos_doente",                       default: false
+    t.boolean  "apos_ambiente",                     default: false
+    t.boolean  "friccao_antisetica",                default: false
+    t.boolean  "lavagem",                           default: false
+    t.boolean  "nao_realizado",                     default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "hig_maos_opportunities", ["hig_maos_opportunities_cluster_id"], name: "oppo_cluster", using: :btree
+
+  create_table "hig_maos_opportunities_clusters", force: :cascade do |t|
+    t.integer  "hig_maos_observation_id"
+    t.integer  "numero_profissionais"
+    t.integer  "hig_maos_worker_category_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "hig_maos_opportunities_clusters", ["hig_maos_observation_id"], name: "observation", using: :btree
+  add_index "hig_maos_opportunities_clusters", ["hig_maos_worker_category_id"], name: "category", using: :btree
+
+  create_table "hig_maos_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "nivel_acesso"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "hig_maos_users", ["user_id"], name: "index_hig_maos_users_on_user_id", using: :btree
+
+  create_table "hig_maos_worker_categories", force: :cascade do |t|
+    t.string   "categoria_profissional"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"

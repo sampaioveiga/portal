@@ -1,0 +1,2 @@
+module HigMaosWorkerCategoriesHelper
+end
