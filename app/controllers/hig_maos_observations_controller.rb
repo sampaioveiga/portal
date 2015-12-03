@@ -47,7 +47,7 @@ class HigMaosObservationsController < ApplicationController
 	end
 
 	def load_departments_categories
-		@departments = UlsneDepartment.order(:nome_servico)
+		@sites = UlsneSite.order(:nome_unidade)
 		@categories = HigMaosWorkerCategory.order(:categoria_profissional)
 	end
 
@@ -55,7 +55,7 @@ class HigMaosObservationsController < ApplicationController
 		params.require(:hig_maos_observation).permit(
 			:inicio_sessao,
 			:fim_sessao,
-			:ulsne_department_id,
+			:ulsne_site_id,
 			:user_id,
 			hig_maos_opportunities_clusters_attributes: [
 				:id, 

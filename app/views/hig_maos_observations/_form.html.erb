@@ -3,8 +3,8 @@
 	<%= render 'shared/error_messages', obj: @observation %>
 	<div class="row">
 		<div class="col-md-4">
-			<%= f.label :ulsne_department_id, "Serviço" %>
-			<%= f.collection_select(:ulsne_department_id, @departments, :id, :nome_servico, {}, class: 'form-control') %>
+			<%= f.label :ulsne_site_id, "Unidade" %>
+			<%= f.collection_select(:ulsne_site_id, @sites, :id, :nome_unidade, {}, class: 'form-control') %>
 		</div>
 		<div class="col-md-3 col-md-offset-1">
 			<%= f.label :inicio_sessao, "Início da sessão" %>

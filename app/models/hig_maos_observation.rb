@@ -1,6 +1,6 @@
 class HigMaosObservation < ActiveRecord::Base
-	belongs_to :ulsne_department
 	belongs_to :user
+	belongs_to :ulsne_site
 	has_many :hig_maos_opportunities_clusters, dependent: :destroy
 	accepts_nested_attributes_for :hig_maos_opportunities_clusters, reject_if: :all_blank
 

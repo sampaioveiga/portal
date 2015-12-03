@@ -42,7 +42,9 @@ class HigMaosWorkerCategoriesController < ApplicationController
 	end
 
 	def hig_maos_worker_categories_params
-		params.require(:hig_maos_worker_category).permit(:categoria_profissional)
+		params.require(:hig_maos_worker_category).permit(
+			:categoria_profissional
+		)
 	end
 
 	def check_user_privileges

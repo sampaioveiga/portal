@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20151202104903) do
   create_table "hig_maos_observations", force: :cascade do |t|
     t.datetime "inicio_sessao"
     t.datetime "fim_sessao"
-    t.integer  "ulsne_department_id"
+    t.integer  "ulsne_site_id"
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "hig_maos_observations", ["ulsne_department_id"], name: "index_hig_maos_observations_on_ulsne_department_id", using: :btree
+  add_index "hig_maos_observations", ["ulsne_site_id"], name: "index_hig_maos_observations_on_ulsne_site_id", using: :btree
   add_index "hig_maos_observations", ["user_id"], name: "index_hig_maos_observations_on_user_id", using: :btree
 
   create_table "hig_maos_opportunities", force: :cascade do |t|
