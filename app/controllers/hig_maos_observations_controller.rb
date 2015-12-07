@@ -11,6 +11,14 @@ class HigMaosObservationsController < ApplicationController
 	def show
 	end
 
+	def stats
+		month = Date.today#.prev_month
+		@selected_month = I18n.t("date.month_names")[month.month]
+		@date_range = month.beginning_of_month..month.end_of_month
+		@observations = HigMaosObservation.where(inicio_sessao: @date_range)
+		@sites = UlsneSite.joins(:hig_maos_observations).where(hig_maos_observations: { inicio_sessao: @date_range }).uniq
+	end
+
 	def new
 		@observation = HigMaosObservation.new
 		@observation.fim_sessao = Time.now + 1.hour

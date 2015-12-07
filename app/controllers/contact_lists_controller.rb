@@ -2,12 +2,12 @@ class ContactListsController < ApplicationController
 	before_action :load_units
 
 	def people
-		@contacts = User.order(:nome_utilizador)
+		@contacts = User.includes(:ulsne_departments).order(:nome_utilizador)
 		@contacts_by_first_letter = @contacts.group_by { |a| a.nome_utilizador[0].downcase }
 	end
 
 	def person
-		@person = User.find(params[:id])
+		@person = User.includes(:ulsne_site, :ulsne_departments, :user_phone_numbers).find(params[:id])
 	end
 
 	def unit
