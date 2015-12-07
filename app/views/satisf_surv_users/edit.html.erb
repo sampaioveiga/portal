@@ -6,10 +6,23 @@
 	<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', obj: @user %>
 		<%= f.label :nivel_acesso %>
-			<% f.number_field :nivel_acesso, min: 0, max: 2, class: 'form-control' %>
-			<%= f.select :nivel_acesso, [['0 - Sem acesso', 0], ['1 - Utilizador', 1], ['2 - Supervisor', 2]], {}, class: 'form-control' %>
+			<% f.number_field :nivel_acesso,
+					min: 0,
+					max: 2,
+					class: 'form-control' %>
+			<%= f.select :nivel_acesso,
+					[['0 - Sem acesso', 0],
+					['1 - Utilizador', 1],
+					['2 - Supervisor', 2]],
+					{},
+					class: 'form-control' %>
 		<%= f.label ' ' %>
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>
 	<% end %>
-	<%= link_to "Cancelar", satisf_surv_users_path(), class: 'btn btn-default' %>
+	<%= link_to "Cancelar", satisf_surv_users_path(),
+			class: 'btn btn-default' %>
+	<%= link_to 'Eliminar', satisf_surv_user_path(@user),
+			method: :delete,
+			data: { confirm: 'Tem a certeza?' },
+			class: 'btn btn-danger' %>
 </div>

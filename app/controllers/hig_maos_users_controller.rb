@@ -1,13 +1,13 @@
 class HigMaosUsersController < ApplicationController
 	before_action :authorize
 	before_action :is_admin
-	before_action :set_user, only: [ :edit, :update ]
+	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
 		@users = HigMaosUser.all
 		@user = HigMaosUser.new
 		users = @users.pluck(:user_id)
-		@users_collection = User.where.not(id: users)
+		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
 	def create
@@ -31,6 +31,12 @@ class HigMaosUsersController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@user.destroy
+		flash[:success] = "Utilizador retirado do módulo"
+		redirect_to hig_maos_users_path()
 	end
 
 	private

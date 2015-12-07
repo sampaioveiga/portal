@@ -126,6 +126,11 @@ input {
   height: auto !important;
 }
 
+.datetime-select {
+  display: inline-block;
+  width: 19%;
+}
+
 #error_explanation {
   color: red;
   ul {

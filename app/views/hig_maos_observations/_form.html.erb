@@ -2,17 +2,30 @@
 	<h1>Nova observação</h1>
 	<%= render 'shared/error_messages', obj: @observation %>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-12">
 			<%= f.label :ulsne_site_id, "Unidade" %>
-			<%= f.collection_select(:ulsne_site_id, @sites, :id, :nome_unidade, {}, class: 'form-control') %>
+			<%= f.collection_select(:ulsne_site_id,
+					@sites,
+					:id,
+					:nome_unidade,
+					{},
+					class: 'form-control') %>
 		</div>
-		<div class="col-md-3 col-md-offset-1">
-			<%= f.label :inicio_sessao, "Início da sessão" %>
-			<%= f.datetime_select :inicio_sessao, {}, html_options = { class: 'form-control' } %>
+		<div class="col-md-12">
+			<%= f.label :inicio_sessao, "Início da sessão" %><br />
+			<%= f.datetime_select :inicio_sessao,
+					{},
+					html_options = {
+						class: 'form-control datetime-select'
+					} %>
 		</div>
-		<div class="col-md-3 col-md-offset-1">
-			<%= f.label :fim_sessao, "Fim da sessão" %>
-			<%= f.datetime_select :fim_sessao, {}, html_options = { class: 'form-control' } %>
+		<div class="col-md-12">
+			<%= f.label :fim_sessao, "Fim da sessão" %><br />
+			<%= f.datetime_select :fim_sessao,
+					{},
+					html_options = {
+						class: 'form-control datetime-select'
+					} %>
 		</div>		
 	</div>
 	<div class="row">

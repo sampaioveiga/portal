@@ -11,11 +11,12 @@
 		</div>
 
 		<!-- Line Chart - Multiple Series -->
+		<!--
 		<div class="col-md-10">
 			<h3>Observações por serviço por dia</h3>
-			<%= line_chart   HigMaosObservation.pluck("ulsne_site_id").uniq.map { |c| { name: c, data: @observations.where(ulsne_site: c).group_by_day(:inicio_sessao, format: "%B %d, %Y").count }  }, discrete: true %>
+			<% #line_chart   HigMaosObservation.pluck("ulsne_site_id").uniq.map { |c| { name: c, data: @observations.where(ulsne_site: c).group_by_day(:inicio_sessao, format: "%B %d, %Y").count }  }, discrete: true %>
 		</div>
-  
-</div>
+		-->
+	</div>
 </div>
 <%= render 'shared/modal' %>

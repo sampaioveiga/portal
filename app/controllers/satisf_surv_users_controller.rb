@@ -1,13 +1,13 @@
 class SatisfSurvUsersController < ApplicationController
 	before_action :authorize
 	before_action :is_admin
-	before_action :set_user, only: [ :edit, :update ]
+	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
 		@users = SatisfSurvUser.all
 		@user = SatisfSurvUser.new
 		users = @users.pluck(:user_id)
-		@users_collection = User.where.not(id: users)
+		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
 	def create
@@ -33,6 +33,12 @@ class SatisfSurvUsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		@user.destroy
+		flash[:success] = "Utilizador retirado do módulo"
+		redirect_to satisf_surv_users_path()
+	end
+
 	private
 
 	def set_user
@@ -40,7 +46,9 @@ class SatisfSurvUsersController < ApplicationController
 	end
 
 	def satisf_surv_user_params
-		params.require(:satisf_surv_user).permit(:user_id,
-												:nivel_acesso)
+		params.require(:satisf_surv_user).permit(
+			:user_id,
+			:nivel_acesso
+		)
 	end
 end

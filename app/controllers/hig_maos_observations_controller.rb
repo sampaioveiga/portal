@@ -21,6 +21,7 @@ class HigMaosObservationsController < ApplicationController
 
 	def new
 		@observation = HigMaosObservation.new
+		@observation.ulsne_site_id = current_user.ulsne_site.id
 		@observation.fim_sessao = Time.now + 1.hour
 	end
 
