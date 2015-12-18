@@ -1,0 +1,35 @@
+<%= form_for(@schedule) do |f| %>
+	<%= render 'shared/error_messages', obj: @schedule %>
+
+	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
+		<%= f.label :user_id %>
+		<% f.text_field :user_id,
+					value: current_user.id,
+					class: 'form-control' %>
+		<%= f.collection_select(:user_id, 
+					@group_users,
+					:id,
+					:nome_utilizador,
+					{},
+					class: 'form-control') %>
+	<% end %>
+
+	<%= f.label :inicio_turno %><br />
+	<%= f.date_select :inicio_turno,
+						{},
+						html_options = { class: "form-control datetime-select" } %>
+	<%= f.select(:tipo_turno,
+				 options_for_select([
+				 	['Manhã', 8], 
+				 	['Tarde', 14], 
+				 	['Noite', 20]],
+				 	@schedule.tipo_turno), 
+				 {},
+				 class: 'form-control datetime-select') %>
+	
+	<%= f.submit "Guardar",
+				class: 'btn btn-success' %>
+	<%= link_to "Cancelar",
+				escala_vmer_schedules_path(),
+				class: 'btn btn-default' %>
+<% end %>

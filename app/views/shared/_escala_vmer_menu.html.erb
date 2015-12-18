@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Escala VMER</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= escala_vmer_schedules_path() %>">Disponibilidade</a><br />
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_escala_vmer_schedule_path() %>">Nova disponibilidade</a>
+		</li>
+		<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
+			<li class="list-group-item">
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="<%= escala_vmer_groups_path() %>">Grupos</a><br />
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= escala_vmer_users_path() %>">Utilizadores</a>
+			</li>
+		<% end %>
+	</ul>
+</div>

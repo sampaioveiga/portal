@@ -1,0 +1,32 @@
+<aside class="col-md-2">
+	<%= render 'shared/escala_vmer_menu' %>
+	<% unless current_user.escala_vmer_user.nil? %>
+		<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
+			<%= render 'group_list' %>
+		<% end %>
+	<% end %>
+</aside>
+<div class="col-md-10">
+	<h1>
+		<small>Disponibilidade de </small>
+		<%= @schedule.user.nome_utilizador %>
+	</h1>
+	<div class="col-md-8">
+		<p>Turno: <%= @tipo_turno %></p>
+		<p>Inicio do turno: <%= @schedule.inicio_turno %></p>
+		<p>Fim do turno: <%= @schedule.fim_turno %></p>
+	</div>
+	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
+		<div class="col-md-4 well">
+			<h2>Supervisor</h2>
+			<%= form_for(@schedule) do |f| %>
+				<div class="checkbox">
+					<label>
+						<%= f.check_box :escalado %> <b>Escalado</b>
+					</label>
+				</div>
+				<%= f.submit "Guardar", class: 'btn btn-success' %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

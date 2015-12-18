@@ -7,9 +7,13 @@ class User < ActiveRecord::Base
 	has_many :user_phone_numbers
 	accepts_nested_attributes_for :user_phone_numbers, reject_if: :all_blank, allow_destroy: true
 	has_one :transp_user
-	has_many :transp_user_trips
+	has_many :transp_user_trips, dependent: :destroy
 	has_one :satisf_surv_user
+	has_many :satisf_surv_surveys, dependent: :destroy
 	has_one :hig_maos_user
+	has_many :hig_maos_observations, dependent: :destroy
+	has_one :escala_vmer_user
+	has_many :escala_vmer_schedules, dependent: :destroy
 
 	validates :nome_utilizador,
 		presence: true,

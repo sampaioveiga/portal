@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   # Inquérito de satisfação utentes
   resources :satisf_surv_users, :satisf_surv_surveys
 
+  # Escala VMER
+  resources :escala_vmer_users, :escala_vmer_groups, :escala_vmer_schedules
+
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

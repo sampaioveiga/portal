@@ -1,0 +1,13 @@
+<aside class="col-md-2">
+	<%= render 'shared/escala_vmer_menu' %>
+	<% unless current_user.escala_vmer_user.nil? %>
+		<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
+			<%= render 'group_list' %>
+		<% end %>
+	<% end %>
+</aside>
+<div class="col-md-10">
+	<h1>Disponibilidade</h1>
+	<div id="schedules_calendar"></div>
+</div>
+<%= render 'shared/modal' %>

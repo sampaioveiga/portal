@@ -1,0 +1,2 @@
+module EscalaVmerGroupsHelper
+end

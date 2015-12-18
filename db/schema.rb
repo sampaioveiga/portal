@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202104903) do
+ActiveRecord::Schema.define(version: 20151215170259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "escala_vmer_groups", force: :cascade do |t|
+    t.string   "nome_grupo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "escala_vmer_schedules", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "inicio_turno"
+    t.integer  "tipo_turno"
+    t.datetime "fim_turno"
+    t.boolean  "escalado",     default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "escala_vmer_schedules", ["user_id"], name: "index_escala_vmer_schedules_on_user_id", using: :btree
+
+  create_table "escala_vmer_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "escala_vmer_group_id"
+    t.integer  "nivel_acesso"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "escala_vmer_users", ["escala_vmer_group_id"], name: "index_escala_vmer_users_on_escala_vmer_group_id", using: :btree
+  add_index "escala_vmer_users", ["user_id"], name: "index_escala_vmer_users_on_user_id", using: :btree
 
   create_table "hig_maos_observations", force: :cascade do |t|
     t.datetime "inicio_sessao"
