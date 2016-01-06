@@ -5,12 +5,12 @@
 $ ->
 	$('#schedules_calendar').fullCalendar
 		header: {
-			left:   'title',
-			center: 'month,agendaWeek,agendaDay',
-			right:  'today prev,next',
+			left:   'title'
+			center: 'month,agendaWeek,agendaDay'
+			right:  'today prev,next'
 		},
-		lang: 'pt',
-		events: 'escala_vmer_schedules.json',
+		lang: 'pt'
+		events: 'escala_vmer_schedules.json'
 
 		eventClick: (event, jsEvent, view) ->
 			$('#modalTitle').html(event.title)

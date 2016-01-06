@@ -2,9 +2,9 @@
 	<div class="panel-heading">Escala VMER</div>
 	<ul class="list-group">
 		<li class="list-group-item">
-			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= escala_vmer_schedules_path() %>">Disponibilidade</a><br />
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_escala_vmer_schedule_path() %>">Nova disponibilidade</a><br />
-			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= escala_vmer_maps_path() %>" target="_blank">Escalas</a>
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= escala_vmer_schedules_url() %>">Disponibilidade</a><br />
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_escala_vmer_schedule_url() %>">Nova disponibilidade</a><br />
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= escala_vmer_maps_url() %>" target="_blank">Escalas</a>
 		</li>
 		<% if current_user.administrator || current_user.escala_vmer_user.nivel_acesso > 1 %>
 			<li class="list-group-item">
