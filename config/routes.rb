@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :satisf_surv_users, :satisf_surv_surveys
 
   # Escala VMER
-  resources :escala_vmer_users, :escala_vmer_groups, :escala_vmer_schedules
+  resources :escala_vmer_users, :escala_vmer_groups, :escala_vmer_schedules, :escala_vmer_maps
 
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.

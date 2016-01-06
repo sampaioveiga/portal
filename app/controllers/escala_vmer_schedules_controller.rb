@@ -1,6 +1,6 @@
 class EscalaVmerSchedulesController < ApplicationController
 	before_action :authorize
-	#before_action :check_access
+	before_action :check_access
 	before_action :set_schedule, only: [ :show, :edit, :update ]
 	before_action :load_group_users
 
@@ -8,8 +8,7 @@ class EscalaVmerSchedulesController < ApplicationController
 		if current_user.escala_vmer_user.nivel_acesso > 1
 			@schedules = EscalaVmerSchedule.where(user_id: @group_users)
 		else
-			user = User.find(current_user.id)
-			@schedules = user.escala_vmer_schedules
+			@schedules = EscalaVmerSchedule.where(user_id: current_user.id)
 		end
 		@schedules_pending = @schedules.where(escalado: false)
 		@schedules = @schedules.where(escalado: true)
@@ -74,11 +73,15 @@ class EscalaVmerSchedulesController < ApplicationController
 	private
 
 	def load_group_users
-		@group_users = User.joins(:escala_vmer_user)#.where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } )
+		@group_users = User.joins(:escala_vmer_user).where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } )
 	end
 
 	def set_schedule
 		@schedule = EscalaVmerSchedule.find(params[:id])
+	end
+
+	def check_access
+		redirect_to escala_vmer_users_path() unless (current_user.escala_vmer_user)
 	end
 
 	def escala_vmer_schedules_params

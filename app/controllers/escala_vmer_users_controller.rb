@@ -43,7 +43,7 @@ class EscalaVmerUsersController < ApplicationController
 	private
 
 	def check_access
-		redirect_to escala_vmer_schedules_path() unless current_user.escala_vmer_user.nivel_acesso > 1
+		redirect_to escala_vmer_schedules_path() unless ( current_user.administrator || current_user.escala_vmer_user.nivel_acesso > 1)
 	end
 
 	def set_user

@@ -1,16 +1,11 @@
 class EscalaVmerGroupsController < ApplicationController
 	before_action :authorize
 	before_action :check_access
-	before_action :set_escala_vmer_group, only: [ :show, :edit, :update ]
+	before_action :set_escala_vmer_group, only: [ :edit, :update ]
 
 	def index
 		@groups = EscalaVmerGroup.order(:nome_grupo)
 		@group = EscalaVmerGroup.new
-	end
-
-	def show
-		@schedules = 
-		render 'escalas_vmer_schedules/index'
 	end
 
 	def create
@@ -39,7 +34,7 @@ class EscalaVmerGroupsController < ApplicationController
 	private
 
 	def check_access
-		redirect_to escala_vmer_schedules_path() unless current_user.escala_vmer_user.nivel_acesso > 1
+		redirect_to escala_vmer_schedules_path() unless (current_user.administrator || current_user.escala_vmer_user.nivel_acesso > 1)
 	end
 
 	def set_escala_vmer_group
