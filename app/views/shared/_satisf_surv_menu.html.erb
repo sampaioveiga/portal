@@ -2,8 +2,12 @@
 	<div class="panel-heading">Inquérito de Satisfação</div>
 	<ul class="list-group">
 		<li class="list-group-item">
-			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <a href="<%= satisf_surv_surveys_path() %>">Inquéritos</a><br />
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_satisf_surv_survey_path() %>">Novo inquérito</a>
+			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 
+			<a href="<%= satisf_surv_surveys_path() %>">Inquéritos</a>
+			
+			<br />
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+			<a href="<%= new_satisf_surv_survey_path() %>">Novo inquérito</a>
 		</li>
 	</ul>
 </div>
@@ -13,7 +17,12 @@
 		<div class="panel-heading">Gestão</div>
 		<ul class="list-group">
 			<li class="list-group-item">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 				<%= link_to "Utilizadores", satisf_surv_users_url() %>
+
+				<br />
+				<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 
+				<%= link_to "Exportar", satisf_surv_stats_url() %>
 			</li>
 		</ul>
 	</div>

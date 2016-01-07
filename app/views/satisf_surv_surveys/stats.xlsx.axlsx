@@ -1,0 +1,261 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Inquéritos") do |sheet|
+	sheet.add_row [
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'Questão 1 Que avaliação faz do atendimento do pessoal administrativo em termos de:',
+		'',
+		'Questão 2 Que avaliação faz dos médicos que o seguiram no internamento relativamente a:',
+		'',
+		'',
+		'',
+		'Questão 3 Que avaliação faz dos enfermeiros que o seguiram no seu internamento relativamente a:',
+		'',
+		'',
+		'Questão 4 Que avaliação faz do restante pessoal que se relacionou consigo:',
+		'',
+		'Questão 5 Satisfação em termos de instalações:',
+		'',
+		'',
+		'',
+		'',
+		'',
+	]
+	sheet.add_row [
+		'ID',
+		'Utilizador',
+		'Unidade',
+		'Serviço',
+		'Idade',
+		'Sexo',
+		'Escolaridade',
+		'1.1 Simpatia e disponibilidade',
+		'1.2 Informação e esclarecimentos prestados',
+		'2.1 Atenção e disponibilidade demonstrada pelos médicos',
+		'2.2 Forma como os médicos lhe explicaram a doença, sintomas e tratamento',
+		'2.3 Explicações dadas pelos médicos sobre a medicação e exames realizados',
+		'2.4 Em termos globais como avalia o desempenho do pessoal médico',
+		'3.1 Atenção e disponibilidade demonstrada pelos enfermeiros',
+		'3.2 Rapidez na resposta do serviço de enfermagem',
+		'3.3 Em termos globais como avalia o desempenho do pessoal de enfermagem',
+		'4.1 Pessoal auxiliar',
+		'Outros',
+		'5.1 Conforto  e comodidade das enfermarias',
+		'5.2 Limpeza e higiene (enfermarias, sanitários, corredores e salas de refeições)',
+		'5.3 Proteção e privacidade nas enfermarias',
+		'6 Recomendaria o nosso serviço a familiares e amigos?',
+		'7 Ficou globalmente satisfeito?',
+		'8 Em sua opinião, o que gostaria de ver alterado no serviço de internamento?',
+	]
+	@surveys.each do |s|
+		sheet.add_row [
+			s.id, 
+			s.user.nome_utilizador,
+			s.ulsne_site.nome_unidade,
+			s.ulsne_department.nome_servico,
+			s.idade,
+			if s.sexo == 0
+				'Masculino'
+			else
+				'Feminino'
+			end,
+			if s.escolaridade == 1
+				'Primários'
+			elsif s.escolaridade == 2
+				'Básico'
+			elsif s.escolaridade == 3
+				'Secundário'
+			elsif s.escolaridade == 4
+				'Superior'
+			else
+				'Não sabe ler/escrever'
+			end,
+			if s.simpatia_disponibilidade == 1
+				'Nada Satisfeito'
+			elsif s.simpatia_disponibilidade == 2
+				'Pouco Satisfeito'
+			elsif s.simpatia_disponibilidade == 3
+				'Satisfeito'
+			elsif s.simpatia_disponibilidade == 4
+				'Muito Satisfeito'
+			elsif s.simpatia_disponibilidade == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.informacao_esclarecimentos == 1
+				'Nada Satisfeito'
+			elsif s.informacao_esclarecimentos == 2
+				'Pouco Satisfeito'
+			elsif s.informacao_esclarecimentos == 3
+				'Satisfeito'
+			elsif s.informacao_esclarecimentos == 4
+				'Muito Satisfeito'
+			elsif s.informacao_esclarecimentos == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.medicos_explicaram_doenca == 1
+				'Nada Satisfeito'
+			elsif s.medicos_explicaram_doenca == 2
+				'Pouco Satisfeito'
+			elsif s.medicos_explicaram_doenca == 3
+				'Satisfeito'
+			elsif s.medicos_explicaram_doenca == 4
+				'Muito Satisfeito'
+			elsif s.medicos_explicaram_doenca == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.medicos_explicaram_medicacao == 1
+				'Nada Satisfeito'
+			elsif s.medicos_explicaram_medicacao == 2
+				'Pouco Satisfeito'
+			elsif s.medicos_explicaram_medicacao == 3
+				'Satisfeito'
+			elsif s.medicos_explicaram_medicacao == 4
+				'Muito Satisfeito'
+			elsif s.medicos_explicaram_medicacao == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.desempenho_medicos == 1
+				'Nada Satisfeito'
+			elsif s.desempenho_medicos == 2
+				'Pouco Satisfeito'
+			elsif s.desempenho_medicos == 3
+				'Satisfeito'
+			elsif s.desempenho_medicos == 4
+				'Muito Satisfeito'
+			elsif s.desempenho_medicos == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.atencao_disponibilizada_enfermeiros == 1
+				'Nada Satisfeito'
+			elsif s.atencao_disponibilizada_enfermeiros == 2
+				'Pouco Satisfeito'
+			elsif s.atencao_disponibilizada_enfermeiros == 3
+				'Satisfeito'
+			elsif s.atencao_disponibilizada_enfermeiros == 4
+				'Muito Satisfeito'
+			elsif s.atencao_disponibilizada_enfermeiros == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.rapidez_servico_enfermagem == 1
+				'Nada Satisfeito'
+			elsif s.rapidez_servico_enfermagem == 2
+				'Pouco Satisfeito'
+			elsif s.rapidez_servico_enfermagem == 3
+				'Satisfeito'
+			elsif s.rapidez_servico_enfermagem == 4
+				'Muito Satisfeito'
+			elsif s.rapidez_servico_enfermagem == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.desempenho_enfermeiros == 1
+				'Nada Satisfeito'
+			elsif s.desempenho_enfermeiros == 2
+				'Pouco Satisfeito'
+			elsif s.desempenho_enfermeiros == 3
+				'Satisfeito'
+			elsif s.desempenho_enfermeiros == 4
+				'Muito Satisfeito'
+			elsif s.desempenho_enfermeiros == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.avaliacao_pessoal_auxiliar == 1
+				'Nada Satisfeito'
+			elsif s.avaliacao_pessoal_auxiliar == 2
+				'Pouco Satisfeito'
+			elsif s.avaliacao_pessoal_auxiliar == 3
+				'Satisfeito'
+			elsif s.avaliacao_pessoal_auxiliar == 4
+				'Muito Satisfeito'
+			elsif s.avaliacao_pessoal_auxiliar == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.avaliacao_outros == 1
+				'Nada Satisfeito'
+			elsif s.avaliacao_outros == 2
+				'Pouco Satisfeito'
+			elsif s.avaliacao_outros == 3
+				'Satisfeito'
+			elsif s.avaliacao_outros == 4
+				'Muito Satisfeito'
+			elsif s.avaliacao_outros == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			s.outros,
+			if s.conforto_enfermarias == 1
+				'Nada Satisfeito'
+			elsif s.conforto_enfermarias == 2
+				'Pouco Satisfeito'
+			elsif s.conforto_enfermarias == 3
+				'Satisfeito'
+			elsif s.conforto_enfermarias == 4
+				'Muito Satisfeito'
+			elsif s.conforto_enfermarias == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.limpeza_higiene == 1
+				'Nada Satisfeito'
+			elsif s.limpeza_higiene == 2
+				'Pouco Satisfeito'
+			elsif s.limpeza_higiene == 3
+				'Satisfeito'
+			elsif s.limpeza_higiene == 4
+				'Muito Satisfeito'
+			elsif s.limpeza_higiene == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.protecao_enfermarias == 1
+				'Nada Satisfeito'
+			elsif s.protecao_enfermarias == 2
+				'Pouco Satisfeito'
+			elsif s.protecao_enfermarias == 3
+				'Satisfeito'
+			elsif s.protecao_enfermarias == 4
+				'Muito Satisfeito'
+			elsif s.protecao_enfermarias == 5
+				'Totalmente Satisfeito'
+			else
+				'NA/NR'
+			end			,
+			if s.recomendaria_servico == 1
+				'Sim'
+			else
+				'Não'
+			end			,
+			if s.globalmente_satisfeito == 1
+				'Sim'
+			else
+				'Não'
+			end,
+			s.opiniao
+		]
+	end
+end

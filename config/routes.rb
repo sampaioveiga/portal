@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   # Inquérito de satisfação utentes
   resources :satisf_surv_users, :satisf_surv_surveys
+  get 'satisf_surv_stats', to: 'satisf_surv_surveys#stats', as: 'satisf_surv_stats', defaults: { format: 'xlsx' }
 
   # Escala VMER
   resources :escala_vmer_users, :escala_vmer_groups, :escala_vmer_schedules, :escala_vmer_maps

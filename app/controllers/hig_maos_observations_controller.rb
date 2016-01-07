@@ -12,7 +12,7 @@ class HigMaosObservationsController < ApplicationController
 	end
 
 	def stats
-		month = Date.today#.prev_month
+		month = Date.today.prev_month
 		@selected_month = I18n.t("date.month_names")[month.month]
 		@date_range = month.beginning_of_month..month.end_of_month
 		@observations = HigMaosObservation.where(inicio_sessao: @date_range)

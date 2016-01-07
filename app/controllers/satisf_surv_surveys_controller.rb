@@ -12,6 +12,10 @@ class SatisfSurvSurveysController < ApplicationController
 		@survey = SatisfSurvSurvey.find(params[:id])
 	end
 
+	def stats
+		@surveys = SatisfSurvSurvey.includes(:user, :ulsne_department, :ulsne_site)		
+	end
+
 	def new
 		@survey = SatisfSurvSurvey.new
 		@survey.ulsne_site_id = current_user.ulsne_site.id
