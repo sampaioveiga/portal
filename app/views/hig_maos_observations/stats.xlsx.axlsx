@@ -1,0 +1,78 @@
+wb = xlsx_package.workbook
+
+#
+# styles
+#
+
+wb.styles do |s|
+	@heading_1 = s.add_style alignment: {horizontal: :center}, b: true, sz: 13, bg_color: "cccccc"
+	@heading_2  = s.add_style alignment: {horizontal: :center}, b: true, sz: 12
+end
+
+#
+# First sheet: observations
+#
+
+wb.add_worksheet(name: "Observacoes") do |sheet|
+	sheet.add_row [
+			'ID',
+			'Auditor',
+			'Unidade',
+			'Inicio sessao',
+			'Fim_sessao',
+	], style: @heading_1
+	@observations.each do |o|
+		sheet.add_row [
+			o.id,
+			o.user.nome_utilizador,
+			o.ulsne_site.nome_unidade,
+			o.inicio_sessao,
+			o.fim_sessao
+		]
+	end
+end
+
+#
+# Sites sheet
+#
+
+@sites.each do |site|
+	wb.add_worksheet(name: site.nome_unidade) do |sheet|
+		sheet.add_row [
+			'ID',
+			'Auditor',
+			'Categoria',
+			'Numero profissionais',
+			'Inicio',
+			'Fim',
+			'Antes doente',
+			'Antes asséptico',
+			'Após sangue/fluído',
+			'Após doente',
+			'Após ambiente',
+			'Frição anti-séptica',
+			'Lavagem',
+			'Não realizado'
+		], style: @heading_1
+		site.hig_maos_observations.each do |obs|
+			obs.hig_maos_opportunities.each do |opp|
+				sheet.add_row [
+					opp.id,
+					obs.user.nome_utilizador,
+					opp.hig_maos_opportunities_cluster.hig_maos_worker_category.categoria_profissional,
+					opp.hig_maos_opportunities_cluster.numero_profissionais,
+					obs.inicio_sessao,
+					obs.fim_sessao,
+					opp.antes_doente,
+					opp.antes_assetico,
+					opp.apos_sangue_fluido,
+					opp.apos_doente,
+					opp.apos_ambiente,
+					opp.friccao_antisetica,
+					opp.lavagem,
+					opp.nao_realizado
+				]
+			end
+		end
+	end
+end

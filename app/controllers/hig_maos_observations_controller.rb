@@ -2,21 +2,17 @@ class HigMaosObservationsController < ApplicationController
 	before_action :authorize
 	before_action :check_user_privileges
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
+	before_action :load_observations, only: [ :index, :stats ]
 	before_action :set_observation, only: [ :show, :edit, :update ]
 
 	def index
-		@observations = HigMaosObservation.all
 	end
 
 	def show
 	end
 
 	def stats
-		month = Date.today.prev_month
-		@selected_month = I18n.t("date.month_names")[month.month]
-		@date_range = month.beginning_of_month..month.end_of_month
-		@observations = HigMaosObservation.where(inicio_sessao: @date_range)
-		@sites = UlsneSite.joins(:hig_maos_observations).where(hig_maos_observations: { inicio_sessao: @date_range }).uniq
+		@sites = UlsneSite.joins(:hig_maos_observations).uniq
 	end
 
 	def new
@@ -58,6 +54,10 @@ class HigMaosObservationsController < ApplicationController
 	def load_departments_categories
 		@sites = UlsneSite.order(:nome_unidade)
 		@categories = HigMaosWorkerCategory.order(:categoria_profissional)
+	end
+
+	def load_observations
+		@observations = HigMaosObservation.includes(:user, :ulsne_site)
 	end
 
 	def hig_maos_observation_params

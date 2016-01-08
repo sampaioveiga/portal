@@ -3,6 +3,7 @@ class HigMaosObservation < ActiveRecord::Base
 	belongs_to :ulsne_site
 	has_many :hig_maos_opportunities_clusters, dependent: :destroy
 	accepts_nested_attributes_for :hig_maos_opportunities_clusters, reject_if: :all_blank
+	has_many :hig_maos_opportunities, through: :hig_maos_opportunities_clusters
 
 	validates :inicio_sessao, :fim_sessao,
 		presence: true

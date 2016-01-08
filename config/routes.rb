@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # Auditorias higiene das mãos
   resources :hig_maos_users, :hig_maos_observations, :hig_maos_worker_categories, :hig_maos_oportunities_clusters, :hig_maos_oportunities
-  get 'hig_maos_stats', to: 'hig_maos_observations#stats', as: 'hig_maos_stats'
+  get 'hig_maos_stats', to: 'hig_maos_observations#stats', as: 'hig_maos_stats', defaults: { format: 'xlsx' }
 
   # Inquérito de satisfação utentes
   resources :satisf_surv_users, :satisf_surv_surveys
