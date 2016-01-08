@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215170259) do
+ActiveRecord::Schema.define(version: 20160108160732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151215170259) do
     t.boolean  "escalado",     default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "obs"
   end
 
   add_index "escala_vmer_schedules", ["user_id"], name: "index_escala_vmer_schedules_on_user_id", using: :btree

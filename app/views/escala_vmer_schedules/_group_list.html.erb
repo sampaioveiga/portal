@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" style="<%= 'visibility: hidden;' unless current_user.escala_vmer_user.nivel_acesso > 1 %>">
 	<div class="panel-heading"><%= current_user.escala_vmer_user.escala_vmer_group.nome_grupo %></div>
 	<ul class="list-group">
 		<li class="list-group-item">

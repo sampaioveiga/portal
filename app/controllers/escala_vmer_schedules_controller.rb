@@ -10,8 +10,6 @@ class EscalaVmerSchedulesController < ApplicationController
 		else
 			@schedules = EscalaVmerSchedule.where(user_id: current_user.id)
 		end
-		@schedules_pending = @schedules.where(escalado: false)
-		@schedules = @schedules.where(escalado: true)
 	end
 
 	def new
@@ -90,6 +88,7 @@ class EscalaVmerSchedulesController < ApplicationController
 			:inicio_turno,
 			:tipo_turno,
 			:fim_turno,
+			:obs,
 			:escalado
 		)
 	end
