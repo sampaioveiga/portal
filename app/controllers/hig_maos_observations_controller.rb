@@ -1,6 +1,7 @@
 class HigMaosObservationsController < ApplicationController
 	before_action :authorize
-	before_action :check_user_privileges
+	before_action :has_access
+	before_action :user_can_only_read, except: [ :index ]
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
 	before_action :load_observations, only: [ :index, :stats ]
 	before_action :set_observation, only: [ :show, :edit, :update ]
@@ -87,11 +88,16 @@ class HigMaosObservationsController < ApplicationController
 		)
 	end
 
-	def check_user_privileges
-		unless current_user.administrator
-			if current_user.hig_maos_user.nil? || current_user.hig_maos_user.nivel_acesso == 0
-				redirect_to root_url()
-			end
+	def has_access
+		unless (current_user.administrator || current_user.hig_maos_user.present?)
+			redirect_to root_url()
+		end
+	end
+
+	def user_can_only_read
+		if (current_user.hig_maos_user.nivel_acesso == 0)
+			flash[:info] = "Só tem permissão para visualizar"
+			redirect_to hig_maos_observations_url()
 		end
 	end
 end

@@ -1,15 +1,15 @@
 class EscalaVmerMapsController < ApplicationController
 	before_action :authorize
-	before_action :check_access
-
+	before_action :has_access
+	
 	def index
 		@schedules = EscalaVmerSchedule.where(escalado: true)
 	end
 
 	private
 
-	def check_access
-		redirect_to escala_vmer_users_path() unless (current_user.escala_vmer_user)
+	def has_access
+		redirect_to root_url() unless (current_user.administrator || current_user.escala_vmer_user.present?)
 	end
 
 end

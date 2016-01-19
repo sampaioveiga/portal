@@ -1,6 +1,6 @@
 class HigMaosUsersController < ApplicationController
 	before_action :authorize
-	before_action :is_admin
+	before_action :is_user_admin
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
@@ -50,5 +50,11 @@ class HigMaosUsersController < ApplicationController
 			:user_id,
 			:nivel_acesso
 		)
+	end
+
+	def is_user_admin
+		unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2)
+			redirect_to hig_maos_observations_url()
+		end
 	end
 end

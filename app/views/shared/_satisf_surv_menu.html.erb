@@ -10,13 +10,8 @@
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
 			<a href="<%= new_satisf_surv_survey_path() %>">Novo inquérito</a>
 		</li>
-	</ul>
-</div>
-
-<% if current_user.administrator %>
-	<div class="panel panel-primary">
-		<div class="panel-heading">Gestão</div>
-		<ul class="list-group">
+		
+		<% if (current_user.administrator || current_user.satisf_surv_user.nivel_acesso == 2) %>		
 			<li class="list-group-item">
 				<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 
 				<%= link_to "Exportar", satisf_surv_stats_url() %>
@@ -26,6 +21,6 @@
 				<%= link_to "Utilizadores", satisf_surv_users_url() %>
 
 			</li>
-		</ul>
-	</div>
-<% end %>
+		<% end %>
+	</ul>
+</div>

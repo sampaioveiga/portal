@@ -1,0 +1,23 @@
+<aside class="col-md-2">
+	<%= render 'shared/ajudas_tecnicas_menu' %>
+</aside>
+<div class="col-md-10">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Equipamento</th>
+				<th>Inventario</th>
+				<th>Descricao</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @equipments.each do |eq| %>
+				<tr>
+					<td><%= link_to eq.equipamento, edit_ajudas_tecnicas_equipment_path(eq) %></td>
+					<td><%= eq.inventario %></td>
+					<td><%= eq.descricao %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

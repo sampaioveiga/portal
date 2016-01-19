@@ -1,0 +1,41 @@
+<aside class="col-md-2">
+	<%= render 'shared/ajudas_tecnicas_menu' %>
+</aside>
+<div class="col-md-10">
+	<h1 class="<%= 'alert alert-danger' if @patient.obito? %>">
+		<%= link_to @patient.nome_doente, edit_ajudas_tecnicas_patient_path(@patient) %>
+	</h1>
+	<div class="well col-md-12">
+		<%= render 'patient_id' %>
+	</div>
+	<div class="col-md-8">
+		<h2>Cedências</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Inicio cedência</th>
+					<th>Cuidador</th>
+					<th>Equipamento</th>
+					<th>Fim cedência</th>
+					<th>Observações</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @patient.ajudas_tecnicas_loans.each do |loan| %>
+					<tr>
+						<td><%= loan.inicio_cedencia %></td>
+						<td><%= loan.cuidador %></td>
+						<td><%= loan.ajudas_tecnicas_equipment.equipamento %></td>
+						<td><%= loan.fim_cedencia %></td>
+						<td><%= loan.observacoes %></td>
+						<td><%= link_to "Editar", edit_ajudas_tecnicas_patient_ajudas_tecnicas_loan_path(@patient,loan) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4 well">
+		<%= render 'ajudas_tecnicas_loans/new' unless @patient.obito %>
+	</div>
+</div>

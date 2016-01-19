@@ -1,0 +1,5 @@
+<% if (current_user.administrator ||current_user.escala_vmer_user.present?) %>
+	<li><%= link_to "Escala VMER", escala_vmer_schedules_url() %></li>
+<% else %>
+	<li class="disabled"><a>Escala VMER</a></li>
+<% end %>

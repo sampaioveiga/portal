@@ -1,6 +1,6 @@
 class EscalaVmerUsersController < ApplicationController
 	before_action :authorize
-	before_action :check_access
+	before_action :is_user_admin
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :index, :edit ]
 
@@ -42,8 +42,8 @@ class EscalaVmerUsersController < ApplicationController
 
 	private
 
-	def check_access
-		redirect_to escala_vmer_schedules_path() unless ( current_user.administrator || current_user.escala_vmer_user.nivel_acesso > 1)
+	def is_user_admin
+		redirect_to escala_vmer_schedules_path() unless ( current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2)
 	end
 
 	def set_user

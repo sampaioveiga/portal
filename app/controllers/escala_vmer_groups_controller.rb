@@ -1,6 +1,6 @@
 class EscalaVmerGroupsController < ApplicationController
 	before_action :authorize
-	before_action :check_access
+	before_action :is_user_admin
 	before_action :set_escala_vmer_group, only: [ :edit, :update ]
 
 	def index
@@ -33,8 +33,8 @@ class EscalaVmerGroupsController < ApplicationController
 
 	private
 
-	def check_access
-		redirect_to escala_vmer_schedules_path() unless (current_user.administrator || current_user.escala_vmer_user.nivel_acesso > 1)
+	def is_user_admin
+		redirect_to escala_vmer_schedules_path() unless (current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2)
 	end
 
 	def set_escala_vmer_group

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 	has_many :hig_maos_observations, dependent: :destroy
 	has_one :escala_vmer_user
 	has_many :escala_vmer_schedules, dependent: :destroy
+	has_one :ajudas_tecnicas_user
 
 	validates :nome_utilizador,
 		presence: true,

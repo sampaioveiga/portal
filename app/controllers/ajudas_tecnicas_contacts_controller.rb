@@ -1,0 +1,2 @@
+class AjudasTecnicasContactsController < ApplicationController
+end

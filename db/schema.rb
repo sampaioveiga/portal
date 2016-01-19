@@ -11,10 +11,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108160732) do
+ActiveRecord::Schema.define(version: 20160115093754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ajudas_tecnicas_contact_types", force: :cascade do |t|
+    t.string   "tipo_contacto"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "ajudas_tecnicas_contacts", force: :cascade do |t|
+    t.string   "contacto"
+    t.integer  "ajudas_tecnicas_patient_id"
+    t.integer  "ajudas_tecnicas_contact_type_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "ajudas_tecnicas_contacts", ["ajudas_tecnicas_contact_type_id"], name: "contact_type", using: :btree
+  add_index "ajudas_tecnicas_contacts", ["ajudas_tecnicas_patient_id"], name: "index_ajudas_tecnicas_contacts_on_ajudas_tecnicas_patient_id", using: :btree
+
+  create_table "ajudas_tecnicas_equipments", force: :cascade do |t|
+    t.string   "equipamento"
+    t.integer  "inventario"
+    t.string   "descricao"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "ajudas_tecnicas_loans", force: :cascade do |t|
+    t.string   "cuidador"
+    t.date     "inicio_cedencia"
+    t.date     "fim_cedencia"
+    t.string   "observacoes"
+    t.integer  "ajudas_tecnicas_patient_id"
+    t.integer  "ajudas_tecnicas_equipment_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "ajudas_tecnicas_loans", ["ajudas_tecnicas_equipment_id"], name: "index_ajudas_tecnicas_loans_on_ajudas_tecnicas_equipment_id", using: :btree
+  add_index "ajudas_tecnicas_loans", ["ajudas_tecnicas_patient_id"], name: "index_ajudas_tecnicas_loans_on_ajudas_tecnicas_patient_id", using: :btree
+
+  create_table "ajudas_tecnicas_patients", force: :cascade do |t|
+    t.string   "nome_doente"
+    t.date     "ddn"
+    t.integer  "rnu"
+    t.string   "sexo"
+    t.string   "morada"
+    t.integer  "cpostal"
+    t.integer  "cpostal2"
+    t.string   "localidade"
+    t.boolean  "obito"
+    t.integer  "ajudas_tecnicas_physician_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "ajudas_tecnicas_physicians", force: :cascade do |t|
+    t.string   "nome_medico"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "ajudas_tecnicas_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "nivel_acesso"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "escala_vmer_groups", force: :cascade do |t|
     t.string   "nome_grupo"

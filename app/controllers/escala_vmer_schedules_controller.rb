@@ -1,11 +1,12 @@
 class EscalaVmerSchedulesController < ApplicationController
 	before_action :authorize
-	before_action :check_access
+	before_action :has_access
 	before_action :set_schedule, only: [ :show, :edit, :update ]
 	before_action :load_group_users
+	before_action :user_just_reads, except: [ :index ]
 
 	def index
-		if current_user.escala_vmer_user.nivel_acesso > 1
+		if (current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2)
 			@schedules = EscalaVmerSchedule.where(user_id: @group_users)
 		else
 			@schedules = EscalaVmerSchedule.where(user_id: current_user.id)
@@ -71,15 +72,22 @@ class EscalaVmerSchedulesController < ApplicationController
 	private
 
 	def load_group_users
-		@group_users = User.joins(:escala_vmer_user).where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } )
+		@group_users = User.joins(:escala_vmer_user).where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } ) unless (current_user.administrator && current_user.escala_vmer_user.nil?)
 	end
 
 	def set_schedule
 		@schedule = EscalaVmerSchedule.find(params[:id])
 	end
 
-	def check_access
-		redirect_to escala_vmer_users_path() unless (current_user.escala_vmer_user)
+	def has_access
+		redirect_to root_url() unless (current_user.administrator || current_user.escala_vmer_user.present?)
+	end
+
+	def user_just_reads
+		if current_user.escala_vmer_user.nivel_acesso == 0
+			flash[:info] = "Só tem permissão para visualizar"
+			redirect_to escala_vmer_schedules_url()
+		end
 	end
 
 	def escala_vmer_schedules_params

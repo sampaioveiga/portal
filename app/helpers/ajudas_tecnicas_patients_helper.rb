@@ -1,0 +1,2 @@
+module AjudasTecnicasPatientsHelper
+end

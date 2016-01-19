@@ -1,0 +1,5 @@
+<% if (current_user.administrator || current_user.satisf_surv_user.present?)  %>
+	<li><%= link_to "Inquérito de satisfação de utentes", satisf_surv_surveys_url() %></li>
+<% else %>
+	<li class="disabled"><a>Inquérito de satisfação de utentes</a></li>
+<% end %>

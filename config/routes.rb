@@ -36,6 +36,12 @@ Rails.application.routes.draw do
   # Escala VMER
   resources :escala_vmer_users, :escala_vmer_groups, :escala_vmer_schedules, :escala_vmer_maps
 
+  # Ajudas tecnicas
+  resources :ajudas_tecnicas_users, :ajudas_tecnicas_physicians, :ajudas_tecnicas_contact_types, :ajudas_tecnicas_equipments
+  resources :ajudas_tecnicas_patients do
+    resources :ajudas_tecnicas_loans
+  end
+
   root 'contact_lists#people'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

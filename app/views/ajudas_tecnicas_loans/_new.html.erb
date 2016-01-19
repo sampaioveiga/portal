@@ -1,0 +1,19 @@
+<h3>Novo emprestimo</h3>
+<%= form_for([@patient, @patient.ajudas_tecnicas_loans.build]) do |f| %>
+	<%= render 'shared/error_messages', obj: @patient %>
+	
+	<%= f.label :ajudas_tecnicas_equipment_id, "Equipamento" %>
+	<%= f.collection_select :ajudas_tecnicas_equipment_id, @ajudas_tecnicas_equipments, :id, :equipamento, {}, class: 'form-control' %>
+
+
+	<%= f.label :cuidador %>
+	<%= f.text_field :cuidador, class: 'form-control' %>
+	
+	<%= f.label :inicio_cedencia, "Inicio" %><br />
+	<%= f.date_select :inicio_cedencia, {}, class: 'form-control date-select' %>
+	
+	<%= f.label :observacoes %>
+	<%= f.text_field :observacoes, class: 'form-control' %>
+	
+	<%= f.submit "Adicionar", class: 'btn btn-primary' %>
+<% end %>

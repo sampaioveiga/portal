@@ -1,8 +1,9 @@
 class SatisfSurvSurveysController < ApplicationController
 	before_action :authorize
-	before_action :check_user_privileges
+	before_action :has_access
 	before_action :set_survey, only: [ :edit, :update ]
 	before_action :load_form_selects, only: [ :new, :create, :edit, :update ]
+	before_action :user_just_reads, except: [ :index ]
 
 	def index
 		@surveys = SatisfSurvSurvey.order(id: :desc).paginate(:page => params[:page])
@@ -81,6 +82,17 @@ class SatisfSurvSurveysController < ApplicationController
 											:recomendaria_servico,
 											:globalmente_satisfeito,
 											:opiniao)
+	end
+
+	def has_access
+		redirect_to satisf_surv_surveys_url() unless (current_user.administrator || current_user.satisf_surv_user.present? )
+	end
+
+	def user_just_reads
+		if current_user.satisf_surv_user.nivel_acesso == 0
+			flash[:info] = "Só tem permissão para visualizar"
+			redirect_to satisf_surv_surveys_path()
+		end
 	end
 
 	def check_user_privileges

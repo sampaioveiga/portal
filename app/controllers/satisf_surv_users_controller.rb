@@ -1,6 +1,6 @@
 class SatisfSurvUsersController < ApplicationController
 	before_action :authorize
-	before_action :is_admin
+	before_action :has_access
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
@@ -43,6 +43,10 @@ class SatisfSurvUsersController < ApplicationController
 
 	def set_user
 		@user = SatisfSurvUser.find(params[:id])
+	end
+
+	def has_access
+		redirect_to satisf_surv_surveys_url() unless (current_user.administrator || current_user.satisf_surv_user.nivel_acesso == 2)
 	end
 
 	def satisf_surv_user_params
