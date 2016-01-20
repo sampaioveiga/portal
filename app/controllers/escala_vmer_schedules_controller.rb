@@ -1,7 +1,7 @@
 class EscalaVmerSchedulesController < ApplicationController
 	before_action :authorize
 	before_action :has_access
-	before_action :set_schedule, only: [ :show, :edit, :update ]
+	before_action :set_schedule, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_group_users
 	before_action :user_just_reads, except: [ :index ]
 
@@ -66,6 +66,17 @@ class EscalaVmerSchedulesController < ApplicationController
 			redirect_to escala_vmer_schedules_path()
 		else
 			render :edit
+		end
+	end
+
+	def destroy
+		unless @schedule.escalado
+			@schedule.destroy
+			flash[:success] = "Disponibilidade eliminada"
+			redirect_to escala_vmer_schedules_path()
+		else
+			flash[:danger] = "Disponibilidade não pode ser eliminada"
+			redirect_to @schedule
 		end
 	end
 

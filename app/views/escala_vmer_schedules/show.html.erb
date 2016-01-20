@@ -15,6 +15,11 @@
 		<p>Turno: <%= @tipo_turno %></p>
 		<p>Inicio do turno: <%= @schedule.inicio_turno %></p>
 		<p>Fim do turno: <%= @schedule.fim_turno %></p>
+		<%= link_to "Remover disponibilidade", 
+				escala_vmer_schedule_path(@schedule),
+				method: :delete,
+				data: { confirm: 'Tem a certeza?' }, 
+				class: 'btn btn-danger'  unless @schedule.escalado %>
 	</div>
 	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
 		<div class="col-md-4 well">

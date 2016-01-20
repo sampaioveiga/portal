@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 		@user.administrator = true if User.first.nil?
 
 		if @user.save
-			UserMailer.welcome_email(@user).deliver_now if Rails.env.production?
+			#UserMailer.welcome_email(@user).deliver_now if Rails.env.production?
 			flash[:success] = "Utilizador criado"
 			redirect_to login_path()
 		else
