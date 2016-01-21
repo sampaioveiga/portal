@@ -12,7 +12,7 @@ class CreateTranspUserTrips < ActiveRecord::Migration
 			t.integer :local_fim_id
 			t.string :condutor
 			t.string :observacoes
-			t.boolean :supervisor
+			t.boolean :supervisor, default: false
 			t.integer :aprovacao
 			t.string :comentarios_supervisor
 

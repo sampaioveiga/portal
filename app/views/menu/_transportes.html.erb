@@ -1,4 +1,4 @@
-<% if (current_user.administrator || current_user.transp_user.nil?) %>
+<% if (current_user.administrator || current_user.transp_user.present?) %>
 	<li><%= link_to "Transportes", transp_users_url() %></li>
 <% else %>
 	<li class="disabled"><a>Transportes</a></li>

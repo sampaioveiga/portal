@@ -1,5 +1,6 @@
 class TranspUsersController < ApplicationController
 	before_action :load_select#, only: [ :index, :create ]
+	before_action :is_user_admin
 	#before_action :set_transp_user, only: [ :edit, :update ]
 
 	def index
@@ -44,7 +45,15 @@ class TranspUsersController < ApplicationController
 	end
 
 	def transp_user_params
-		params.require(:transp_user).permit(:user_id,
-											:nivel_acesso)
+		params.require(:transp_user).permit(
+			:user_id,
+			:nivel_acesso
+		)
+	end
+
+	def is_user_admin
+		unless (current_user.administrator || current_user.transp_user.nivel_acesso == 2)
+			redirect_to transp_user_trips_url()
+		end
 	end
 end
