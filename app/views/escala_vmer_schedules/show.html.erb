@@ -12,9 +12,9 @@
 		<%= @schedule.user.nome_utilizador %>
 	</h1>
 	<div class="col-md-8">
-		<p>Turno: <%= @tipo_turno %></p>
-		<p>Inicio do turno: <%= @schedule.inicio_turno %></p>
-		<p>Fim do turno: <%= @schedule.fim_turno %></p>
+		<p><small>Turno </small><%= @tipo_turno %></p>
+		<p><small>Inicio do turno </small><%= @schedule.inicio_turno %></p>
+		<p><small>Fim do turno </small><%= @schedule.fim_turno %></p>
 	</div>
 	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
 		<div class="col-md-4 well">
@@ -25,7 +25,7 @@
 						<%= f.check_box :escalado %> <b>Escalado</b>
 					</label>
 				</div>
-				<%= f.submit "Guardar", class: 'btn btn-success' %>
+				<%= f.submit "Guardar", class: 'btn btn-primary' %>
 			<% end %>
 		</div>
 	<% end %>

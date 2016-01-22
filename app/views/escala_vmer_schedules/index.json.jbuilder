@@ -6,14 +6,14 @@ json.array!(@schedules) do |schedule|
 	json.start schedule.inicio_turno
 	json.end schedule.fim_turno
 	json.url escala_vmer_schedule_path(schedule)
-	json.description '<p><b>Grupo:</b> ' + schedule.user.escala_vmer_user.escala_vmer_group.nome_grupo + '</p>' + 
-					'<p><b>Inicio do turno:</b> ' + schedule.inicio_turno.to_s  + '</p>' + 
-					'<p><b>Fim do turno:</b> ' + schedule.fim_turno.to_s + '</p>' + 
-					'<p><b>Observacoes:</b> ' + schedule.obs.to_s + '</p>' + 
+	json.description '<p><small>Grupo:</small> ' + schedule.user.escala_vmer_user.escala_vmer_group.nome_grupo + '</p>' + 
+					'<p><small>Inicio do turno:</small> ' + schedule.inicio_turno.to_s  + '</p>' + 
+					'<p><small>Fim do turno:</small> ' + schedule.fim_turno.to_s + '</p>' + 
+					'<p><small>Observacoes:</small> ' + schedule.obs.to_s + '</p>' + 
 					if schedule.escalado
-						'<p><b>Escalado:</b> Sim</p>'
+						'<p><small>Escalado:</small> Sim</p>'
 					else
-						'<p><b>Escalado:</b> Não</p>'
+						'<p><small>Escalado:</small> Não</p>'
 					end
 
 end

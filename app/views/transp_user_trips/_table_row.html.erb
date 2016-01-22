@@ -1,0 +1,19 @@
+<tr>
+	<td><%= link_to obj.user.nome_utilizador, transp_user_trip_path(obj) %></td>
+
+	<td><%= obj.data_inicio %></td>
+
+	<td><%= obj.data_fim %></td>
+
+	<td><%= obj.assunto %></td>
+
+	<td><%= obj.ulsne_department.nome_servico %></td>
+
+	<td><%= obj.condutor %></td>
+
+	<td><%= obj.numero_passageiros %></td>
+
+	<td><%= obj.local_inicio.nome_unidade %></td>
+
+	<td><%= obj.local_fim.nome_unidade %></td>
+</tr>

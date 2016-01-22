@@ -3,17 +3,31 @@
 	<%= render 'transp_user_trip' %>
 </aside>
 <div class="col-md-10">
-	<h1>
-		<small>Requisitante</small> 
-		<%= @trip.user.nome_utilizador %>
-	</h1>
 
-	<% if @trip.ulsne_department.present? %>
+	<!-- new line -->
+	<div class="col-md-8">
+		<h1>
+			<small>Requisitante</small> 
+			<%= @trip.user.nome_utilizador %>
+		</h1>
+
 		<h2>
 			<small>Serviço</small> 
 			<%= @trip.ulsne_department.nome_servico %>
 		</h2>
-	<% end %>
+	</div>
+
+	<div class="col-md-4">
+		<h3>Contactos</h3>
+		<p>
+			<small>Email </small><%= @trip.user.email %><br />
+			<% @trip.user.user_phone_numbers.each do |p|%>
+				<small>Número </small><%= p.numero_contacto %><br />
+			<% end %>
+		<p>
+	</div>
+
+	<!-- new line -->
 	<div class="col-md-8">
 		<div class="col-md-6">
 			<p>
@@ -37,10 +51,16 @@
 			</p>
 		</div>
 
-		<p>
-			<small>Mais informação </small>
-			<%= @trip.observacoes %>
-		</p>
+		<!-- new line -->
+
+		<div class="col-md-12">
+			<p>
+				<small>Mais informação </small>
+				<%= @trip.observacoes %>
+			</p>
+		</div>
+
+		<!-- new line -->
 
 		<div class="col-md-6">
 			<p>
@@ -73,7 +93,7 @@
 				<%= f.select(:aprovacao, [['Pendente', 0],['Aprovado', 1], ['Recusado', 2]], {}, class: 'form-control') %>
 				<%= f.label :comentarios_supervisor %>
 				<%= f.text_area :comentarios_supervisor, class: 'form-control' %>
-				<%= f.submit "Submeter", class: 'btn btn-success' %>
+				<%= f.submit "Submeter", class: 'btn btn-primary' %>
 			<% end %>
 		</div>
 	<% end %>

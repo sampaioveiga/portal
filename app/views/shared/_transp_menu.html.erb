@@ -3,11 +3,11 @@
 	<ul class="list-group">
 		<li class="list-group-item">
 			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="<%= transp_user_trips_path() %>">Deslocações</a><br />
-			<span class="glyphicon glyphicon-road" aria-hidden="true"></span> <a href="<%= new_transp_user_trip_path() %>">Nova deslocação</a>
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="<%= new_transp_user_trip_path() %>">Nova deslocação</a>
 		</li>
 		<li class="list-group-item">
 			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <a href="#">Material</a><br />
-			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <a href="#">Novo material</a>
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <a href="#">Novo material</a>
 		</li>
 	</ul>
 </div>
@@ -17,7 +17,18 @@
 		<div class="panel-heading">Gestão</div>
 		<ul class="list-group">
 			<li class="list-group-item">
-				<%= link_to "Destinos", transp_destinations_url() %><br />
+				<span class="glyphicon glyphicon-list" aria-hidden="true"></span> 
+				<%= link_to "Deslocações", transp_user_trips_list_path() %>
+				<br />
+				<span class="glyphicon glyphicon-list" aria-hidden="true"></span> 
+				<%= link_to "Material", transp_user_trips_list_path() %>
+			</li>
+			<li class="list-group-item">
+				<span class="glyphicon glyphicon-road" aria-hidden="true"></span> 
+				<%= link_to "Destinos", transp_destinations_url() %>
+				<br />
+
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 				<%= link_to "Utilizadores", transp_users_url() %>
 			</li>
 		</ul>

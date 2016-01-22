@@ -1,44 +1,60 @@
 <%= form_for(@observation) do |f| %>
 	<h1>Nova observação</h1>
 	<%= render 'shared/error_messages', obj: @observation %>
-	<div class="row">
-		<div class="col-md-12">
-			<%= f.label :ulsne_site_id, "Unidade" %>
-			<%= f.collection_select(:ulsne_site_id,
-					@sites,
-					:id,
-					:nome_unidade,
-					{},
-					class: 'form-control') %>
-		</div>
-		<div class="col-md-12">
-			<%= f.label :inicio_sessao, "Início da sessão" %><br />
-			<%= f.datetime_select :inicio_sessao,
-					{},
-					html_options = {
-						class: 'form-control datetime-select'
-					} %>
-		</div>
-		<div class="col-md-12">
-			<%= f.label :fim_sessao, "Fim da sessão" %><br />
-			<%= f.datetime_select :fim_sessao,
-					{},
-					html_options = {
-						class: 'form-control datetime-select'
-					} %>
-		</div>		
+
+	<!-- new line -->
+	<div class="col-md-6">
+		<%= f.label :user_id, "Auditor" %>
+		<%= f.collection_select :user_id,
+			@users,
+			:id,
+			:nome_utilizador,
+			{},
+			class: 'form-control',
+			disabled: 'disabled' %>
 	</div>
-	<div class="row">
+	<div class="col-md-6">
+		<%= f.label :ulsne_site_id, "Unidade" %>
+		<%= f.collection_select(:ulsne_site_id,
+				@sites,
+				:id,
+				:nome_unidade,
+				{},
+				class: 'form-control') %>
+	</div>
+
+	<!-- new line -->
+	<div class="col-md-6">
+		<%= f.label :inicio_sessao, "Início da sessão" %><br />
+		<%= f.datetime_select :inicio_sessao,
+				{},
+				html_options = {
+					class: 'form-control datetime-select'
+				} %>
+	</div>
+	<div class="col-md-6">
+		<%= f.label :fim_sessao, "Fim da sessão" %><br />
+		<%= f.datetime_select :fim_sessao,
+				{},
+				html_options = {
+					class: 'form-control datetime-select'
+				} %>
+	</div>		
+	
+	<!-- new line -->
+	<div class="col-md-12 well">
 		<div id="hig_mail_opportunities_clusters">
 			<%= f.fields_for :hig_maos_opportunities_clusters do |opportunities_cluster| %>
 				<%= render 'hig_maos_opportunities_cluster_fields', f: opportunities_cluster %>
 			<% end %>
 			<div class="links">
-				<%= link_to_add_association 'Adicionar observação', f, :hig_maos_opportunities_clusters, class: 'btn btn-info' %>
+				<%= link_to_add_association 'Adicionar observação', f, :hig_maos_opportunities_clusters, class: 'btn btn-default' %>
 			</div>
 		</div>
 	</div>
 
-	<%= f.submit "Submeter", class: 'btn btn-success' %>
+	<div class="col-md-3">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
 	<%= link_to "Cancelar", hig_maos_observations_path(), class: 'btn btn-default' %>
 <% end %>

@@ -1,10 +1,16 @@
 json.array!(@trips) do |trip|
 	if trip.aprovacao == 1
 		json.color 'green'
+		json.aprovacao '1'
 	elsif trip.aprovacao == 2
 		json.color 'red'
+		json.aprovacao '2'
+	else
+		json.aprovacao '0'
 	end
-	json.title trip.user.nome_utilizador
+	json.title trip.user.nome_utilizador +
+		' | ' + trip.ulsne_department.nome_servico +
+		' | ' + trip.local_inicio.nome_unidade
 	json.start trip.data_inicio
 	json.end trip.data_fim
 	json.description '<p><small>Assunto: </small>' + trip.assunto + '</p>' +

@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 		numericality: true,
 		uniqueness: true,
 		length: { is: 5 }
+	validates_presence_of :user_phone_numbers,
+		{ message: ' tem de introduzir pelo menos um contacto' } 
+	validates_presence_of :u2d_associations,
+		{ message: ' tem de escolher pelo menos um serviço' } 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email,
 		presence: true,

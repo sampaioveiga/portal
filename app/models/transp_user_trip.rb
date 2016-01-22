@@ -9,12 +9,14 @@ class TranspUserTrip < ActiveRecord::Base
 		presence: true
 	validates :numero_passageiros,
 		presence: true,
-		numericality: { greater_than: 0, less_than: 9 }
+		numericality: { greater_than: 0, less_than: 6 }
 	validates :data_inicio, :data_fim,
 		date: true
 	validate :valid_data_inicio
 	validates :data_fim,
 		date: { after: :data_inicio, message: ' não pode ser antes do início' }
+
+	scope :data_inicio_after_today, -> { where("data_inicio > ?", Date.today) }
 
 	private
 

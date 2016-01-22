@@ -1,19 +1,18 @@
 <aside class="col-md-2">
 	<%= render 'shared/hig_maos_menu' %>
+	<%= render 'user_actions' %>
 </aside>
 <div class="col-md-10">
 	<h1>Observação <%= @observation.id %></h1>
-	<div class="col-md-2">
-		<%= link_to "Editar formulário", edit_hig_maos_observation_path(@observation), class: 'btn btn-default' %>
+	
+	<div class="col-md-6">
+		<p><small>Auditor </small><%= @observation.user.nome_utilizador %></p>
+		<p><small>Inicio </small><%= @observation.inicio_sessao %></p>
 	</div>
-	<div class="col-md-5">
-		<p>Auditor: <%= @observation.user.nome_utilizador %></p>
-		<p>Unidade: <%= @observation.ulsne_site.nome_unidade %></p>
-	</div>
-	<div class="col-md-5">
-		<p>Inicio: <%= @observation.inicio_sessao %></p>
-		<p>Fim: <%= @observation.fim_sessao %></p>
-		<p>Duração: <%= distance_of_time_in_words(@observation.inicio_sessao, @observation.fim_sessao) %></p>
+	<div class="col-md-6">
+		<p><small>Unidade </small><%= @observation.ulsne_site.nome_unidade %></p>
+		<p><small>Fim </small><%= @observation.fim_sessao %></p>
+		<p><small>Duração </small><%= distance_of_time_in_words(@observation.inicio_sessao, @observation.fim_sessao) %></p>
 	</div>
 	<div class="col-md-12">
 		<%= render @observation.hig_maos_opportunities_clusters %>

@@ -53,6 +53,7 @@ class HigMaosObservationsController < ApplicationController
 	end
 
 	def load_departments_categories
+		@users = User.joins(:hig_maos_user)
 		@sites = UlsneSite.order(:nome_unidade)
 		@categories = HigMaosWorkerCategory.order(:categoria_profissional)
 	end

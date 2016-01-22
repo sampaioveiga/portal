@@ -1,6 +1,7 @@
 <%= form_for(@trip) do |f| %>
 	<%= render 'shared/error_messages', obj: @trip %>
 
+	<!-- New line -->
 	<div class="col-md-6">
 		<%= f.label :user_id, 'Utilizador' %>
 		<% if (current_user.administrator || current_user.transp_user.nivel_acesso == 2) %>
@@ -16,19 +17,17 @@
 	</div>
 
 	<!-- New line -->
-
 	<div class="col-md-6">
 		<%= f.label :assunto %>
 		<%= f.text_field :assunto, class: 'form-control' %>
 	</div>
 	
 	<div class="col-md-6">
-		<%= f.label :condutor %>
+		<%= f.label :condutor, "Condutor/Motorista" %>
 		<%= f.text_field :condutor, class: 'form-control' %>
 	</div>
 
 	<!-- New line -->
-
 	<div class="col-md-6">
 		<%= f.label :transp_destination_id, "Destino (detalhar em mais informação)" %>
 		<%= f.collection_select :transp_destination_id, @destinations, :id, :destino, {}, class: 'form-control' %>
@@ -40,33 +39,31 @@
 	</div>
 
 	<!-- New line -->
-	
 	<div class="col-md-12">
 		<%= f.label :observacoes, "Mais informação" %>
 		<%= f.text_area :observacoes, class: 'form-control' %>
 	</div>
 
 	<!-- New line -->
-
 	<div class="col-md-6 well well-sm">
 		<h2>Início da viagem</h2>
-		<%= f.label :data_inicio, "Levantamento da viatura" %><br />
+		<%= f.label :data_inicio %><br />
 		<%= f.datetime_select :data_inicio, {}, class: 'form-control datetime-select' %>
-		<%= f.label :local_inicio_id, "Local da viatura" %>
+		<%= f.label :local_inicio_id, "Local de saída" %>
 		<%= f.collection_select :local_inicio_id, @sites, :id, :nome_unidade, {}, class: 'form-control' %>
 	</div>
 
 	<div class="col-md-6 well well-sm">
 		<h2>Regresso da viagem</h2>
-		<%= f.label :data_fim, "Entrega da viatura" %><br />
+		<%= f.label :data_fim %><br />
 		<%= f.datetime_select :data_fim, {}, class: 'form-control datetime-select' %>
-		<%= f.label :local_fim_id, "Local da entrega" %>
+		<%= f.label :local_fim_id, "Local de regresso" %>
 		<%= f.collection_select :local_fim_id, @sites, :id, :nome_unidade, {}, class: 'form-control' %>
 	</div>
 
 	<!-- New line -->
-
-	<% #f.text_field :supervisor %>
-	<%= f.submit "Submeter", class: 'btn btn-success' %>
+	<div class="col-md-3">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
 	<%= link_to "Cancelar", transp_user_trips_path(), class: 'btn btn-default' %>
 <% end %>

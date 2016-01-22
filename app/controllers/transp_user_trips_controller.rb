@@ -1,4 +1,6 @@
 class TranspUserTripsController < ApplicationController
+	before_action :authorize
+	before_action :check_user_permissions, only: [ :list ]
 	# validate user, access, supervisor
 	before_action :set_trip, only: [ :show, :edit, :update ]
 	before_action :load_selects, only: [ :new, :create, :update, :edit, :update ]
@@ -10,6 +12,11 @@ class TranspUserTripsController < ApplicationController
 		else
 			@trips = current_user.transp_user_trips
 		end
+	end
+
+	def list
+		@q = TranspUserTrip.data_inicio_after_today.order(:data_inicio).ransack(params[:q])
+		@trips = @q.result(distinct: true)
 	end
 
 	def show
@@ -49,11 +56,17 @@ class TranspUserTripsController < ApplicationController
 	end
 
 	def update
-		if @trip.update(transp_user_trip_params)
-			flash[:success] = "Requisição atualizada"
+		@trip.supervisor = true if (current_user.administrator || current_user.transp_user.nivel_acesso == 2)
+		if ((@trip.aprovacao != 0 || @trip.data_inicio < Date.today) && current_user.transp_user.nivel_acesso != 2)
+			flash[:danger] = "Requisição não pode ser alterada"
 			redirect_to @trip
 		else
-			render :edit
+			if @trip.update(transp_user_trip_params)
+				flash[:success] = "Requisição atualizada"
+				redirect_to @trip
+			else
+				render :edit
+			end
 		end
 	end
 
@@ -91,5 +104,9 @@ class TranspUserTripsController < ApplicationController
 			:aprovacao,
 			:comentarios_supervisor
 		)
+	end
+
+	def check_user_permissions
+		redirect_to transp_user_trips_path() unless ( current_user.administrator || current_user.transp_user.nivel_acesso == 2 )
 	end
 end

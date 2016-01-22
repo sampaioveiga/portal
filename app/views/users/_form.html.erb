@@ -1,27 +1,45 @@
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages', obj: @user %>
-	<%= f.label :nome_utilizador, "Nome do utilizador" %>
-	<div class="row">
+
+	<!-- new line -->
 	<div class="col-md-2">
+		<%= f.label :titulo %>
 		<%= f.select(:titulo, [[""],["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-7">
+		<%= f.label :nome_utilizador %>
 		<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
 	</div>
+	<div class="col-md-3">
+		<%= f.label :numero_mecanografico, "Número mecanográfico" %>
+		<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 	</div>
-	<%= f.label :numero_mecanografico, "Número mecanográfico" %>
-	<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
-	<%= f.label :email %>
-	<%= f.text_field :email, placeholder: 'Obrigatório', class: 'form-control' %>
-	<div id="user_phone_numbers" class="well">
+
+	<!-- new line -->
+	<div class="col-md-6">
+		<%= f.label :email %>
+		<%= f.text_field :email, placeholder: 'Obrigatório', class: 'form-control' %>
+	</div>
+
+	<div id="user_phone_numbers" class="well well-sm col-md-6">
+		<h3>Contacto(s) telefónico(s)</h3>
 		<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
 			<%= render 'user_phone_number_fields', f: user_phone_number %>
 		<% end %>
 		<div class="links">
 			<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
 		</div>
+		<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 	</div>
-	<div id="u2d_associations" class="well">
+
+	<!-- new line -->
+	<div class="col-md-6">
+		<%= f.label :ulsne_site_id, "Unidade da ULSNE" %>
+		<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
+	</div>
+
+	<div id="u2d_associations" class="well well-sm col-md-6">
+		<h3>Serviço(s)</h3>
 		<%= f.fields_for :u2d_associations do |u2d_association| %>
 			<%= render 'u2d_association_fields', f: u2d_association %>
 		<% end %>
@@ -29,12 +47,19 @@
 			<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
 		</div>
 	</div>
-	<%= f.label :ulsne_site_id, "Unidade ULSNE" %>
-	<%= f.collection_select(:ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control') %>
+
+	<!-- new line -->
+	<div class="col-md-12">
 	<%= f.label :password, "Senha" %>
 	<%= f.password_field :password, placeholder: 'Mínimo 6 caracteres', class: 'form-control' %>
+
 	<%= f.label :password_confirmation, "Confirmação" %>
 	<%= f.password_field :password_confirmation, placeholder: 'Repetir senha', class: 'form-control' %>
-	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
+
+	<!-- new line -->
+	<div class="col-md-3">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
 	<%= link_to "Cancelar", root_url(), class: 'btn btn-default'  %>
 <% end %>

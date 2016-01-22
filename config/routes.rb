@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
 
   # Transportes
+  get 'transp_user_trips/list', to: 'transp_user_trips#list', as: 'transp_user_trips/list'
   resources :transp_users, :transp_destinations, :transp_user_trips
+
 
   # Auditorias higiene das mãos
   resources :hig_maos_users, :hig_maos_observations, :hig_maos_worker_categories, :hig_maos_oportunities_clusters, :hig_maos_oportunities
