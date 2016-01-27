@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   # Transportes
   get 'transp_user_trips/list', to: 'transp_user_trips#list', as: 'transp_user_trips/list'
-  resources :transp_users, :transp_destinations, :transp_user_trips
+  get 'transp_materials/list', to: 'transp_materials#list', as: 'transp_materials/list'
+  resources :transp_users, :transp_destinations, :transp_user_trips, :transp_materials
 
 
   # Auditorias higiene das mãos

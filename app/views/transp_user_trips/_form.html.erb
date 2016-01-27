@@ -30,7 +30,12 @@
 	<!-- New line -->
 	<div class="col-md-6">
 		<%= f.label :transp_destination_id, "Destino (detalhar em mais informação)" %>
-		<%= f.collection_select :transp_destination_id, @destinations, :id, :destino, {}, class: 'form-control' %>
+		<%= f.collection_select :transp_destination_id, 
+			@destinations, 
+			:id, 
+			:destino, 
+			{}, 
+			class: 'form-control' %>
 	</div>
 
 	<div class="col-md-6">

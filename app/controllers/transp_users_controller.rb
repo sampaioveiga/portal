@@ -1,7 +1,7 @@
 class TranspUsersController < ApplicationController
-	before_action :load_select#, only: [ :index, :create ]
+	before_action :authorize
 	before_action :is_user_admin
-	#before_action :set_transp_user, only: [ :edit, :update ]
+	before_action :load_select
 
 	def index
 		@user = TranspUser.new
@@ -36,8 +36,9 @@ class TranspUsersController < ApplicationController
 	private
 
 	def load_select
-		@users = TranspUser.all
-		@users_collection = User.order(:nome_utilizador)
+		@users = User.joins(:transp_user).order(:nome_utilizador)
+		users = @users.pluck(:user_id)
+		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
 	def set_transp_user
@@ -52,8 +53,6 @@ class TranspUsersController < ApplicationController
 	end
 
 	def is_user_admin
-		unless (current_user.administrator || current_user.transp_user.nivel_acesso == 2)
-			redirect_to transp_user_trips_url()
-		end
+		redirect_to transp_user_trips_url() unless (current_user.administrator || current_user.transp_user.nivel_acesso == 2)
 	end
 end

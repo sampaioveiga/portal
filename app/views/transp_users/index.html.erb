@@ -7,37 +7,24 @@
 			<tr>
 				<th>Utilizador</th>
 				<th>Acesso</th>
+				<th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= link_to user.user.nome_utilizador, edit_transp_user_path(user) %></td>
+					<td>
+						<%= user.nome_utilizador %>
+					</td>
 					<td>
 						<%= render 'shared/nivel_acesso', user: user %>
+					</td>
+					<td>
+						<%= link_to "Editar", edit_transp_user_path(user.transp_user.id) %>
 					</td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 	<%= render 'new' %>
-</div>
-
-<% render 'shared/modal' %>
-
-<div class="modal fade" id="modal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="modalTitle">Title</h4>
-			</div>
-			<div class="modal-body" id="modalBody">
-				<p>Body</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			</div>
-		</div>
-	</div>
 </div>

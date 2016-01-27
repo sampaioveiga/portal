@@ -1,9 +1,8 @@
 class TranspUserTripsController < ApplicationController
 	before_action :authorize
-	before_action :check_user_permissions, only: [ :list ]
-	# validate user, access, supervisor
+	before_action :is_supervisor, only: [ :list ]
 	before_action :set_trip, only: [ :show, :edit, :update ]
-	before_action :load_selects, only: [ :new, :create, :update, :edit, :update ]
+	before_action :load_selects, only: [ :new, :create, :edit, :update ]
 
 
 	def index
@@ -63,7 +62,7 @@ class TranspUserTripsController < ApplicationController
 		else
 			if @trip.update(transp_user_trip_params)
 				flash[:success] = "Requisição atualizada"
-				redirect_to @trip
+				redirect_to transp_user_trips_list_path()
 			else
 				render :edit
 			end
@@ -74,6 +73,10 @@ class TranspUserTripsController < ApplicationController
 
 	def set_trip
 		@trip = TranspUserTrip.find(params[:id])
+		unless (current_user.administrator || current_user.transp_user.nivel_acesso == 2 || @trip.user == current_user)
+			@transport = nil
+			redirect_to transp_user_trips_path()
+		end
 	end
 
 	def load_selects
@@ -106,7 +109,7 @@ class TranspUserTripsController < ApplicationController
 		)
 	end
 
-	def check_user_permissions
+	def is_supervisor
 		redirect_to transp_user_trips_path() unless ( current_user.administrator || current_user.transp_user.nivel_acesso == 2 )
 	end
 end

@@ -2,36 +2,35 @@
 	<%= render 'shared/transp_menu' %>
 </aside>
 <div class="col-md-10">
-	<h1>Requisições transporte individual</h1>
+	<h1>Requisições transporte material</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Requisitante</th>
-				<th>Serviço</th>
-				<th>Destino</th>
-				<th><%= sort_link(@q, :data_inicio) %></th>
-				<th><%= sort_link(@q, :data_fim) %></th>
 				<th>Assunto</th>
-				<th>Local saída</th>
-				<th>Local regresso</th>
+				<th><%= sort_link(@q, :data_entrega) %></th>
+				<th>Serviço</th>
+				<th><%= sort_link(@q, :local_saida) %></th>
+				<th><%= sort_link(@q, :local_entrega) %></th>
+				<th>Urgente</th>
 			</tr>
 		</thead>
 		<tbody>
 			<!-- Pendentes -->
 			<tr class="info"><td colspan="9">Pendentes</td></tr>
-			<% @trips.where(aprovacao: 0).each do |t| %>
+			<% @transports.where(aprovacao: 0).each do |t| %>
 				<%= render 'table_row', obj: t %>
 			<% end %>
 
 			<!-- Aprovadas -->
 			<tr class="success"><td colspan="9">Aprovadas</td></tr>
-			<% @trips.where(aprovacao: 1).each do |t| %>
+			<% @transports.where(aprovacao: 1).each do |t| %>
 				<%= render 'table_row', obj: t %>
 			<% end %>
 
 			<!-- Rejeitadas -->
 			<tr class="danger"><td colspan="9">Rejeitadas</td></tr>
-			<% @trips.where(aprovacao: 2).each do |t| %>
+			<% @transports.where(aprovacao: 2).each do |t| %>
 				<%= render 'table_row', obj: t %>
 			<% end %>
 		</tbody>

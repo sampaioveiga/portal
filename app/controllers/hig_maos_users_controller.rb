@@ -4,7 +4,7 @@ class HigMaosUsersController < ApplicationController
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
-		@users = HigMaosUser.all
+		@users = User.joins(:hig_maos_user).order(:nome_utilizador)
 		@user = HigMaosUser.new
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)

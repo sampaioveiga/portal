@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :user_phone_numbers, reject_if: :all_blank, allow_destroy: true
 	has_one :transp_user
 	has_many :transp_user_trips, dependent: :destroy
+	has_many :transp_materials, dependent: :destroy
 	has_one :satisf_surv_user
 	has_many :satisf_surv_surveys, dependent: :destroy
 	has_one :hig_maos_user

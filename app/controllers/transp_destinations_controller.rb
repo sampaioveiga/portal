@@ -1,4 +1,6 @@
 class TranspDestinationsController < ApplicationController
+	before_action :authorize
+	before_action :is_admin
 	before_action :set_destination, only: [ :edit, :update ]
 
 	def index
@@ -37,5 +39,9 @@ class TranspDestinationsController < ApplicationController
 
 	def destination_params
 		params.require(:transp_destination).permit(:destino)
+	end
+
+	def is_admin
+		redirect_to transp_user_trips_path() unless (current_user.administrator || current_user.transp_user.nivel_acesso == 2)
 	end
 end

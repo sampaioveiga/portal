@@ -1,0 +1,9 @@
+<tr>
+	<td><%= link_to obj.user.nome_utilizador, transp_material_path(obj) %></td>
+	<td><%= obj.assunto %></td>
+	<td><%= obj.data_entrega %></td>
+	<td><%= obj.ulsne_department.nome_servico %></td>
+	<td><%= obj.local_saida.nome_unidade %></td>
+	<td><%= obj.local_entrega.destino %></td>
+	<td><%= "Urgente" if obj.urgente %></td>
+</tr>

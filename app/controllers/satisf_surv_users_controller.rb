@@ -4,7 +4,7 @@ class SatisfSurvUsersController < ApplicationController
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
-		@users = SatisfSurvUser.all
+		@users = User.joins(:satisf_surv_user).order(:nome_utilizador)
 		@user = SatisfSurvUser.new
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)

@@ -7,14 +7,20 @@
 			<tr>
 				<th>Utilizador</th>
 				<th>Acesso</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= link_to user.user.nome_utilizador, edit_hig_maos_user_path(user) %></td>
+					<td>
+						<%= user.nome_utilizador %>
+					</td>
 					<td>
 						<%= render 'shared/nivel_acesso', user: user %>
+					</td>
+					<td>
+						<%= link_to "Editar", edit_hig_maos_user_path(user) %>
 					</td>
 				</tr>
 			<% end %>
