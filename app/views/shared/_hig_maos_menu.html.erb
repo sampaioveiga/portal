@@ -8,6 +8,10 @@
 
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
 			<a href="<%= new_hig_maos_observation_path() %>">Nova observação</a>
+			<br />
+
+			<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> 
+			<a href="<%= hig_maos_stats_path() %>">Estatísticas mensais</a>
 		</li>
 		
 		<% if (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2) %>
@@ -16,8 +20,8 @@
 				<a href="<%= hig_maos_worker_categories_path() %>">Categorias</a>
 				<br />
 
-				<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-				<%= link_to "Exportar", hig_maos_stats_path() %>
+				<span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+				<%= link_to "Exportar", hig_maos_export_path() %>
 				<br />
 
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>

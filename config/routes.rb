@@ -23,11 +23,15 @@ Rails.application.routes.draw do
   get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
 
   # Transportes
-  resources :transp_users, :transp_destinations, :transp_user_trips
+  get 'transp_user_trips/list', to: 'transp_user_trips#list', as: 'transp_user_trips/list'
+  get 'transp_materials/list', to: 'transp_materials#list', as: 'transp_materials/list'
+  resources :transp_users, :transp_destinations, :transp_user_trips, :transp_materials
+
 
   # Auditorias higiene das mãos
   resources :hig_maos_users, :hig_maos_observations, :hig_maos_worker_categories, :hig_maos_oportunities_clusters, :hig_maos_oportunities
-  get 'hig_maos_stats', to: 'hig_maos_observations#stats', as: 'hig_maos_stats', defaults: { format: 'xlsx' }
+  get 'hig_maos_stats', to: 'hig_maos_observations#stats', as: 'hig_maos_stats'
+  get 'hig_maos_export', to: 'hig_maos_observations#export', as: 'hig_maos_export', defaults: { format: 'xlsx' }
 
   # Inquérito de satisfação utentes
   resources :satisf_surv_users, :satisf_surv_surveys

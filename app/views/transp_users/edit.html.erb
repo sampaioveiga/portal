@@ -9,17 +9,33 @@
 		<div class="col-md-6">
 			<fieldset disabled>
 				<%= f.label :user_id, "Utilizador" %>
-				<%= f.text_field :user_id, value: @user.user.nome_utilizador, class: 'form-control' %>
+				<%= f.text_field :user_id, 
+						value: @user.user.nome_utilizador, 
+						class: 'form-control' %>
 			</fieldset>
 		</div>
 		<div class="col-md-6">
 			<%= f.label :nivel_acesso %>
-			<% f.number_field :nivel_acesso, min: 0, max: 2, class: 'form-control' %>
-			<%= f.select :nivel_acesso, [['0 - Sem acesso', 0], ['1 - Utilizador', 1], ['2 - Supervisor', 2]], {}, class: 'form-control' %>
+			<% f.number_field :nivel_acesso, 
+					min: 0, 
+					max: 2, 
+					class: 'form-control' %>
+			<%= f.select :nivel_acesso, 
+					[['0 - Sem acesso', 0], 
+					['1 - Utilizador', 1], 
+					['2 - Supervisor', 2]], 
+					{}, 
+					class: 'form-control' %>
 		</div>
-		<div class="col-md-12">
-			<%= f.submit "Atualizar", class: 'btn btn-primary' %>
-			<%= link_to "Cancelar", transp_users_path(), class: 'btn btn-default' %>
+		<div class="col-md-3">
+			<%= f.submit "Atualizar", 
+					class: 'btn btn-primary' %>
 		</div>
+		<%= link_to "Cancelar", transp_users_path(), 
+				class: 'btn btn-default' %>
+		<%= link_to "Eliminar", transp_user_path(@user),
+				method: :delete,
+				data: { confirm: 'Tem a certeza que deseja eliminar o utilizador?' },
+				class: 'btn btn-danger' %>
 	<% end %>
 </div>

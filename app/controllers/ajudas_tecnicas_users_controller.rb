@@ -4,10 +4,11 @@ class AjudasTecnicasUsersController < ApplicationController
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index
-		@users = AjudasTecnicasUser.all
-		@user = AjudasTecnicasUser.new
+		#@users = AjudasTecnicasUser.all
+		@users = User.joins(:ajudas_tecnicas_user).order(:nome_utilizador)
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)
+		@user = AjudasTecnicasUser.new
 	end
 
 	def create

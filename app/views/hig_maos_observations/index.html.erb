@@ -3,8 +3,5 @@
 </aside>
 <div class="col-md-10">
 	<div id="observations_calendar"></div>
-
-	<h1>Número de observações por dia</h1>
-	<%= line_chart @observations.group_by_day(:inicio_sessao, format: "%B %d, %Y").count, discrete: true %>
 </div>
 <%= render 'shared/modal' %>

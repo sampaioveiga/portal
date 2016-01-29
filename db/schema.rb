@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115093754) do
+ActiveRecord::Schema.define(version: 20160125101525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,6 +226,27 @@ ActiveRecord::Schema.define(version: 20160115093754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "transp_materials", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ulsne_department_id"
+    t.string   "assunto"
+    t.integer  "local_saida_id"
+    t.integer  "local_entrega_id"
+    t.datetime "data_entrega"
+    t.boolean  "urgente",                default: false
+    t.string   "observacoes"
+    t.boolean  "supervisor",             default: false
+    t.integer  "aprovacao"
+    t.string   "comentarios_supervisor"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "transp_materials", ["local_entrega_id"], name: "index_transp_materials_on_local_entrega_id", using: :btree
+  add_index "transp_materials", ["local_saida_id"], name: "index_transp_materials_on_local_saida_id", using: :btree
+  add_index "transp_materials", ["ulsne_department_id"], name: "index_transp_materials_on_ulsne_department_id", using: :btree
+  add_index "transp_materials", ["user_id"], name: "index_transp_materials_on_user_id", using: :btree
 
   create_table "transp_user_trips", force: :cascade do |t|
     t.integer  "user_id"

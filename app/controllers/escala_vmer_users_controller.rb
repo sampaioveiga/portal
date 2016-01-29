@@ -5,7 +5,7 @@ class EscalaVmerUsersController < ApplicationController
 	before_action :load_selects, only: [ :index, :edit ]
 
 	def index
-		@users = EscalaVmerUser.all
+		@users = User.joins(:escala_vmer_user).order(:nome_utilizador)
 		@user = EscalaVmerUser.new
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)

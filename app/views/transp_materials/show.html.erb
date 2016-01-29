@@ -1,0 +1,49 @@
+<aside class="col-md-2">
+	<%= render 'shared/transp_menu' %>
+	<%= render 'edit_material' %>
+</aside>
+<div class="col-md-10">
+	<h1>
+		<small>Requisitante </small><%= @transport.user.nome_utilizador %>
+	</h1>
+	<h2>
+		<small>Serviço </small>
+			<%= @transport.ulsne_department.nome_servico %>
+	</h2>
+	<div class="col-md-8">
+		<div class="col-md-6">
+			<p>
+				<small>Local saída </small>
+				<%= @transport.local_saida.nome_unidade %>
+			</p>
+			<p>
+				<small>Data e hora entrega </small>
+				<%=l @transport.data_entrega %>
+			</p>
+		</div>
+		<div class="col-md-6">
+			<p>
+				<small>Local entrega </small>
+				<%= @transport.local_entrega.destino %>
+			</p>
+			<p>
+				<small>Urgente </small>
+				<% if @transport.urgente %>
+					Sim
+				<% else %>
+					Não
+				<% end %>
+			</p>
+		</div>
+		<div class="col-md-12">
+			<p>
+				<small>Observações </small>
+				<%= @transport.observacoes %>
+			</p>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<%= render 'supervisor' if current_user.administrator || current_user.transp_user.nivel_acesso ==2 %>
+	</div>
+</div>

@@ -12,7 +12,7 @@
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%= link_to user.user.nome_utilizador, edit_satisf_surv_user_path(user) %></td>
+					<td><%= link_to user.nome_utilizador, edit_satisf_surv_user_path(user) %></td>
 					<td>
 						<%= render 'shared/nivel_acesso', user: user %>
 					</td>

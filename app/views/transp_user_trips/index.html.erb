@@ -1,5 +1,6 @@
 <aside class="col-md-2">
 	<%= render 'shared/transp_menu' %>
+	<%= render 'shared/calendar_filter' %>
 </aside>
 <div class="col-md-10">
 	<h1>Pedidos de transporte individual</h1>
@@ -7,29 +8,3 @@
 </div>
 
 <%= render 'shared/modal' %>
-
-<script>
-	$(document).ready(function() {
-		$('#user_trips_calendar').fullCalendar({
-			header: {
-				left:   'title',
-				center: 'month,agendaWeek,agendaDay',
-				right:  'today prev,next',
-			},
-			lang: 'pt',
-			events: 'transp_user_trips.json',
-
-			eventClick: function(calEvent, jsEvent, view) {
-				//alert('Event: ' + calEvent.title);
-				//alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-				//alert('View: ' + view.name);
-				$('#modalTitle').html(calEvent.title);
-				$('#modalBody').html(calEvent.description);
-				$('#eventUrl').attr('href',calEvent.url);
-				$('#modal').modal();
-				$(this).css('border-color', 'blue');
-				return false;
-			}
-		})
-	});
-</script>

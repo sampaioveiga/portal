@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+		<h1>Serviço de transportes</h1>
+
+		<h2>Requisição de transporte individual para <%= @trip.transp_destination.destino %> em <%=l @trip.data_inicio %></h2>
+
+		<p><%= @user.titulo %> <%= @user.nome_utilizador %>, a sua requisição está <%= 'aprovada' if @trip.aprovacao == 1 %><%= 'rejeitada' if @trip.aprovacao == 2%><%= 'pendente' if @trip.aprovacao == 0 %>.</p>
+
+		<p><%= @trip.comentarios_supervisor %></p>
+
+		<p>Para mais detalhes consulte o <a href="http://portal.ulsne.min-saude.pt/">Portal ULSNE</a> ou contacte o serviço de transportes</p>
+
+	</body>
+</html>

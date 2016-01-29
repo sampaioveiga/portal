@@ -1,0 +1,8 @@
+<div class="panel panel-primary" style="<%= 'visibility: hidden;' unless current_user.escala_vmer_user.nivel_acesso > 1 %>">
+	<div class="panel-heading">Observação</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<%= link_to "Editar formulário", edit_hig_maos_observation_path(@observation) %>
+		</li>
+	</ul>
+</div>

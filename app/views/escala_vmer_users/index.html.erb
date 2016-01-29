@@ -11,11 +11,11 @@
 				<th>Acesso</th>
 			</tr>
 		</thead>
-			<% @users.each do |u|%>
+			<% @users.each do |user|%>
 				<tr>
-					<td><%= link_to u.user.nome_utilizador, edit_escala_vmer_user_path(u) %></td>
-					<td><%= u.escala_vmer_group.nome_grupo %></td>
-					<td><%= render 'shared/nivel_acesso', user:u %></td>
+					<td><%= link_to user.nome_utilizador, edit_escala_vmer_user_path(user) %></td>
+					<td><%= user.escala_vmer_user.escala_vmer_group.nome_grupo %></td>
+					<td><%= render 'shared/nivel_acesso', user: user %></td>
 				</tr>
 			<% end %>
 		<tbody>
