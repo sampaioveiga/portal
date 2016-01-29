@@ -1,7 +1,7 @@
 class HigMaosUsersController < ApplicationController
 	before_action :authorize
 	before_action :is_user_admin
-	before_action :set_user, only: [ :edit, :update, :destroy ]
+	before_action :set_hig_maos_user, only: [ :edit, :update, :destroy ]
 	before_action :load_select
 
 
@@ -46,7 +46,7 @@ class HigMaosUsersController < ApplicationController
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
-	def set_user
+	def set_hig_maos_user
 		@user = HigMaosUser.find(params[:id])
 	end
 
