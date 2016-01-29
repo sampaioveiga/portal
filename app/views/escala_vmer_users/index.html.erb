@@ -13,9 +13,9 @@
 		</thead>
 			<% @users.each do |user|%>
 				<tr>
-					<td><%= link_to user.nome_utilizador, edit_escala_vmer_user_path(user) %></td>
+					<td><%= link_to user.nome_utilizador, edit_escala_vmer_user_path(user.escala_vmer_user) %></td>
 					<td><%= user.escala_vmer_user.escala_vmer_group.nome_grupo %></td>
-					<td><%= render 'shared/nivel_acesso', user: user %></td>
+					<td><%= render 'shared/nivel_acesso', user: user.escala_vmer_user %></td>
 				</tr>
 			<% end %>
 		<tbody>

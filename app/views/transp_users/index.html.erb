@@ -17,7 +17,7 @@
 						<%= user.nome_utilizador %>
 					</td>
 					<td>
-						<%= render 'shared/nivel_acesso', user: user %>
+						<%= render 'shared/nivel_acesso', user: user.transp_user %>
 					</td>
 					<td>
 						<%= link_to "Editar", edit_transp_user_path(user.transp_user.id) %>

@@ -1,28 +1,40 @@
 <aside class="col-md-2">
-	<%= render 'shared/satisf_surv_menu' %>
+	<%= render 'shared/hig_maos_menu' %>
 </aside>
 <div class="col-md-10">
-	<h3><%= @user.user.nome_utilizador %></h3>
+	<h1>Auditores</h1>
+	<h2>Editar permissões de <%= @user.user.nome_utilizador %></h2>
+
 	<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', obj: @user %>
-		<%= f.label :nivel_acesso %>
-			<% f.number_field :nivel_acesso,
-				min: 0,
-				max: 2,
-				class: 'form-control' %>
+
+		<div class="col-md-6">
+			<fieldset disabled>
+				<%= f.label :user_id, "Utilizador" %>
+				<%= f.text_field :user_id, 
+						value: @user.user.nome_utilizador, 
+						class: 'form-control' %>
+			</fieldset>
+		</div>
+
+		<div class="col-md-6">
+			<%= f.label :nivel_acesso %>
 			<%= f.select :nivel_acesso,
 					[['0 - Sem acesso', 0],
 					['1 - Utilizador', 1],
 					['2 - Supervisor', 2]],
 					{},
 					class: 'form-control' %>
-		<%= f.label ' ' %>
-		<%= f.submit "Submeter", class: 'btn btn-primary' %>
-	<% end %>
-	<%= link_to "Cancelar", hig_maos_users_path(),
+		</div>
+
+		<div class="col-md-3">
+			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		</div>	
+		<%= link_to "Cancelar", hig_maos_users_path(),
 			class: 'btn btn-default' %>
-	<%= link_to 'Eliminar', hig_maos_user_path(@user),
+		<%= link_to 'Eliminar', hig_maos_user_path(@user),
 			method: :delete,
 			data: { confirm: 'Tem a certeza?' },
 			class: 'btn btn-danger' %>
+	<% end %>
 </div>

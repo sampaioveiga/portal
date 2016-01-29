@@ -21,4 +21,4 @@ $(document).ready ->
 			return false
 
 	$('#goto_date').on 'click', ->
-		window.location.replace(window.location.href + "?date=" + $('#date_year').val() + '-' + $('#date_month').val() + '-' + 1)
+		window.location.replace('http://' + window.location.hostname + ':' + window.location.port + window.location.pathname + "?date=" + $('#date_year').val() + '-' + $('#date_month').val() + '-' + 1)

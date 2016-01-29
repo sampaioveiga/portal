@@ -2,9 +2,10 @@
 	<%= render 'shared/satisf_surv_menu' %>
 </aside>
 <div class="col-md-10">
-	<h3><%= @user.user.nome_utilizador %></h3>
+	<h3>Utilizador <%= @user.user.nome_utilizador %></h3>
 	<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', obj: @user %>
+		
 		<%= f.label :nivel_acesso %>
 			<% f.number_field :nivel_acesso,
 					min: 0,
@@ -16,8 +17,10 @@
 					['2 - Supervisor', 2]],
 					{},
 					class: 'form-control' %>
-		<%= f.label ' ' %>
-		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		
+		<div class="col-md-3">
+			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		</div>
 	<% end %>
 	<%= link_to "Cancelar", satisf_surv_users_path(),
 			class: 'btn btn-default' %>

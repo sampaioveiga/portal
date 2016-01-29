@@ -12,7 +12,6 @@
 		<%= @schedule.user.nome_utilizador %>
 	</h1>
 	<div class="col-md-8">
-<<<<<<< HEAD
 		<p>Turno: <%= @tipo_turno %></p>
 		<p>Inicio do turno: <%= @schedule.inicio_turno %></p>
 		<p>Fim do turno: <%= @schedule.fim_turno %></p>
@@ -21,11 +20,9 @@
 				method: :delete,
 				data: { confirm: 'Tem a certeza?' }, 
 				class: 'btn btn-danger'  unless @schedule.escalado %>
-=======
 		<p><small>Turno </small><%= @tipo_turno %></p>
 		<p><small>Inicio do turno </small><%=l @schedule.inicio_turno %></p>
 		<p><small>Fim do turno </small><%=l @schedule.fim_turno %></p>
->>>>>>> v1.5.2
 	</div>
 	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
 		<div class="col-md-4 well">

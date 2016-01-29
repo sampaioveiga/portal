@@ -9,7 +9,7 @@
 			<%= select_month(@date.month, {}, class: 'form-control') %>
 		</div>
 		<div class="col-md-2">
-			<%= select_year(@date.year, {}, class: 'form-control') %>
+			<%= select_year(@date.year, {start_year: 2015, end_year: Date.today.year}, class: 'form-control') %>
 		</div>
 		<div class="col-md-2">
 			<a href="#" id="goto_date" class="btn btn-default">Ver</a>

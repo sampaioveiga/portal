@@ -108,7 +108,7 @@ class HigMaosObservationsController < ApplicationController
 	end
 
 	def user_can_only_read
-		if (current_user.hig_maos_user.nivel_acesso == 0)
+		unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso != 0)
 			flash[:info] = "Só tem permissão para visualizar"
 			redirect_to hig_maos_observations_url()
 		end
