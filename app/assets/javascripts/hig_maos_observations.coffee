@@ -21,4 +21,4 @@ $(document).ready ->
 			return false
 
 	$('#goto_date').on 'click', ->
-		window.location.replace("http://localhost:4567/hig_maos_stats?date=" + $('#date_year').val() + '-' + $('#date_month').val() + '-' + 1)
+		window.location.replace(window.location.href + "?date=" + $('#date_year').val() + '-' + $('#date_month').val() + '-' + 1)

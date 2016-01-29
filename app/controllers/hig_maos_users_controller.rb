@@ -2,12 +2,11 @@ class HigMaosUsersController < ApplicationController
 	before_action :authorize
 	before_action :is_user_admin
 	before_action :set_user, only: [ :edit, :update, :destroy ]
+	before_action :load_select
+
 
 	def index
-		@users = User.joins(:hig_maos_user).order(:nome_utilizador)
 		@user = HigMaosUser.new
-		users = @users.pluck(:user_id)
-		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
 	def create
@@ -41,6 +40,12 @@ class HigMaosUsersController < ApplicationController
 
 	private
 
+	def load_select
+		@users = User.joins(:hig_maos_user).order(:nome_utilizador)
+		users = @users.pluck(:user_id)
+		@users_collection = User.where.not(id: users).order(:nome_utilizador)
+	end
+
 	def set_user
 		@user = HigMaosUser.find(params[:id])
 	end
@@ -53,8 +58,6 @@ class HigMaosUsersController < ApplicationController
 	end
 
 	def is_user_admin
-		unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2)
-			redirect_to hig_maos_observations_url()
-		end
+		redirect_to hig_maos_observations_url() unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2)
 	end
 end

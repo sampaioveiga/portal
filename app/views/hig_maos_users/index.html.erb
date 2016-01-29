@@ -20,7 +20,7 @@
 						<%= render 'shared/nivel_acesso', user: user %>
 					</td>
 					<td>
-						<%= link_to "Editar", edit_hig_maos_user_path(user) %>
+						<%= link_to "Editar", edit_hig_maos_user_path(user.hig_maos_user.id) %>
 					</td>
 				</tr>
 			<% end %>
