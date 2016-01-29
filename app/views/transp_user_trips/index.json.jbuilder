@@ -8,14 +8,16 @@ json.array!(@trips) do |trip|
 	else
 		json.aprovacao '0'
 	end
+	data_inicio = l(trip.data_inicio)
+	data_fim = l(trip.data_fim)
 	json.title trip.user.nome_utilizador +
 		' | ' + trip.ulsne_department.nome_servico +
 		' | ' + trip.local_inicio.nome_unidade
 	json.start trip.data_inicio
 	json.end trip.data_fim
 	json.description '<p><small>Assunto: </small>' + trip.assunto + '</p>' +
-		'<p><small>Data inicio: </small>' + trip.data_inicio.to_s + '</p>' +
-		'<p><small>Data fim: </small>' + trip.data_fim.to_s + '</p>' +
+		'<p><small>Data inicio: </small>' + data_inicio + '</p>' +
+		'<p><small>Data fim: </small>' + data_fim + '</p>' +
 		'<p><small>Destino: </small>' + trip.transp_destination.destino + '</p>' +
 		'<p><small>Mais informação: </small>' + trip.observacoes + '</p>' +
 		'<p><small>Local inicio: </small>' + trip.local_inicio.nome_unidade + '</p>' +

@@ -13,8 +13,8 @@
 	</h1>
 	<div class="col-md-8">
 		<p><small>Turno </small><%= @tipo_turno %></p>
-		<p><small>Inicio do turno </small><%= @schedule.inicio_turno %></p>
-		<p><small>Fim do turno </small><%= @schedule.fim_turno %></p>
+		<p><small>Inicio do turno </small><%=l @schedule.inicio_turno %></p>
+		<p><small>Fim do turno </small><%=l @schedule.fim_turno %></p>
 	</div>
 	<% if current_user.escala_vmer_user.nivel_acesso > 1 %>
 		<div class="col-md-4 well">

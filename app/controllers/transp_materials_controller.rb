@@ -46,6 +46,7 @@ class TranspMaterialsController < ApplicationController
 
 		if @transport.save
 			flash[:success] = "Requisição criada"
+			UserMailer.transp_material_email(@transport).deliver_now
 			redirect_to @transport
 		else
 			render 'new'
@@ -68,6 +69,7 @@ class TranspMaterialsController < ApplicationController
 
 		if @transport.update(transp_material_params)
 			flash[:success] = "Requisição alterada"
+			UserMailer.transp_material_email(@transport).deliver_now
 			redirect_to transp_materials_list_path()
 		else
 			render :edit

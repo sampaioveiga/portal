@@ -45,6 +45,7 @@ class TranspUserTripsController < ApplicationController
 
 		if @trip.save
 			flash[:success] = "Pedido de transporte individual efetuado"
+			UserMailer.transp_user_trip_email(@trip).deliver_now
 			redirect_to transp_user_trips_path()
 		else
 			render :new
@@ -62,6 +63,7 @@ class TranspUserTripsController < ApplicationController
 		else
 			if @trip.update(transp_user_trip_params)
 				flash[:success] = "Requisição atualizada"
+				UserMailer.transp_user_trip_email(@trip).deliver_now
 				redirect_to transp_user_trips_list_path()
 			else
 				render :edit

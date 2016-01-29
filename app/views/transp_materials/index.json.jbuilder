@@ -8,6 +8,7 @@ json.array!(@transports) do |transp|
 	else
 		json.aprovacao '0'
 	end
+	data_entrega = l(transp.data_entrega)
 	json.borderColor 'black' if transp.urgente
 	json.title transp.user.nome_utilizador +
 		' | ' + transp.ulsne_department.nome_servico +
@@ -15,7 +16,7 @@ json.array!(@transports) do |transp|
 	json.start transp.data_entrega
 	json.end transp.data_entrega + 1.hour
 	json.description '<p><small>Assunto: </small>' + transp.assunto + '</p>' +
-		'<p><small>Data entrega: </small>' + transp.data_entrega.to_s + '</p>' +
+		'<p><small>Data entrega: </small>' + data_entrega + '</p>' +
 		'<p><small>Destino: </small>' + transp.local_entrega.destino + '</p>' +
 		'<p><small>Local inicio: </small>' + transp.local_saida.nome_unidade + '</p>' +
 		'<p><small>Mais informação: </small>' + transp.observacoes + '</p>' +

@@ -3,7 +3,7 @@ class HigMaosObservationsController < ApplicationController
 	before_action :has_access
 	before_action :user_can_only_read, except: [ :index ]
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
-	before_action :load_observations, only: [ :index, :stats ]
+	before_action :load_observations, only: [ :index, :stats, :export ]
 	before_action :set_observation, only: [ :show, :edit, :update ]
 
 	def index
@@ -13,6 +13,18 @@ class HigMaosObservationsController < ApplicationController
 	end
 
 	def stats
+		if params[:date].nil?
+			@date = Date.today
+		else
+			date = params[:date]
+			@date = date.to_date
+		end
+		range = @date.beginning_of_month..@date.end_of_month
+		@observations = @observations.where(inicio_sessao: range)
+		@obs = HigMaosObservation.joins(:user).where(inicio_sessao: range)
+	end
+
+	def export
 		@sites = UlsneSite.joins(:hig_maos_observations).uniq
 	end
 

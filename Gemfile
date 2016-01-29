@@ -51,7 +51,8 @@ gem 'tzinfo-data', '1.2015.7', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # My gems
 gem 'bootstrap-sass' , '3.3.6'
-gem 'rails-i18n', '4.0.8'
+#gem 'rails-i18n', '4.0.8'
+gem 'i18n', '0.7.0'
 gem 'momentjs-rails', '2.11.0'
 gem 'fullcalendar-rails', '2.6.0.0'
 gem 'cocoon', '1.2.6'

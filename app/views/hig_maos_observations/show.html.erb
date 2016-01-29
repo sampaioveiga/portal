@@ -7,11 +7,11 @@
 	
 	<div class="col-md-6">
 		<p><small>Auditor </small><%= @observation.user.nome_utilizador %></p>
-		<p><small>Inicio </small><%= @observation.inicio_sessao %></p>
+		<p><small>Inicio </small><%=l @observation.inicio_sessao %></p>
 	</div>
 	<div class="col-md-6">
 		<p><small>Unidade </small><%= @observation.ulsne_site.nome_unidade %></p>
-		<p><small>Fim </small><%= @observation.fim_sessao %></p>
+		<p><small>Fim </small><%=l @observation.fim_sessao %></p>
 		<p><small>Duração </small><%= distance_of_time_in_words(@observation.inicio_sessao, @observation.fim_sessao) %></p>
 	</div>
 	<div class="col-md-12">

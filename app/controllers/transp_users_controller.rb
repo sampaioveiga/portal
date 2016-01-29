@@ -1,6 +1,7 @@
 class TranspUsersController < ApplicationController
 	before_action :authorize
 	before_action :is_user_admin
+	before_action :set_transp_user, only: [ :edit, :update, :destroy ]
 	before_action :load_select
 
 	def index
@@ -19,18 +20,21 @@ class TranspUsersController < ApplicationController
 	end
 
 	def edit
-		@user = TranspUser.find(params[:id])
 	end
 
 	def update
-		@user = TranspUser.find(params[:id])
-
 		if @user.update(transp_user_params)
 			flash[:success] = "Utilizador atualizado"
 			redirect_to transp_users_url()
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@user.destroy
+		flash[:success] = "Utilizador eliminado"
+		redirect_to transp_users_url
 	end
 
 	private
@@ -42,7 +46,7 @@ class TranspUsersController < ApplicationController
 	end
 
 	def set_transp_user
-		@transp_user = TranspUser.find(params[:id])
+		@user = TranspUser.find(params[:id])
 	end
 
 	def transp_user_params
