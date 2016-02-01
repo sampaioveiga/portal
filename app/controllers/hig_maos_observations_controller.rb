@@ -30,14 +30,14 @@ class HigMaosObservationsController < ApplicationController
 
 	def new
 		@observation = HigMaosObservation.new
-		@observation.user_id = current_user.hig_maos_user.id
+		@observation.user_id = current_user.id
 		@observation.ulsne_site_id = current_user.ulsne_site.id
 		@observation.fim_sessao = Time.now + 1.hour
 	end
 
 	def create
 		@observation = HigMaosObservation.new(hig_maos_observation_params)
-		@observation.user_id = current_user.hig_maos_user.id
+		@observation.user_id = current_user.id
 
 		if @observation.save
 			flash[:success] = "Observação criada"
