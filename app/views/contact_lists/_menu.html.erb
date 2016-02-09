@@ -1,11 +1,45 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">Contactos</div>
-	<div class="panel-body">
-		<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <%= link_to "Pessoas", people_path() %><br />
-<!--
-		<% @units.each do |unit| %>
-			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <%= link_to unit.nome_unidade, unit_path(unit) %><br />
-		<% end %>
--->
-	</div>
+	
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <%= link_to "Pessoas", people_path() %>
+		</li>
+
+		<li class="list-group-item">
+			<div class="dropdown">
+				<p class="dropdown-toggle" id="departmentsDropdownToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="glyphicon glyphicon-th" aria-hidden="true"></span> 
+    				Serviços
+					<span class="caret"></span>
+				</p>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<% @departments.each do |d| %>
+						<li>
+							<%= link_to d.nome_servico, department_path(d) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</li>
+
+		<li class="list-group-item">
+			<div class="dropdown">
+				<p class="dropdown-toggle" id="sitesDropdownToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 
+    				Unidades
+					<span class="caret"></span>
+				</p>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<% @units.each do |unit| %>
+						<li>
+							<%= link_to unit.nome_unidade, unit_path(unit) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</li>
+
+		<li class="list-group-item">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= link_to "Procurar", search_path() %>
+		</li>
 </div>

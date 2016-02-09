@@ -4,11 +4,16 @@
 </aside>
 <div class="col-md-10">
 	<div>
+		<h1>Lista alfabética de contactos</h1>
+
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
+			<!-- all contacts -->
 			<li role="presentation" class="active">
-				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">#</a>
+				<a href='#all' role="tab" data-toggle="tab">Todos</a>
 			</li>
+
+			<!-- alphabet -->
 			<% @contacts_by_first_letter.each do |letter, contact| %>
 				<li role="presentation">
 					<a href=<%= '#' + letter %> aria-controls="settings" role="tab" data-toggle="tab"><%= letter.upcase %></a>
@@ -18,73 +23,18 @@
 
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Contacto</th>
-							<!--<th>Email</th>-->
-							<th>Serviço</th>
-							<th>Unidade</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @contacts.each do |contact| %>
-							<tr>
-								<td><%= link_to "#{contact.titulo} #{contact.nome_utilizador}", person_path(contact), remote: true %></td>
-								<td>
-									<% contact.user_phone_numbers.each do |phone| %>
-										<%= phone.numero_contacto %><br />
-									<% end %>
-								</td>
-								<!--<td><%= contact.email %></td>-->
-								<td>
-									<% contact.ulsne_departments.each do |department| %>
-										<%= department.nome_servico %><br />
-									<% end %>
-								</td>
-								<td><%= contact.ulsne_site.nome_unidade %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
+			<!-- Todos -->
+			<div role="tabpanel" class="tab-pane active" id="all">
+				<%= render 'people_contact_list', contacts: @contacts %>
+				<%= will_paginate @contacts %>
 			</div>
+
+			<!-- alphabet -->
 			<% @contacts_by_first_letter.each do |letter, contacts| %>
 				<div role="tabpanel" class="tab-pane" id="<%= letter %>">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Nome</th>
-								<th>Contacto</th>
-								<!--<th>Email</th>-->
-								<th>Serviço</th>
-								<th>Unidade</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% contacts.each do |contact| %>
-								<tr>
-									<td><%= link_to "#{contact.titulo} #{contact.nome_utilizador}", person_path(contact), remote: true %></td>
-									<td>
-										<% contact.user_phone_numbers.each do |phone| %>
-											<%= phone.numero_contacto %><br />
-										<% end %>
-									</td>
-									<!--<td><%= contact.email %></td>-->
-									<td>
-										<% contact.ulsne_departments.each do |department| %>
-											<%= department.nome_servico %><br />
-										<% end %>
-									</td>
-									<td><%= contact.ulsne_site.nome_unidade %></td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</div>	
-			<% end %>
-			
+					<%= render 'people_contact_list', contacts: contacts %>
+				</div>
+			<% end %>	
 		</div>
 	</div>
 </div>

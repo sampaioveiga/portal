@@ -18,9 +18,10 @@ Rails.application.routes.draw do
 
   # contact list
   get 'people', to: 'contact_lists#people', as: 'people'
-  get 'people/:id' => 'contact_lists#person', as: 'person'
-  get 'units/:id' => 'contact_lists#unit', as: 'unit'
-  get 'units/:unit_id/departments/:id' => 'contact_lists#department_unit', as: 'department_unit'
+  get 'people/:id', to:  'contact_lists#person', as: 'person'
+  get 'units/:id', to: 'contact_lists#unit', as: 'unit'
+  get 'departments/:id', to: 'contact_lists#department', as: 'department'
+  get 'search', to: 'contact_lists#search', as: 'search'
 
   # Transportes
   get 'transp_user_trips/list', to: 'transp_user_trips#list', as: 'transp_user_trips/list'

@@ -1,7 +1,13 @@
 <aside class="col-md-2">
 	<%= render 'shared/admin_menu' %>
 </aside>
-<div class="col-md-9">
+<div class="col-md-10">
+	<%= search_form_for @q do |f| %>
+					<%= f.label :nome_utilizador_cont %>
+					<%= f.search_field :nome_utilizador_cont %>
+					<%= f.submit %>
+				<% end %>
+
 	<table class="table">
 		<thead>
 			<tr>
