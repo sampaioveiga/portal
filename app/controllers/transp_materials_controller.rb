@@ -24,7 +24,7 @@ class TranspMaterialsController < ApplicationController
 		@transport = TranspMaterial.new
 		@transport.user_id = current_user.id
 		@transport.local_saida_id = current_user.ulsne_site_id
-		@transport.data_entrega = Time.now + 24.hour
+		@transport.data_entrega = Time.now.beginning_of_hour + 24.hour
 		if current_user.administrator || current_user.transp_user.nivel_acesso == 2
 			@transport.supervisor = true
 		else

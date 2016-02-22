@@ -27,7 +27,7 @@ class TranspUserTripsController < ApplicationController
 		@trip.numero_passageiros = 1
 		@trip.local_inicio_id = current_user.ulsne_site.id
 		@trip.local_fim_id = current_user.ulsne_site.id
-		@trip.data_inicio = Time.now + 1.day
+		@trip.data_inicio = Time.now.beginning_of_hour + 1.day
 		@trip.data_fim = @trip.data_inicio + 8.hour
 		@trip.condutor = current_user.nome_utilizador
 		if ( current_user.administrator || current_user.transp_user.nivel_acesso == 2 )
