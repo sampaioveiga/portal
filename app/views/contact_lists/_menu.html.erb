@@ -43,3 +43,24 @@
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> <%= link_to "Procurar", search_path() %>
 		</li>
 </div>
+
+<% if current_user %>
+	<div class="panel panel-default">
+		<div class="panel-heading dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aplicações <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<%= render 'menu/ajudas_tecnicas' %>
+				<%= render 'menu/hig_maos' %>
+				<%= render 'menu/escalas_vmer' %>
+				<%= render 'menu/satisf_surv' %>
+				<%= render 'menu/transportes' %>
+			</ul>
+		</div>
+	</div>
+<% else %>
+	<div class="panel panel-default">
+		<div class="panel-heading dropdown">
+			<a href=<%= login_path() %> role="button" aria-haspopup="true" aria-expanded="false">Aplicações</a>
+		</div>
+	</div>
+<% end %>
