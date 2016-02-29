@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="<%= 'visibility: hidden;' unless current_user.escala_vmer_user.nivel_acesso > 1 %>">
+<div class="panel panel-primary" style="<%= 'visibility: hidden;' unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2) %>">
 	<div class="panel-heading">Observação</div>
 	<ul class="list-group">
 		<li class="list-group-item">
