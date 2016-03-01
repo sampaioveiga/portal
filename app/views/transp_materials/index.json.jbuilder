@@ -12,13 +12,13 @@ json.array!(@transports) do |transp|
 	json.borderColor 'black' if transp.urgente
 	json.title transp.user.nome_utilizador +
 		' | ' + transp.ulsne_department.nome_servico +
-		' | ' + transp.local_saida.nome_unidade
+		' | ' + transp.local_saida.destino
 	json.start transp.data_entrega
 	json.end transp.data_entrega + 1.hour
 	json.description '<p><small>Assunto: </small>' + transp.assunto + '</p>' +
 		'<p><small>Data entrega: </small>' + data_entrega + '</p>' +
 		'<p><small>Destino: </small>' + transp.local_entrega.destino + '</p>' +
-		'<p><small>Local inicio: </small>' + transp.local_saida.nome_unidade + '</p>' +
+		'<p><small>Local inicio: </small>' + transp.local_saida.destino + '</p>' +
 		'<p><small>Mais informação: </small>' + transp.observacoes + '</p>' +
 		'<hr />' +
 		if transp.aprovacao == 1

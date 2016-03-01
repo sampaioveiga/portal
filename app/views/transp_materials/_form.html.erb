@@ -43,9 +43,9 @@
 	<div class="col-md-6">
 		<%= f.label :local_saida_id, "Local de saída do transporte" %>
 		<%= f.collection_select :local_saida_id, 
-				@sites, 
+				@destinations, 
 				:id, 
-				:nome_unidade, 
+				:destino, 
 				{}, 
 				class: 'form-control' %>
 	</div>

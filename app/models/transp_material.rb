@@ -1,7 +1,7 @@
 class TranspMaterial < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :ulsne_department
-	belongs_to :local_saida, class_name: 'UlsneSite'
+	belongs_to :local_saida, class_name: 'TranspDestination'
 	belongs_to :local_entrega, class_name: 'TranspDestination'
 
 	scope :data_entrega_after_today_or_pendente, -> { where("data_entrega > ? OR aprovacao = ?", Date.today, 0) }

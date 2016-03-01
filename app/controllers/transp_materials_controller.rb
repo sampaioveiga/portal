@@ -113,7 +113,7 @@ class TranspMaterialsController < ApplicationController
 		else
 			@departments = current_user.ulsne_departments.reorder(:nome_servico)
 		end
-		@sites = UlsneSite.order(:nome_unidade)
+		#@sites = UlsneSite.order(:nome_unidade)
 		@destinations = TranspDestination.order(:destino)
 	end
 end
