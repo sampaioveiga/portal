@@ -1,5 +1,6 @@
 <tr>
 	<td><%= link_to obj.user.nome_utilizador, transp_material_path(obj) %></td>
+	<td><%=l obj.created_at, format: :short %></td>
 	<td><%= obj.assunto %></td>
 	<td><%=l obj.data_entrega, format: :short %></td>
 	<td><%= obj.ulsne_department.nome_servico %></td>

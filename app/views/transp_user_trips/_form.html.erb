@@ -52,7 +52,7 @@
 				@destinations, 
 				:id, 
 				:destino, 
-				{}, 
+				{ include_blank: true },
 				class: 'form-control' %>
 		</div>
 	
@@ -72,7 +72,7 @@
 
 	<!-- New line -->
 	<div class="row">
-		<div class="col-md-6 well well-sm">
+		<div class="col-md-6 well well-sm" data-toggle="tooltip" title="As saídas têm de ser marcadas até às 15h do dia anterior">
 			<h2>Início da viagem</h2>
 			<%= f.label :data_inicio %><br />
 			<%= f.datetime_select :data_inicio, 
@@ -105,7 +105,7 @@
 
 	<!-- New line -->
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3" data-toggle="tooltip" title="As saídas têm de ser marcadas até às 15h do dia anterior">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
 		</div>
 		<%= link_to "Cancelar", transp_user_trips_path(), class: 'btn btn-default' %>

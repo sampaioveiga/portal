@@ -28,7 +28,7 @@
 	</div>
 
 	<!-- new line -->
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="col-md-6">
 			<p>
 				<small>Assunto </small>
@@ -86,7 +86,7 @@
 
 	</div>
 	<% if current_user.administrator || current_user.transp_user.nivel_acesso == 2 %>
-		<div class="col-md-4 well well-sm">
+		<div class="col-md-12 well well-sm">
 			<h2>Supervisor</h2>
 			<%= form_for(@trip) do |f| %>
 				<%= f.label :aprovacao %>

@@ -5,7 +5,7 @@ class TranspUserTrip < ActiveRecord::Base
 	belongs_to :local_inicio, class_name: 'UlsneSite'
 	belongs_to :local_fim, class_name: 'UlsneSite'
 
-	validates :user_id, :assunto, :condutor,
+	validates :user_id, :assunto, :condutor, :transp_destination_id,
 		presence: true
 	validates :numero_passageiros,
 		presence: true,
