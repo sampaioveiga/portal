@@ -10,6 +10,8 @@ class TranspMaterial < ActiveRecord::Base
 		presence: true
 	validates :assunto,
 		presence: true
+	validates :local_saida_id, :local_entrega_id,
+		presence: true
 	validates :data_entrega,
 		presence: true,
 		date: { after: Time.now + 3.hour, message: " tem de ser posterior a #{ Time.now + 3.hour }" },
