@@ -1,6 +1,6 @@
 <tr>
-	<td><%= link_to obj.user.nome_utilizador, transp_user_trip_path(obj) %></td>
 	<td><%=l obj.created_at, format: :short %></td>
+	<td><%= link_to obj.user.nome_utilizador, transp_user_trip_path(obj) %></td>
 	<td><%= obj.ulsne_department.nome_servico %></td>
 	<td><%= obj.transp_destination.destino %></td>
 	<td><%=l obj.data_inicio, format: :short %></td>

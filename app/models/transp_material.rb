@@ -12,8 +12,21 @@ class TranspMaterial < ActiveRecord::Base
 		presence: true
 	validates :local_saida_id, :local_entrega_id,
 		presence: true
-	validates :data_entrega,
-		presence: true,
-		date: { after: Time.now + 3.hour, message: " tem de ser posterior a #{ Time.now + 3.hour }" },
-		unless: :supervisor
+	validate :valid_data_entrega
+	#validates :data_entrega,
+	#	presence: true,
+	#	date: { after: Time.now + 3.hour, message: " tem de ser posterior a #{ Time.now + 3.hour }" },
+	#	unless: :supervisor
+
+	private
+
+	def valid_data_entrega
+		unless supervisor?
+			now = Time.now
+
+			if (data_entrega < now + 2.hour)
+				errors.add(:data_entrega, " não pode ser antes das #{ now + 3.hour }")
+			end
+		end
+	end
 end
