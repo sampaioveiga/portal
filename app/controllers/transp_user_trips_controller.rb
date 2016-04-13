@@ -1,7 +1,7 @@
 class TranspUserTripsController < ApplicationController
 	before_action :authorize
-	before_action :is_supervisor, only: [ :list ]
-	before_action :set_trip, only: [ :show, :edit, :update ]
+	before_action :is_supervisor, only: [ :list, :destroy ]
+	before_action :set_trip, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]
 
 
@@ -69,6 +69,11 @@ class TranspUserTripsController < ApplicationController
 				render :edit
 			end
 		end
+	end
+
+	def destroy
+		@trip.destroy
+		redirect_to transp_user_trips_list_path()
 	end
 
 	private

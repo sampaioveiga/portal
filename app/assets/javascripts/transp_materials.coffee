@@ -25,3 +25,6 @@ $ ->
 
 	$('#aprovacao_selector').on 'change', ->
 		$('#transp_materials_calendar').fullCalendar('rerenderEvents')
+
+	$('#transp_material_emergente_input').on 'click', ->
+		alert 'A nível emergente pode acarretar custos à ULSNE.\n O uso indevido desta opção levará à responsabilização do requisitante'

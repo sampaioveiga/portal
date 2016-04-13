@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125101525) do
+ActiveRecord::Schema.define(version: 20160413103747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,13 +234,13 @@ ActiveRecord::Schema.define(version: 20160125101525) do
     t.integer  "local_saida_id"
     t.integer  "local_entrega_id"
     t.datetime "data_entrega"
-    t.boolean  "urgente",                default: false
     t.string   "observacoes"
     t.boolean  "supervisor",             default: false
     t.integer  "aprovacao"
     t.string   "comentarios_supervisor"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "urgente"
   end
 
   add_index "transp_materials", ["local_entrega_id"], name: "index_transp_materials_on_local_entrega_id", using: :btree

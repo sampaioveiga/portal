@@ -9,7 +9,8 @@ json.array!(@transports) do |transp|
 		json.aprovacao '0'
 	end
 	data_entrega = l(transp.data_entrega)
-	json.borderColor 'black' if transp.urgente
+	json.textColor 'orange' if transp.urgente == 1
+	json.textColor '#800000' if transp.urgente == 2
 	json.title transp.user.nome_utilizador +
 		' | ' + transp.ulsne_department.nome_servico +
 		' | ' + transp.local_saida.destino

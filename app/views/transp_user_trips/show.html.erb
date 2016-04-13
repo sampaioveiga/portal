@@ -94,6 +94,10 @@
 				<%= f.label :comentarios_supervisor %>
 				<%= f.text_area :comentarios_supervisor, class: 'form-control' %>
 				<%= f.submit "Submeter", class: 'btn btn-primary' %>
+				<%= link_to 'Eliminar', transp_user_trip_path(@trip),
+					method: :delete,
+					data: { confirm: 'Tem a certeza?' },
+					class: 'btn btn-danger' %>
 			<% end %>
 		</div>
 	<% end %>

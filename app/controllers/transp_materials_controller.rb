@@ -1,7 +1,7 @@
 class TranspMaterialsController < ApplicationController
 	before_action :authorize
-	before_action :is_supervisor, only: [ :list ]
-	before_action :set_transp_material, only: [ :show, :edit, :update ]
+	before_action :is_supervisor, only: [ :list, :destroy ]
+	before_action :set_transp_material, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]
 
 	def index
@@ -23,7 +23,7 @@ class TranspMaterialsController < ApplicationController
 	def new
 		@transport = TranspMaterial.new
 		@transport.user_id = current_user.id
-		@transport.data_entrega = Time.now.beginning_of_hour + 24.hour
+		@transport.data_entrega = Time.now.beginning_of_hour + 4.hour
 		if current_user.administrator || current_user.transp_user.nivel_acesso == 2
 			@transport.supervisor = true
 		else
@@ -73,6 +73,11 @@ class TranspMaterialsController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@transport.destroy
+		redirect_to transp_materials_list_path()
 	end
 
 	private

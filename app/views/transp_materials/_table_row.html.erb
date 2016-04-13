@@ -6,5 +6,12 @@
 	<td><%= obj.ulsne_department.nome_servico %></td>
 	<td><%= obj.local_saida.destino %></td>
 	<td><%= obj.local_entrega.destino %></td>
-	<td><span style="background-color:red;color:white;"><%= 'Urgente' if obj.urgente %></span></td>
+	<td>
+		<span style="background-color:orange;color:white;">
+			<%= 'Urgente' if obj.urgente == 1 %>
+		</span>
+		<span style="background-color:red;color:white;">
+			<%= 'Emergente' if obj.urgente == 2 %>
+		</span>
+	</td>
 </tr>

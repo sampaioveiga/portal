@@ -61,16 +61,25 @@
 	</div>
 
 	<!-- new line -->
-	<div class="col-md-10" data-toggle="tooltip" title="As entregas têm de ser marcadas com 3 horas de antecedência">
+	<div class="col-md-9" data-toggle="tooltip" title="As entregas têm de ser marcadas com 3 horas de antecedência">
 		<%= f.label :data_entrega, "Data e hora de entrega" %><br />
 		<%= f.datetime_select :data_entrega,
 			{},
 			class: 'form-control datetime-select' %>
 	</div>
-	<div class="col-md-2">
-		<p><%= f.label :urgente %></p>
-		<div class="checkbox">
-			<label><%= f.check_box :urgente %> Sim</label>
+	<div class="col-md-3">
+		<%= f.label :urgente %><br />
+
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="transp_material[urgente]" id="transp_material_nao" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="transp_material[urgente]" id="transp_material_urgente" value="1" autocomplete="off"> Urgente
+			</label>
+			<label class="btn btn-default" id="transp_material_emergente_input">
+				<input type="radio" name="transp_material[urgente]" id="transp_material_emergente" value="2" autocomplete="off"> Emergente
+			</label>
 		</div>
 	</div>
 

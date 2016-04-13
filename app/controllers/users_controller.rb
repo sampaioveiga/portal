@@ -6,8 +6,7 @@ class UsersController < ApplicationController
 	before_action :edit_own_user , only: [ :show, :edit, :update ]
 
 	def index
-		#@users = User.order(:nome_utilizador).paginate(:page => params[:page], :per_page => 30 )
-		@q = User.ransack(params[:q])
+		@q = User.order(:nome_utilizador).ransack(params[:q])
 		@users = @q.result.paginate(:page => params[:page], :per_page => 10 )
 	end
 
