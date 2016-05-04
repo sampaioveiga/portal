@@ -1,6 +1,5 @@
 class SatisfSurvUsersController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index

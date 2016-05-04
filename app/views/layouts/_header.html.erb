@@ -15,16 +15,29 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="bg-info">
-					<a href="http://moodle.ulsne.min-saude.pt/course/index.php?categoryid=3" target="_blank">
-						<span class="glyphicon glyphicon-question-sign"></span> Ajuda
-					</a>
-				</li>
-				<% if current_user %>
-					<%= render 'menu/apps' %>
-					<%= render 'layouts/logout' %>
+				<% if user_signed_in? %>
+					<%= render 'menus/apps' %>
+					<li>
+						<%= link_to edit_user_registration_path do %>
+							<span class="glyphicon glyphicon-user"></span> <%= current_user.nome_utilizador %>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to destroy_user_session_path, method: :delete do %>
+							<span class="glyphicon glyphicon-log-out"></span> Sair
+						<% end %>
+					</li>
 				<% else %>
-					<%= render 'layouts/login' %>
+					<li>
+						<%= link_to new_user_session_path do %>
+							<span class="glyphicon glyphicon-log-in"></span> Entrar
+						<% end %>
+					</li>
+          			<li>
+          				<%= link_to new_user_registration_path do %>
+          					<span class="glyphicon glyphicon-edit"></span> Registar
+          				<% end %>
+          			</li>
 				<% end %>
 			</ul>
 		</div>

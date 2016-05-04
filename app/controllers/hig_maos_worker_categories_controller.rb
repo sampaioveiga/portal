@@ -1,6 +1,5 @@
 class HigMaosWorkerCategoriesController < ApplicationController
-	before_action :authorize
-	before_action :is_user_admin
+	#before_action :is_user_admin
 	before_action :load_categories, only: [ :index, :create ]
 	before_action :set_category, only: [ :edit, :update ]
 

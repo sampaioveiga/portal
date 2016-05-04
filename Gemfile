@@ -21,7 +21,7 @@ gem 'jbuilder', '2.4.0'
 gem 'sdoc', '0.4.1', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '3.1.10'
+#gem 'bcrypt', '3.1.10'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -50,9 +50,10 @@ end
 gem 'tzinfo-data', '1.2015.7', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # My gems
-gem 'bootstrap-sass' , '3.3.6'
-#gem 'rails-i18n', '4.0.8'
+gem 'bootstrap-sass', '3.3.6'
+gem 'devise', '4.0.0'
 gem 'i18n', '0.7.0'
+gem 'devise-i18n', '1.0.1'
 gem 'momentjs-rails', '2.11.0'
 gem 'fullcalendar-rails', '2.6.0.0'
 gem 'cocoon', '1.2.6'

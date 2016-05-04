@@ -1,7 +1,7 @@
 class UlsneSitesController < ApplicationController
-	before_action :authorize
+	#before_action :is_admin
 	before_action :set_ulsne_site, only: [ :edit, :update ]
-	before_action :is_admin
+	
 
 	def index
 		@ulsne_sites = UlsneSite.order(:nome_unidade)

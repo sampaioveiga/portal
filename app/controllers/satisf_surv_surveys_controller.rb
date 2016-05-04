@@ -1,6 +1,5 @@
 class SatisfSurvSurveysController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	before_action :set_survey, only: [ :edit, :update ]
 	before_action :load_form_selects, only: [ :new, :create, :edit, :update ]
 	before_action :user_just_reads, except: [ :index ]

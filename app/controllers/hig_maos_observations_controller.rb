@@ -1,6 +1,5 @@
 class HigMaosObservationsController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	before_action :user_can_only_read, except: [ :index ]
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
 	before_action :load_observations, only: [ :index, :stats, :export ]

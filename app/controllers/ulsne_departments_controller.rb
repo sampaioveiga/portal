@@ -1,8 +1,8 @@
 class UlsneDepartmentsController < ApplicationController
-	before_action :authorize
+	#before_action :is_admin, except: [ :show, :update ]
 	before_action :set_ulsne_department, only: [ :show, :edit, :update ]
 	before_action :load_selects, only: [ :show, :new, :create, :edit, :update ]
-	before_action :is_admin, except: [ :show, :update ]
+	
 
 	def index
 		@ulsne_departments = UlsneDepartment.order(:nome_servico)

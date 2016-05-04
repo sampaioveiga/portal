@@ -1,0 +1,83 @@
+<div class="col-md-offset-6 col-md-6"
+	<h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+		<%= devise_error_messages! %>
+
+		<div class="field">
+			<%= f.label :nome_utilizador %>
+			<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
+		</div>
+
+		<div class="field">
+			<%= f.label :numero_mecanografico, "Número mecanográfico" %>
+			<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
+		</div>
+		
+		<div class="field">
+			<%= f.label :titulo, 'Título profissional' %>
+			<%= f.select(:titulo, [[""],["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
+		</div>
+
+		<div class="field">
+			<%= f.label :email %>
+			<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+		</div>
+
+		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+		<% end %>
+
+		<div id="user_phone_numbers" class="well well-sm">
+			<h3>Contacto telefónico</h3>
+			<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
+				<%= render 'user_phone_number_fields', f: user_phone_number %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+			</div>
+			<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
+		</div>
+
+		<div id="u2d_associations" class="well well-sm">
+			<h3>Serviço</h3>
+			<%= f.fields_for :u2d_associations do |u2d_association| %>
+				<%= render 'u2d_association_fields', f: u2d_association %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+			</div>
+		</div>
+
+		<div class="field">
+			<%= f.label :ulsne_site_id, "Unidade da ULSNE" %>
+			<%= f.collection_select(:ulsne_site_id, UlsneSite.order(:nome_unidade), :id, :nome_unidade, {}, class: 'form-control') %>
+		</div>
+
+
+		<div class="field">
+			<%= f.label :password, "Mudar a senha" %> <i>(deixe em branco para não alterar)</i>
+			<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+		</div>
+
+		<div class="field">
+			<%= f.label :password_confirmation, 'Confirmação' %>
+			<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+		</div>
+
+		<div class="field">
+			<%= f.label :current_password, 'Senha atual' %> <i>(tem de escrevar a senha atual para guardar as alterações)</i>
+			<%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit "Atualizar", class: 'btn btn-primary' %>
+		</div>
+	<% end %>
+
+	<!--<h3>Cancelar conta</h3>
+
+	<p><%= button_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Tem a certeza?" }, method: :delete %></p>-->
+
+	<%= link_to "Retroceder", :back %>
+</div>

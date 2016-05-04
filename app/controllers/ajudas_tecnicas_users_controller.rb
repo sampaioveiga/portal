@@ -1,6 +1,5 @@
 class AjudasTecnicasUsersController < ApplicationController
-	before_action :authorize
-	before_action :is_user_admin
+	#before_action :is_user_admin
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index

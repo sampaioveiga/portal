@@ -151,6 +151,14 @@ input {
   }
 }
 
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;

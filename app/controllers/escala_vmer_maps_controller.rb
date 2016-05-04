@@ -1,6 +1,5 @@
 class EscalaVmerMapsController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	
 	def index
 		@schedules = EscalaVmerSchedule.where(escalado: true)

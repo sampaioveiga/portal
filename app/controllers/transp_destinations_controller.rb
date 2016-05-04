@@ -1,6 +1,5 @@
 class TranspDestinationsController < ApplicationController
-	before_action :authorize
-	before_action :is_admin
+	#before_action :is_admin
 	before_action :set_destination, only: [ :edit, :update ]
 
 	def index

@@ -1,6 +1,5 @@
 class EscalaVmerSchedulesController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	before_action :set_schedule, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_group_users
 	before_action :user_just_reads, except: [ :index ]

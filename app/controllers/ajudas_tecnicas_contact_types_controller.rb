@@ -1,6 +1,5 @@
 class AjudasTecnicasContactTypesController < ApplicationController
-	before_action :authorize
-	before_action :has_access
+	#before_action :has_access
 	before_action :load_contact_types, only: [ :index, :create ]
 
 	def index

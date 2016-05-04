@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
-	has_secure_password
+	# Include default devise modules. Others available are:
+	# :confirmable, :omniauthable
+	devise :database_authenticatable, :registerable,
+		:recoverable, :rememberable, :trackable, :validatable,
+		:lockable, :timeoutable
+	
 	belongs_to :ulsne_site
 	has_many :u2d_associations
 	accepts_nested_attributes_for :u2d_associations, reject_if: :all_blank, allow_destroy: true
@@ -29,7 +34,7 @@ class User < ActiveRecord::Base
 		{ message: ' tem de introduzir pelo menos um contacto' } 
 	validates_presence_of :u2d_associations,
 		{ message: ' tem de escolher pelo menos um serviço' } 
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@ulsne.min-saude.pt/i
 	validates :email,
 		presence: true,
 		length: { maximum: 255 },

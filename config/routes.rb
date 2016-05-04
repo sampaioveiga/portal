@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-
+  devise_for :users
   # users
-  get 'signup', to: 'users#new', as: 'signup'
-  post 'users', to: 'users#create'
-  resources :users
+  #get 'signup', to: 'users#new', as: 'signup'
+  #post 'users', to: 'users#create'
+  #resources :users
+  get 'users', to: 'contact_lists#people', as: 'users'
 
   # departments
   resources :ulsne_departments
@@ -12,9 +13,9 @@ Rails.application.routes.draw do
   resources :ulsne_sites
 
   # sessions
-  get 'login', to: 'sessions#new', as: 'login'
-  post 'login', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  #get 'login', to: 'sessions#new', as: 'login'
+  #post 'login', to: 'sessions#create'
+  #get 'logout', to: 'sessions#destroy'
 
   # contact list
   get 'people', to: 'contact_lists#people', as: 'people'

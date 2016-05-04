@@ -1,5 +1,4 @@
 class AjudasTecnicasEquipmentsController < ApplicationController
-	before_action :authorize
 	before_action :set_equipment, only: [ :edit, :update ]
 	# user control
 

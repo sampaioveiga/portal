@@ -1,5 +1,4 @@
 class TranspUserTripsController < ApplicationController
-	before_action :authorize
 	before_action :is_supervisor, only: [ :list, :destroy ]
 	before_action :set_trip, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]

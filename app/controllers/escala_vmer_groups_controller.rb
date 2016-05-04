@@ -1,6 +1,5 @@
 class EscalaVmerGroupsController < ApplicationController
-	before_action :authorize
-	before_action :is_user_admin
+	#before_action :is_user_admin
 	before_action :set_escala_vmer_group, only: [ :edit, :update ]
 
 	def index

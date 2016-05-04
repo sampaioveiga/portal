@@ -1,6 +1,5 @@
 class HigMaosUsersController < ApplicationController
-	before_action :authorize
-	before_action :is_user_admin
+	#before_action :is_user_admin
 	before_action :set_hig_maos_user, only: [ :edit, :update, :destroy ]
 	before_action :load_select
 

@@ -1,5 +1,4 @@
 class TranspMaterialsController < ApplicationController
-	before_action :authorize
 	before_action :is_supervisor, only: [ :list, :destroy ]
 	before_action :set_transp_material, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]
