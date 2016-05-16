@@ -10,6 +10,18 @@ $ ->
 			right:  'today prev,next'
 		},
 		lang: 'pt'
+		editable: true
+		droppable: true
+		eventReceive: (event) ->
+			$.ajax
+				data: inicio_turno: event.start.format()
+				type: 'post'
+				dataType: 'json'
+				url: '/vmer/escala_vmer_schedules.json'
+				success: (response) ->
+					console.log 'response'
+				error: (response) ->
+					console.log 'response'
 		events: 'escala_vmer_schedules.json'
 
 		eventClick: (event, jsEvent, view) ->

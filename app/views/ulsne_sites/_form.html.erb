@@ -1,6 +1,0 @@
-<%= form_for(@ulsne_site) do |f| %>
-	<%= render 'shared/error_messages' ,obj: @ulsne_site %>
-	<%= f.label :nome_unidade, "Designação da unidade" %>
-	<%= f.text_field :nome_unidade, class: 'form-control' %>
-	<%= f.submit "Submeter", class: 'btn btn-primary' %>
-<% end %>

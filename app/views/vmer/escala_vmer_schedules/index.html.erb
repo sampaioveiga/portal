@@ -1,0 +1,45 @@
+<aside class="col-md-3">
+	<%= render 'shared/menu_escala_vmer' %>
+	<!--
+	<div id='wrap'>
+		<div id='external-events'>
+			<h4>Draggable Events</h4>
+			<div class='fc-event' data-event='{"title":"M"}' data-start="08:00" data-duration="06:00">Manhã</div>
+			<div class='fc-event' data-event='{"title":"T"}' data-start="14:00" data-duration="06:00">Tarde</div>
+			<div class='fc-event' data-event='{"title":"N"}' data-start="20:00" data-duration="12:00">Noite</div>
+		</div>
+	</div>
+	-->
+</aside>
+<div class="col-md-9">
+	<h1>Disponibilidade</h1>
+	<div id="schedules_calendar"></div>
+</div>
+
+<%= render 'shared/modal' %>
+
+<script>
+	$(document).ready(function() {
+
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+
+		$('#external-events .fc-event').each(function() {
+
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true, // maintain when user navigates (see docs on the renderEvent method)
+			});
+
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+
+		});
+
+	});
+</script>

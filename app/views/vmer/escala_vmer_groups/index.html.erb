@@ -1,0 +1,28 @@
+<aside class="col-md-2">
+	<%= render 'shared/menu_escala_vmer' %>
+</aside>
+<div class="col-md-10">
+	<h1>Grupos profissionais</h1>
+	<div class="col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @groups.each do |g| %>
+					<tr>
+						<td><%= g.nome_grupo %></td>
+						<td><%= link_to "Editar", edit_vmer_escala_vmer_group_path(g) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4 well">
+		<h3>Novo grupo profissional</h3>
+		<%= render 'form' %>
+	</div>
+</div>

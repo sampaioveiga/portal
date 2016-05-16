@@ -1,5 +1,0 @@
-<% if (current_user.administrator || current_user.ajudas_tecnicas_user.present?) %>
-	<li><%= link_to "Ajudas técnicas", ajudas_tecnicas_patients_url() %></li>
-<% else %>
-	<li class="disabled"><a>Ajudas técnicas</a></li>
-<% end %>

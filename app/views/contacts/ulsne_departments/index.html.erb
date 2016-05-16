@@ -1,0 +1,23 @@
+<aside class="col-md-3">
+	<%= render 'shared/menu_contacts' %>
+</aside>
+<div class="col-md-9">
+
+	<h1>Serviços</h1>
+	
+	<table class="table">
+		<thead>
+			<tr><th></th></tr>
+		</thead>
+		<tbody>
+			<% @ulsne_departments.each do |ulsne_department| %>
+				<tr>
+					<td>
+						<%= link_to ulsne_department.nome_servico, contacts_ulsne_department_path(ulsne_department) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>

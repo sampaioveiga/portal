@@ -10,13 +10,12 @@
 			<a class="navbar-brand" href="<%= root_url() %>">
 				<%= image_tag "Logo_ULSNE.png", id: 'logo' %>
 				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-				<small>Portal e-ULSNE</small>
+				<small>Portal e-ULSNE Início</small>
 			</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
-					<%= render 'menus/apps' %>
 					<li>
 						<%= link_to edit_user_registration_path do %>
 							<span class="glyphicon glyphicon-user"></span> <%= current_user.nome_utilizador %>

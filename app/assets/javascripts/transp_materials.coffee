@@ -10,7 +10,7 @@ $ ->
 			right:  'today prev,next',
 		},
 		lang: 'pt',
-		events: 'transp_materials.json',
+		events: 'calendar.json',
 
 		eventClick: (event, jsEvent, view) ->
 			$('#modalTitle').html(event.title)
@@ -20,11 +20,10 @@ $ ->
 			$('#modal').modal()
 			return false
 
-		eventRender: (event, element, view) ->
-			return['all', event.aprovacao].indexOf($('#aprovacao_selector').val()) >= 0
-
-	$('#aprovacao_selector').on 'change', ->
-		$('#transp_materials_calendar').fullCalendar('rerenderEvents')
-
 	$('#transp_material_emergente_input').on 'click', ->
 		alert 'A nível emergente pode acarretar custos à ULSNE.\n O uso indevido desta opção levará à responsabilização do requisitante'
+
+	$('.datetimepicker').datetimepicker({
+		locale: 'pt'
+		sideBySide: true
+	})

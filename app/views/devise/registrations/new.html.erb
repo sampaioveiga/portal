@@ -1,4 +1,11 @@
-<div class="col-md-6 col-md-offset-6">
+<aside class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation">
+        </li>
+    </ul>
+    <%= render "devise/shared/links" %>
+</aside>
+<div class="col-md-9">
     <h2>Registar</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -64,6 +71,4 @@
             <%= f.submit "Registar", class: 'btn btn-primary' %>
         </div>
     <% end %>
-
-    <%= render "devise/shared/links" %>
 </div>

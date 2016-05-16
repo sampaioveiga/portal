@@ -1,0 +1,21 @@
+<aside class="col-md-3">
+	<%= render 'shared/menu_contacts' %>
+</aside>
+
+<div class="col-md-9">
+	<h1>Unidades</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Unidade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @ulsne_sites.each do |ulsne_site| %>
+				<tr>
+					<td><%= link_to ulsne_site.nome_unidade, edit_contacts_ulsne_site_path(ulsne_site) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

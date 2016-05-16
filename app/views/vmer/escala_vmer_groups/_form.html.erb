@@ -1,0 +1,8 @@
+<%= form_for([:vmer, @group]) do |f| %>
+	<%= render 'shared/error_messages', obj: @group %>
+
+	<%= f.label :nome_grupo %>
+	<%= f.text_field :nome_grupo, class: 'form-control' %>
+
+	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+<% end %>

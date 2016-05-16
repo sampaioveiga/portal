@@ -9,7 +9,7 @@
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
 			<a href="<%= new_ajudas_tecnicas_patient_url() %>">Novo utente</a>
 		</li>
-		<% if current_user.administrator || current_user.ajudas_tecnicas_user.nivel_acesso == 2 %>
+		
 			<li class="list-group-item">
 				<span class="glyphicon glyphicon-bed" aria-hidden="true"></span> 
 				<a href="<%= ajudas_tecnicas_equipments_path() %>">Equipamentos</a>
@@ -33,6 +33,6 @@
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 				<a href="<%= ajudas_tecnicas_users_path() %>">Utilizadores</a>
 			</li>
-		<% end %>
+
 	</ul>
 </div>

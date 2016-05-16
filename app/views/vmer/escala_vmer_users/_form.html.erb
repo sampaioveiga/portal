@@ -1,0 +1,24 @@
+<%= form_for([:vmer, @user]) do |f| %>
+	<%= render 'shared/error_messages', obj: @user %>
+
+	<div class="col-md-3">
+		<%= f.label :user_id %>
+		<%= f.collection_select :user_id, @users_collection, :id, :nome_utilizador, {}, class: 'form-control' %>
+	</div>
+
+	<div class="col-md-3">
+		<%= f.label :escala_vmer_group_id, "Grupo" %>
+		<%= f.collection_select :escala_vmer_group_id, @groups, :id, :nome_grupo, {}, class: 'form-control' %>
+	</div>
+	
+	<div class="col-md-3">
+		<%= f.label :nivel_acesso %>
+		<%= f.select :nivel_acesso, [['0 - Sem acesso', 0], ['1 - Utilizador', 1], ['2 - Supervisor', 2]], {}, class: 'form-control' %>
+	</div>
+	
+	<div class="col-md-3">
+		<%= f.label ' ' %>
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
+
+<% end %>

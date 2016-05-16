@@ -35,7 +35,7 @@ end
 
 group :development, :test do
 	# Access an IRB console on exception pages or by using <%= console %> in views
-	gem 'web-console', '3.0.0'
+	gem 'web-console', '3.1.1'
 	gem 'better_errors', '2.1.1'
 	gem 'quiet_assets', '1.1.0'
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,9 +52,10 @@ gem 'tzinfo-data', '1.2015.7', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # My gems
 gem 'bootstrap-sass', '3.3.6'
 gem 'devise', '4.0.0'
+gem 'pundit', '1.1.0'
 gem 'i18n', '0.7.0'
 gem 'devise-i18n', '1.0.1'
-gem 'momentjs-rails', '2.11.0'
+gem 'momentjs-rails', '2.11.1'
 gem 'fullcalendar-rails', '2.6.0.0'
 gem 'cocoon', '1.2.6'
 gem 'will_paginate', '3.1.0'
@@ -67,3 +68,5 @@ gem 'jquery-turbolinks', '2.1.0'
 gem 'axlsx', '2.0.1'
 gem 'axlsx_rails', '0.4.0'
 gem 'ransack', '1.7.0'
+gem 'bootstrap3-datetimepicker-rails', '4.17.37'
+gem 'jquery-ui-rails', '5.0.5'

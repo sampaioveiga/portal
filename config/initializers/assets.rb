@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( lang-all.js )
 Rails.application.config.assets.precompile += %w( respond.min.js )
 Rails.application.config.assets.precompile += %w( html5shiv.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap-ie7.css )

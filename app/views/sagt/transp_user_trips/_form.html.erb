@@ -1,0 +1,114 @@
+<%= form_for([:sagt, @trip]) do |f| %>
+	<%= render 'shared/error_messages', obj: @trip %>
+
+	<!-- New line -->
+	<div class="row">
+		<div class="col-md-6">
+			<%= f.label :user_id, 'Utilizador' %>
+			<% if (current_user.administrator || current_user.transp_user.nivel_acesso == 2) %>
+				<%= f.collection_select :user_id, @users, :id, :nome_utilizador, {}, class: 'form-control' %>
+			<% else %>
+				<%= f.collection_select :user_id, @users, :id, :nome_utilizador, {}, disabled: 'disabled', class: 'form-control' %>
+			<% end %>
+		</div>
+
+		<div class="col-md-6">
+			<%= f.label :ulsne_department_id, 'Serviço' %>
+			<%= f.collection_select :ulsne_department_id, 
+					@departments, 
+					:id, 
+					:nome_servico, 
+					{}, 
+					class: 'form-control' %>
+		</div>
+	</div>
+
+	<!-- New line -->
+	<div class="row">
+		<div class="col-md-6">
+			<%= f.label :assunto %>
+			<%= f.text_field :assunto, class: 'form-control' %>
+		</div>
+	
+		<div class="col-md-6">
+			<%= f.label :condutor, "Condutor" %><br />
+
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default active">
+					<input type="radio" name="transp_user_trip[condutor]" id="transp_user_trip_condutor_requisitante" value="Requisitante" autocomplete="off" checked> Requisitante
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="transp_user_trip[condutor]" id="transp_user_trip_condutor_motorista" value="Motorista" autocomplete="off"> Motorista
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<!-- New line -->
+	<div class="row">
+		<div class="col-md-6">
+			<%= f.label :transp_destination_id, "Destino (detalhar em mais informação)" %>
+			<%= f.collection_select :transp_destination_id, 
+				@destinations, 
+				:id, 
+				:destino, 
+				{ include_blank: true },
+				class: 'form-control' %>
+		</div>
+	
+		<div class="col-md-6">
+			<%= f.label :numero_passageiros, "Número de ocupantes" %>
+			<%= f.number_field :numero_passageiros, class: 'form-control' %>
+		</div>
+	</div>
+
+	<!-- New line -->
+	<div class="row">
+		<div class="col-md-12">
+			<%= f.label :observacoes, "Mais informação" %>
+			<%= f.text_area :observacoes, class: 'form-control' %>
+		</div>
+	</div>
+
+	<!-- New line -->
+	<div class="row">
+		<div class="col-md-6 panel panel-default" data-toggle="tooltip" title="As saídas têm de ser marcadas até às 15h do dia anterior">
+			<h2>Início da viagem</h2>
+			<%= f.label :data_inicio %>
+			<%= f.text_field :data_inicio, placeholder: 'dd/mm/aaaa hh:mm', class: 'form-control datetimepicker' %>
+			<%# f.datetime_select :data_inicio, 
+					{}, 
+					class: 'form-control datetime-select' %>
+			<%= f.label :local_inicio_id, "Local de saída" %>
+			<%= f.collection_select :local_inicio_id, 
+					@sites, 
+					:id, 
+					:nome_unidade, 
+					{}, 
+					class: 'form-control' %>
+		</div>
+
+		<div class="col-md-6 panel panel-default">
+			<h2>Regresso da viagem</h2>
+			<%= f.label :data_fim %><br />
+			<%= f.text_field :data_fim, placeholder: 'dd/mm/aaaa hh:mm', class: 'form-control datetimepicker' %>
+			<%# f.datetime_select :data_fim, 
+					{}, 
+					class: 'form-control datetime-select' %>
+			<%= f.label :local_fim_id, "Local de regresso" %>
+			<%= f.collection_select :local_fim_id, 
+					@sites, 
+					:id, 
+					:nome_unidade, 
+					{}, 
+					class: 'form-control' %>
+		</div>
+	</div>
+
+	<!-- New line -->
+	<div class="row">
+		<div data-toggle="tooltip" title="As saídas têm de ser marcadas até às 15h do dia anterior">
+			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		</div>
+	</div>
+<% end %>

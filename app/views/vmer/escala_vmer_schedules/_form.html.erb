@@ -1,0 +1,44 @@
+<%= form_for([:vmer, @schedule]) do |f| %>
+	<%= render 'shared/error_messages', obj: @schedule %>
+
+	<div class="col-md-12">
+		<% if current_user.escala_vmer_user.nivel_acesso == 2 %>
+			<%= f.label :user_id,
+				"Escolher utilizador" %>
+			<% f.text_field :user_id,
+				value: current_user.id,
+				class: 'form-control' %>
+			<%= f.collection_select(:user_id, 
+				@group_users,
+				:id,
+				:nome_utilizador,
+				{},
+				class: 'form-control') %>
+		<% end %>
+	</div>
+
+	<div class="col-md-12">
+		<%= f.label :inicio_turno %><br />
+		<%= f.date_select :inicio_turno,
+			{},
+			html_options = { class: "form-control datetime-select" } %>
+		<%= f.select(:tipo_turno,
+			options_for_select([
+			['Manhã', 8], 
+			['Tarde', 14], 
+			['Noite', 20]],
+			@schedule.tipo_turno), 
+			{},
+			class: 'form-control datetime-select') %>
+	</div>
+	
+	<div class="col-md-12">
+		<%= f.label :obs, "Observações" %>
+		<%= f.text_area :obs, class: 'form-control' %>
+	</div>
+
+	<div class="col-md-12">
+		<%= f.submit "Submeter",
+			class: 'btn btn-primary' %>
+	</div>
+<% end %>

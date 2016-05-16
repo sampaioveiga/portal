@@ -1,0 +1,23 @@
+<%= form_for([:contacts, @ulsne_department]) do |f| %>
+
+	<%= render 'shared/error_messages', obj: @ulsne_department %>
+
+	<%= f.label :nome_servico,
+			"Designação do serviço" %>
+	<%= f.text_field :nome_servico, 
+			class: 'form-control' %>
+	
+	<div class="well" id="office_phone_numbers">
+		
+		<%= f.fields_for :office_phone_numbers do |office_phone_number| %>
+			<%= render 'office_phone_number_fields', 
+					f: office_phone_number %>
+		<% end %>
+		<div class="links">
+			<%= link_to_add_association 'Adicionar número', f, :office_phone_numbers, class: 'btn btn-default' %>
+		</div>
+	</div>
+	
+	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	
+<% end %>

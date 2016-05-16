@@ -1,0 +1,39 @@
+<div class="col-md-3">
+	<%= render 'shared/menu_contacts' %>
+</div>
+<div class="col-md-9">
+	<h1>Colaboradores</h1>
+	
+	<div class="well">
+		<div class="row">
+			<%= search_form_for [:contacts, @q] do |f| %>
+				<div class="col-md-8">
+					<%= f.search_field :nome_utilizador_cont, class: 'form-control' %>
+				</div>
+				<div class="col-md-4">
+					<%= f.submit "Pesquisar lista", class: 'btn btn-success' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Unidade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |u| %>
+				<tr>
+					<td><%= u.titulo %> <%= link_to u.nome_utilizador, contacts_user_path(u) %></td>
+					<td><%= u.email %></td>
+					<td><%= u.ulsne_site.nome_unidade %></td>
+				</tr>
+			<% end %>
+		</tbosy>
+	</table>
+	<%= will_paginate @users %>
+</div>

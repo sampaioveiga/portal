@@ -1,0 +1,11 @@
+<tr>
+	<td><%=l obj.created_at, format: :short %></td>
+	<td><%= link_to obj.user.nome_utilizador, sagt_transp_user_trip_path(obj) %></td>
+	<td><%= obj.ulsne_department.nome_servico %></td>
+	<td><%= obj.transp_destination.destino %></td>
+	<td><%=l obj.data_inicio, format: :short %></td>
+	<td><%=l obj.data_fim, format: :short %></td>
+	<td><%= obj.assunto %></td>
+	<td><%= obj.local_inicio.nome_unidade %></td>
+	<td><%= obj.local_fim.nome_unidade %></td>
+</tr>

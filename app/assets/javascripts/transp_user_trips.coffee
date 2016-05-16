@@ -10,7 +10,7 @@ $ ->
 			right:  'today prev,next',
 		},
 		lang: 'pt',
-		events: 'transp_user_trips.json',
+		events: 'calendar.json',
 
 		eventClick: (event, jsEvent, view) ->
 			$('#modalTitle').html(event.title)
@@ -19,9 +19,8 @@ $ ->
 			$('#eventUrl').attr('href',event.url)
 			$('#modal').modal()
 			return false
-
-		eventRender: (event, element, view) ->
-			return['all', event.aprovacao].indexOf($('#aprovacao_selector').val()) >= 0
-
-	$('#aprovacao_selector').on 'change', ->
-		$('#user_trips_calendar').fullCalendar('rerenderEvents')
+	
+	$('.datetimepicker').datetimepicker({
+		locale: 'pt'
+		sideBySide: true
+	})

@@ -1,5 +1,0 @@
-<% if (current_user.administrator || current_user.hig_maos_user.present?) %>
-	<li><%= link_to "Auditoria higiene das mãos", hig_maos_observations_url() %></li>
-<% else %>
-	<li class="disabled"><a>Auditoria higiene das mãos</a></li>
-<% end %>
