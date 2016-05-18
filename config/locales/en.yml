@@ -7,6 +7,8 @@ en:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+        observations_too_short: 'Tem de existir pelo menos uma observação'
+        opportunities_too_short: 'Tem de existir pelo menos uma indicação e ação'
   date:
     abbr_day_names:
     - Sun

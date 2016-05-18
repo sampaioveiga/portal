@@ -1,6 +1,6 @@
 class Vmer::EscalaVmerMapsController < ApplicationController
 	before_action :check_authorization
-	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
+	after_action :verify_authorized
 	
 	def index
 		@schedules = EscalaVmerSchedule.where(escalado: true)
@@ -9,7 +9,7 @@ class Vmer::EscalaVmerMapsController < ApplicationController
 	private
 
 	def check_authorization
-		authorize EscalaVmerUser
+		authorize EscalaVmerSchedule
 	end
 
 end

@@ -7,19 +7,19 @@ class HigMaosWorkerCategoryPolicy < ApplicationPolicy
 	end
 
 	def index?
-		(@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2) || @current_user.administrator?
+		@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2
 	end
 
 	def create?
-		(@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2) || @current_user.administrator?
+		@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2
 	end
 
 	def edit?
-		(@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2) || @current_user.administrator?
+		@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2
 	end
 
 	def update?
-		(@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2) || @current_user.administrator?
+		@current_user.hig_maos_user.present? && @current_user.hig_maos_user.nivel_acesso == 2
 	end
 
 	def destroy?

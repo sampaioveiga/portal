@@ -4,6 +4,11 @@ pt:
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "Não é possível eliminar porque existe o registo dependente %{record}"
+          has_many: "Não é possível eliminar porque existe o registo dependente %{record}"
+        observations_too_short: 'Tem de existir pelo menos uma observação'
+        opportunities_too_short: 'Tem de existir pelo menos uma indicação e ação'
   date:
     abbr_day_names:
     - Dom

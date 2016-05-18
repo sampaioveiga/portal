@@ -10,6 +10,10 @@ class HigMaosObservationPolicy < ApplicationPolicy
 		@current_user.hig_maos_user.present?
 	end
 
+	def new?
+		@current_user.hig_maos_user.present?
+	end
+	
 	def create?
 		@current_user.hig_maos_user.present?
 	end

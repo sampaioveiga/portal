@@ -23,6 +23,6 @@ class TranspUserPolicy < ApplicationPolicy
 	end
 
 	def destroy?
-		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso == 2
+		(@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso == 2) || @current_user.administrator?
 	end
 end

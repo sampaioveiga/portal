@@ -1,9 +1,9 @@
 class Ppcira::HigMaosObservationsController < ApplicationController
-	before_action :check_authorization, only: [ :index, :create, :edit, :update, :stats, :export, :destroy ]
+	before_action :check_authorization, only: [ :index, :new, :create, :edit, :update, :stats, :export, :destroy ]
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
 	before_action :load_observations, only: [ :index, :stats, :export ]
 	before_action :set_observation, only: [ :show, :edit, :update, :destroy ]
-	after_action :verify_authorized, only: [ :index, :create, :edit, :update, :stats, :export, :destroy ]
+	after_action :verify_authorized, only: [ :index, :new, :create, :edit, :update, :stats, :export, :destroy ]
 
 	def index
 	end

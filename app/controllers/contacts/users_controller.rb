@@ -1,6 +1,6 @@
 class Contacts::UsersController < ApplicationController
 	before_action :admin_authorization, only: [ :edit, :update ]
-	before_action :set_user, only: [ :show, :edit, :update ]
+	before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 	after_action :verify_authorized, only: [ :edit, :update ]
 
 	def index
@@ -21,6 +21,11 @@ class Contacts::UsersController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@user.destroy
+		redirect_to contacts_users_path()
 	end
 
 	private

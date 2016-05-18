@@ -7,7 +7,7 @@ class TranspMaterialPolicy < ApplicationPolicy
 	end
 
 	def index?
-		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso != 0
+		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso == 2
 	end
 
 	def calendar?
