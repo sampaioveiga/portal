@@ -1,16 +1,14 @@
-<aside class="col-md-2">
-	<%= render 'shared/hig_maos_menu' %>
+<aside class="col-md-3">
+	<%= render 'shared/menu_hig_maos' %>
 </aside>
-<div class="col-md-10">
-	<h1>Auditores</h1>
-	<h2>Editar permissões de <%= @user.user.nome_utilizador %></h2>
+<div class="col-md-9">
 
-	<%= form_for(@user) do |f| %>
+	<h1><small>utilizador</small> <%= @user.user.nome_utilizador %></h1>
+	<%= form_for([:ppcira, @user]) do |f| %>
 		<%= render 'shared/error_messages', obj: @user %>
 
 		<div class="col-md-6">
 			<fieldset disabled>
-				<%= f.label :user_id, "Utilizador" %>
 				<%= f.text_field :user_id, 
 						value: @user.user.nome_utilizador, 
 						class: 'form-control' %>
@@ -18,7 +16,6 @@
 		</div>
 
 		<div class="col-md-6">
-			<%= f.label :nivel_acesso %>
 			<%= f.select :nivel_acesso,
 					[['0 - Sem acesso', 0],
 					['1 - Utilizador', 1],
@@ -30,9 +27,8 @@
 		<div class="col-md-3">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
 		</div>	
-		<%= link_to "Cancelar", hig_maos_users_path(),
-			class: 'btn btn-default' %>
-		<%= link_to 'Eliminar', hig_maos_user_path(@user),
+
+		<%= link_to 'Eliminar', ppcira_hig_maos_user_path(@user),
 			method: :delete,
 			data: { confirm: 'Tem a certeza?' },
 			class: 'btn btn-danger' %>

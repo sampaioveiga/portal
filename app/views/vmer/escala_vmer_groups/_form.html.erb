@@ -1,8 +1,10 @@
 <%= form_for([:vmer, @group]) do |f| %>
 	<%= render 'shared/error_messages', obj: @group %>
 
-	<%= f.label :nome_grupo %>
-	<%= f.text_field :nome_grupo, class: 'form-control' %>
-
-	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	<div class="col-md-8">
+		<%= f.text_field :nome_grupo, class: 'form-control' %>
+	</div>
+	<div class="col-md-4">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
 <% end %>

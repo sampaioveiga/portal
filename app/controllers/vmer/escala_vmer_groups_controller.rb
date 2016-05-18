@@ -1,6 +1,7 @@
 class Vmer::EscalaVmerGroupsController < ApplicationController
-	#before_action :is_user_admin
+	before_action :check_authorization
 	before_action :set_escala_vmer_group, only: [ :edit, :update ]
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@groups = EscalaVmerGroup.order(:nome_grupo)
@@ -32,8 +33,8 @@ class Vmer::EscalaVmerGroupsController < ApplicationController
 
 	private
 
-	def is_user_admin
-		redirect_to escala_vmer_schedules_path() unless (current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2)
+	def check_authorization
+		authorize EscalaVmerGroup
 	end
 
 	def set_escala_vmer_group

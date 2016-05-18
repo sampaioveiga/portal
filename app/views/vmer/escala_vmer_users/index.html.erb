@@ -1,8 +1,8 @@
-<aside class="col-md-2">
+<aside class="col-md-3">
 	<%= render 'shared/menu_escala_vmer' %>
 </aside>
-<div class="col-md-10">
-	<h1>Utilizadores</h1>
+<div class="col-md-9">
+	<h1>Utilizadores autorizados</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -21,6 +21,10 @@
 		<tbody>
 		</tbody>
 	</table>
-	<h2>Novo utilizador</h2>
-	<%= render 'form' unless @users_collection.empty? %>
+	<div class="panel panel-default">
+		<div class="panel-heading">Adicionar utilizador</div>
+		<div class="panel-body">
+			<%= render 'form' unless @users_collection.empty? %>
+		</div>
+	</div>
 </div>

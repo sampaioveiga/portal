@@ -3,28 +3,18 @@
 </aside>
 <div class="col-md-9">
 
-	<!-- new line -->
-	<div class="col-md-8">
-		<h1>
-			<small>Requisitante </small><%= @transport.user.nome_utilizador %>
-		</h1>
-		<h2>
-			<small>Serviço </small>
-			<%= @transport.ulsne_department.nome_servico %>
-		</h2>
+	<div class="col-md-6">
+		<p>
+			<small>Requisitante</small> <strong><%= @transport.user.nome_utilizador %></strong>
+		</p>
 	</div>
 
-	<div class="col-md-4">
-		<h3>Contactos</h3>
+	<div class="col-md-6">
 		<p>
-			<small>Email </small><%= @transport.user.email %><br />
-			<% @transport.user.user_phone_numbers.each do |p|%>
-				<small>Número </small><%= p.numero_contacto %><br />
-			<% end %>
-		<p>
+			<small>Serviço</small> <%= @transport.ulsne_department.nome_servico %>
+		</p>
 	</div>
 
-	<!-- new line -->
 	<div class="col-md-12">
 		<p>
 			<small>Assunto </small>
@@ -32,12 +22,12 @@
 		</p>
 	</div>
 
-	<!-- new line -->
 	<div class="col-md-6">
 		<p>
 			<small>Local saída </small>
 			<%= @transport.local_saida.destino %>
 		</p>
+
 		<p>
 			<small>Data e hora entrega </small>
 			<%=l @transport.data_entrega %>
@@ -60,7 +50,6 @@
 		</p>
 	</div>
 
-	<!-- new line -->
 	<div class="col-md-12">
 		<p>
 			<small>Observações </small>

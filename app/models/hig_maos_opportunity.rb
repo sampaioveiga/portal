@@ -1,6 +1,5 @@
 class HigMaosOpportunity < ActiveRecord::Base
 	belongs_to :hig_maos_opportunities_cluster
-
 	validate :existe_indicacao
 	validate :existe_accao
 	validate :accao_incompativel

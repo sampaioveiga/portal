@@ -1,8 +1,9 @@
 class Ppcira::HigMaosObservationsController < ApplicationController
-	#before_action :user_can_only_read, except: [ :index ]
+	before_action :check_authorization, only: [ :index, :create, :edit, :update, :stats, :export, :destroy ]
 	before_action :load_departments_categories, only: [ :new, :create, :edit, :update ]
 	before_action :load_observations, only: [ :index, :stats, :export ]
-	before_action :set_observation, only: [ :show, :edit, :update ]
+	before_action :set_observation, only: [ :show, :edit, :update, :destroy ]
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update, :stats, :export, :destroy ]
 
 	def index
 	end
@@ -30,7 +31,7 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 		@observation = HigMaosObservation.new
 		@observation.user_id = current_user.id
 		@observation.ulsne_site_id = current_user.ulsne_site.id
-		@observation.fim_sessao = Time.now + 1.hour
+		@observation.fim_sessao = Time.now + 20.minute
 	end
 
 	def create
@@ -39,7 +40,7 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 
 		if @observation.save
 			flash[:success] = "Observação criada"
-			redirect_to hig_maos_observations_path()
+			redirect_to ppcira_hig_maos_observations_path()
 		else
 			render :new
 		end
@@ -51,13 +52,20 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 	def update
 		if @observation.update(hig_maos_observation_params)
 			flash[:success] = "Observação atualizada"
-			redirect_to @observation
+			redirect_to ppcira_hig_maos_observation_path(@observation)
 		else
 			render :edit
 		end
 	end
 
+	def destroy
+	end
+
 	private
+
+	def check_authorization
+		authorize HigMaosObservation
+	end
 
 	def set_observation
 		@observation = HigMaosObservation.find(params[:id])
@@ -65,13 +73,16 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 
 	def load_departments_categories
 		@users = User.joins(:hig_maos_user)
-		#@users = HigMaosUser.joins(:user)
 		@sites = UlsneSite.order(:nome_unidade)
 		@categories = HigMaosWorkerCategory.order(:categoria_profissional)
 	end
 
 	def load_observations
-		@observations = HigMaosObservation.includes(:user, :ulsne_site)
+		if @current_user.hig_maos_user.nivel_acesso == 2
+			@observations = HigMaosObservation.includes(:user, :ulsne_site)
+		else
+			@observations = @current_user.hig_maos_observations
+		end
 	end
 
 	def hig_maos_observation_params

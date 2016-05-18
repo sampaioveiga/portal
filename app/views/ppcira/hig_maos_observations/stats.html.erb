@@ -1,8 +1,7 @@
-<aside class="col-md-2">
-	<%= render 'shared/hig_maos_menu' %>
+<aside class="col-md-3">
+	<%= render 'shared/menu_hig_maos' %>
 </aside>
-<div class="col-md-10">
-	<h1>Estatísticas mensais</h1>
+<div class="col-md-9">
 
 	<div class="row">
 		<div class="col-md-2 col-md-offset-3">
@@ -21,4 +20,5 @@
 
 	<h2>Percentagem de observações por auditor</h2>
 	<%= pie_chart @obs.group(:nome_utilizador).count %>
+	
 </div>

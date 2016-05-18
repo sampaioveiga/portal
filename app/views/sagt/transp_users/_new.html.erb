@@ -1,8 +1,8 @@
-<h3>Novo utilizador</h3>
 <%= form_for([:sagt, @user]) do |f| %>
+
 	<%= render 'shared/error_messages', obj: @user %>
+
 	<div class="col-md-5">
-		<%= f.label :user_id %>
 		<%= f.collection_select :user_id, 
 				@users_collection, 
 				:id, 
@@ -11,7 +11,6 @@
 				class: 'form-control' %>
 	</div>
 	<div class="col-md-5">
-		<%= f.label :nivel_acesso %>
 		<%= f.select :nivel_acesso, 
 				[['0 - Sem acesso', 0], 
 				['1 - Utilizador', 1], 
@@ -20,7 +19,6 @@
 				class: 'form-control' %>
 	</div>
 	<div class="col-md-2">
-		<%= f.label ' ' %>
 		<%= f.submit "Adicionar", 
 				class: 'btn btn-primary' %>
 	</div>

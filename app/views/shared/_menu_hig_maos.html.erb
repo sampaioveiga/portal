@@ -1,16 +1,54 @@
 <ul class="nav nav-pills nav-stacked">
+
 	<li role="presentation" class=<%= 'active' if current_page?(ppcira_hig_maos_observations_path()) %>>
 		<%= link_to ppcira_hig_maos_observations_path() do %>
 			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Observações
 		<% end %>
 	</li>
+
 	<li role="presentation" class=<%= 'active' if current_page?(new_ppcira_hig_maos_observation_path()) %>>
 		<%= link_to new_ppcira_hig_maos_observation_path() do %>
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nova observação
 		<% end %>
 	</li>
 
-	<!-- if New or Edit -> cancelar  -->
+	<li role="presentation" class=<%= 'active' if current_page?(ppcira_hig_maos_stats_path()) %>>
+		<%= link_to ppcira_hig_maos_stats_path() do %>
+			<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> Estatísticas
+		<% end %>
+	</li>
+
+	<!-- admin menu -->
+	<%# if policy(:ppcira) %>
+		<li role="presentation" class=<%= 'active' if current_page?(ppcira_hig_maos_worker_categories_path()) %>>
+			<%= link_to ppcira_hig_maos_worker_categories_path() do %>
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Categorias
+			<% end %>
+		</li>
+
+		<li role="presentation">
+			<%= link_to ppcira_hig_maos_export_path() do %>
+				<span class="glyphicon glyphicon-download" aria-hidden="true"></span> Exportar
+			<% end %>
+		</li>
+
+		<li role="presentation" class=<%= 'active' if current_page?(ppcira_hig_maos_users_path()) %>>
+			<%= link_to ppcira_hig_maos_users_path() do %>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Utilizadores
+			<% end %>
+		</li>
+	<%# end %>
+
+	<!-- if Edit -->
+	<%- if controller_name == 'hig_maos_observations' && action_name == 'show' %>
+		<li role="presentation">
+			<%= link_to edit_ppcira_hig_maos_observation_path(@observation), class: 'text-success' do %>
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar observação
+			<% end %>
+		</li>
+	<% end %>
+
+	<!-- if New or Edit cancelar  -->
 	<%- if action_name == 'new' || action_name == 'edit' %>
 		<li role="presentation">
 			<%= link_to :back, class: 'text-muted' do %>
@@ -19,40 +57,3 @@
 		</li>
 	<% end %>
 </ul>
-
-
-
-
-
-<div class="panel panel-primary">
-	<div class="panel-heading">Inquéritos de auditoria</div>
-	<ul class="list-group">
-		<li class="list-group-item">
-			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
-			<a href="<%# hig_maos_observations_path() %>">Observações</a>
-			<br />
-
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
-			<a href="<%# new_hig_maos_observation_path() %>">Nova observação</a>
-			<br />
-
-			<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> 
-			<a href="<%# hig_maos_stats_path() %>">Estatísticas mensais</a>
-		</li>
-		
-		<% if (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2) %>
-			<li class="list-group-item">
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 
-				<a href="<%# hig_maos_worker_categories_path() %>">Categorias</a>
-				<br />
-
-				<span class="glyphicon glyphicon-download" aria-hidden="true"></span>
-				<%# link_to "Exportar", hig_maos_export_path() %>
-				<br />
-
-				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-				<%# link_to "Utilizadores", hig_maos_users_url() %>
-			</li>
-		<% end %>
-	</ul>
-</div>

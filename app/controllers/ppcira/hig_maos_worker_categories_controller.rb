@@ -1,7 +1,8 @@
-class HigMaosWorkerCategoriesController < ApplicationController
-	#before_action :is_user_admin
+class Ppcira::HigMaosWorkerCategoriesController < ApplicationController
+	before_action :check_authorization
 	before_action :load_categories, only: [ :index, :create ]
 	before_action :set_category, only: [ :edit, :update ]
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@category = HigMaosWorkerCategory.new
@@ -12,7 +13,7 @@ class HigMaosWorkerCategoriesController < ApplicationController
 
 		if @category.save
 			flash[:success] = "Categoria profissional criada"
-			redirect_to hig_maos_worker_categories_path()
+			redirect_to ppcira_hig_maos_worker_categories_path()
 		else
 			render :index
 		end
@@ -24,13 +25,17 @@ class HigMaosWorkerCategoriesController < ApplicationController
 	def update
 		if @category.update(hig_maos_worker_categories_params)
 			flash[:success] = "Categoria profissional atualizada"
-			redirect_to hig_maos_worker_categories_path()
+			redirect_to ppcira_hig_maos_worker_categories_path()
 		else
 			render :edit
 		end
 	end
 
 	private
+
+	def check_authorization
+		authorize HigMaosWorkerCategory
+	end
 
 	def set_category
 		@category = HigMaosWorkerCategory.find(params[:id])
@@ -46,9 +51,4 @@ class HigMaosWorkerCategoriesController < ApplicationController
 		)
 	end
 
-	def is_user_admin
-		unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2)
-			redirect_to hig_maos_observations_url()
-		end
-	end
 end

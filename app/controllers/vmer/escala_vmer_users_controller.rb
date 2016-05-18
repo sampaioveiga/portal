@@ -1,7 +1,8 @@
 class Vmer::EscalaVmerUsersController < ApplicationController
-	#before_action :is_user_admin
+	before_action :check_authorization
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :index, :edit ]
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@users = User.joins(:escala_vmer_user).order(:nome_utilizador)
@@ -15,7 +16,7 @@ class Vmer::EscalaVmerUsersController < ApplicationController
 
 		if @user.save
 			flash[:success] = "Utilizador adicionado"
-			redirect_to escala_vmer_users_path()
+			redirect_to vmer_escala_vmer_users_path()
 		else
 			render :index
 		end
@@ -27,7 +28,7 @@ class Vmer::EscalaVmerUsersController < ApplicationController
 	def update
 		if @user.update(escala_vmer_user_params)
 			flash[:success] = "Utilizador alterado"
-			redirect_to escala_vmer_users_path()
+			redirect_to vmer_escala_vmer_users_path()
 		else
 			render :edit
 		end
@@ -36,13 +37,13 @@ class Vmer::EscalaVmerUsersController < ApplicationController
 	def destroy
 		@user.destroy
 		flash[:success] = "Utilizador retirado do módulo"
-		redirect_to escala_vmer_users_path()
+		redirect_to vmer_escala_vmer_users_path()
 	end
 
 	private
 
-	def is_user_admin
-		redirect_to escala_vmer_schedules_path() unless ( current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2)
+	def check_authorization
+		authorize EscalaVmerUser
 	end
 
 	def set_user

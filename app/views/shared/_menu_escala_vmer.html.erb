@@ -18,8 +18,27 @@
 			Ver escala
 		<% end %>
 	</li>
+
+	<!-- admin menu -->
+	<% if policy(:transp_user).index? || @current_user.administrator? %>
+		<li role="presentation" class=<%= 'active' if current_page?(vmer_escala_vmer_groups_path()) %>>
+			<%= link_to vmer_escala_vmer_groups_path() do %>
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Grupos
+			<% end %>
+		</li>
+
+		<li role="presentation" class=<%= 'active' if current_page?(vmer_escala_vmer_users_path()) %>>
+			<%= link_to vmer_escala_vmer_users_path() do %>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Utilizadores
+			<% end %>
+		</li>
+	<% end %>
+
+	<%- if controller_name == 'escala_vmer_schedules' && action_name == 'index' %>
+		<%= render 'group_list' %>
+	<% end %>
 	
-	<!-- if Users -->
+	<!-- if Users edit -->
 	<%- if controller_name == 'users' && action_name == 'show' && policy(:user).edit? %>
 		<li role="presentation">
 			<%= link_to edit_contacts_user_path(@user), class: 'text-success' do %>
@@ -68,22 +87,3 @@
 		</li>
 	<% end %>
 </ul>
-
-<% if current_user.administrator || current_user.escala_vmer_user.nivel_acesso == 2 %>
-	<div class="panel panel-default">
-		<div class="panel-heading">Escala VMER</div>
-		<ul class="list-group">
-			<li class="list-group-item">
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <a href="<%= vmer_escala_vmer_groups_path() %>">Grupos</a>
-				<br />
-				
-				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= vmer_escala_vmer_users_path() %>">Utilizadores</a>
-			</li>
-		</ul>
-	</div>
-<% end %>
-<%- if controller_name == 'escala_vmer_schedules' %>
-	<% unless current_user.escala_vmer_user.nil? %>
-		<%= render 'group_list' %>
-	<% end %>
-<% end %>

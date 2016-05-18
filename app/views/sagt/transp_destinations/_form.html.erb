@@ -1,10 +1,8 @@
 <%= form_for([:sagt, @destination]) do |f| %>
 	<div class="col-md-8">
-		<%= f.label :destino %>
 		<%= f.text_field :destino, class: 'form-control' %>
 	</div>
 	<div class="col-md-4">
-		<%= f.label ' ' %>
 		<%= f.submit "Guardar", class: 'btn btn-primary' %>
 	</div>
 <% end %>

@@ -5,7 +5,7 @@ json.array!(@observations) do |observation|
 	json.title observation.user.nome_utilizador
 	json.start observation.inicio_sessao
 	json.end observation.fim_sessao
-	json.url hig_maos_observation_path(observation)
+	json.url ppcira_hig_maos_observation_path(observation)
 	json.description '<h2>' + observation.ulsne_site.nome_unidade +
 		'</h2><p><b>Inicio:</b> ' + inicio_sessao + '</p>' +
 		'<p><b>Fim:</b> ' + fim_sessao + '</p>' + 

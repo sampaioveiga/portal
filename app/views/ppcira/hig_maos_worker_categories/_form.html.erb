@@ -1,10 +1,13 @@
-<%= form_for(@category) do |f| %>
+<%= form_for([:ppcira, @category]) do |f| %>
+
 	<%= render 'shared/error_messages', obj: @category %>
 
-	<%= f.label :categoria_profissional %>
-	<%= f.text_field :categoria_profissional, class: 'form-control' %>
+	<div class="col-md-8">
+		<%= f.text_field :categoria_profissional, class: 'form-control' %>
+	</div>
 
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>
 	</div>
+	
 <% end %>

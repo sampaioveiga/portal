@@ -1,8 +1,8 @@
-class HigMaosUsersController < ApplicationController
-	#before_action :is_user_admin
+class Ppcira::HigMaosUsersController < ApplicationController
+	before_action :check_authorization
 	before_action :set_hig_maos_user, only: [ :edit, :update, :destroy ]
 	before_action :load_select
-
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@user = HigMaosUser.new
@@ -13,7 +13,7 @@ class HigMaosUsersController < ApplicationController
 
 		if @user.save
 			flash[:success] = "Utilizador adicionado"
-			redirect_to hig_maos_users_path()
+			redirect_to ppcira_hig_maos_users_path()
 		else
 			render :index
 		end
@@ -25,7 +25,7 @@ class HigMaosUsersController < ApplicationController
 	def update
 		if @user.update(hig_maos_user_params)
 			flash[:success] = "Utilizador atualizado"
-			redirect_to hig_maos_users_path()
+			redirect_to ppcira_hig_maos_users_path()
 		else
 			render :edit
 		end
@@ -34,10 +34,14 @@ class HigMaosUsersController < ApplicationController
 	def destroy
 		@user.destroy
 		flash[:success] = "Utilizador retirado do módulo"
-		redirect_to hig_maos_users_path()
+		redirect_to ppcira_hig_maos_users_path()
 	end
 
 	private
+
+	def check_authorization
+		authorize HigMaosUser
+	end
 
 	def load_select
 		@users = User.joins(:hig_maos_user).order(:nome_utilizador)
@@ -56,7 +60,4 @@ class HigMaosUsersController < ApplicationController
 		)
 	end
 
-	def is_user_admin
-		redirect_to hig_maos_observations_url() unless (current_user.administrator || current_user.hig_maos_user.nivel_acesso == 2)
-	end
 end

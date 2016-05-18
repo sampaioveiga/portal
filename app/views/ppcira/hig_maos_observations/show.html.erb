@@ -1,9 +1,8 @@
-<aside class="col-md-2">
-	<%= render 'shared/hig_maos_menu' %>
-	<%= render 'user_actions' %>
+<aside class="col-md-3">
+	<%= render 'shared/menu_hig_maos' %>
 </aside>
-<div class="col-md-10">
-	<h1>Observação <%= @observation.id %></h1>
+<div class="col-md-9">
+	<p><strong>Observação <%= @observation.id %></strong></p>
 	
 	<div class="col-md-6">
 		<p><small>Auditor </small><%= @observation.user.nome_utilizador %></p>
