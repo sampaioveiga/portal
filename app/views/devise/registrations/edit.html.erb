@@ -1,12 +1,8 @@
 <aside class="col-md-3">
-	<ul class="nav nav-pills nav-stacked">
-		<li role="presentation">
-			<%= link_to "Retroceder", :back, class: 'text-muted' %>
-		</li>
-	</ul>
+	<%= render 'shared/menu_contacts' %>
 </aside>
 <div class="col-md-9">
-	<h2>Editar <%= resource_name.to_s.humanize %></h2>
+	<h2>Editar Perfil</h2>
 
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 		<%= devise_error_messages! %>
@@ -35,24 +31,28 @@
 			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 		<% end %>
 
-		<div id="user_phone_numbers" class="well well-sm">
-			<h3>Contacto telefónico</h3>
-			<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
-				<%= render 'user_phone_number_fields', f: user_phone_number %>
-			<% end %>
-			<div class="links">
-				<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+		<div id="user_phone_numbers" class="panel panel-default">
+			<div class="panel-heading">Contacto telefónico</div>
+			<div class="panel-body">
+				<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
+					<%= render 'user_phone_number_fields', f: user_phone_number %>
+				<% end %>
+				<div class="links">
+					<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+				</div>
+				<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 			</div>
-			<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 		</div>
 
-		<div id="u2d_associations" class="well well-sm">
-			<h3>Serviço</h3>
-			<%= f.fields_for :u2d_associations do |u2d_association| %>
-				<%= render 'u2d_association_fields', f: u2d_association %>
-			<% end %>
-			<div class="links">
-				<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+		<div id="u2d_associations" class="panel panel-default">
+			<div class="panel-heading">Serviço</div>
+			<div class="panel-body">
+				<%= f.fields_for :u2d_associations do |u2d_association| %>
+					<%= render 'u2d_association_fields', f: u2d_association %>
+				<% end %>
+				<div class="links">
+					<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+				</div>
 			</div>
 		</div>
 

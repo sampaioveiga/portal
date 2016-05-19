@@ -7,22 +7,22 @@ class EscalaVmerSchedulePolicy < ApplicationPolicy
 	end
 
 	def index?
-		@current_user.escala_vmer_user.present? && @current_user.escala_vmer_user.nivel_acesso == 2
+		@current_user.escala_vmer_user.present?
 	end
 
 	def create?
-		@current_user.escala_vmer_user.present? && @current_user.escala_vmer_user.nivel_acesso == 2
+		@current_user.escala_vmer_user.present?
 	end
 
 	def edit?
-		@current_user.escala_vmer_user.present? && @current_user.escala_vmer_user.nivel_acesso == 2
+		@current_user.escala_vmer_user.present?
 	end
 
 	def update?
-		@current_user.escala_vmer_user.present? && @current_user.escala_vmer_user.nivel_acesso == 2
+		@current_user.escala_vmer_user.present?
 	end
 
 	def destroy?
-		@current_user.escala_vmer_user.present? && @current_user.escala_vmer_user.nivel_acesso == 2
+		@current_user.escala_vmer_user.present?
 	end
 end

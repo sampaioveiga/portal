@@ -29,27 +29,30 @@
 			<%= f.email_field :email, autofocus: true, class: 'form-control' %>
 		</div>
 
-		<div id="user_phone_numbers" class="well well-sm">
-			<h3>Contacto telefónico</h3>
-			<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
-				<%= render 'user_phone_number_fields', f: user_phone_number %>
-			<% end %>
-			<div class="links">
-				<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
-			</div>
-			<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
-		</div>
-
-		<div id="u2d_associations" class="well well-sm">
-			<h3>Serviço</h3>
-			<%= f.fields_for :u2d_associations do |u2d_association| %>
-				<%= render 'u2d_association_fields', f: u2d_association %>
-			<% end %>
-			<div class="links">
-				<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+		<div id="user_phone_numbers" class="panel panel-default">
+			<div class="panel-heading">Contacto telefónico</div>
+			<div class="panel-body">
+				<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
+					<%= render 'user_phone_number_fields', f: user_phone_number %>
+				<% end %>
+				<div class="links">
+					<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+				</div>
+				<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 			</div>
 		</div>
 
+		<div id="u2d_associations" class="panel panel-default">
+			<div class="panel-heading">Serviço</div>
+			<div class="panel-body">
+				<%= f.fields_for :u2d_associations do |u2d_association| %>
+					<%= render 'u2d_association_fields', f: u2d_association %>
+				<% end %>
+				<div class="links">
+					<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+				</div>
+			</div>
+		</div>
 		<div class="field">
 			<%= f.label :ulsne_site_id, "Unidade da ULSNE" %>
 			<%= f.collection_select(:ulsne_site_id, UlsneSite.order(:nome_unidade), :id, :nome_unidade, {}, class: 'form-control') %>

@@ -20,7 +20,7 @@
 	</li>
 
 	<!-- admin menu -->
-	<% if policy(:transp_user).index? || @current_user.administrator? %>
+	<% if policy(:escala_vmer_user).index? %>
 		<li role="presentation" class=<%= 'active' if current_page?(vmer_escala_vmer_groups_path()) %>>
 			<%= link_to vmer_escala_vmer_groups_path() do %>
 				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Grupos

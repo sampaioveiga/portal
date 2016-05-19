@@ -6,9 +6,10 @@ json.array!(@observations) do |observation|
 	json.start observation.inicio_sessao
 	json.end observation.fim_sessao
 	json.url ppcira_hig_maos_observation_path(observation)
-	json.description '<h2>' + observation.ulsne_site.nome_unidade +
-		'</h2><p><b>Inicio:</b> ' + inicio_sessao + '</p>' +
-		'<p><b>Fim:</b> ' + fim_sessao + '</p>' + 
-		'<p><b>Duração:</b> ' + duracao.to_s + '</p>' + 
-		'<p><b>N. oportunidades:</b> ' + observation.hig_maos_opportunities_clusters.count.to_s + '</p>'
+	json.description '<h3><small>Servico:</small> ' + observation.ulsne_department.nome_servico +
+		' | <small>Unidade:</small> ' + observation.ulsne_site.nome_unidade +
+		'</h3><p><small>Inicio:</small> ' + inicio_sessao + '</p>' +
+		'<p><small>Fim:</small> ' + fim_sessao + '</p>' + 
+		'<p><small>Duração:</small> ' + duracao.to_s + '</p>' + 
+		'<p><small>N. oportunidades:</small> ' + observation.hig_maos_opportunities_clusters.count.to_s + '</p>'
 end

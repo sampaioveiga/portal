@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422104824) do
+ActiveRecord::Schema.define(version: 20160518160822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,8 +118,9 @@ ActiveRecord::Schema.define(version: 20160422104824) do
     t.datetime "fim_sessao"
     t.integer  "ulsne_site_id"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "ulsne_department_id"
   end
 
   add_index "hig_maos_observations", ["ulsne_site_id"], name: "index_hig_maos_observations_on_ulsne_site_id", using: :btree

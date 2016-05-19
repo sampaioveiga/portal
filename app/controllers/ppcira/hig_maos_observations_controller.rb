@@ -72,8 +72,15 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 	end
 
 	def load_departments_categories
-		@users = User.joins(:hig_maos_user)
-		@sites = UlsneSite.order(:nome_unidade)
+		if current_user.hig_maos_user.nivel_acesso == 2
+			@users = User.joins(:hig_maos_user)
+			@departments = UlsneDepartment.order(:nome_servico)
+			@sites = UlsneSite.order(:nome_unidade)
+		else
+			@users = [current_user]
+			@departments = current_user.ulsne_departments.order(:nome_servico)
+			@sites = [current_user.ulsne_site]
+		end
 		@categories = HigMaosWorkerCategory.order(:categoria_profissional)
 	end
 
@@ -90,6 +97,7 @@ class Ppcira::HigMaosObservationsController < ApplicationController
 			:inicio_sessao,
 			:fim_sessao,
 			:ulsne_site_id,
+			:ulsne_department_id,
 			:user_id,
 			hig_maos_opportunities_clusters_attributes: [
 				:id, 
