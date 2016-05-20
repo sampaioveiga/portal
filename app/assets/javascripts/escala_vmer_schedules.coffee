@@ -37,3 +37,6 @@ $ ->
 
 	$('#group_selector').on 'change', ->
 		$('#schedules_calendar').fullCalendar('rerenderEvents')
+
+	$('#dayPicker').datetimepicker
+		format: 'YYYY/MM/DD'

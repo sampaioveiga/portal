@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
 	get 'static_pages/index'
+	# teste
+	get 'static_pages/form'
 
 	devise_for :users
 
+	# Lista de contactos
 	namespace :contacts do 
 		resources :users, :ulsne_departments, :ulsne_sites
 	end
 
-	# Transportes
+	# Requisição de Transportes
 	namespace :sagt do
 		get 'transp_user_trips/calendar', to: 'transp_user_trips#calendar', as: 'transp_user_trips/calendar'
 		get 'transp_materials/calendar', to: 'transp_materials#calendar', as: 'transp_materials/calendar'
 		resources :transp_users, :transp_destinations, :transp_user_trips, :transp_materials
 	end
 
-	# Auditorias higiene das mãos
+	# PPCIRA
 	namespace :ppcira do
+		# Auditorias higiene das mãos
 		resources :hig_maos_users, :hig_maos_observations, :hig_maos_worker_categories, :hig_maos_oportunities_clusters, :hig_maos_oportunities
 		get 'hig_maos_stats', to: 'hig_maos_observations#stats', as: 'hig_maos_stats'
 		get 'hig_maos_export', to: 'hig_maos_observations#export', as: 'hig_maos_export', defaults: { format: 'xlsx' }

@@ -1,6 +1,8 @@
 class EscalaVmerSchedule < ActiveRecord::Base
 	belongs_to :user
 
+	validates :user_id,
+		presence: true
 	validates :inicio_turno,
 		presence: true,
 		date: { after: Proc.new { Time.now }, message: " tem de ter data posterior" },

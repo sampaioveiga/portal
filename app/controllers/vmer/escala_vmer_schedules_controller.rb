@@ -2,15 +2,13 @@ class Vmer::EscalaVmerSchedulesController < ApplicationController
 	before_action :check_authorization, only: [ :index, :new, :create, :edit, :update ]
 	before_action :set_schedule, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_group_users
+	before_action :load_schedules, only: [ :index, :new, :create ]
 	after_action :verify_authorized, only: [ :index, :new, :create, :edit, :update ]
 
 
 	def index
-		if current_user.escala_vmer_user.nivel_acesso == 2
-			@schedules = EscalaVmerSchedule.where(user_id: @group_users)
-		else
-			@schedules = current_user.escala_vmer_schedules
-		end
+		@schedule = EscalaVmerSchedule.new
+		@schedule.inicio_turno = Date.today + 1.day
 	end
 
 	def new
@@ -33,7 +31,7 @@ class Vmer::EscalaVmerSchedulesController < ApplicationController
 			flash[:success] = "Disponibilidade criada"
 			redirect_to vmer_escala_vmer_schedules_path()
 		else
-			render :new
+			render :index
 		end
 	end
 
@@ -62,7 +60,7 @@ class Vmer::EscalaVmerSchedulesController < ApplicationController
 
 		if @schedule.update(escala_vmer_schedules_params)
 			flash[:success] = "Disponibilidade alterada"
-			redirect_to escala_vmer_schedules_path()
+			redirect_to vmer_escala_vmer_schedules_path()
 		else
 			render :edit
 		end
@@ -81,13 +79,24 @@ class Vmer::EscalaVmerSchedulesController < ApplicationController
 
 	private
 
-
 	def check_authorization
 		authorize EscalaVmerSchedule
 	end
 
+	def load_schedules
+		if current_user.escala_vmer_user.nivel_acesso == 2
+			@schedules = EscalaVmerSchedule.where(user_id: @group_users)
+		else
+			@schedules = current_user.escala_vmer_schedules
+		end
+	end
+
 	def load_group_users
-		@group_users = User.joins(:escala_vmer_user).where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } ) unless (current_user.administrator && current_user.escala_vmer_user.nil?)
+		if current_user.escala_vmer_user.nivel_acesso == 2
+			@group_users = User.joins(:escala_vmer_user).where(escala_vmer_users: { escala_vmer_group_id: current_user.escala_vmer_user.escala_vmer_group.id } )
+		else
+			@group_users = [current_user]
+		end
 	end
 
 	def set_schedule

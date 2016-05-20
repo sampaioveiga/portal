@@ -1,0 +1,68 @@
+<aside class="col-md-3">
+	<p>Ver lista</p>
+	<p>Novo formulário</p>
+	<p>Cancelar</p>
+</aside>
+<div class="col-md-9">
+	<h1>Novo formulário demo1 Serviço geral</h1>
+	
+	<%= form_tag do %>
+		<div class="field col-md-3">
+			<%= text_field_tag 'enfermeiro', nil, value: 'Manuel João', disabled: true, class:' form-control' %>
+		</div>
+		<div class="field col-md-3">
+			<%= text_field_tag 'servico', nil, value: 'Medicina', disabled: true, class:' form-control' %>
+		</div>
+		<div class="field col-md-3">
+			<%= text_field_tag 'unidade', nil, disabled: true, value: 'Hospital de Bragança', class:' form-control' %>
+		</div>
+
+		<div class="col-md-3">
+			<div class="form-group">
+                <div class='input-group date' id='datepicker'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+		</div>
+
+		<h2>Catéter Intravascular</h2>
+		<div class="col-md-6">
+			<%= label_tag('N. doentes CVC') %>
+			<%= text_field_tag 'n_doentes_cvc', nil, class:' form-control' %>
+		</div>
+		<div class="col-md-6">
+			<%= label_tag('N. doentes CVP') %>
+			<%= text_field_tag 'n_doentes_cvp', nil, class:' form-control' %>
+		</div>
+
+		<h2>Presença de Cânula /Tubo endotraqueal</h2>
+		<div class="col-md-12">
+			<%= label_tag('N. doentes') %>
+			<%= text_field_tag 'n_doentes_ctec', nil, class:' form-control' %>
+		</div>
+
+		<h2>Catéter Vesical</h2>
+		<div class="col-md-12">
+			<%= label_tag('N. doentes') %>
+			<%= text_field_tag 'n_doentes_cv', nil, class:' form-control' %>
+		</div>
+
+		<h2>úlcera de pressão</h2>
+		<div class="col-md-12">
+			<%= label_tag('N. doentes') %>
+			<%= text_field_tag 'n_doentes_up', nil, class:' form-control' %>
+		</div>
+
+		<%= submit_tag 'Submeter', class: 'btn btn-primary' %>
+	<% end %>
+</div>
+<script type="text/javascript">
+	$(function () {
+		$('#datepicker').datetimepicker({
+			format: 'DD/MM/YYYY'
+		});
+	});
+</script>
