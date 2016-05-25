@@ -15,15 +15,15 @@ class TranspMaterialPolicy < ApplicationPolicy
 	end
 
 	def create?
-		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso != 0
+		@current_user.transp_user.present?
 	end
 
 	def edit?
-		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso != 0
+		@current_user.transp_user.present?
 	end
 
 	def update?
-		@current_user.transp_user.present? && @current_user.transp_user.nivel_acesso != 0
+		@current_user.transp_user.present?
 	end
 
 	def destroy?
