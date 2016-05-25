@@ -52,7 +52,7 @@ class Sagt::TranspMaterialsController < ApplicationController
 		if @transport.save
 			flash[:success] = "Requisição criada"
 			UserMailer.transp_material_email(@transport).deliver_now
-			redirect_to sagt_transp_materials_path()
+			redirect_to sagt_transp_materials_calendar_path()
 		else
 			render 'new'
 		end

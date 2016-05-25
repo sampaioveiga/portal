@@ -51,7 +51,7 @@ class Sagt::TranspUserTripsController < ApplicationController
 		if @trip.save
 			flash[:success] = "Pedido de transporte individual efetuado"
 			UserMailer.transp_user_trip_email(@trip).deliver_now
-			redirect_to sagt_transp_user_trips_path()
+			redirect_to sagt_transp_user_trips_calendar_path()
 		else
 			render :new
 		end
