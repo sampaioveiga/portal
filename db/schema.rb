@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518160822) do
+ActiveRecord::Schema.define(version: 20160607113234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 20160518160822) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "catheters", force: :cascade do |t|
+    t.string   "nome_cateter"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "catheters", ["nome_cateter"], name: "index_catheters_on_nome_cateter", using: :btree
 
   create_table "escala_vmer_groups", force: :cascade do |t|
     t.string   "nome_grupo"
@@ -179,6 +187,20 @@ ActiveRecord::Schema.define(version: 20160518160822) do
 
   add_index "office_phone_numbers", ["ulsne_department_id"], name: "index_office_phone_numbers_on_ulsne_department_id", using: :btree
   add_index "office_phone_numbers", ["ulsne_site_id"], name: "index_office_phone_numbers_on_ulsne_site_id", using: :btree
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "nome"
+    t.date     "data_nascimento"
+    t.integer  "rnu"
+    t.integer  "nif"
+    t.integer  "numero_processo_sonho"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "patients", ["nif"], name: "index_patients_on_nif", using: :btree
+  add_index "patients", ["numero_processo_sonho"], name: "index_patients_on_numero_processo_sonho", using: :btree
+  add_index "patients", ["rnu"], name: "index_patients_on_rnu", using: :btree
 
   create_table "satisf_surv_surveys", force: :cascade do |t|
     t.integer  "user_id"
@@ -290,6 +312,21 @@ ActiveRecord::Schema.define(version: 20160518160822) do
 
   add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id", using: :btree
   add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id", using: :btree
+
+  create_table "uci_patient_catheters", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "user_id"
+    t.integer  "catheter_id"
+    t.date     "data_introducao"
+    t.date     "data_remocao"
+    t.string   "observacao"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "uci_patient_catheters", ["catheter_id"], name: "index_uci_patient_catheters_on_catheter_id", using: :btree
+  add_index "uci_patient_catheters", ["patient_id"], name: "index_uci_patient_catheters_on_patient_id", using: :btree
+  add_index "uci_patient_catheters", ["user_id"], name: "index_uci_patient_catheters_on_user_id", using: :btree
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"

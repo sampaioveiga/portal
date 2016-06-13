@@ -1,8 +1,8 @@
-<aside class="col-md-3">
+<aside class="col-md-2">
 	<%= render "devise/shared/links" %>
 </aside>
-<div class="col-md-9">
-	<h2>Reenviar instruções de desbloqueio</h2>
+<div class="col-md-10">
+	<h1>Reenviar instruções de desbloqueio</h1>
 
 	<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
 		<%= devise_error_messages! %>

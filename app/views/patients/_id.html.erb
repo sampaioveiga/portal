@@ -1,0 +1,7 @@
+<div role="tabpanel" class="tab-pane fade in active" id="id">
+	<p>
+		<small>Processo</small> <%= @patient.numero_processo_sonho %><br />
+		<small>Idade</small> <%= distance_of_time_in_words_to_now(@patient.data_nascimento) %><br />
+		<small>RNU</small> <%= @patient.rnu %>
+	</p>
+</div>

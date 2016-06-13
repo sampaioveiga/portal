@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 	get 'static_pages/form'
 
 	devise_for :users
+	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
+	resources :patients do
+		resources :uci_patient_catheters
+	end
+	resources :catheters
 
 	# Lista de contactos
 	namespace :contacts do 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  numero_processo: 1
+  data_nascimento: 2016-06-06
+
+two:
+  nome: MyString
+  numero_processo: 1
+  data_nascimento: 2016-06-06

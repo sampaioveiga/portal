@@ -5,7 +5,7 @@ class CreateEscalaVmerSchedules < ActiveRecord::Migration
 			t.datetime :inicio_turno
 			t.integer :tipo_turno
 			t.datetime :fim_turno
-			t.boolean :escalado, default: false
+			t.boolean :escalado, null: false, default: false
 
 			t.timestamps null: false
 		end

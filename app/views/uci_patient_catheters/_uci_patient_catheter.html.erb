@@ -1,0 +1,8 @@
+<tr>
+	<!--<td><%#= uci_patient_catheter.user.nome_utilizador %></td>-->
+	<td><%= link_to uci_patient_catheter.catheter.nome_cateter, edit_patient_uci_patient_catheter_path(@patient, uci_patient_catheter), remote: true %></td>
+	<td><%= uci_patient_catheter.data_introducao %></td>
+	<td><%= uci_patient_catheter.data_remocao %></td>
+	<td><%= distance_of_time_in_words(uci_patient_catheter.data_introducao, uci_patient_catheter.data_remocao) unless uci_patient_catheter.data_remocao.nil? %></td>
+	<td><%= uci_patient_catheter.observacao %></td>
+</tr>

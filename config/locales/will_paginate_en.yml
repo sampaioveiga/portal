@@ -1,0 +1,10 @@
+en:
+  will_paginate:
+    next_label: next →
+    page_entries_info:
+      multi_page: Showing %{model} %{from} - %{to} from %{count} of total
+      multi_page_html: Showing %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> from <b>%{count}</b> of total
+      single_page: 
+      single_page_html: 
+    page_gap: "&hellip;"
+    previous_label: "← before"

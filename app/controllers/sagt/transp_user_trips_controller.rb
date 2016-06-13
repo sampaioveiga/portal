@@ -78,7 +78,7 @@ class Sagt::TranspUserTripsController < ApplicationController
 
 	def destroy
 		@trip.destroy
-		redirect_to sagr_transp_user_trips_path()
+		redirect_to sagt_transp_user_trips_path()
 	end
 
 	private

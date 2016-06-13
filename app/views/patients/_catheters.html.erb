@@ -1,0 +1,50 @@
+<div role="tabpanel" class="tab-pane fade" id="cateteres">
+	<table class="table">
+		<thead>
+			<tr>
+				<!--<th>User</th>-->
+				<th>Cateter</th>
+				<th>Data introdução</th>
+				<th>Data remoção</th>
+				<th></th>
+				<th>Observações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @patient.uci_patient_catheters.order(:data_introducao).reverse %>
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="newCatheterModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Registar novo cateter</h4>
+			</div>
+			<div class="modal-body">
+				<%= render 'uci_patient_catheters/new' %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="editCatheterModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Editar cateter</h4>
+			</div>
+			<div class="modal-body" id="modal-body">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

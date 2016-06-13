@@ -1,0 +1,37 @@
+<aside class="col-md-2">
+	<%= render 'shared/menu_patients' %>
+</aside>
+<div class="col-md-10">
+	<div class="panel panel-default">
+		<div class="panel-heading"><p>Encontrar doentes</p></div>
+		<div class="panel-body">
+			<%= search_form_for @q do |f| %>
+				<div class="col-md-9">
+					<%= f.search_field :nome_cont, class: 'form-control' %>
+				</div>
+				<div class="col-md-3">
+					<%= f.submit "Procurar", class: 'btn btn-success' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Data nascimento</th>
+				<th>Idade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @patients.each do |p| %>
+				<tr>
+					<td><%= link_to p.nome, patient_path(p) %></td>
+					<td><%= p.data_nascimento %></td>
+					<td><%= distance_of_time_in_words_to_now(p.data_nascimento) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

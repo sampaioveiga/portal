@@ -1,0 +1,23 @@
+<%= form_for([@patient, @patient.uci_patient_catheters.build]) do |f| %>
+
+	<%= render 'shared/error_messages', obj: @patient %>
+
+	<%= f.text_field :user_id, value: current_user.id, class: 'form-control hidden' %>
+
+	<div class="col-md-12">
+		<%= f.label :catheter_id, "Tipo de cateter" %>
+		<%= f.collection_select(:catheter_id, @catheters, :id, :nome_cateter, {}, class: 'form-control') %>
+	</div>
+
+	<div class="col-md-6">
+		<%= f.label :data_introducao %>
+		<%= f.date_field :data_introducao, value: Date.today, class: 'form-control' %>
+	</div>
+
+	<div class="col-md-12">
+		<%= f.label :observacao %>
+		<%= f.text_area :observacao, class: 'form-control' %>
+	</div>
+
+	<%= f.submit "Inserir", class: 'btn btn-primary' %>
+<% end %>
