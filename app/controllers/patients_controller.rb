@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
 	end
 
 	def show
-		@catheters = Catheter.order(:nome_cateter)
+		@catheter_types = CatheterType.order(:nome_cateter)
 	end
 
 	def processo_sonho

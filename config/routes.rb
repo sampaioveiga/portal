@@ -6,9 +6,14 @@ Rails.application.routes.draw do
 	devise_for :users
 	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
 	resources :patients do
-		resources :uci_patient_catheters
+		resources :uci_catheters
 	end
-	resources :catheters
+
+	# UCI
+	namespace :uci do
+		resources :users
+	end
+	resources :catheter_types
 
 	# Lista de contactos
 	namespace :contacts do 

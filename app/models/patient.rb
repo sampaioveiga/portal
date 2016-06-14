@@ -1,6 +1,5 @@
 class Patient < ActiveRecord::Base
-	has_many :uci_patient_catheters
-	accepts_nested_attributes_for :uci_patient_catheters
+	has_many :uci_catheters
 
 	validates :nome,
 		presence: true

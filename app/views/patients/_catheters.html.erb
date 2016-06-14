@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%= render @patient.uci_patient_catheters.order(:data_introducao).reverse %>
+			<%= render @patient.uci_catheters.order(:data_introducao).reverse %>
 		</tbody>
 	</table>
 </div>
@@ -24,7 +24,7 @@
 					<h4 class="modal-title">Registar novo cateter</h4>
 			</div>
 			<div class="modal-body">
-				<%= render 'uci_patient_catheters/new' %>
+				<%= render 'uci_catheters/new' %>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

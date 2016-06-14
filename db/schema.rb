@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607113234) do
+ActiveRecord::Schema.define(version: 20160613163726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,13 +83,13 @@ ActiveRecord::Schema.define(version: 20160607113234) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "catheters", force: :cascade do |t|
+  create_table "catheter_types", force: :cascade do |t|
     t.string   "nome_cateter"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "catheters", ["nome_cateter"], name: "index_catheters_on_nome_cateter", using: :btree
+  add_index "catheter_types", ["nome_cateter"], name: "index_catheter_types_on_nome_cateter", using: :btree
 
   create_table "escala_vmer_groups", force: :cascade do |t|
     t.string   "nome_grupo"
@@ -313,20 +313,31 @@ ActiveRecord::Schema.define(version: 20160607113234) do
   add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id", using: :btree
   add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id", using: :btree
 
-  create_table "uci_patient_catheters", force: :cascade do |t|
+  create_table "uci_catheters", force: :cascade do |t|
     t.integer  "patient_id"
     t.integer  "user_id"
-    t.integer  "catheter_id"
+    t.integer  "catheter_type_id"
     t.date     "data_introducao"
     t.date     "data_remocao"
     t.string   "observacao"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "uci_patient_catheters", ["catheter_id"], name: "index_uci_patient_catheters_on_catheter_id", using: :btree
-  add_index "uci_patient_catheters", ["patient_id"], name: "index_uci_patient_catheters_on_patient_id", using: :btree
-  add_index "uci_patient_catheters", ["user_id"], name: "index_uci_patient_catheters_on_user_id", using: :btree
+  add_index "uci_catheters", ["catheter_type_id"], name: "index_uci_catheters_on_catheter_type_id", using: :btree
+  add_index "uci_catheters", ["patient_id"], name: "index_uci_catheters_on_patient_id", using: :btree
+  add_index "uci_catheters", ["user_id"], name: "index_uci_catheters_on_user_id", using: :btree
+
+  create_table "uci_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "supervisor", default: false, null: false
+    t.integer  "wounds"
+    t.integer  "catheters"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "uci_users", ["user_id"], name: "index_uci_users_on_user_id", using: :btree
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"

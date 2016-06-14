@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 	has_one :escala_vmer_user
 	has_many :escala_vmer_schedules, dependent: :destroy
 	has_one :ajudas_tecnicas_user
+	#has_many patient_catheter
+	has_one :uci_user
 
 	validates :nome_utilizador,
 		presence: true,

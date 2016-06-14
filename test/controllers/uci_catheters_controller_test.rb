@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CatheterTest < ActiveSupport::TestCase
+class UciCathetersControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

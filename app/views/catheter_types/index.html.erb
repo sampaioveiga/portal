@@ -10,9 +10,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @catheters.each do |c| %>
+			<% @catheter_types.each do |c| %>
 				<tr>
-					<td><%= link_to c.nome_cateter, edit_catheter_path(c) %></td>
+					<td><%= link_to c.nome_cateter, edit_catheter_type_path(c) %></td>
 				</tr>
 			<% end %>
 		</tbody>
