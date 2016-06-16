@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
+	# homepage
 	get 'static_pages/index'
 	# teste
 	get 'static_pages/form'
 
+	# generic routes
 	devise_for :users
+	resources :device_types
+	resources :wound_types
+	resources :body_parts
+
+	# patients
 	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
 	resources :patients do
-		resources :uci_catheters
+		resources :uci_devices
+		resources :uci_wounds
 	end
 
 	# UCI
 	namespace :uci do
 		resources :users
 	end
-	resources :catheter_types
 
 	# Lista de contactos
 	namespace :contacts do 

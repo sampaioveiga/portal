@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613163726) do
+ActiveRecord::Schema.define(version: 20160615161917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,13 +83,21 @@ ActiveRecord::Schema.define(version: 20160613163726) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "catheter_types", force: :cascade do |t|
-    t.string   "nome_cateter"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "body_parts", force: :cascade do |t|
+    t.string   "parte_do_corpo"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "catheter_types", ["nome_cateter"], name: "index_catheter_types_on_nome_cateter", using: :btree
+  add_index "body_parts", ["parte_do_corpo"], name: "index_body_parts_on_parte_do_corpo", using: :btree
+
+  create_table "device_types", force: :cascade do |t|
+    t.string   "nome_dispositivo"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "device_types", ["nome_dispositivo"], name: "index_device_types_on_nome_dispositivo", using: :btree
 
   create_table "escala_vmer_groups", force: :cascade do |t|
     t.string   "nome_grupo"
@@ -313,20 +321,20 @@ ActiveRecord::Schema.define(version: 20160613163726) do
   add_index "u2d_associations", ["ulsne_department_id"], name: "index_u2d_associations_on_ulsne_department_id", using: :btree
   add_index "u2d_associations", ["user_id"], name: "index_u2d_associations_on_user_id", using: :btree
 
-  create_table "uci_catheters", force: :cascade do |t|
+  create_table "uci_devices", force: :cascade do |t|
     t.integer  "patient_id"
     t.integer  "user_id"
-    t.integer  "catheter_type_id"
+    t.integer  "device_type_id"
     t.date     "data_introducao"
     t.date     "data_remocao"
     t.string   "observacao"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "uci_catheters", ["catheter_type_id"], name: "index_uci_catheters_on_catheter_type_id", using: :btree
-  add_index "uci_catheters", ["patient_id"], name: "index_uci_catheters_on_patient_id", using: :btree
-  add_index "uci_catheters", ["user_id"], name: "index_uci_catheters_on_user_id", using: :btree
+  add_index "uci_devices", ["device_type_id"], name: "index_uci_devices_on_device_type_id", using: :btree
+  add_index "uci_devices", ["patient_id"], name: "index_uci_devices_on_patient_id", using: :btree
+  add_index "uci_devices", ["user_id"], name: "index_uci_devices_on_user_id", using: :btree
 
   create_table "uci_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -338,6 +346,25 @@ ActiveRecord::Schema.define(version: 20160613163726) do
   end
 
   add_index "uci_users", ["user_id"], name: "index_uci_users_on_user_id", using: :btree
+
+  create_table "uci_wounds", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "user_id"
+    t.integer  "wound_type_id"
+    t.integer  "body_part_id"
+    t.date     "data_registo"
+    t.string   "origem"
+    t.boolean  "complicacoes",  default: false, null: false
+    t.boolean  "antibioticos",  default: false, null: false
+    t.string   "observacoes"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "uci_wounds", ["body_part_id"], name: "index_uci_wounds_on_body_part_id", using: :btree
+  add_index "uci_wounds", ["patient_id"], name: "index_uci_wounds_on_patient_id", using: :btree
+  add_index "uci_wounds", ["user_id"], name: "index_uci_wounds_on_user_id", using: :btree
+  add_index "uci_wounds", ["wound_type_id"], name: "index_uci_wounds_on_wound_type_id", using: :btree
 
   create_table "ulsne_departments", force: :cascade do |t|
     t.string   "nome_servico"
@@ -391,5 +418,13 @@ ActiveRecord::Schema.define(version: 20160613163726) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+
+  create_table "wound_types", force: :cascade do |t|
+    t.string   "ferida"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "wound_types", ["ferida"], name: "index_wound_types_on_ferida", using: :btree
 
 end

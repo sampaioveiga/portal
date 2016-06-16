@@ -2,6 +2,7 @@ class PatientsController < ApplicationController
 	#devise
 	#pundit
 	before_action :load_patient, only: [ :show, :edit, :update ]
+	before_action :load_dependencies, only: [ :show, :processo_sonho ]
 	#after pundit
 
 	def index
@@ -10,7 +11,6 @@ class PatientsController < ApplicationController
 	end
 
 	def show
-		@catheter_types = CatheterType.order(:nome_cateter)
 	end
 
 	def processo_sonho
@@ -42,6 +42,12 @@ class PatientsController < ApplicationController
 	end
 
 	def update
+		if @patient.update(patient_params)
+			flash[:success] = "Ficha atualizada"
+			redirect_to @patient
+		else
+			render :edit
+		end
 	end
 
 	private
@@ -58,5 +64,11 @@ class PatientsController < ApplicationController
 
 	def load_patient
 		@patient = Patient.find(params[:id])
+	end
+
+	def load_dependencies
+		@device_types = DeviceType.order(:nome_dispositivo)
+		@wound_types = WoundType.order(:ferida)
+		@body_parts = BodyPart.order(:parte_do_corpo)
 	end
 end

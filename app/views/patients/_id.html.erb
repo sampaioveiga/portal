@@ -2,6 +2,8 @@
 	<dl class="dl-horizontal">
 		<dt>Processo</dt>
 		<dd><%= @patient.numero_processo_sonho %></dd>
+		<dt>Data de nascimento</dt>
+		<dd><%= @patient.data_nascimento %></dd>
 		<dt>Idade</dt>
 		<dd><%= distance_of_time_in_words_to_now(@patient.data_nascimento) %></dd>
 		<dt>RNU</dt>

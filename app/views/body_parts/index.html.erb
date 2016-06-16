@@ -1,0 +1,24 @@
+<aside class="col-md-2">
+	<%= render 'shared/menu_patients' %>
+</aside>
+<div class="col-md-10">
+	<h1>Partes do corpo</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Designação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @body_parts %>
+		</tbody>
+	</table>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Adicionar parte do corpo</div>
+		<div class="panel-body">
+			<%= render 'form' %>
+		</div>
+	</div>
+</div>

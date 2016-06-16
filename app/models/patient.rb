@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
-	has_many :uci_catheters
+	has_many :uci_devices
+	has_many :uci_wounds
 
 	validates :nome,
 		presence: true

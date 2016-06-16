@@ -1,0 +1,9 @@
+<%= form_for(@wound_type) do |f| %>
+	<%= render 'shared/error_messages', obj: @wound_type %>
+
+	<div class="col-md-10">
+		<%= f.text_field :ferida, class: 'form-control' %>
+	</div>
+
+	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+<% end %>

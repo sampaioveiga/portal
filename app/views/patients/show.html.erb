@@ -2,28 +2,23 @@
 	<%= render 'shared/menu_patients' %>
 </aside>
 <div class="col-md-10">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h1><small>Ficha</small> <%= @patient.nome %></h1>
-		</div>
-		
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#id" aria-controls="id" role="tab" data-toggle="tab">Identificação</a></li>
-			<li role="presentation"><a href="#cateteres" aria-controls="cateteres" role="tab" data-toggle="tab">Cateteres</a></li>
-			<li role="presentation"><a href="#feridas" aria-controls="feridas" role="tab" data-toggle="tab">Feridas</a></li>
-			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<%= render 'id' %> <!-- Identificacao -->
-			<%= render 'catheters' %> <!-- Cateteres -->
-			<%#= render 'wounds' %> <!-- Feridas -->
-			<div role="tabpanel" class="tab-pane fade" id="feridas">...</div>
-			<div role="tabpanel" class="tab-pane fade" id="settings">...</div>
-		</div>
+	<h1><small>Ficha</small> <%= @patient.nome %></h1>
 	
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#id" aria-controls="id" role="tab" data-toggle="tab">Identificação</a></li>
+		<li role="presentation"><a href="#devices" aria-controls="cateteres" role="tab" data-toggle="tab">Dispositivos</a></li>
+		<li role="presentation"><a href="#wounds" aria-controls="feridas" role="tab" data-toggle="tab">Feridas</a></li>
+		<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<%= render 'id' %> <!-- Identificacao -->
+		<%= render 'devices' %> <!-- Dispositivos -->
+		<%= render 'wounds' %> <!-- Feridas -->
+		<div role="tabpanel" class="tab-pane fade" id="feridas">...</div>
+		<div role="tabpanel" class="tab-pane fade" id="settings">...</div>
 	</div>
 </div>
 <%= render 'shared/modal' %>

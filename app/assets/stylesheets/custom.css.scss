@@ -2,10 +2,6 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
-.fc-time, .fc-title {
-  font-size: 10px;
-}
-
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -16,48 +12,13 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-/* universal */
+/* menus */
 
-section {
-  overflow: auto;
+aside {
+  border-top: 1px solid $gray-medium-light;
+  border-right: 1px solid $gray-medium-light;
+  border-bottom: 1px solid $gray-medium-light;
 }
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  font-weight: normal;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
 
 /* header */
 
@@ -77,7 +38,6 @@ p {
   }
   width: 100px;
   heigth: 50px;
-  /*border: 2px solid white;*/
 }
 
 /* footer */
@@ -116,28 +76,7 @@ footer {
   @include box_sizing;
 }
 
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
-
-.datetime-select {
-  display: inline-block;
-  width: 18%;
-}
-
-.date-select {
-  display: inline-block;
-  width: 32%;
-}
+/* errors, alerts */
 
 #error_explanation {
   color: red;
@@ -162,16 +101,16 @@ input {
   @extend .alert-info;
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
+/* full-calendar text */
+
+.fc-time, .fc-title {
+  font-size: 10px;
 }
 
-#session_remember_me {
-  width: auto;
-  margin-left: 0;
+/* tab-pane */
+
+.tab-pane {
+  border-left: 1px solid $gray-medium-light;
+  border-right: 1px solid $gray-medium-light;
+  border-bottom: 1px solid $gray-medium-light;
 }

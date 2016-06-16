@@ -1,0 +1,9 @@
+<%= form_for(@body_part) do |f| %>
+	<%= render 'shared/error_messages', obj: @body_part %>
+
+	<div class="col-md-10">
+		<%= f.text_field :parte_do_corpo, class: 'form-control' %>
+	</div>
+
+	<%= f.submit "Submeter", class: 'btn btn-primary' %>
+<% end %>
