@@ -1,0 +1,27 @@
+<%= form_for([@patient, @patient.uci_tiss_values.build]) do |f| %>
+	
+	<div class="form-group">
+		<%= f.text_field :user_id, value: current_user.id, class: 'form-control hidden' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :data %>
+		<%= f.date_field :data, class: 'form-control' %>
+	</div>
+
+	<h1>Atividades básicas</h1>
+	<div class="form-group">
+		<%= label_tag :q1, 'Monitorização padrão. Sinais Vitais horários, registros e cálculo regular do balanço hídrico', class: 'control-label' %>
+		<%= check_box_tag(:q1, value = "5", checked = false, options = {}) %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :valor %>
+		<%= f.number_field :valor, class: 'form-control' %>
+	</div>
+
+	<div class="modal-footer">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	</div>
+<% end %>

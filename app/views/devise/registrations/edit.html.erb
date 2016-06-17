@@ -4,80 +4,106 @@
 <div class="col-md-10">
 	<h1>Editar Perfil</h1>
 
-	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
 		<%= devise_error_messages! %>
 
-		<div class="field">
-			<%= f.label :nome_utilizador %>
-			<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :nome_utilizador, class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.text_field :nome_utilizador, placeholder: 'Nome completo', class: 'form-control' %>
+			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :numero_mecanografico, "Número mecanográfico" %>
-			<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :numero_mecanografico, "Número mecanográfico", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
+			</div>
 		</div>
 		
-		<div class="field">
-			<%= f.label :titulo, 'Título profissional' %>
-			<%= f.select(:titulo, [[""],["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
+		<div class="form-group">
+			<%= f.label :titulo, 'Título profissional', class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.select(:titulo, [[""],["Sr."], ["Sr.ª"], ["Dr."], ["Dr.ª"], ["Enf."], ["Enf.ª"], ["Tec."], ["Aux."], ["Eng."], ["Eng.ª"]], {}, class: 'form-control') %>
+			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :email %>
-			<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :email, class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+			</div>
 		</div>
 
 		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 		<% end %>
 
-		<div id="user_phone_numbers" class="panel panel-default">
-			<div class="panel-heading">Contacto telefónico</div>
-			<div class="panel-body">
-				<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
-					<%= render 'user_phone_number_fields', f: user_phone_number %>
-				<% end %>
-				<div class="links">
-					<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
-				</div>
-				<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
-			</div>
-		</div>
-
-		<div id="u2d_associations" class="panel panel-default">
-			<div class="panel-heading">Serviço</div>
-			<div class="panel-body">
-				<%= f.fields_for :u2d_associations do |u2d_association| %>
-					<%= render 'u2d_association_fields', f: u2d_association %>
-				<% end %>
-				<div class="links">
-					<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+		<div class="form-group">
+			<%= f.label :user_phone_numbers, "Contacto telefónico", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<div id="user_phone_numbers" class="panel panel-default">
+					<div class="panel-body">
+						<%= f.fields_for :user_phone_numbers do |user_phone_number| %>
+							<%= render 'user_phone_number_fields', f: user_phone_number %>
+						<% end %>
+						<div class="links">
+							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+						</div>
+						<span class="help-block">Os contactos inseridos são visiveis a todos os utilizadores</span>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :ulsne_site_id, "Unidade da ULSNE" %>
-			<%= f.collection_select(:ulsne_site_id, UlsneSite.order(:nome_unidade), :id, :nome_unidade, {}, class: 'form-control') %>
+		<div class="form-group">
+			<%= f.label :u2d_associations, "Serviço", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<div id="u2d_associations" class="panel panel-default">
+					<div class="panel-body">
+						<%= f.fields_for :u2d_associations do |u2d_association| %>
+							<%= render 'u2d_association_fields', f: u2d_association %>
+						<% end %>
+						<div class="links">
+							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :ulsne_site_id, "Unidade da ULSNE", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.collection_select(:ulsne_site_id, UlsneSite.order(:nome_unidade), :id, :nome_unidade, {}, class: 'form-control') %>
+			</div>
 		</div>
 
 
-		<div class="field">
-			<%= f.label :password, "Mudar a senha" %> <i>(deixe em branco para não alterar)</i>
-			<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :password, "Mudar a senha", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+				<span class="help-block">Deixe em branco para não alterar</span>
+			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :password_confirmation, 'Confirmação' %>
-			<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :password_confirmation, 'Confirmação', class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+			</div>
 		</div>
 
-		<div class="field">
-			<%= f.label :current_password, 'Senha atual' %> <i>(tem de escrevar a senha atual para guardar as alterações)</i>
-			<%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+		<div class="form-group">
+			<%= f.label :current_password, 'Senha atual ', class: 'control-label col-md-3' %> 
+			<div class="col-md-9">
+				<%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+				<span class="help-block">Tem de escrevar a senha atual para guardar as alterações)</span>
+			</div>
 		</div>
 
-		<div class="actions">
+		<div class="col-md-offset-3">
 			<%= f.submit "Atualizar", class: 'btn btn-primary' %>
 		</div>
 	<% end %>

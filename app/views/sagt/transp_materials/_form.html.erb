@@ -1,93 +1,78 @@
-<%= form_for([:sagt, @transport]) do |f| %>
+<%= form_for([:sagt, @transport], html: { class: 'form-horizontal' }) do |f| %>
 
 	<%= render 'shared/error_messages', obj: @transport %>
 
-	<!-- new line -->
-	<div class="col-md-6">
-		<%= f.label :user_id, "Requisitante" %>
-		<% unless (current_user.transp_user.nivel_acesso == 2) %>
-			<%= f.collection_select :user_id, 
-				@users, 
-				:id, 
-				:nome_utilizador, 
-				{}, 
-				class: 'form-control',
-				disabled: 'disabled' %>
-		<% else %>
-			<%= f.collection_select :user_id, 
-				@users, 
-				:id, 
-				:nome_utilizador, 
-				{}, 
-				class: 'form-control' %>
-		<% end %>
-	</div>
-
-	<div class="col-md-6">
-		<%= f.label :ulsne_department_id, "Serviço" %>
-		<%= f.collection_select :ulsne_department_id, 
-				@departments, 
-				:id, 
-				:nome_servico, 
-				{}, 
-				class: 'form-control' %>
-	</div>
-
-	<!-- new line -->
-	<div class="col-md-12">
-		<%= f.label :assunto %>
-		<%= f.text_field :assunto, class: 'form-control' %>
-	</div>
-
-	<!-- new line -->
-	<div class="col-md-6">
-		<%= f.label :local_saida_id, "Local de saída do transporte" %>
-		<%= f.collection_select :local_saida_id, 
-				@destinations, 
-				:id, 
-				:destino, 
-				{ include_blank: true }, 
-				class: 'form-control' %>
-	</div>
-	
-	<div class="col-md-6">
-		<%= f.label :local_entrega_id, "Local de entrega do material" %>
-		<%= f.collection_select :local_entrega_id, 
-				@destinations, 
-				:id, 
-				:destino, 
-				{ include_blank: true }, 
-				class: 'form-control' %>
-	</div>
-
-	<!-- new line -->
-	<div class="col-md-6" data-toggle="tooltip" title="As entregas têm de ser marcadas com 3 horas de antecedência">
-		<%= f.label :data_entrega, "Data e hora de entrega" %>
-		<%= f.text_field :data_entrega, placeholder: 'dd/mm/aaaa hh:mm', class: 'form-control datetimepicker' %>
-	</div>
-	<div class="col-md-6">
-		<%= f.label :urgente %><br />
-
-		<div class="btn-group" data-toggle="buttons">
-			<label class="btn btn-default active">
-				<input type="radio" name="transp_material[urgente]" id="transp_material_nao" value="0" autocomplete="off" checked> Não
-			</label>
-			<label class="btn btn-default">
-				<input type="radio" name="transp_material[urgente]" id="transp_material_urgente" value="1" autocomplete="off"> Urgente
-			</label>
-			<label class="btn btn-default" id="transp_material_emergente_input">
-				<input type="radio" name="transp_material[urgente]" id="transp_material_emergente" value="2" autocomplete="off"> Emergente
-			</label>
+	<div class="form-group">
+		<%= f.label :user_id, "Requisitante", class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<% unless (current_user.transp_user.nivel_acesso == 2) %>
+				<%= f.collection_select :user_id, @users, :id, :nome_utilizador, {}, class: 'form-control', disabled: 'disabled' %>
+			<% else %>
+				<%= f.collection_select :user_id, @users, :id, :nome_utilizador, {}, class: 'form-control' %>
+			<% end %>
 		</div>
 	</div>
 
-	<div class="col-md-12">
-		<%= f.label :observacoes %>
-		<%= f.text_area :observacoes, class: 'form-control' %>
+	<div class="form-group">
+		<%= f.label :ulsne_department_id, "Serviço", class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<%= f.collection_select :ulsne_department_id, @departments, :id, :nome_servico, {}, class: 'form-control' %>
+		</div>
 	</div>
 
-	<!-- new line -->
-	<div class="col-md-3">
+	<div class="form-group">
+		<%= f.label :assunto, class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<%= f.text_field :assunto, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :local_saida_id, "Local de saída do transporte", class: 'control-label col-md-3' %>
+		<div class="col-md-6">
+			<%= f.collection_select :local_saida_id, @destinations, :id, :destino, { include_blank: true }, class: 'form-control' %>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :local_entrega_id, "Local de entrega do material", class: 'control-label col-md-3' %>
+		<div class="col-md-6">
+			<%= f.collection_select :local_entrega_id, @destinations, :id, :destino, { include_blank: true }, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :data_entrega, "Data e hora de entrega", class: 'control-label col-md-3' %>
+		<div class="col-md-9" data-toggle="tooltip" title="As entregas têm de ser marcadas com 3 horas de antecedência">
+			<%= f.text_field :data_entrega, placeholder: 'dd/mm/aaaa hh:mm', class: 'form-control datetimepicker' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :urgente, class: 'control-label col-md-3' %>
+		<div class="col-md-6">
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default active">
+					<input type="radio" name="transp_material[urgente]" id="transp_material_nao" value="0" autocomplete="off" checked> Não
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="transp_material[urgente]" id="transp_material_urgente" value="1" autocomplete="off"> Urgente
+				</label>
+				<label class="btn btn-default" id="transp_material_emergente_input">
+					<input type="radio" name="transp_material[urgente]" id="transp_material_emergente" value="2" autocomplete="off"> Emergente
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :observacoes, class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<%= f.text_area :observacoes, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="col-md-offset-3">
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>
 	</div>
 <% end %>

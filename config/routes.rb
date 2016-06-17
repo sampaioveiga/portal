@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	resources :patients do
 		resources :uci_devices
 		resources :uci_wounds
+		resources :uci_tiss_values
 	end
 
 	# UCI

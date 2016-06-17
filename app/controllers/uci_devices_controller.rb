@@ -6,9 +6,12 @@ class UciDevicesController < ApplicationController
 
 	def create
 		@patient = Patient.find(params[:patient_id])
-		@uci_device = @patient.uci_devices.create(uci_device_params)
-		flash[:success] = "Registo de dispositivo efetuado"
-		redirect_to @patient, anchor: 'devices'
+		if @uci_device = @patient.uci_devices.create!(uci_device_params)
+			flash[:success] = "Registo de dispositivo efetuado"
+			redirect_to @patient, anchor: 'devices'
+		else
+			render :edit
+		end
 	end
 
 	def edit

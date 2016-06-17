@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615161917) do
+ActiveRecord::Schema.define(version: 20160617132504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -335,6 +335,18 @@ ActiveRecord::Schema.define(version: 20160615161917) do
   add_index "uci_devices", ["device_type_id"], name: "index_uci_devices_on_device_type_id", using: :btree
   add_index "uci_devices", ["patient_id"], name: "index_uci_devices_on_patient_id", using: :btree
   add_index "uci_devices", ["user_id"], name: "index_uci_devices_on_user_id", using: :btree
+
+  create_table "uci_tiss_values", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "user_id"
+    t.date     "data"
+    t.decimal  "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "uci_tiss_values", ["patient_id"], name: "index_uci_tiss_values_on_patient_id", using: :btree
+  add_index "uci_tiss_values", ["user_id"], name: "index_uci_tiss_values_on_user_id", using: :btree
 
   create_table "uci_users", force: :cascade do |t|
     t.integer  "user_id"

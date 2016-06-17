@@ -9,7 +9,7 @@
 		<li role="presentation" class="active"><a href="#id" aria-controls="id" role="tab" data-toggle="tab">Identificação</a></li>
 		<li role="presentation"><a href="#devices" aria-controls="cateteres" role="tab" data-toggle="tab">Dispositivos</a></li>
 		<li role="presentation"><a href="#wounds" aria-controls="feridas" role="tab" data-toggle="tab">Feridas</a></li>
-		<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+		<li role="presentation"><a href="#tiss" aria-controls="settings" role="tab" data-toggle="tab">TISS</a></li>
 	</ul>
 
 	<!-- Tab panes -->
@@ -17,8 +17,7 @@
 		<%= render 'id' %> <!-- Identificacao -->
 		<%= render 'devices' %> <!-- Dispositivos -->
 		<%= render 'wounds' %> <!-- Feridas -->
-		<div role="tabpanel" class="tab-pane fade" id="feridas">...</div>
-		<div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+		<%= render 'tiss' %> <!-- Tiss -->
 	</div>
 </div>
 <%= render 'shared/modal' %>

@@ -4,27 +4,36 @@
 <div class="col-md-10">
 	<h1>Iniciar sessão</h1>
 
-	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-		<div class="field">
-			<%= f.label :numero_mecanografico, "Número mecanogrático" %>
-			<%= f.text_field :numero_mecanografico, autofocus: true, class: 'form-control' %>
-		</div>
-
-		<div class="field">
-			<%= f.label :password, 'Senha' %><br />
-			<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-		</div>
-
-		<% if devise_mapping.rememberable? -%>
-			<div class="field btn-group" data-toggle="buttons">
-				<label class="btn btn-default">
-					<input type="checkbox" name="user[remember_me]" id="user[remember_me]" value="1" autocomplete="off">Lembrar
-				</label>
-			</div>
-			<small>Não termina sessão por inatividade</small>
-		<% end -%>
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
 		
-		<div class="actions">
+		<div class="form-group">
+			<%= f.label :numero_mecanografico, "Número mecanogrático", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.text_field :numero_mecanografico, autofocus: true, class: 'form-control' %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :password, 'Senha', class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+			</div>
+		</div>
+
+		<div class="col-md-offset-3">
+			<div class="form-group">
+				<% if devise_mapping.rememberable? -%>
+					<div class="field btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="checkbox" name="user[remember_me]" id="user[remember_me]" value="1" autocomplete="off">Lembrar
+						</label>
+					</div>
+					<small>Não termina sessão por inatividade</small>
+				<% end -%>
+			</div>
+		</div>
+		
+		<div class="col-md-offset-3">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
 		</div>
 	<% end %>
