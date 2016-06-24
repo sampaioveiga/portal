@@ -1,14 +1,20 @@
-class UciWoundsController < ApplicationController
-	#devise
-	#pundit
+class Uci::UciWoundsController < ApplicationController
+	before_action :check_auhorization
 	respond_to :html, :js
-	#after pundit
+	after_action :verify_authorized, only: [ :create, :edit, :update ]
+
+	def new
+		@patient = Patient.find(params[:patient_id])
+	end
 
 	def create
 		@patient = Patient.find(params[:patient_id])
-		@uci_wound = @patient.uci_wounds.create(uci_wound_params)
-		flash[:success] = "Registo de ferido efetuado"
-		redirect_to @patient
+		if @uci_wound = @patient.uci_wounds.create(uci_wound_params)
+			flash[:success] = "Registo de ferido efetuado"
+			redirect_to uci_patient_path(@patient)
+		else
+			render :new
+		end
 	end
 
 	def edit
@@ -25,7 +31,7 @@ class UciWoundsController < ApplicationController
 		if @wound.update(uci_wound_params)
 			flash[:success] = "Registo de ferida atualizado"
 		end
-		redirect_to patient_path(@patient)
+		redirect_to uci_patient_path(@patient)
 	end
 
 	private
@@ -42,5 +48,9 @@ class UciWoundsController < ApplicationController
 			:antibioticos,
 			:observacoes
 		)
+	end
+
+	def check_auhorization
+		authorize [:uci, UciWound]
 	end
 end

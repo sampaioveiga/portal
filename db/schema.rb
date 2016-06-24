@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617132504) do
+ActiveRecord::Schema.define(version: 20160624102955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -341,8 +341,36 @@ ActiveRecord::Schema.define(version: 20160617132504) do
     t.integer  "user_id"
     t.date     "data"
     t.decimal  "valor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "b1_q1",      default: 0.0
+    t.decimal  "b1_q2",      default: 0.0
+    t.decimal  "b1_q3",      default: 0.0
+    t.decimal  "b1_q4",      default: 0.0
+    t.decimal  "b1_q5",      default: 0.0
+    t.decimal  "b1_q6",      default: 0.0
+    t.decimal  "b1_q7",      default: 0.0
+    t.decimal  "b2_q1",      default: 0.0
+    t.decimal  "b2_q2",      default: 0.0
+    t.decimal  "b2_q3",      default: 0.0
+    t.decimal  "b2_q4",      default: 0.0
+    t.decimal  "b3_q1",      default: 0.0
+    t.decimal  "b3_q2",      default: 0.0
+    t.decimal  "b3_q3",      default: 0.0
+    t.decimal  "b3_q4",      default: 0.0
+    t.decimal  "b3_q5",      default: 0.0
+    t.decimal  "b3_q6",      default: 0.0
+    t.decimal  "b3_q7",      default: 0.0
+    t.decimal  "b4_q1",      default: 0.0
+    t.decimal  "b4_q2",      default: 0.0
+    t.decimal  "b4_q3",      default: 0.0
+    t.decimal  "b5_q1",      default: 0.0
+    t.decimal  "b6_q1",      default: 0.0
+    t.decimal  "b6_q2",      default: 0.0
+    t.decimal  "b6_q3",      default: 0.0
+    t.decimal  "b7_q1",      default: 0.0
+    t.decimal  "b7_q2",      default: 0.0
+    t.decimal  "b7_q3",      default: 0.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "uci_tiss_values", ["patient_id"], name: "index_uci_tiss_values_on_patient_id", using: :btree
@@ -351,10 +379,11 @@ ActiveRecord::Schema.define(version: 20160617132504) do
   create_table "uci_users", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "supervisor", default: false, null: false
+    t.integer  "devices"
     t.integer  "wounds"
-    t.integer  "catheters"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "tiss"
   end
 
   add_index "uci_users", ["user_id"], name: "index_uci_users_on_user_id", using: :btree

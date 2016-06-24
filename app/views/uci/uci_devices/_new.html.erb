@@ -1,4 +1,4 @@
-<%= form_for([@patient, @patient.uci_devices.build], html: { role: 'form' }) do |f| %>
+<%= form_for([:uci, @patient, @patient.uci_devices.build], html: { role: 'form' }) do |f| %>
 
 	<%= render 'shared/error_messages', obj: @patient %>
 

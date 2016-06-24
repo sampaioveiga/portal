@@ -1,14 +1,13 @@
-class UciDevicesController < ApplicationController
-	#devise
-	#pundit
+class Uci::UciDevicesController < ApplicationController
+	before_action :check_authorization
 	respond_to :html, :js
-	#after pundit
+	after_action :verify_authorized, only: [ :create, :edit, :update ]
 
 	def create
 		@patient = Patient.find(params[:patient_id])
 		if @uci_device = @patient.uci_devices.create!(uci_device_params)
 			flash[:success] = "Registo de dispositivo efetuado"
-			redirect_to @patient, anchor: 'devices'
+			redirect_to uci_patient_path(@patient)
 		else
 			render :edit
 		end
@@ -27,7 +26,7 @@ class UciDevicesController < ApplicationController
 		if @device.update(uci_device_params)
 			flash[:success] = "Registo de dispositivo atualizado"
 		end
-		redirect_to patient_path(@patient)
+		redirect_to uci_patient_path(@patient)
 	end
 
 	private
@@ -41,5 +40,9 @@ class UciDevicesController < ApplicationController
 			:data_remocao,
 			:observacao
 		)
+	end
+
+	def check_authorization
+		authorize [:uci, UciDevice]
 	end
 end

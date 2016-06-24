@@ -2,9 +2,8 @@
 
 	<div class="col-md-5">
 		<div class="panel panel-default">
-			<%# link_to ajudas_tecnicas_patients_url() do %>
 			<%= link_to root_url() do %>
-				<h1><small><span class="glyphicon glyphicon-bed"></span></small> Ajudas técnicas</h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-heart-empty"></span></small> Ajudas técnicas</h1>
 			<% end %>
 		</div>
 	</div>
@@ -13,7 +12,7 @@
 	<div class="col-md-7">
 		<div class="panel panel-default">
 			<%= link_to ppcira_hig_maos_observations_url() do %>
-				<h1><small><span class="glyphicon glyphicon-warning-sign"></span></small> Auditoria higiene das mãos</h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-thumbs-up"></span></small> Auditoria higiene das mãos</h1>
 			<% end %>
 		</div>
 	</div>
@@ -21,7 +20,7 @@
 	<div class="col-md-7">
 		<div class="panel panel-default">
     		<%= link_to contacts_users_path() do %>
-    			<h1><small><span class="glyphicon glyphicon-user"></span></small> Contactos</h1>
+    			<h1 class="text-center"><small><span class="glyphicon glyphicon-user"></span></small> Contactos</h1>
     		<% end %>
 		</div>
 	</div>
@@ -30,16 +29,23 @@
 	<div class="col-md-5">
 		<div class="panel panel-default">
 			<%= link_to vmer_escala_vmer_schedules_path() do %>
-				<h1><small><span class="glyphicon glyphicon-calendar"></span></small> Escala VMER</h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-calendar"></span></small> Escala VMER</h1>
 			<% end %>
 		</div>
 	</div>
 	
 	<div class="col-md-5">
 		<div class="panel panel-default">
-			<%# link_to satisf_surv_surveys_url() do %>
 			<%= link_to root_url() do %>
-				<h1><small><span class="glyphicon glyphicon-question-sign"></span></small> Inquérito de satisfação</h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-question-sign"></span></small> Inquérito de satisfação</h1>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<div class="panel panel-default">
+			<%= link_to patients_path() do %>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-bed"></span></small> Medicina Intensiva</h1>
 			<% end %>
 		</div>
 	</div>
@@ -47,9 +53,17 @@
 	<div class="col-md-7">
 		<div class="panel panel-default">
 			<%= link_to sagt_transp_user_trips_calendar_url() do %>
-				<h1><small><span class="glyphicon glyphicon-road"></span></small> Requisição de transporte</h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-road"></span></small> Requisição de transporte</h1>
 			<% end %>
 		</div>
 	</div>
+
+	<!--<div class="col-md-5">
+		<div class="panel panel-default">
+			<%= link_to root_url() do %>
+				<h1 class="text-center"></h1>
+			<% end %>
+		</div>
+	</div>-->
 
 </div>

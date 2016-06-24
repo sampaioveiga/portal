@@ -1,0 +1,44 @@
+<div role="tabpanel" class="tab-pane fade" id="devices">
+	<table class="table">
+		<thead>
+			<tr>
+				<!--<th>User</th>-->
+				<th>Dispositivo</th>
+				<th>Data introdução</th>
+				<th>Data remoção</th>
+				<th></th>
+				<th>Observações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @patient.uci_devices.order(:data_introducao).reverse %>
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="newDeviceModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Registar novo dispositivo</h4>
+			</div>
+			<div class="modal-body">
+				<%= render 'uci/uci_devices/new' %>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="editDeviceModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Editar dispositivo</h4>
+			</div>
+			<div class="modal-body" id="device-modal-body">
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,359 @@
+<%= form_for([:uci, @patient, @patient.uci_tiss_values.build]) do |f| %>
+	
+	<div class="form-group">
+		<%= f.text_field :user_id, value: current_user.id, class: 'form-control hidden' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :data %>
+		<%= f.date_field :data, value: Date.today, class: 'form-control' %>
+	</div>
+
+	<h1>Atividades Básicas</h1>
+	<div class="form-group">
+		<%= f.label :b1_q1, 'Monitorização padrão. Sinais Vitais horários, registros e cálculo regular do balanço hídrico.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q1]" id="uci_tiss_value_b1_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q1]" id="uci_tiss_value_b1_q1_5" value="5" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q2, 'Laboratório. Investigações bioquímicas e microbiológicas.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q2]" id="uci_tiss_value_b1_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q2]" id="uci_tiss_value_b1_q2_1" value="1" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q3, 'Medicação única. Endovenosa, intramuscular, subcutânea, e/ou oral / SNG.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q3]" id="uci_tiss_value_b1_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q3]" id="uci_tiss_value_b1_q3_2" value="2" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q4, 'Medicações endovenosas múltiplas. Mais que uma droga.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q4]" id="uci_tiss_value_b1_q4_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q4]" id="uci_tiss_value_b1_q4_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q5, 'Troca de curativos de rotina. Cuidados e prevenção de úlceras de decúbito / troca diária de curativo.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q5]" id="uci_tiss_value_b1_q5_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q5]" id="uci_tiss_value_b1_q5_1" value="1" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q6, 'Trocas frequentes de curativos. Troca frequente de curativo (pelo menos uma vez por turno de enfermagem) e/ou cuidados com feridas extensas.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q6]" id="uci_tiss_value_b1_q6_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q6]" id="uci_tiss_value_b1_q6_1" value="1" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b1_q7, 'Cuidados com drenos. Todos (excepto SNG).', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b1_q7]" id="uci_tiss_value_b1_q7_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b1_q7]" id="uci_tiss_value_b1_q7_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>Suporte Ventilatório</h1>
+	<div class="form-group">
+		<%= f.label :b2_q1, 'Ventilação mecânica. Qualquer forma de ventilação mecânica/ventilação assitida com ou sem PEEP. Com ou sem relaxantes musculares respiração espontânea com PEEP.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b2_q1]" id="uci_tiss_value_b2_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b2_q1]" id="uci_tiss_value_b2_q1_5" value="5" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b2_q2, 'Suporte ventilatório suplementar. Respiração espontânea através do tubo endotraqueal sem PEEP; O2 suplementar por qualquer método excepto aplicação de parâmetros de ventilação mecânica.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b2_q2]" id="uci_tiss_value_b2_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b2_q2]" id="uci_tiss_value_b2_q2_2" value="2" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b2_q3, 'Cuidados com vias aéreas artificiais. Tubo endotraqueal ou traqueostomia.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b2_q3]" id="uci_tiss_value_b2_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b2_q3]" id="uci_tiss_value_b2_q3_1" value="1" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b2_q4, 'Tratamento par melhora da função pulmunar. Fisioterapia torácica, espirometria estimulada, terapia de inalação, aspiração endotraqueal.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b2_q4]" id="uci_tiss_value_b2_q4_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b2_q4]" id="uci_tiss_value_b2_q4_1" value="1" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>Suporte Cardiovascular</h1>
+	<div class="form-group">
+		<%= f.label :b3_q1, 'Medicação vasoativa única. Qualquer droga vasoativa.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q1]" id="uci_tiss_value_b3_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q1]" id="uci_tiss_value_b3_q1_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q2, 'Medicação vasoativa múltipla. Mais que uma droga vasoativa independente do tipo e dose.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q2]" id="uci_tiss_value_b3_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q2]" id="uci_tiss_value_b3_q2_4" value="4" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q3, 'Reposição de grandes perdas volêmicas. Administração de volume >3l/m2/d, independente do tipo.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q3]" id="uci_tiss_value_b3_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q3]" id="uci_tiss_value_b3_q3_4" value="4" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q4, 'Cateter arterial periférico.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q4]" id="uci_tiss_value_b3_q4_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q4]" id="uci_tiss_value_b3_q4_5" value="5" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q5, 'Monitorização do átrio esquerdo. Cateter de artéria pulmunar com ou sem medida de débito cardíaco.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q5]" id="uci_tiss_value_b3_q5_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q5]" id="uci_tiss_value_b3_q5_8" value="8" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q6, 'Via venosa central.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q6]" id="uci_tiss_value_b3_q6_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q6]" id="uci_tiss_value_b3_q6_2" value="2" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b3_q7, 'Ressuscitação cardiopulmunar (PCR nas últimas 24 horas).', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b3_q7]" id="uci_tiss_value_b3_q7_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b3_q7]" id="uci_tiss_value_b3_q7_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>Suporte Renal</h1>
+	<div class="form-group">
+		<%= f.label :b4_q1, 'Técnicas de hemofiltração. Técnicas dialíticas.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b4_q1]" id="uci_tiss_value_b4_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b4_q1]" id="uci_tiss_value_b4_q1_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b4_q2, 'Medida quantitativa do débito urinário (ex. SVD).', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b4_q2]" id="uci_tiss_value_b4_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b4_q2]" id="uci_tiss_value_b4_q2_2" value="2" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b4_q3, 'Diurese ativa (ex. furosemida > 0,5 mg/Kg/dia).', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b4_q3]" id="uci_tiss_value_b4_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b4_q3]" id="uci_tiss_value_b4_q3_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>Suporte neurológico</h1>
+	<div class="form-group">
+		<%= f.label :b5_q1, 'Medida de Pressão Intracraniana.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b5_q1]" id="uci_tiss_value_b5_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b5_q1]" id="uci_tiss_value_b5_q1_4" value="4" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>Suporte Metabólico</h1>
+	<div class="form-group">
+		<%= f.label :b6_q1, 'Tratamento de acidose/alcalose metabólica complicada.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b6_q1]" id="uci_tiss_value_b6_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b6_q1]" id="uci_tiss_value_b6_q1_4" value="4" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b6_q2, 'Nutrição Parenteral Total endovenosa', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b6_q2]" id="uci_tiss_value_b6_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b6_q2]" id="uci_tiss_value_b6_q2_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b6_q3, 'Nutrição enteral (ex. SNG) ou outra via como por ex. jejunostomia.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b6_q3]" id="uci_tiss_value_b6_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b6_q3]" id="uci_tiss_value_b6_q3_2" value="2" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<h1>intervenções específicas</h1>
+	<div class="form-group">
+		<%= f.label :b7_q1, 'Intervenção específica única na UTI. Intubação naso ou orotraqueal, introdução de marcapasso, cardioversão, cirurgia de emergência nas últimas 24h, lavagem gástrica, não estão incluídas intervenções de rotina sem consequências diretas para as condições do paciente, tais como RX, ecografias, ECG, curativos, introdução de cateter venoso central.', class: 'control-label col-md-10' %>
+		<div class="btn-group"  data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b7_q1]" id="uci_tiss_value_b7_q1_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b7_q1]" id="uci_tiss_value_b7_q1_3" value="3" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b7_q2, 'intervenções específicas múltiplas na UTI. Mais que uma conforme descritas acima.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b7_q2]" id="uci_tiss_value_b7_q2_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b7_q2]" id="uci_tiss_value_b7_q2_5" value="5" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :b7_q3, 'Intervenções específicas fora da UTI. Procedimentos diagnósticos ou cirurgicos.', class: 'control-label col-md-10' %>
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+				<input type="radio" name="uci_tiss_value[b7_q3]" id="uci_tiss_value_b7_q3_0" value="0" autocomplete="off" checked> Não
+			</label>
+			<label class="btn btn-default">
+				<input type="radio" name="uci_tiss_value[b7_q3]" id="uci_tiss_value_b7_q3_5" value="5" autocomplete="off"> Sim
+			</label>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	</div>
+<% end %>

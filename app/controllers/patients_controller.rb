@@ -1,9 +1,8 @@
 class PatientsController < ApplicationController
-	#devise
-	#pundit
+	before_action :check_authorization
 	before_action :load_patient, only: [ :show, :edit, :update ]
 	before_action :load_dependencies, only: [ :show, :processo_sonho ]
-	#after pundit
+	after_action :verify_authorized, only: [ :index, :show, :edit, :update ]
 
 	def index
 		@q = Patient.ransack(params[:q])
@@ -70,5 +69,9 @@ class PatientsController < ApplicationController
 		@device_types = DeviceType.order(:nome_dispositivo)
 		@wound_types = WoundType.order(:ferida)
 		@body_parts = BodyPart.order(:parte_do_corpo)
+	end
+
+	def check_authorization
+		authorize Patient
 	end
 end

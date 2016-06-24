@@ -1,4 +1,4 @@
-<%= form_for([@patient, @wound]) do |f| %>
+<%= form_for([:uci, @patient, @patient.uci_wounds.build]) do |f| %>
 	<%= render 'shared/error_messages', obj: @patient %>
 
 	<div class="form-group">
@@ -17,7 +17,7 @@
 
 	<div class="form-group">
 		<%= f.label :data_registo %>
-		<%= f.date_field :data_registo, class: 'form-control' %>
+		<%= f.date_field :data_registo, value: Date.today, class: 'form-control' %>
 	</div>
 
 	<div class="form-group">
@@ -30,10 +30,10 @@
 	<div class="col-md-6">
 		<%= f.label :complicacoes %>
 		<div class="btn-group" data-toggle="buttons">
-			<label class="btn btn-default <%= 'active' unless @wound.complicacoes %>">
+			<label class="btn btn-default active">
 				<input type="radio" name="uci_wound[complicacoes]" id="uci_wound_complicacoes_nao" value="false" autocomplete="off" checked> Não
 			</label>
-			<label class="btn btn-default <%= 'active' if @wound.complicacoes %>">
+			<label class="btn btn-default">
 				<input type="radio" name="uci_wound[complicacoes]" id="uci_wound_complicacoes_sim" value="true" autocomplete="off"> Sim
 			</label>
 		</div>
@@ -42,10 +42,10 @@
 	<div class="col-md-6">
 		<%= f.label :antibioticos %>
 		<div class="btn-group" data-toggle="buttons">
-			<label class="btn btn-default <%= 'active' unless @wound.antibioticos %>">
+			<label class="btn btn-default active">
 				<input type="radio" name="uci_wound[antibioticos]" id="uci_wound_antibioticos_nao" value="false" autocomplete="off" checked> Não
 			</label>
-			<label class="btn btn-default <%= 'active' if @wound.antibioticos %>">
+			<label class="btn btn-default">
 				<input type="radio" name="uci_wound[antibioticos]" id="uci_wound_antibioticos_sim" value="true" autocomplete="off"> Sim
 			</label>
 		</div>

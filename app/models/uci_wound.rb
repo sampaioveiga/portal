@@ -7,5 +7,6 @@ class UciWound < ActiveRecord::Base
 	validates :patient_id, :body_part_id, :wound_type_id,
 		presence: true
 	validates :data_registo,
+		presence: true,
 		date: true
 end

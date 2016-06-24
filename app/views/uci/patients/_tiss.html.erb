@@ -1,0 +1,33 @@
+<div role="tabpanel" class="tab-pane fade" id="tiss">
+
+	<div class="col-md-12">
+		<%= line_chart @patient.uci_tiss_values.group_by_day(:data).sum(:valor), width: "100%" unless @patient.uci_tiss_values.count == 0 %>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<!--<th>User</th>-->
+				<th>Data</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @patient.uci_tiss_values.order(data: :desc) %>
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="newTissModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Registar TISS</h4>
+			</div>
+			<div class="modal-body">
+				<%= render 'uci/uci_tiss_values/new' %>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

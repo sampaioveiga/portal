@@ -12,9 +12,9 @@
 		<% end %>
 
 		<div class="form-group">
-			<%= f.label :catheters, "Dispositivos", class: 'control-label col-md-3' %>
+			<%= f.label :devices, "Dispositivos", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
-				<%= f.select :catheters, 
+				<%= f.select :devices,
 					[['0 - Sem acesso', 0], 
 					['1 - Visualizar', 1], 
 					['2 - Registar', 2]], 
@@ -27,6 +27,18 @@
 			<%= f.label :wounds, "Feridas", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
 				<%= f.select :wounds, 
+					[['0 - Sem acesso', 0], 
+					['1 - Visualizar', 1], 
+					['2 - Registar', 2]], 
+					{}, 
+					class: 'form-control' %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :tiss, "TISS 28", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.select :tiss, 
 					[['0 - Sem acesso', 0], 
 					['1 - Visualizar', 1], 
 					['2 - Registar', 2]], 

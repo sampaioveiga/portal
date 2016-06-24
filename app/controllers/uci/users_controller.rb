@@ -1,14 +1,10 @@
 class Uci::UsersController < ApplicationController
-	#before_action devise
-	#before_action pundit
+	before_action :check_authorization
 	before_action :load_users
-	#after_action pundit
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
-		@users = User.joins(:uci_user).order(:nome_utilizador)
 		@user = UciUser.new
-		users = @users.pluck(:user_id)
-		@users_collection = User.where.not(id: users).order(:nome_utilizador)
 	end
 
 	def create
@@ -42,9 +38,10 @@ class Uci::UsersController < ApplicationController
 	def uci_user_params
 		params.require(:uci_user).permit(
 			:user_id,
-			:supervisor,
 			:wounds,
-			:catheters
+			:devices,
+			:tiss,
+			:supervisor
 		)
 	end
 
@@ -52,5 +49,9 @@ class Uci::UsersController < ApplicationController
 		@users = User.joins(:uci_user).order(:nome_utilizador)
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)
+	end
+
+	def check_authorization
+		authorize [:uci, User]
 	end
 end

@@ -1,0 +1,77 @@
+<ul class="nav nav-pills nav-stacked">
+	<li role="presentation" class=<%= 'active' if current_page?(patients_path) %>>
+		<%= link_to patients_path() do %>
+			<span class="glyphicon glyphicon-list" aria-hidden="true"></span> Doentes
+		<% end %>
+	</li>
+
+	<%- if controller_name == 'patients' && action_name == 'show' %>
+
+		<!-- novo dispositvos -->
+		<% if policy([:uci, UciDevice]).create? %>
+			<li role="presentation">
+				<a href="#" data-toggle="modal" data-target="#newDeviceModal">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registar dispositivo
+				</a>
+			</li>
+		<% end %>
+
+		<!-- nova ferida -->
+		<% if policy([:uci, UciWound]).create? %>
+			<li role="presentation">
+				<a href="#" data-toggle="modal" data-target="#newWoundModal">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registar ferida
+				</a>
+			</li>
+		<% end %>
+
+		<!-- nova TISS -->
+		<% if policy([:uci, UciTissValue]).create? %>
+			<li role="presentation">
+				<a href="#" data-toggle="modal" data-target="#newTissModal">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registar TISS
+				</a>
+			</li>
+		<% end %>
+	<% end %>
+
+	<!-- Device types -->
+	<% if policy([:uci, UciDevice]).create? %>
+		<li role="presentation" class=<%= 'active' if current_page?(device_types_path) %>>
+			<%= link_to device_types_path() do %>
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Ver dispositivos
+			<% end %>
+		</li>
+	<% end %>
+
+	<!-- wounds types -->
+	<% if policy([:uci, UciWound]).create? %>
+		<li role="presentation" class=<%= 'active' if current_page?(wound_types_path) %>>
+			<%= link_to wound_types_path() do %>
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Ver feridas
+			<% end %>
+		</li>
+		<li role="presentation" class=<%= 'active' if current_page?(body_parts_path) %>>
+			<%= link_to body_parts_path() do %>
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Ver partes do corpo
+			<% end %>
+		</li>
+	<% end %>
+
+	<% if policy([:uci, User]).index? %>
+		<li role="presentation" class=<%= 'active' if current_page?(uci_users_path) %>>
+			<%= link_to uci_users_path() do %>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Utilizadores
+			<% end %>
+		</li>
+	<% end %>
+
+	<!-- Cancel action if edit or new  -->
+	<%- if action_name == 'edit' || action_name == 'new' %>
+		<li role="presentation">
+			<%= link_to :back, class: 'text-muted' do %>
+				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Cancelar
+			<% end %>
+		</li>
+	<% end %>
+</ul>
