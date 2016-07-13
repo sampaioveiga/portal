@@ -1,7 +1,9 @@
 <div role="tabpanel" class="tab-pane fade" id="tiss">
 
-	<div class="col-md-12">
-		<%= line_chart @patient.uci_tiss_values.group_by_day(:data).sum(:valor), width: "100%" unless @patient.uci_tiss_values.count == 0 %>
+	<div class="row">
+		<div class="col-md-12">
+		<%= line_chart @patient.uci_tiss_values.group_by_day(:data).sum(:valor), width:"100%", height: "100%" unless @patient.uci_tiss_values.count == 0 %>
+		</div>
 	</div>
 
 	<table class="table">
@@ -16,6 +18,7 @@
 			<%= render @patient.uci_tiss_values.order(data: :desc) %>
 		</tbody>
 	</table>
+
 </div>
 
 <div class="modal fade" id="newTissModal" tabindex="-1" role="dialog">
