@@ -1,6 +1,6 @@
 <div role="tabpanel" class="tab-pane fade" id="tiss">
 	<div class="row">
-		<div class="col-md-5">
+		<div class="col-md-6">
 			<table class="table">
 				<thead>
 					<tr>
@@ -14,7 +14,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-6">
 			<%= line_chart @patient.uci_tiss_values.group_by_day(:data, last: 30).sum(:valor), width: "100%" unless @patient.uci_tiss_values.count == 0 %>
 		</div>
 	</div>
