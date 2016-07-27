@@ -1,9 +1,8 @@
 class WoundTypesController < ApplicationController
-	#devise
-	#pundit
+	before_action :check_authorization
 	before_action :load_wound_types, only: [ :index, :create ]
 	before_action :set_wound_type, only: [ :edit, :update ]
-	#after pundit
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@wound_type = WoundType.new
@@ -46,6 +45,10 @@ class WoundTypesController < ApplicationController
 
 	def set_wound_type
 		@wound_type = WoundType.find(params[:id])
+	end
+
+	def check_authorization
+		authorize WoundType
 	end
 
 end

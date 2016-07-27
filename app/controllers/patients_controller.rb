@@ -21,6 +21,10 @@ class PatientsController < ApplicationController
 		end
 	end
 
+	def map_tiss_28
+		@tiss = UciTissValue.day(Date.yesterday).includes(:patient)
+	end
+
 	def new
 		@patient = Patient.new
 		@patient.numero_processo_sonho = params[:numero_processo_sonho]
@@ -31,7 +35,7 @@ class PatientsController < ApplicationController
 
 		if @patient.save
 			flash[:success] = "Doente criado"
-			redirect_to patients_path()
+			redirect_to patient_path(@patient)
 		else
 			render :new
 		end
@@ -43,7 +47,7 @@ class PatientsController < ApplicationController
 	def update
 		if @patient.update(patient_params)
 			flash[:success] = "Ficha atualizada"
-			redirect_to @patient
+			redirect_to patient_path(@patient)
 		else
 			render :edit
 		end

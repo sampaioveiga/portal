@@ -3,22 +3,26 @@ class WoundTypePolicy < ApplicationPolicy
 
 	def initialize(current_user, model)
 		@current_user = current_user
-		@user = model
+		@wound_type = model
+	end
+
+	def index?
+		@current_user.uci_user.supervisor?
 	end
 
 	def show?
-		(@current_user.uci_user.present? && @current_user.uci_user.wounds == 2)
+		@current_user.uci_user.supervisor?
 	end
 
 	def create?
-		(@current_user.uci_user.present? && @current_user.uci_user.wounds == 2)
+		@current_user.uci_user.supervisor?
 	end
 
 	def edit?
-		(@current_user.uci_user.present? && @current_user.uci_user.wounds == 2)
+		@current_user.uci_user.supervisor?
 	end
 
 	def update?
-		(@current_user.uci_user.present? && @current_user.uci_user.wounds == 2)
+		@current_user.uci_user.supervisor?
 	end
 end

@@ -1,9 +1,8 @@
 class DeviceTypesController < ApplicationController
-	#devise
-	#pundit
+	before_action :check_authorization
 	before_action :new_device_type, only: [ :index, :new ]
 	before_action :load_device_type, only: [ :edit, :update ]
-	# after pundit
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
 
 	def index
 		@device_types = DeviceType.order(:nome_dispositivo)
@@ -49,5 +48,9 @@ class DeviceTypesController < ApplicationController
 
 	def load_device_type
 		@device_type = DeviceType.find(params[:id])
+	end
+
+	def check_authorization
+		authorize DeviceType
 	end
 end

@@ -9,4 +9,8 @@ class Uci::PatientPolicy < ApplicationPolicy
 	def show?
 		@current_user.uci_user.present?
 	end
+
+	def processo_sonho?
+		@current_user.uci_user.present?
+	end
 end

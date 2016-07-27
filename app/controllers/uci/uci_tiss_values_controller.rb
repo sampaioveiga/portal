@@ -1,16 +1,15 @@
 class Uci::UciTissValuesController < ApplicationController
-	#pundit
-
-	#fet pundit
+	before_action :check_auhorization
+	after_action :verify_authorized, only: [ :create ]
 
 	def create
 		@patient = Patient.find(params[:patient_id])
 		if @patient.uci_tiss_values.create(uci_tiss_value_params)
 			flash[:success] = "TISS calculado"
-			redirect_to uci_patient_path(@patient)
+			redirect_to patient_path(@patient)
 		else
 			flash[:danger] = "Erro"
-			redirect_to uci_patient_path(@patient)
+			redirect_to patient_path(@patient)
 		end
 	end
 
@@ -50,5 +49,9 @@ class Uci::UciTissValuesController < ApplicationController
 			:b7_q2,
 			:b7_q3
 		)
+	end
+
+	def check_auhorization
+		authorize [:uci, UciTissValue]
 	end
 end

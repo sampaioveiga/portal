@@ -1,9 +1,8 @@
 class BodyPartsController < ApplicationController
-	# devise
-	# pundit
+	before_action :check_authorization
 	before_action :load_body_parts, only: [ :index, :create ]
 	before_action :set_body_part, only: [ :edit, :update ]
-	# after pundit
+	after_action :verify_authorized, only: [ :index, :edit, :update ]
 
 	def index
 		@body_parts = BodyPart.order('parte_do_corpo')
@@ -47,5 +46,9 @@ class BodyPartsController < ApplicationController
 
 	def set_body_part
 		@body_part = BodyPart.find(params[:id])
+	end
+
+	def check_authorization
+		authorize BodyPart
 	end
 end

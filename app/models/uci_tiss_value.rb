@@ -1,7 +1,6 @@
 class UciTissValue < ActiveRecord::Base
 	belongs_to :patient
 	belongs_to :user
-
 	before_save :calculate_valor
 
 	validates :user_id,
@@ -10,6 +9,8 @@ class UciTissValue < ActiveRecord::Base
 		presence: true,
 		date: true,
 		uniqueness: { scope: [:patient_id], message: "já tem avaliação"}
+
+	scope :day, ->(time) { where("data = ?", time) }
 
 	private
 

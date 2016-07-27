@@ -3,14 +3,35 @@
 </aside>
 <div class="col-md-10">
 	<h1><small>Ficha</small> <%= @patient.nome %></h1>
-	<dl class="dl-horizontal">
-		<dt>Processo</dt>
-		<dd><%= @patient.numero_processo_sonho %></dd>
-		<dt>Data de nascimento</dt>
-		<dd><%= @patient.data_nascimento %></dd>
-		<dt>Idade</dt>
-		<dd><%= distance_of_time_in_words_to_now(@patient.data_nascimento) %></dd>
-		<dt>RNU</dt>
-		<dd><%= @patient.rnu %></dd>
-	</dl>
+
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+
+		<!-- Identificação -->
+		<li role="presentation" class="active"><a href="#id" aria-controls="id" role="tab" data-toggle="tab">Identificação</a></li>
+		
+		<!-- Dispositivos -->
+		<% if policy([:uci, UciDevice]).show? %>
+			<li role="presentation"><a href="#devices" aria-controls="cateteres" role="tab" data-toggle="tab">Dispositivos</a></li>
+		<% end %>
+		
+		<!-- Feridas -->
+		<% if policy([:uci, UciWound]).show? %>
+			<li role="presentation"><a href="#wounds" aria-controls="feridas" role="tab" data-toggle="tab">Feridas</a></li>
+		<% end %>
+
+		<!-- TISS 28 -->
+		<% if policy([:uci, UciTissValue]).show? %>
+			<li role="presentation"><a href="#tiss" aria-controls="settings" role="tab" data-toggle="tab">TISS 28</a></li>
+		<% end %>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<%= render 'id' %> <!-- Identificacao -->
+		<%= render 'devices' if policy([:uci, UciDevice]).show? %> <!-- Dispositivos -->
+		<%= render 'wounds' if policy([:uci, UciWound]).show? %> <!-- Feridas -->
+		<%= render 'tiss' if policy([:uci, UciTissValue]).show? %> <!-- Tiss -->
+	</div>
 </div>
+<%= render 'shared/modal' %>

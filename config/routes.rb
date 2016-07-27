@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
 	# patients
 	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
+	get 'patients/map_tiss_28', to: 'patients#map_tiss_28'
 	resources :patients
 
 	# UCI
 	namespace :uci do
+		#get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
 		resources :patients, only: [ :show ] do
 			resources :uci_devices
 			resources :uci_wounds

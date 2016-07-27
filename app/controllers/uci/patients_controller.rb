@@ -7,6 +7,15 @@ class Uci::PatientsController < ApplicationController
 		@patient = Patient.find(params[:id])
 	end
 
+	def processo_sonho
+		@patient = Patient.find_by(numero_processo_sonho: params[:id])
+		if @patient.nil?
+			redirect_to new_patient_path(numero_processo_sonho: params[:id])
+		else
+			render :show
+		end
+	end
+
 	private
 
 	def patient_params

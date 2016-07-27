@@ -1,0 +1,15 @@
+<tr>
+	<td>
+		<% if policy([:Uci, UciWound]).edit? %>
+			<%= link_to uci_wound.wound_type.ferida, edit_uci_patient_uci_wound_path(@patient, uci_wound), remote: true %>
+		<% else %>
+			<%= uci_wound.wound_type.ferida %>
+		<% end %>
+	</td>
+	<td><%= uci_wound.body_part.parte_do_corpo %></td>
+	<td><%= uci_wound.data_registo %></td>
+	<td><%= uci_wound.origem %></td>
+	<td><%= 'Sim' if uci_wound.complicacoes %></td>
+	<td><%= 'Sim' if uci_wound.antibioticos %></td>
+	<td><%= uci_wound.observacoes %></td>
+</tr>

@@ -4,4 +4,8 @@
 <div class="col-md-10">
 	<h1>Editar <%= @user.user.nome_utilizador %></h1>
 	<%= render 'form' %>
+	<%= link_to "Eliminar", uci_user_path(@user),
+				method: :delete,
+				data: { confirm: 'Tem a certeza que deseja eliminar o utilizador?' },
+				class: 'btn btn-danger' %>
 </div>

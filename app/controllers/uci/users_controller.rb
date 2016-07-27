@@ -1,7 +1,8 @@
 class Uci::UsersController < ApplicationController
 	before_action :check_authorization
+	before_action :find_user, only: [ :edit, :update, :destroy ]
 	before_action :load_users
-	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]
+	after_action :verify_authorized, only: [ :index, :create, :edit, :update, :destroy ]
 
 	def index
 		@user = UciUser.new
@@ -19,11 +20,9 @@ class Uci::UsersController < ApplicationController
 	end
 
 	def edit
-		@user = UciUser.find(params[:id])
 	end
 
 	def update
-		@user = UciUser.find(params[:id])
 
 		if @user.update(uci_user_params)
 			flash[:success] = "Permissões do utilizador atualizadas"
@@ -31,6 +30,12 @@ class Uci::UsersController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@user.destroy
+		flash[:success] = "Utilizador eliminado"
+		redirect_to uci_users_url
 	end
 
 	private
@@ -49,6 +54,10 @@ class Uci::UsersController < ApplicationController
 		@users = User.joins(:uci_user).order(:nome_utilizador)
 		users = @users.pluck(:user_id)
 		@users_collection = User.where.not(id: users).order(:nome_utilizador)
+	end
+
+	def find_user
+		@user = UciUser.find(params[:id])
 	end
 
 	def check_authorization

@@ -3,7 +3,7 @@ class PatientPolicy < ApplicationPolicy
 
 	def initialize(current_user, model)
 		@current_user = current_user
-		@user = model
+		@patient = model
 	end
 
 	def index?
@@ -16,6 +16,10 @@ class PatientPolicy < ApplicationPolicy
 
 	def processo_sonho?
 		@current_user.uci_user.present?
+	end
+
+	def map_tiss_28?
+		@current_user.uci_user.present? && @current_user.uci_user.supervisor?
 	end
 
 	def new?
