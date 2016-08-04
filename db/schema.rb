@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624102955) do
+ActiveRecord::Schema.define(version: 20160801160727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,6 +209,36 @@ ActiveRecord::Schema.define(version: 20160624102955) do
   add_index "patients", ["nif"], name: "index_patients_on_nif", using: :btree
   add_index "patients", ["numero_processo_sonho"], name: "index_patients_on_numero_processo_sonho", using: :btree
   add_index "patients", ["rnu"], name: "index_patients_on_rnu", using: :btree
+
+  create_table "pneumo_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "nivel_acesso"
+    t.boolean  "supervisor",   default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "pneumo_users", ["user_id"], name: "index_pneumo_users_on_user_id", using: :btree
+
+  create_table "pneumology_forms", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "patient_id"
+    t.date     "data"
+    t.decimal  "peso"
+    t.integer  "ta_s"
+    t.integer  "ta_d"
+    t.integer  "pulso"
+    t.integer  "o2"
+    t.boolean  "inaladores",                default: false, null: false
+    t.string   "tecnica_inalatoria_antes"
+    t.string   "tecnica_inalatoria_depois"
+    t.string   "observacoes"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "pneumology_forms", ["patient_id"], name: "index_pneumology_forms_on_patient_id", using: :btree
+  add_index "pneumology_forms", ["user_id"], name: "index_pneumology_forms_on_user_id", using: :btree
 
   create_table "satisf_surv_surveys", force: :cascade do |t|
     t.integer  "user_id"
@@ -468,4 +498,7 @@ ActiveRecord::Schema.define(version: 20160624102955) do
 
   add_index "wound_types", ["ferida"], name: "index_wound_types_on_ferida", using: :btree
 
+  add_foreign_key "pneumo_users", "users"
+  add_foreign_key "pneumology_forms", "patients"
+  add_foreign_key "pneumology_forms", "users"
 end

@@ -1,0 +1,25 @@
+<div class="col-md-12 panel panel-default">
+	<%= render 'shared/menu_patients' %>
+</div>
+<div class="col-md-10 col-md-offset-1">
+	<h1>Utilizadores pneumologia</h1>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Acesso</th>
+				<th>Supervisor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |u| %>
+				<tr>
+					<td><%= u.nome_utilizador %></td>
+					<td><%= u.pneumo_user.nivel_acesso %></td>
+					<td><%= 'Sim' if u.pneumo_user.supervisor %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

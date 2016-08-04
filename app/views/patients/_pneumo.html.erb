@@ -1,0 +1,18 @@
+<div role="tabpanel" class="tab-pane fade" id="pneumo">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Data</th>
+				<th>Utilizador</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @patient.pneumology_forms.each do |pf| %>
+				<tr>
+					<td><%= pf.data %></td>
+					<td><%= pf.user.nome_utilizador %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

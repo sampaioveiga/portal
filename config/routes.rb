@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 	# patients
 	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
 	get 'patients/map_tiss_28', to: 'patients#map_tiss_28'
-	resources :patients
+	resources :patients do
+		resources :pneumology_forms
+		resources :uci_tiss_values
+	end
 
 	# UCI
 	namespace :uci do
@@ -23,6 +26,11 @@ Rails.application.routes.draw do
 			resources :uci_wounds
 			resources :uci_tiss_values
 		end
+		resources :users
+	end
+
+	# Pneumo
+	namespace :pneumo do
 		resources :users
 	end
 

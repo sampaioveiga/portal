@@ -2,6 +2,7 @@ class Patient < ActiveRecord::Base
 	has_many :uci_devices
 	has_many :uci_wounds
 	has_many :uci_tiss_values
+	has_many :pneumology_forms
 
 	validates :nome,
 		presence: true

@@ -1,0 +1,41 @@
+<%= form_for(@user, html: { class: 'form-horizontal'}) do |f| %>
+	<%= render 'shared/error_messages', obj: @user %>
+		
+	<div class="form-group">
+		<%= f.label :user_id, "Utilizador", class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<%= f.collection_select(:user_id, @users_collection, :id, :nome_utilizador, {}, class: 'form-control') %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :nivel_acesso, "Nível acesso", class: 'control-label col-md-3' %>
+		<div class="col-md-9">
+			<%= f.select :nivel_acesso, 
+				[['0 - Sem acesso', 0], 
+				['1 - Utilizador', 1], 
+				['2 - Supervisor', 2]], 
+				{}, 
+				class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+			<%= f.label :supervisor, "Supervisor", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-default <%= 'active' unless @user.supervisor %>">
+						<input type="radio" name="pneumo_user[supervisor]" id="pneumo_user_supervisor_nao" value="false" autocomplete="off" checked> Não
+					</label>
+					<label class="btn btn-default <%= 'active' if @user.supervisor %>">
+						<input type="radio" name="pneumo_user[supervisor]" id="pneumo_user_supervisor_sim" value="true" autocomplete="off"> Sim
+					</label>
+				</div>
+			</div>
+		</div>
+
+	<div class="col-md-offset-3 col-md-2">
+		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+	</div>
+		
+<% end %>
