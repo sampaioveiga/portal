@@ -1,0 +1,11 @@
+<p><small>E-mail</small> <%= @user.email %></p>
+
+<% @user.user_phone_numbers.each do |phone| %>
+	<p><small>Telefone</small> <%= phone.numero_contacto %></p>
+<% end %>
+
+<% @user.ulsne_departments.each do |dep| %>
+	<p><small>Serviço</small> <%= dep.nome_servico %></p>
+<% end %>
+
+<p><small>Unidade</small> <%= @user.ulsne_site.nome_unidade %></p>

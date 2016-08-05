@@ -1,0 +1,18 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Gabinete</th>
+			<th>Número</th>
+			<th>Unidade</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @ulsne_department.office_phone_numbers.each do |phone| %>
+			<tr>
+				<td><%= phone.nome_gabinete %></td>
+				<td><%= phone.numero_gabinete %></td>
+				<td><%= phone.ulsne_site.nome_unidade %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

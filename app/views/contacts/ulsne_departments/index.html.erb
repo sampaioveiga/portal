@@ -1,7 +1,8 @@
-<aside class="col-md-3">
+<div class="col-md-12 panel panel-default">
 	<%= render 'shared/menu_contacts' %>
-</aside>
-<div class="col-md-9">
+</div>
+
+<div class="col-md-10 col-md-offset-1">
 
 	<h1>Serviços</h1>
 	
@@ -13,7 +14,7 @@
 			<% @ulsne_departments.each do |ulsne_department| %>
 				<tr>
 					<td>
-						<%= link_to ulsne_department.nome_servico, contacts_ulsne_department_path(ulsne_department) %>
+						<%= link_to ulsne_department.nome_servico, contacts_ulsne_department_path(ulsne_department), remote: true %>
 					</td>
 				</tr>
 			<% end %>
@@ -21,3 +22,4 @@
 	</table>
 
 </div>
+<%= render 'shared/modal' %>

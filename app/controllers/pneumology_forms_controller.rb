@@ -1,7 +1,12 @@
 class PneumologyFormsController < ApplicationController
 	before_action :check_authorization
 	before_action :preriquisites, only: [ :new, :create ]
+	before_action :load_pneumo_form, only: [ :show, :edit, :update ]
 	#after_action 
+
+	def show
+		@patient = @pneumology_form.patient
+	end
 
 	def new
 		@pneumology_form = PneumologyForm.new
@@ -22,6 +27,13 @@ class PneumologyFormsController < ApplicationController
 		end
 	end
 
+	def edit
+		@patient = @pneumology_form.patient
+	end
+
+	def update
+	end
+
 	private
 
 	def pneumology_form_params
@@ -39,6 +51,10 @@ class PneumologyFormsController < ApplicationController
 			:tecnica_inalatoria_depois,
 			:observacoes
 		)
+	end
+
+	def load_pneumo_form
+		@pneumology_form = PneumologyForm.find(params[:id])
 	end
 
 	def preriquisites

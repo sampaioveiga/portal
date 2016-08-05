@@ -1,0 +1,120 @@
+<%= form_for([@patient, @pneumology_form], html: { class: 'form-horizontal' }) do |f| %>
+
+	<%= render 'shared/error_messages', obj: @pneumology_form %>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<dl class="dl-horizontal col-md-6">
+				<dt>Nome</dt>
+				<dd><%= @patient.nome %></dd>
+				<dt>Processo</dt>
+				<dd><%= @patient.numero_processo_sonho %></dd>
+				<dt>Idade</dt>
+				<dd><%= distance_of_time_in_words_to_now(@patient.data_nascimento) %></dd>
+			</dl>
+			
+			<div class="form-group col-md-6">
+				<%= f.label :data, class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<%= f.date_field :data, class: 'form-control' %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Avaliação dos parâmetros vitais</div>
+		<div class="panel-body">
+				
+			<div class="form-group col-md-6">
+				<%= f.label :peso, "Peso(Kg)", class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<%= f.number_field :peso, class: 'form-control' %>
+				</div>
+			</div>
+				
+			<div class="form-group col-md-6">
+				<%= f.label :pulso, "Pulso(bat/min)", class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<%= f.number_field :pulso, class: 'form-control' %>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<%= f.label :ta_d, "TA(mmHH)", class: 'col-md-6 control-label' %>
+				<div class="col-md-3">
+					<%= f.number_field :ta_s, class: 'form-control' %>
+				</div>
+				<div class="col-md-3">
+					<%= f.number_field :ta_d, class: 'form-control' %>
+				</div>
+			</div>
+				
+			<div class="form-group col-md-6">
+				<%= f.label :o2, "Sat. O2(%)", class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<%= f.number_field :o2, class: 'form-control' %>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<%= f.label :inaladores, class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default active">
+							<input type="radio" name="pneumology_form[inaladores]" id="pneumology_form_inaladores_nao" value="0" autocomplete="off" checked> Não
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="pneumology_form[inaladores]" id="pneumology_form_inaladores_sim" value="1" autocomplete="off"> Sim
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Técnica inalatória</div>
+		<div class="panel-body">
+
+			<div class="form-group col-md-6">
+				<%= f.label :tecnica_inalatoria_antes, "Técnica inalatória antes", class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default active">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_antes]" id="pneumology_form_tecnica_inalatoria_antes_ma" value="Má" autocomplete="off" checked> Má
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_antes]" id="pneumology_form_tecnica_inalatoria_antes_razoavel" value="Razoável" autocomplete="off" checked> Razoável
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_antes]" id="pneumology_form_tecnica_inalatoria_antes_boa" value="Boa" autocomplete="off" checked> Boa
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<%= f.label :tecnica_inalatoria_depois, "Técnica inalatória depois", class: 'col-md-6 control-label' %>
+				<div class="col-md-6">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default active">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_depois]" id="pneumology_form_tecnica_inalatoria_depois_ma" value="Má" autocomplete="off" checked> Má
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_depois]" id="pneumology_form_tecnica_inalatoria_depois_razoavel" value="Razoável" autocomplete="off" checked> Razoável
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="pneumology_form[tecnica_inalatoria_depois]" id="pneumology_form_tecnica_inalatoria_depois_boa" value="Boa" autocomplete="off" checked> Boa
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-offset-3 col-md-9">
+		<%= f.submit 'Submeter', class: 'btn btn-primary' %>
+	</div>
+
+<% end %>

@@ -1,0 +1,4 @@
+$('#modalTitle').html("Data: <%= @pneumology_form.data %>")
+$('#modalBody').html('<%= j render 'show' %>')
+$('#modalFooter').html('<%= link_to 'Editar', edit_patient_pneumology_form_path(@patient, @pneumology_form), class: "btn btn-default" %><button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>')
+$('#modal').modal()

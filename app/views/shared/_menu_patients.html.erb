@@ -17,8 +17,6 @@
 				<!-- Pneumo -->
 				
 				<% if policy(PneumologyForm).create? %>
-					<li role="separator" class="divider"></li>
-					<li class="dropdown-header">Pneumologia</li>
 					
 					<li role="presentation">
 						<%= link_to "Consulta de pneumologia", new_patient_pneumology_form_path(@patient) %>

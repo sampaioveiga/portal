@@ -1,0 +1,17 @@
+<ul class="list-inline">
+	<li><strong>Sinais vitais</strong></li>
+	<li><small>Peso: </small><%= @pneumology_form.peso %>Kg</li>
+	<li><small>TA: </small><%= @pneumology_form.ta_s %>/<%= @pneumology_form.ta_d %>mmHH</li>
+	<li><small>Pulso: </small><%= @pneumology_form.pulso %>bat/min</li>
+	<li><small>Sa. O2: </small><%= @pneumology_form.o2 %>%</li>
+</ul>
+
+<ul class="list-inline">
+	<li><strong>Técnica inalatória</strong></li>
+	<li><small>Antes: </small><%= @pneumology_form.tecnica_inalatoria_antes %></li>
+	<li><small>Depois: </small><%= @pneumology_form.tecnica_inalatoria_depois %></li>
+</ul>
+<dl class="dl-horizontal">
+	<dt>Peso</dt>
+	<dd><%= @pneumology_form.peso %></dd>
+</dl>

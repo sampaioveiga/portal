@@ -9,7 +9,7 @@
 		<tbody>
 			<% @patient.pneumology_forms.each do |pf| %>
 				<tr>
-					<td><%= pf.data %></td>
+					<td><%= link_to pf.data, patient_pneumology_form_path(@patient, pf), remote: true %></td>
 					<td><%= pf.user.nome_utilizador %></td>
 				</tr>
 			<% end %>
