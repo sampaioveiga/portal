@@ -1,3 +1,4 @@
+
 class PneumologyFormsController < ApplicationController
 	before_action :check_authorization
 	before_action :preriquisites, only: [ :new, :create ]
