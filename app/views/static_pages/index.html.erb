@@ -33,8 +33,16 @@
 			<% end %>
 		</div>
 	</div>
-	
+
 	<div class="col-md-5">
+		<div class="panel panel-default">
+			<%= link_to patients_path() do %>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-bed"></span></small> Formulários Doentes</h1>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="col-md-7">
 		<div class="panel panel-default">
 			<%= link_to root_url() do %>
 				<h1 class="text-center"><small><span class="glyphicon glyphicon-question-sign"></span></small> Inquérito de satisfação</h1>
@@ -50,22 +58,12 @@
 			<% end %>
 		</div>
 	</div>
-	
-	<div class="col-md-7">
-		<div class="panel panel-default">
-			<%= link_to patients_path() do %>
-				<h1 class="text-center"><small><span class="glyphicon glyphicon-bed"></span></small> SMI</h1>
-			<% end %>
-		</div>
-	</div>
 
-	<!--
 	<div class="col-md-5">
 		<div class="panel panel-default">
 			<%= link_to root_url() do %>
-				<h1 class="text-center"><small><span class="glyphicon glyphicon-time"></span></small> </h1>
+				<h1 class="text-center"><small><span class="glyphicon glyphicon-asterisk"></span></small> </h1>
 			<% end %>
 		</div>
 	</div>
-	-->
 </div>

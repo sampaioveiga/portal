@@ -1,5 +1,5 @@
 <ul class="nav nav-pills">
-	<li role="presentation">
+	<li role="presentation" class=<%= 'active' if current_page?(patients_path) %>>
 		<%= link_to patients_path() do %>
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Procurar
 		<% end %>
