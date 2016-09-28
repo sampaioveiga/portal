@@ -1,7 +1,8 @@
-<aside class="col-md-2">
+<div class="col-md-12 panel panel-default">
 	<%= render "devise/shared/links" %>
-</aside>
-<div class="col-md-10">
+</div>
+
+<div class="col-md-10 col-md-offset-1">
 	<h1>Reenviar instruções de desbloqueio</h1>
 
 	<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f| %>

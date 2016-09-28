@@ -1,7 +1,8 @@
-<aside class="col-md-2">
-	<%= render 'shared/menu_contacts' %>
-</aside>
-<div class="col-md-10">
+<div class="col-md-12 panel panel-default">
+	<%= render "devise/shared/links" %>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
 	<h1>Editar Perfil</h1>
 
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>

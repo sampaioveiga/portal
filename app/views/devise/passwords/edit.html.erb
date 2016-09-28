@@ -1,7 +1,8 @@
-<aside class="col-md-3">
+<div class="col-md-12 panel panel-default">
 	<%= render "devise/shared/links" %>
-</aside>
-<div class="col-md-9">
+</div>
+
+<div class="col-md-10 col-md-offset-1">
 	<h2>Alterar a senha</h2>
 
 	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>

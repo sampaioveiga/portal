@@ -20,7 +20,7 @@
 		<div class="form-group">
 			<%= f.label :numero_mecanografico, "Número mecanográfico", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
-				<%= f.text_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
+				<%= f.number_field :numero_mecanografico, placeholder: '5 digitos', class: 'form-control' %>
 			</div>
 		</div>
 		
@@ -47,7 +47,7 @@
 							<%= render 'user_phone_number_fields', f: user_phone_number %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-success' %>
 						</div>
 						<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 					</div>
@@ -64,7 +64,7 @@
 							<%= render 'u2d_association_fields', f: u2d_association %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
+							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-success' %>
 						</div>
 					</div>
 				</div>
