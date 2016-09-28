@@ -2,6 +2,7 @@
 
 	<%= render 'shared/error_messages', obj: @pneumology_form %>
 
+	<!-- Identificação -->
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<dl class="dl-horizontal col-md-6">
@@ -22,10 +23,10 @@
 		</div>
 	</div>
 
+	<!-- Sinais vitais-->
 	<div class="panel panel-default">
 		<div class="panel-heading">Avaliação dos parâmetros vitais</div>
 		<div class="panel-body">
-				
 			<div class="form-group col-md-6">
 				<%= f.label :peso, "Peso(Kg)", class: 'col-md-6 control-label' %>
 				<div class="col-md-6">
@@ -73,12 +74,39 @@
 		</div>
 	</div>
 
+	<!-- Dispositivos inalatorios -->
+	<div id="test" class="panel panel-default">
+		<div class="panel-heading">Ensino do uso de dispositivos inalatórios</div>
+		<div id="dispositivos-inalatorios" class="panel-body">
+			<p><a href="#test" id="pressurizados-btn" class="btn btn-default">Adicionar dispositivo</a></p>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+    $("#pressurizados-btn").click(function(){
+      $("#dispositivos-inalatorios").append(`
+      						<p>
+      							<select name="dispositivos-inalatorios" class="form-control">
+      								<option value="Ventilan">Pressurizados - Ventilan</option>
+      								<option value="Câmaras expansoras">Pressurizados - Câmaras expansoras</option>
+      								<option value="Onbrez">Breezehaler - Onbrez</option>
+      								<option value="Oslif">Breezehaler - Oslif</option>
+      								<option value="Onbrez">hadihaler - Spiriva (Tiotrópio):</option>
+      								<option value="Oslif">hadihaler - Spiriva Respimat:</option>
+      							</select>
+      						</p>`);
+    });
+	});
+</script>
+
+	<!-- Tecnica inalatória -->
 	<div class="panel panel-default">
 		<div class="panel-heading">Técnica inalatória</div>
 		<div class="panel-body">
 
 			<div class="form-group col-md-6">
-				<%= f.label :tecnica_inalatoria_antes, "Técnica inalatória antes", class: 'col-md-6 control-label' %>
+				<%= f.label :tecnica_inalatoria_antes, "Antes", class: 'col-md-6 control-label' %>
 				<div class="col-md-6">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default active">
@@ -95,7 +123,7 @@
 			</div>
 
 			<div class="form-group col-md-6">
-				<%= f.label :tecnica_inalatoria_depois, "Técnica inalatória depois", class: 'col-md-6 control-label' %>
+				<%= f.label :tecnica_inalatoria_depois, "Depois", class: 'col-md-6 control-label' %>
 				<div class="col-md-6">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default active">
@@ -113,6 +141,7 @@
 		</div>
 	</div>
 
+	<!-- Medicação e observações -->
 	<div class="panel panel-default">
 		<div class="panel-heading">Medicação/Observações</div>
 		<div class="panel-body">
@@ -122,13 +151,12 @@
 					<%= f.text_area :observacoes, class: 'form-control' %>
 				</div>
 			</div>
-
-			<div class="col-md-offset-3 col-md-9">
-				<%= f.submit 'Submeter', class: 'btn btn-primary' %>
-				<%= link_to "Cancelar", :back, class: 'btn btn-default' %>
-			</div>
-			
 		</div>
+	</div>
+			
+	<div class="col-md-offset-3 col-md-9">
+		<%= f.submit 'Submeter', class: 'btn btn-primary' %>
+		<%= link_to "Cancelar", :back, class: 'btn btn-default' %>
 	</div>
 
 <% end %>
