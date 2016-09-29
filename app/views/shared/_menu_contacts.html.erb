@@ -1,21 +1,19 @@
 <ul class="nav nav-pills">
 	<li role="presentation" class=<%= 'active' if current_page?(contacts_users_path) %>>
 		<%= link_to contacts_users_path() do %>
-			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Colaboradores
+			<i class="fa fa-male"></i> Colaboradores
 		<% end %>
 	</li>
 
 	<li role="presentation" class=<%= 'active' if current_page?(contacts_ulsne_departments_path) %>>
 		<%= link_to contacts_ulsne_departments_path() do %>
-			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 
-			Serviços
+			<i class="fa fa-users"></i> Serviços
 		<% end %>
 	</li>
 
 	<li role="presentation" class=<%= 'active' if current_page?(contacts_ulsne_sites_path) %>>
 		<%= link_to contacts_ulsne_sites_path() do %>
-			<span class="glyphicon glyphicon-list" aria-hidden="true"></span> 
-			Unidades
+			<i class="fa fa-building-o"></i> Unidades
 		<% end %>
 	</li>
 	
@@ -36,20 +34,24 @@
 	<!-- If admin  -->
 	<li role="presentation" class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				<i class="fa fa-plus"></i>
 				Inserir <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
 			
 			<%- if policy(:ulsne_department).new? %>
 				<li role="presentation">
-					<%= link_to "Serviço", new_contacts_ulsne_department_path() %>
+					<%= link_to new_contacts_ulsne_department_path() do %>
+						<i class="fa fa-users"></i> Serviço
+					<% end %>
 				</li>
 			<% end %>
 
 			<%- if policy(:ulsne_site).new? %>
 				<li role="presentation">
-					<%= link_to "Unidade", new_contacts_ulsne_site_path() %>
+					<%= link_to new_contacts_ulsne_site_path() do %>
+						<i class="fa fa-building-o"></i> Unidade
+					<% end %>
 				</li>
 			<% end %>
 		</ul>

@@ -16,7 +16,7 @@ class Contacts::UlsneSitesController < ApplicationController
 
 		if @ulsne_site.save
 			flash[:success] = "Unidade #{@ulsne_site.nome_unidade} criada"
-			redirect_to root_url()
+			redirect_to contacts_ulsne_sites_path()
 		else
 			render :new
 		end
@@ -28,7 +28,7 @@ class Contacts::UlsneSitesController < ApplicationController
 	def update
 		if @ulsne_site.update(ulsne_site_params)
 			flash[:success] = "Unidade #{@ulsne_site.nome_unidade} atualizada"
-			redirect_to root_url()
+			redirect_to contacts_ulsne_sites_path()
 		else
 			render :edit
 		end

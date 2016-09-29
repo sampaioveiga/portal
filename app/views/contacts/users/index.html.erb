@@ -9,14 +9,14 @@
 		<p>
 			<%= search_form_for [:contacts, @q] do |f| %>
 				<div class="row">
-  				<div class="col-lg-6">
+  				<div class="col-md-12">
     				<div class="input-group">
       				<%= f.search_field :nome_utilizador_cont, placeholder: 'Procurar contacto', class: 'form-control' %>
       				<span class="input-group-btn">
-        				<%= f.submit "?", class: 'btn btn-default' %>
+        				<%= f.submit "Procurar", class: 'btn btn-success' %>
       				</span>
     				</div><!-- /input-group -->
-  				</div><!-- /.col-lg-6 -->
+  				</div><!-- /.col-md-12 -->
 				</div><!-- /.row -->
 			<% end %>
 		</p>

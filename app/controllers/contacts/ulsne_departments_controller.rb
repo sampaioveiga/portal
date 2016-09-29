@@ -21,7 +21,7 @@ class Contacts::UlsneDepartmentsController < ApplicationController
 
 		if @ulsne_department.save
 			flash[:success] = "Serviço #{@ulsne_department.nome_servico} criado"
-			redirect_to ulsne_departments_path()
+			redirect_to contacts_ulsne_departments_path()
 		else
 			render :new
 		end
@@ -33,7 +33,7 @@ class Contacts::UlsneDepartmentsController < ApplicationController
 	def update
 		if @ulsne_department.update(ulsne_department_params)
 			flash[:success] = "Serviço #{@ulsne_department.nome_servico} atualizado"
-			redirect_to ulsne_departments_path()
+			redirect_to contacts_ulsne_departments_path()
 		else
 			render :edit
 		end

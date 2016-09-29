@@ -1,15 +1,12 @@
 <div class="nested-fields">
 	<div class="field col-md-4">
-		<%= f.label :nome_gabinete %>
-		<%= f.text_field :nome_gabinete, class: 'form-control' %>
+		<%= f.text_field :nome_gabinete, placeholder: 'Gabinete', class: 'form-control' %>
 	</div>
-	<div class="field col-md-4"> 
-		<%= f.label :numero_gabinete %>
-		<%= f.number_field :numero_gabinete, class: 'form-control' %>
+	<div class="field col-md-2"> 
+		<%= f.number_field :numero_gabinete, placeholder: 'Número', class: 'form-control' %>
 	</div>
 	<div class="field col-md-4">
-		<%= f.label :ulsne_site_id, "Unidade" %>
 		<%= f.collection_select :ulsne_site_id, @ulsne_sites, :id, :nome_unidade, {}, class: 'form-control' %>
 	</div>
-	<%= link_to_remove_association "Remover número", f, class: 'text-danger' %>
+	<%= link_to_remove_association "Remover", f, class: 'btn btn-danger' %>
 </div>
