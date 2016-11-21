@@ -1,17 +1,28 @@
+<!-- Sinais vitais -->
+<p class="lead">Sinais vitais</p>
 <ul class="list-inline">
-	<li><strong>Sinais vitais</strong></li>
 	<li><small>Peso: </small><%= @pneumology_form.peso %>Kg</li>
 	<li><small>TA: </small><%= @pneumology_form.ta_s %>/<%= @pneumology_form.ta_d %>mmHH</li>
 	<li><small>Pulso: </small><%= @pneumology_form.pulso %>bat/min</li>
 	<li><small>Sa. O2: </small><%= @pneumology_form.o2 %>%</li>
+	<li><small>PEF: </small><%= @pneumology_form.pef %>ml/min</li>
 </ul>
 
+<!-- Dispositivos inalatorios -->
+<p class="lead">Dispositivos inalatórios</p>
+<ul>
+    <% @pneumology_form.pneumo_forms_inhaler_devices.each do |id| %>
+        <li><%= id.pneumo_inhaler_device.pneumo_devices_category.categoria + ' ' +  id.pneumo_inhaler_device.designacao + ' ' + id.pneumo_inhaler_device.dci + ' ' + id.observacao %></li>
+    <% end %>
+</ul>
+
+<!-- Tecnica inalatória -->
+<p class="lead">Técnica inalatória</p>
 <ul class="list-inline">
-	<li><strong>Técnica inalatória</strong></li>
 	<li><small>Antes: </small><%= @pneumology_form.tecnica_inalatoria_antes %></li>
 	<li><small>Depois: </small><%= @pneumology_form.tecnica_inalatoria_depois %></li>
 </ul>
-<dl class="dl-horizontal">
-	<dt>Peso</dt>
-	<dd><%= @pneumology_form.peso %></dd>
-</dl>
+
+<!-- Medicação e observações -->
+<p class="lead">Medicação/Observações</p>
+<p><%= @pneumology_form.observacoes %></p>

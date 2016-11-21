@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801160727) do
+ActiveRecord::Schema.define(version: 20161121124958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "ajudas_tecnicas_contact_types", ["tipo_contacto"], name: "index_ajudas_tecnicas_contact_types_on_tipo_contacto", using: :btree
 
   create_table "ajudas_tecnicas_contacts", force: :cascade do |t|
     t.string   "contacto"
@@ -40,6 +42,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "ajudas_tecnicas_equipments", ["inventario"], name: "index_ajudas_tecnicas_equipments_on_inventario", using: :btree
 
   create_table "ajudas_tecnicas_loans", force: :cascade do |t|
     t.string   "cuidador"
@@ -64,11 +68,14 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.integer  "cpostal"
     t.integer  "cpostal2"
     t.string   "localidade"
-    t.boolean  "obito"
+    t.boolean  "obito",                        default: false, null: false
     t.integer  "ajudas_tecnicas_physician_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
+
+  add_index "ajudas_tecnicas_patients", ["ajudas_tecnicas_physician_id"], name: "index_ajudas_tecnicas_patients_on_ajudas_tecnicas_physician_id", using: :btree
+  add_index "ajudas_tecnicas_patients", ["rnu"], name: "index_ajudas_tecnicas_patients_on_rnu", using: :btree
 
   create_table "ajudas_tecnicas_physicians", force: :cascade do |t|
     t.string   "nome_medico"
@@ -76,12 +83,16 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "ajudas_tecnicas_physicians", ["nome_medico"], name: "index_ajudas_tecnicas_physicians_on_nome_medico", using: :btree
+
   create_table "ajudas_tecnicas_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "nivel_acesso"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "ajudas_tecnicas_users", ["user_id"], name: "index_ajudas_tecnicas_users_on_user_id", using: :btree
 
   create_table "body_parts", force: :cascade do |t|
     t.string   "parte_do_corpo"
@@ -105,12 +116,14 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "escala_vmer_groups", ["nome_grupo"], name: "index_escala_vmer_groups_on_nome_grupo", using: :btree
+
   create_table "escala_vmer_schedules", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "inicio_turno"
     t.integer  "tipo_turno"
     t.datetime "fim_turno"
-    t.boolean  "escalado",     default: false
+    t.boolean  "escalado",     default: false, null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "obs"
@@ -139,19 +152,20 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.integer  "ulsne_department_id"
   end
 
+  add_index "hig_maos_observations", ["ulsne_department_id"], name: "index_hig_maos_observations_on_ulsne_department_id", using: :btree
   add_index "hig_maos_observations", ["ulsne_site_id"], name: "index_hig_maos_observations_on_ulsne_site_id", using: :btree
   add_index "hig_maos_observations", ["user_id"], name: "index_hig_maos_observations_on_user_id", using: :btree
 
   create_table "hig_maos_opportunities", force: :cascade do |t|
     t.integer  "hig_maos_opportunities_cluster_id"
-    t.boolean  "antes_doente",                      default: false
-    t.boolean  "antes_assetico",                    default: false
-    t.boolean  "apos_sangue_fluido",                default: false
-    t.boolean  "apos_doente",                       default: false
-    t.boolean  "apos_ambiente",                     default: false
-    t.boolean  "friccao_antisetica",                default: false
-    t.boolean  "lavagem",                           default: false
-    t.boolean  "nao_realizado",                     default: false
+    t.boolean  "antes_doente",                      default: false, null: false
+    t.boolean  "antes_assetico",                    default: false, null: false
+    t.boolean  "apos_sangue_fluido",                default: false, null: false
+    t.boolean  "apos_doente",                       default: false, null: false
+    t.boolean  "apos_ambiente",                     default: false, null: false
+    t.boolean  "friccao_antisetica",                default: false, null: false
+    t.boolean  "lavagem",                           default: false, null: false
+    t.boolean  "nao_realizado",                     default: false, null: false
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
   end
@@ -184,6 +198,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "hig_maos_worker_categories", ["categoria_profissional"], name: "index_hig_maos_worker_categories_on_categoria_profissional", using: :btree
+
   create_table "office_phone_numbers", force: :cascade do |t|
     t.string   "nome_gabinete"
     t.integer  "numero_gabinete"
@@ -210,6 +226,36 @@ ActiveRecord::Schema.define(version: 20160801160727) do
   add_index "patients", ["numero_processo_sonho"], name: "index_patients_on_numero_processo_sonho", using: :btree
   add_index "patients", ["rnu"], name: "index_patients_on_rnu", using: :btree
 
+  create_table "pneumo_devices_categories", force: :cascade do |t|
+    t.string   "categoria"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pneumo_devices_categories", ["categoria"], name: "index_pneumo_devices_categories_on_categoria", using: :btree
+
+  create_table "pneumo_forms_inhaler_devices", force: :cascade do |t|
+    t.integer  "pneumo_inhaler_device_id"
+    t.integer  "pneumology_form_id"
+    t.string   "observacao"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "pneumo_forms_inhaler_devices", ["pneumo_inhaler_device_id"], name: "index_pneumo_forms_inhaler_devices_on_pneumo_inhaler_device_id", using: :btree
+  add_index "pneumo_forms_inhaler_devices", ["pneumology_form_id"], name: "index_pneumo_forms_inhaler_devices_on_pneumology_form_id", using: :btree
+
+  create_table "pneumo_inhaler_devices", force: :cascade do |t|
+    t.integer  "pneumo_devices_category_id"
+    t.string   "designacao"
+    t.string   "dci"
+    t.boolean  "ativo",                      default: false, null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "pneumo_inhaler_devices", ["pneumo_devices_category_id"], name: "index_pneumo_inhaler_devices_on_pneumo_devices_category_id", using: :btree
+
   create_table "pneumo_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "nivel_acesso"
@@ -235,6 +281,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.string   "observacoes"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.integer  "pef"
+    t.string   "o2_note"
   end
 
   add_index "pneumology_forms", ["patient_id"], name: "index_pneumology_forms_on_patient_id", using: :btree
@@ -288,6 +336,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "transp_destinations", ["destino"], name: "index_transp_destinations_on_destino", using: :btree
+
   create_table "transp_materials", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "ulsne_department_id"
@@ -296,7 +346,7 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.integer  "local_entrega_id"
     t.datetime "data_entrega"
     t.string   "observacoes"
-    t.boolean  "supervisor",             default: false
+    t.boolean  "supervisor",             default: false, null: false
     t.integer  "aprovacao"
     t.string   "comentarios_supervisor"
     t.datetime "created_at",                             null: false
@@ -321,11 +371,11 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.integer  "local_fim_id"
     t.string   "condutor"
     t.string   "observacoes"
-    t.boolean  "supervisor"
+    t.boolean  "supervisor",             default: false, null: false
     t.integer  "aprovacao"
     t.string   "comentarios_supervisor"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "transp_user_trips", ["transp_destination_id"], name: "index_transp_user_trips_on_transp_destination_id", using: :btree
@@ -443,11 +493,15 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "ulsne_departments", ["nome_servico"], name: "index_ulsne_departments_on_nome_servico", using: :btree
+
   create_table "ulsne_sites", force: :cascade do |t|
     t.string   "nome_unidade"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "ulsne_sites", ["nome_unidade"], name: "index_ulsne_sites_on_nome_unidade", using: :btree
 
   create_table "user_phone_numbers", force: :cascade do |t|
     t.integer  "numero_contacto"
@@ -467,7 +521,7 @@ ActiveRecord::Schema.define(version: 20160801160727) do
     t.datetime "updated_at",                             null: false
     t.integer  "ulsne_site_id"
     t.string   "titulo"
-    t.boolean  "administrator",          default: false
+    t.boolean  "administrator",          default: false, null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -486,6 +540,8 @@ ActiveRecord::Schema.define(version: 20160801160727) do
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["numero_mecanografico"], name: "index_users_on_numero_mecanografico", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["ulsne_site_id"], name: "index_users_on_ulsne_site_id", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree

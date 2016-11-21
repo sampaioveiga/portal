@@ -61,8 +61,15 @@
 			</div>
 		</div>
 	
-		<div class="col-md-offset-3 col-md-4">
+		<div class="col-md-offset-3">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+			<%= link_to "Cancelar", :back, class: 'btn btn-default' %>
+			<% if action_name == "edit" %>
+				<%= link_to "Eliminar", uci_user_path(@user),
+					method: :delete,
+					data: { confirm: 'Tem a certeza que deseja eliminar o utilizador?' },
+					class: 'btn btn-danger' %>
+			<% end %>
 		</div>
 
 		

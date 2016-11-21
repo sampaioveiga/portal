@@ -1,4 +1,4 @@
-<div class="col-md-12 panel panel-default">
+<div class="col-md-12">
 	<%= render 'shared/menu_patients' %>
 </div>
 <div class="col-md-10 col-md-offset-1">
@@ -15,11 +15,26 @@
 		<tbody>
 			<% @users.each do |u| %>
 				<tr>
-					<td><%= u.nome_utilizador %></td>
-					<td><%= u.pneumo_user.nivel_acesso %></td>
+					<td><%= link_to u.nome_utilizador, edit_pneumo_user_path(u.pneumo_user) %></td>
+					<td>
+						<% if u.pneumo_user.nivel_acesso == 0 %>
+							0 - Sem acesso
+						<% elsif u.pneumo_user.nivel_acesso == 1 %>
+							1 - Ler
+						<% else %>
+							2 - Ler e escrever
+						<% end %>
+					</td>
 					<td><%= 'Sim' if u.pneumo_user.supervisor %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Novo utilizador</div>
+		<div class="panel-body">
+			<%= render 'form' %>
+		</div>
+	</div>
 </div>

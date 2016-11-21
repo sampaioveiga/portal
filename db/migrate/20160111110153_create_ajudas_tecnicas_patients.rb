@@ -9,7 +9,7 @@ class CreateAjudasTecnicasPatients < ActiveRecord::Migration
 			t.integer :cpostal
 			t.integer :cpostal2
 			t.string :localidade
-			t.boolean :obito, null: false, default: null
+			t.boolean :obito, null: false, default: false
 			t.belongs_to :ajudas_tecnicas_physician, index: true
 
 			t.timestamps null: false

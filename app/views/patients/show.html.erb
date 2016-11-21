@@ -1,6 +1,7 @@
-<div class="col-md-12 panel panel-default">
+<div class="col-md-12">
 	<%= render 'shared/menu_patients' %>
 </div>
+
 <div class="col-md-10 col-md-offset-1">
 	<h1><small>Ficha</small> <%= @patient.nome %></h1>
 
@@ -26,9 +27,9 @@
 		<% end %>
 
 		<!-- Pneumo -->
-		<%# if policy([:uci, UciTissValue]).show? %>
-			<li role="presentation"><a href="#pneumo" aria-controls="settings" role="tab" data-toggle="tab">Ficha Pneumo</a></li>
-		<%# end %>
+		<% if policy([:pneumology_form]).show? %>
+			<li role="presentation"><a href="#pneumo" aria-controls="settings" role="tab" data-toggle="tab">Ficha Pneumo <span class="badge"><%= @patient.pneumology_forms.count %></span></a></li>
+		<% end %>
 	</ul>
 
 	<!-- Tab panes -->

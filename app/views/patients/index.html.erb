@@ -1,20 +1,19 @@
-<div class="col-md-12 panel panel-default">
+<div class="col-md-12">
 	<%= render 'shared/menu_patients' %>
 </div>
 
 <div class="col-md-10 col-md-offset-1">
-	<div class="panel panel-default">
-		<div class="panel-heading"><p>Encontrar doentes</p></div>
-		<div class="panel-body">
-			<%= search_form_for @q do |f| %>
-				<div class="col-md-9">
-					<%= f.search_field :nome_cont, class: 'form-control' %>
+	<div class="jumbotron">
+		<%= search_form_for @q do |f| %>
+			<div class="col-md-12">
+				<div class="input-group">
+					<%= f.search_field :nome_cont, placeholder: 'Pesquisar', class: 'form-control' %>
+					<span class="input-group-btn">
+						<%= f.submit "Procurar", class: 'btn btn-success' %>
+					</span>
 				</div>
-				<div class="col-md-3">
-					<%= f.submit "Procurar", class: 'btn btn-success' %>
-				</div>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 
 	<table class="table">

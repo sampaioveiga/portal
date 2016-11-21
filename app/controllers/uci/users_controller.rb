@@ -23,7 +23,6 @@ class Uci::UsersController < ApplicationController
 	end
 
 	def update
-
 		if @user.update(uci_user_params)
 			flash[:success] = "Permissões do utilizador atualizadas"
 			redirect_to uci_users_path

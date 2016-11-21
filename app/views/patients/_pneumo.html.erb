@@ -7,7 +7,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @patient.pneumology_forms.each do |pf| %>
+			<% @patient.pneumology_forms.reorder("data DESC").each do |pf| %>
 				<tr>
 					<td><%= link_to pf.data, patient_pneumology_form_path(@patient, pf), remote: true %></td>
 					<td><%= pf.user.nome_utilizador %></td>

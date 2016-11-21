@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 	# Pneumo
 	namespace :pneumo do
 		resources :users
+		resources :devices_categories
+		resources :inhaler_devices
 	end
 
 	# Lista de contactos

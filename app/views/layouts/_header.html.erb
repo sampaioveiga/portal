@@ -20,24 +20,19 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lock"></i> Autorizações <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li>
-									<%= link_to ppcira_hig_maos_users_path() do %>
-										<i class="fa fa-hand-paper-o"></i> Auditorias higiene das mãoos
-									<% end %>
+									<%= link_to "Auditorias higiene das mãos", ppcira_hig_maos_users_path() %>
 								</li>
 								<li>
-									<%= link_to vmer_escala_vmer_users_path() do %>
-										<i class="fa fa-ambulance"></i> Escalas VMER
-									<% end %>
+									<%= link_to "Escalas VMER", vmer_escala_vmer_users_path() %>
 								</li>
 								<li>
-									<%= link_to sagt_transp_users_path() do %>
-										<i class="fa fa-car"></i> Requisição de transportes
-									<% end %>
+									<%= link_to "Pneumologia", pneumo_users_path() %>
 								</li>
 								<li>
-									<%= link_to uci_users_path() do %>
-										<i class="fa fa-question"></i> UCI
-									<% end %>
+									<%= link_to "Requisição de transportes", sagt_transp_users_path() %>
+								</li>
+								<li>
+									<%= link_to "SMI", uci_users_path() %>
 								</li>
 							</ul>
 						</li>

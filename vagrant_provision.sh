@@ -28,7 +28,7 @@ sudo make install
 # Rails no doc
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 gem install bundler
-gem install rails
+gem install rails - v '4.2.4'
 
 # DB Postgres
 #sudo su - postgres -c 'createuser -s vagrant'

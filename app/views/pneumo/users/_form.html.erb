@@ -1,20 +1,22 @@
 <%= form_for(@user, html: { class: 'form-horizontal'}) do |f| %>
 	<%= render 'shared/error_messages', obj: @user %>
 		
-	<div class="form-group">
-		<%= f.label :user_id, "Utilizador", class: 'control-label col-md-3' %>
-		<div class="col-md-9">
-			<%= f.collection_select(:user_id, @users_collection, :id, :nome_utilizador, {}, class: 'form-control') %>
+	<% if action_name == "index" %>
+		<div class="form-group">
+			<%= f.label :user_id, "Utilizador", class: 'control-label col-md-3' %>
+			<div class="col-md-9">
+				<%= f.collection_select(:user_id, @users_collection, :id, :nome_utilizador, {}, class: 'form-control') %>
+			</div>
 		</div>
-	</div>
+	<% end %>
 
 	<div class="form-group">
 		<%= f.label :nivel_acesso, "Nível acesso", class: 'control-label col-md-3' %>
 		<div class="col-md-9">
 			<%= f.select :nivel_acesso, 
 				[['0 - Sem acesso', 0], 
-				['1 - Utilizador', 1], 
-				['2 - Supervisor', 2]], 
+				['1 - Ler', 1], 
+				['2 - Ler e escrever', 2]], 
 				{}, 
 				class: 'form-control' %>
 		</div>
@@ -34,8 +36,15 @@
 			</div>
 		</div>
 
-	<div class="col-md-offset-3 col-md-2">
+	<div class="col-md-offset-3">
 		<%= f.submit "Submeter", class: 'btn btn-primary' %>
+		<% if action_name == "edit" %>
+			<%= link_to "Cancelar", :back, class: 'btn btn-default' if action_name == 'edit' %>
+			<%= link_to "Eliminar", pneumo_user_path(@user),
+					method: :delete,
+					data: { confirm: 'Tem a certeza que deseja eliminar o utilizador?' },
+					class: 'btn btn-danger' %>
+		<% end %>
 	</div>
 		
 <% end %>

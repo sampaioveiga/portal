@@ -1,110 +1,126 @@
-<ul class="nav nav-pills">
-	<li role="presentation" class=<%= 'active' if current_page?(patients_path) %>>
-		<%= link_to patients_path() do %>
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Procurar
+<div class="panel panel-default">
+	<ul class="nav nav-pills">
+		<li role="presentation" class=<%= 'active' if current_page?(patients_path) %>>
+			<%= link_to patients_path() do %>
+				<i class="fa fa-search"></i> Procurar
+			<% end %>
+		</li>
+
+		<%- if policy(:patient).map_tiss_28? && controller_name == 'patients' && action_name == 'index' %>
+			<li role="presentation" class=<%= 'active' if current_page?(patients_map_tiss_28_path) %>>
+				<%= link_to patients_map_tiss_28_path() do %>
+					<i class="fa fa-list-alt"></i> TISS 28 de <%=l Date.yesterday %>
+				<% end %>
+			</li>
+		<%- end %>
+
+		<%- if controller_name == 'patients' && (action_name == 'show' || action_name == 'processo_sonho') %>
+
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-plus"></i> Inserir <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+
+					<!-- Pneumo -->
+					
+					<% if policy(PneumologyForm).create? %>
+						<li role="separator" class="divider"></li>
+
+						<li class="dropdown-header"><i class="fa fa-user-md"></i> Pneumologia</li>
+						
+						<li role="presentation">
+							<%= link_to "Consulta de pneumologia", new_patient_pneumology_form_path(@patient) %>
+						</li>
+					<% end %>
+
+					<!-- UCI -->
+
+					<% if policy([:uci, UciDevice]).create? %>
+						<li role="separator" class="divider"></li>
+
+						<li class="dropdown-header"><i class="fa fa-bed"></i> SMI</li>
+
+						<li role="presentation">
+							<a href="#" data-toggle="modal" data-target="#newDeviceModal">Dispositivo</a>
+						</li>
+					<% end %>
+
+					<% if policy([:uci, UciWound]).create? %>
+						<li role="presentation">
+							<a href="#" data-toggle="modal" data-target="#newWoundModal">Ferida</a>
+						</li>
+					<% end %>
+
+					<% if policy([:uci, UciTissValue]).create? %>
+						<li role="presentation">
+							<%= link_to "TISS 28", new_patient_uci_tiss_value_path(@patient) %>
+						</li>
+					<% end %>
+
+				</ul>
+			</li>
+
+			<li role="presentation">
+				<%= link_to edit_patient_path(@patient) do %>
+					<i class="fa fa-pencil"></i> Editar ficha doente
+				<% end %>
+			</li>
+
 		<% end %>
-	</li>
 
-	<%- if controller_name == 'patients' && (action_name == 'show' || action_name == 'processo_sonho') %>
+		<!-- Configuração -->
+		<% if (policy([:uci, User]).index? || policy([:pneumo, User]).index?) %>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-spin fa-cog"></i> Configurações <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
 
-		<li role="presentation" class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				Inserir <span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-
-				<!-- Pneumo -->
-				
-				<% if policy(PneumologyForm).create? %>
+					<% if policy([:pneumo, User]).index? %>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header"><i class="fa fa-user-md"></i> Pneumologia</li>
 					
-					<li role="presentation">
-						<%= link_to "Consulta de pneumologia", new_patient_pneumology_form_path(@patient) %>
-					</li>
-				<% end %>
-
-				<!-- UCI -->
-
-				<% if policy([:uci, UciDevice]).create? %>
-					<li role="presentation">
-						<a href="#" data-toggle="modal" data-target="#newDeviceModal">Dispositivo</a>
-					</li>
-				<% end %>
-
-				<% if policy([:uci, UciWound]).create? %>
-					<li role="presentation">
-						<a href="#" data-toggle="modal" data-target="#newWoundModal">Ferida</a>
-					</li>
-				<% end %>
-
-				<% if policy([:uci, UciTissValue]).create? %>
-					<li role="presentation">
-						<!--<a href="#" data-toggle="modal" data-target="#newTissModal">TISS</a>-->
-						<%= link_to "TISS 28", new_patient_uci_tiss_value_path(@patient) %>
-					</li>
-				<% end %>
-
-			</ul>
-		</li>
-
-		<li role="presentation">
-			<%= link_to edit_patient_path(@patient) do %>
-				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar ficha doente
-			<% end %>
-		</li>
-
-	<% end %>
-
-	<!-- Configuração -->
-	<% if (policy([:uci, User]).index? || policy([:pneumo, User]).index?) %>
-		<li role="presentation" class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-				Configurações <span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-
-				<% if policy([:pneumo, User]).index? %>
-					<li role="separator" class="divider"></li>
-					<li class="dropdown-header">Pneumologia</li>
-					
-					<li role="presentation">
-						<%= link_to 'Utilizadores', pneumo_users_path()%>
-					</li>
-					<li role="presentation">
-						<%= link_to 'Novo utilizador', new_pneumo_user_path()%>
-					</li>
-				<% end %>
+						<li role="presentation">
+							<%= link_to "Categorias de dispositivos", pneumo_devices_categories_path() %>
+						</li>
+						<li role="presentation">
+							<%= link_to "Dispositivos Inalatórios", pneumo_inhaler_devices_path() %>
+						</li>
+						<li role="presentation">
+							<%= link_to pneumo_users_path() do %>
+								<i class="fa fa-lock"></i> Utilizadores
+							<% end %>
+						</li>
+					<% end %>
 				
-				<% if policy([:uci, User]).index? %>
-					<li role="separator" class="divider"></li>
-					<li class="dropdown-header">SMI</li>
-					<li role="presentation">
-						<%= link_to 'Lista dispositivos', device_types_path() %>
-					</li>
-					<li role="presentation">
-						<%= link_to 'Lista feridas', wound_types_path()%>		
-					</li>
-					<li role="presentation">
-						<%= link_to 'Lista partes do corpo', body_parts_path()%>
-					</li>
-					<li role="presentation">
-						<%= link_to 'Mapa TISS 28', patients_map_tiss_28_path()%>
-					</li>
-					<li role="presentation">
-						<%= link_to 'Utilizadores UCI', uci_users_path()%>
-					</li>
-				<% end %>
-			</ul>
-		</li>
-	<% end %>
+					<% if policy([:uci, User]).index? %>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header"><i class="fa fa-bed"></i> SMI</li>
+						<% if policy([:uci, UciDevice]).index? %>
+							<li role="presentation">
+								<%= link_to 'Lista dispositivos', device_types_path() %>
+							</li>
+						<% end %>
+						<% if policy([:uci, UciWound]).index? %>
+							<li role="presentation">
+								<%= link_to 'Lista feridas', wound_types_path()%>		
+							</li>
+						<% end %>
+						<% if policy([:uci, UciWound]).index? %>
+							<li role="presentation">
+								<%= link_to 'Lista partes do corpo', body_parts_path()%>
+							</li>
+						<% end %>
+						<li role="presentation">
+							<%= link_to uci_users_path() do %>
+								<i class="fa fa-lock"></i> Utilizadores
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</li>
+		<% end %>
 
-	<!-- Cancel action if edit or new  -->
-	<%- if action_name == 'edit' || action_name == 'new' %>
-		<li role="presentation">
-			<%= link_to :back, class: 'text-muted' do %>
-				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Cancelar
-			<% end %>
-		</li>
-	<% end %>
-</ul>
+	</ul>
+</div>
