@@ -2,38 +2,43 @@
 	
 	<%= render 'shared/error_messages', obj: @patient %>
 
+	<!-- Nome doente -->
 	<div class="form-group">
 		<%= f.label :nome, class: 'col-md-3 control-label' %>
 		<div class="col-md-9">
-			<%= f.text_field :nome, class: 'form-control' %>
+			<%= f.text_field :nome, placeholder: 'Nome do doente', class: 'form-control' %>
 		</div>		
 	</div>
 
+	<!-- Data nascimento -->
 	<div class="form-group">
 		<%= f.label :data_nascimento, class: 'col-md-3 control-label' %>
 		<div class="col-md-9">
 			<%= f.date_field :data_nascimento, class: 'form-control' %>
-		</div>		
+		</div>
 	</div>
 
+	<!-- RNU -->
 	<div class="form-group">
-		<%= f.label :rnu, class: 'col-md-3 control-label' %>
+		<%= f.label :rnu, "RNU", class: 'col-md-3 control-label' %>
 		<div class="col-md-9">
-			<%= f.number_field :rnu, class: 'form-control' %>
+			<%= f.number_field :rnu, placeholder: 'Número do Registo Nacional de Utentes', class: 'form-control' %>
 		</div>		
 	</div>
 
+	<!-- NIF -->
 	<div class="form-group">
-		<%= f.label :nif, class: 'col-md-3 control-label' %>
+		<%= f.label :nif, "NIF", class: 'col-md-3 control-label' %>
 		<div class="col-md-9">
-			<%= f.number_field :nif, class: 'form-control' %>
+			<%= f.number_field :nif, placeholder: 'Número de Identificação Fiscal', class: 'form-control' %>
 		</div>		
 	</div>
 
+	<!-- Processo SONHO -->
 	<div class="form-group">
 		<%= f.label :numero_processo_sonho, class: 'col-md-3 control-label' %>
 		<div class="col-md-9">
-			<%= f.number_field :numero_processo_sonho, class: 'form-control' %>
+			<%= f.number_field :numero_processo_sonho, placeholder: 'Número de Processo do SONHO', class: 'form-control' %>
 		</div>		
 	</div>	
 

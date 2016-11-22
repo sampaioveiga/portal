@@ -2,6 +2,7 @@
 
 	<%= render 'shared/error_messages', obj: @ulsne_department %>
 
+	<!-- Ñome serviço -->
 	<div class="form-group">
 		<%= f.label :nome_servico, "Designação", class: 'control-label col-md-3' %>
 		<div class="col-md-9">
@@ -9,6 +10,7 @@
 		</div>
 	</div>
 	
+	<!-- Contactos telefónicos coccon -->
 	<div class="form-group">
 		<%= f.label :office_phone_numbers, "Números do serviço", class: 'control-label col-md-3' %>
 		<div class="col-md-9">
@@ -19,7 +21,7 @@
 					f: office_phone_number %>
 					<% end %>
 					<div class="links">
-						<%= link_to_add_association 'Adicionar número', f, :office_phone_numbers, class: 'btn btn-success' %>
+						<%= link_to_add_association 'Adicionar número', f, :office_phone_numbers, class: 'btn btn-default' %>
 					</div>
 				</div>
 			</div>

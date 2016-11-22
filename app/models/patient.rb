@@ -9,8 +9,9 @@ class Patient < ActiveRecord::Base
 	validates :data_nascimento,
 		presence: true,
 		date: true
-	validates :rnu, :nif, :numero_processo_sonho,
+	validates :rnu, :numero_processo_sonho,
 		presence: true,
-		uniqueness: true,
-		allow_nil: true
+		uniqueness: true
+	validates :nif,
+		uniqueness: true
 end

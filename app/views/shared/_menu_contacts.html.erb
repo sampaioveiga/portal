@@ -1,24 +1,28 @@
 <div class="panel panel-default">
 	<ul class="nav nav-pills">
+
+		<!-- Contactos pessoais -->
 		<li role="presentation" class=<%= 'active' if current_page?(contacts_users_path) %>>
 			<%= link_to contacts_users_path() do %>
-				<i class="fa fa-address-card"></i> Colaboradores
+				<i class="fa fa-address-book"></i> Colaboradores
 			<% end %>
 		</li>
 
+		<!-- Serviços -->
 		<li role="presentation" class=<%= 'active' if current_page?(contacts_ulsne_departments_path) %>>
 			<%= link_to contacts_ulsne_departments_path() do %>
-				<i class="fa fa-users"></i> Serviços
+				<i class="fa fa-th-list"></i> Serviços
 			<% end %>
 		</li>
 
+		<!-- Unidades -->
 		<li role="presentation" class=<%= 'active' if current_page?(contacts_ulsne_sites_path) %>>
 			<%= link_to contacts_ulsne_sites_path() do %>
 				<i class="fa fa-building"></i> Unidades
 			<% end %>
 		</li>
 	
-		<!-- if Users -->
+		<!-- Controller Users  -->
 		<%- if controller_name == 'users' && action_name == 'show' && policy(:user).edit? %>
 			<li role="presentation">
 				<%= link_to edit_contacts_user_path(@user), class: 'text-success' do %>
@@ -32,17 +36,17 @@
 			</li>
 		<% end %>
 
-		<!-- If admin  -->
+		<!-- Contacts Admin Menu -->
 		<li role="presentation" class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-					<i class="fa fa-plus"></i> Inserir <span class="caret"></span>
+				<i class="fa fa-plus"></i> Inserir <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
 			
 				<%- if policy(:ulsne_department).new? %>
 					<li role="presentation">
 						<%= link_to new_contacts_ulsne_department_path() do %>
-							<i class="fa fa-users"></i> Serviço
+							<i class="fa fa-th-list"></i> Serviço
 						<% end %>
 					</li>
 				<% end %>

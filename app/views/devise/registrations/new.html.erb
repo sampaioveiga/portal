@@ -3,11 +3,12 @@
 </div>
 
 <div class="col-md-10 col-md-offset-1">
-	<h1>Novo utilizador</h1>
+	<h1>Registo de novo utilizador</h1>
 
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
 		<%= devise_error_messages! %>
 
+		<!-- Nome utilizador -->
 		<div class="form-group">
 			<%= f.label :nome_utilizador, class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -15,6 +16,7 @@
 			</div>
 		</div>
 
+		<!-- Número mecanográfico -->
 		<div class="form-group">
 			<%= f.label :numero_mecanografico, "Número mecanográfico", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -22,6 +24,7 @@
 			</div>
 		</div>
 		
+		<!-- Título profissional -->
 		<div class="form-group">
 			<%= f.label :titulo, 'Título profissional', class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -29,6 +32,7 @@
 			</div>
 		</div>
 
+		<!-- Email -->
 		<div class="form-group">
 			<%= f.label :email, class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -36,6 +40,7 @@
 			</div>
 		</div>
 
+		<!-- Contactos telefónicos cocoon -->
 		<div class="form-group">
 			<%= f.label :user_phone_numbers, "Contacto", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -45,14 +50,15 @@
 							<%= render 'user_phone_number_fields', f: user_phone_number %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-success' %>
+							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+							<small>Contactos inseridos serão visiveis</small>
 						</div>
-						<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- Serviços cocoon -->
 		<div class="form-group">
 			<%= f.label :u2d_associations, "Serviço", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -62,13 +68,14 @@
 							<%= render 'u2d_association_fields', f: u2d_association %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-success' %>
+							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- Unidade -->
 		<div class="form-group">
 			<%= f.label :ulsne_site_id, "Unidade da ULSNE", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -76,17 +83,19 @@
 			</div>
 		</div>
 
+		<!-- Senha -->
 		<div class="form-group">
 			<%= f.label :password, 'Senha', class: 'control-label col-md-3' %>
 			<div class="col-md-9">
-				<%= f.password_field :password, placeholder: '6 caracteres mínimo', autocomplete: "off", class: 'form-control' %>
+				<%= f.password_field :password, placeholder: 'Senha com 6 caracteres mínimo', autocomplete: "off", class: 'form-control' %>
 			</div>
 		</div>
 
+		<!-- Confirmação -->
 		<div class="form-group">
 			<%= f.label :password_confirmation, 'Confirmação', class: 'control-label col-md-3' %>
 			<div class="col-md-9">
-				<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+				<%= f.password_field :password_confirmation, placeholder: 'Confirme a senha', autocomplete: "off", class: 'form-control' %>
 			</div>
 		</div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121124958) do
+ActiveRecord::Schema.define(version: 20161122122505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -499,6 +499,7 @@ ActiveRecord::Schema.define(version: 20161121124958) do
     t.string   "nome_unidade"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "telefone"
   end
 
   add_index "ulsne_sites", ["nome_unidade"], name: "index_ulsne_sites_on_nome_unidade", using: :btree

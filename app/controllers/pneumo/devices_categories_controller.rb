@@ -1,5 +1,5 @@
 class Pneumo::DevicesCategoriesController < ApplicationController
-    #before_action :check_authorization see you later
+    before_action :check_authorization
     before_action :set_devices_category, only: [ :edit, :update ]
     #after_action
 
@@ -43,8 +43,8 @@ class Pneumo::DevicesCategoriesController < ApplicationController
         @devices_category = PneumoDevicesCategory.find(params[:id])
     end
 
-  def check_authorization
-		authorize [:pneumo, DevicesCategory]
-  end
+    def check_authorization
+        authorize PneumologyForm
+    end
 
 end

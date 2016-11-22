@@ -1,12 +1,10 @@
 <div class="nested-fields">
-  <div class="field">
-    <div class="col-lg-6">
-      <div class="input-group">
-        <%= f.collection_select :ulsne_department_id, UlsneDepartment.order(:nome_servico), :id, :nome_servico, {}, class: 'form-control' %>
-        <span class="input-group-btn">
-          <%= link_to_remove_association "Remover", f, class: 'btn btn-danger' %>
-        </span>
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 --> 
-  </div>
+    <div class="field">
+        <div class="input-group">
+            <%= f.collection_select :ulsne_department_id, UlsneDepartment.order(:nome_servico), :id, :nome_servico, {}, class: 'form-control' %>
+            <span class="input-group-btn">
+                <%= link_to_remove_association "Remover", f, class: 'btn btn-danger' %>
+            </span>
+        </div><!-- /input-group -->
+    </div>
 </div>

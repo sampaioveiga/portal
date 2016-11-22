@@ -37,7 +37,10 @@ class Contacts::UlsneSitesController < ApplicationController
 	private
 
 	def ulsne_site_params
-		params.require(:ulsne_site).permit(:nome_unidade)
+		params.require(:ulsne_site).permit(
+			:nome_unidade,
+			:telefone
+		)
 	end
 
 	def set_ulsne_site

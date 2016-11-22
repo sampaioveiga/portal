@@ -7,11 +7,11 @@ class PneumologyFormPolicy < ApplicationPolicy
 	end
 
 	def index?
-		@current_user.pneumo_user.present?
+		@current_user.pneumo_user.present? 
 	end
 
 	def show?
-		@current_user.pneumo_user.present?
+		@current_user.pneumo_user.present? && @current_user.pneumo_user.nivel_acesso != 0
 	end
 
 	def new?

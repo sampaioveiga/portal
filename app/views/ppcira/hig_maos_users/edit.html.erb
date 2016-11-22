@@ -1,7 +1,7 @@
-<aside class="col-md-3">
+<div class="col-md-12">
 	<%= render 'shared/menu_hig_maos' %>
-</aside>
-<div class="col-md-9">
+</div>
+<div class="col-md-10 col-md-offset-1">
 
 	<h1><small>utilizador</small> <%= @user.user.nome_utilizador %></h1>
 	<%= form_for([:ppcira, @user]) do |f| %>
@@ -26,6 +26,7 @@
 
 		<div class="col-md-3">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+			<%= link_to "Cancelar", :back, class: 'btn btn-default' %>
 		</div>	
 
 		<%= link_to 'Eliminar', ppcira_hig_maos_user_path(@user),

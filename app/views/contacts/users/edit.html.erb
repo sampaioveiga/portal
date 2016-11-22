@@ -4,12 +4,13 @@
 
 <div class="col-md-10 col-md-offset-1">
 
-	<h1><small>Editar </small><%= @user.nome_utilizador %></h1>
+	<h1><small>Editar utilizador </small><%= @user.nome_utilizador %></h1>
 
 	<%= form_for([:contacts, @user], html: { class: 'form-horizontal' }) do |f| %>
 		
 		<%= render 'shared/error_messages', obj: @user %>
 
+		<!-- Nome utilizador -->
 		<div class="form-group">
 			<%= f.label :nome_utilizador, class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -17,6 +18,7 @@
 			</div>
 		</div>
 
+		<!-- Número mecanográfico -->
 		<div class="form-group">
 			<%= f.label :numero_mecanografico, "Número mecanográfico", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -24,6 +26,7 @@
 			</div>
 		</div>
 		
+		<!-- Título profissional -->
 		<div class="form-group">
 			<%= f.label :titulo, 'Título profissional', class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -31,6 +34,7 @@
 			</div>
 		</div>
 
+		<!-- Email -->
 		<div class="form-group">
 			<%= f.label :email, class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -38,6 +42,7 @@
 			</div>
 		</div>
 
+		<!-- Contactos telefónicos coccon -->
 		<div class="form-group">
 			<%= f.label :user_phone_numbers, "Contacto", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -47,14 +52,16 @@
 							<%= render 'user_phone_number_fields', f: user_phone_number %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-success' %>
+							<%= link_to_add_association 'Adicionar número', f, :user_phone_numbers, class: 'btn btn-default' %>
+							<span class="help-block"><small> Os contactos inseridos são visiveis a todos os utilizadores</small></span>
 						</div>
-						<p><small> Os contactos inseridos são visiveis a todos os utilizadores</small></p>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- Serviços cocoon -->
 		<div class="form-group">
 			<%= f.label :u2d_associations, "Serviço", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
@@ -64,13 +71,14 @@
 							<%= render 'u2d_association_fields', f: u2d_association %>
 						<% end %>
 						<div class="links">
-							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-success' %>
+							<%= link_to_add_association 'Adicionar serviço', f, :u2d_associations, class: 'btn btn-default' %>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- Unidade -->
 		<div class="form-group">
 			<%= f.label :ulsne_site_id, "Unidade da ULSNE", class: 'control-label col-md-3' %>
 			<div class="col-md-9">
