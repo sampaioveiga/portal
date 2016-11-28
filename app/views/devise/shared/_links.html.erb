@@ -1,47 +1,49 @@
-<ul class="nav nav-pills">
-	<%- if controller_name != 'sessions' %>
-		<li role="presentation">
-			<%= link_to new_session_path(resource_name) do %>
-				<i class="fa fa-sign-in"></i> Entrar
-			<% end %>
-		</li>
-	<% end %>
-
-	<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-		<li role="presentation">
-			<%= link_to new_registration_path(resource_name) do %>
-				<i class="fa fa-pencil-square-o"></i> Registar
-			<% end %>
-		</li>
-	<% end %>
-
-	<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-		<li role="presentation">
-			<%= link_to new_password_path(resource_name) do %>
-				<i class="fa fa-send"></i> Recuperar senha
-			<% end %>
-		</li>
-	<% end %>
-
-	<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-		<li role="presentation">
-			<%= link_to "Não recebi a confirmação", new_confirmation_path(resource_name) %>
-		</li>	
-	<% end %>
-
-	<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-		<li role="presentation">
-			<%= link_to new_unlock_path(resource_name) do %>
-				<i class="fa fa-send"></i> Não recebi instruções de desbloqueio
-			<% end %>
-		</li>
-	<% end %>
-
-	<%- if devise_mapping.omniauthable? %>
-		<%- resource_class.omniauth_providers.each do |provider| %>
+<div class="panel panel-default">
+	<ul class="nav nav-pills">
+		<%- if controller_name != 'sessions' %>
 			<li role="presentation">
-				<%= link_to "Entrar com #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+				<%= link_to new_session_path(resource_name) do %>
+					<i class="fa fa-sign-in"></i> Entrar
+				<% end %>
 			</li>
-		<% end -%>
-	<% end %>
-</ul>
+		<% end %>
+
+		<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+			<li role="presentation">
+				<%= link_to new_registration_path(resource_name) do %>
+					<i class="fa fa-pencil-square-o"></i> Registar
+				<% end %>
+			</li>
+		<% end %>
+
+		<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+			<li role="presentation">
+				<%= link_to new_password_path(resource_name) do %>
+					<i class="fa fa-send"></i> Recuperar senha
+				<% end %>
+			</li>
+		<% end %>
+
+		<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+			<li role="presentation">
+				<%= link_to "Não recebi a confirmação", new_confirmation_path(resource_name) %>
+			</li>	
+		<% end %>
+
+		<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+			<li role="presentation">
+				<%= link_to new_unlock_path(resource_name) do %>
+					<i class="fa fa-send"></i> Não recebi instruções de desbloqueio
+				<% end %>
+			</li>
+		<% end %>
+
+		<%- if devise_mapping.omniauthable? %>
+			<%- resource_class.omniauth_providers.each do |provider| %>
+				<li role="presentation">
+					<%= link_to "Entrar com #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+				</li>
+			<% end -%>
+		<% end %>
+	</ul>
+</div>
