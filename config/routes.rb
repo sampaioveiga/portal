@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	resources :body_parts
 
 	# patients
-	get 'patients/processo_sonho/:id', to: 'patients#processo_sonho'
+	get 'patients/processo_sonho', to: 'patients#processo_sonho', as: 'processo_sonho_patient'
 	get 'patients/map_tiss_28', to: 'patients#map_tiss_28'
 	resources :patients do
 		resources :pneumology_forms

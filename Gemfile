@@ -50,7 +50,7 @@ end
 gem 'tzinfo-data', '1.2015.7', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # My gems
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass', '3.3.7'
 gem 'devise', '4.0.0'
 gem 'pundit', '1.1.0'
 gem 'i18n', '0.7.0'

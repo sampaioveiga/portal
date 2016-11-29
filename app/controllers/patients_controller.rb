@@ -13,9 +13,9 @@ class PatientsController < ApplicationController
 	end
 
 	def processo_sonho
-		@patient = Patient.find_by(numero_processo_sonho: params[:id])
+		@patient = Patient.find_by(numero_processo_sonho: params[:sonho_id])
 		if @patient.nil?
-			redirect_to new_patient_path(numero_processo_sonho: params[:id])
+			redirect_to new_patient_path(numero_processo_sonho: params[:sonho_id], rnu: params[:rnu], nome_doente: params[:nome_doente])
 		else
 			render :show
 		end
@@ -26,8 +26,11 @@ class PatientsController < ApplicationController
 	end
 
 	def new
-		@patient = Patient.new
-		@patient.numero_processo_sonho = params[:numero_processo_sonho]
+		@patient = Patient.new(
+			numero_processo_sonho: params[:numero_processo_sonho],
+			rnu: params[:rnu],
+			nome: params[:nome_doente]
+		)
 	end
 
 	def create
