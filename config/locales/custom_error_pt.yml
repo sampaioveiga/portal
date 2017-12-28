@@ -1,9 +1,0 @@
----
-pt:
-  activerecord:
-    errors:
-      models:
-        patient:
-          attributes:
-            data_nascimento:
-              not_a_date: 'tem de ser uma data válida'

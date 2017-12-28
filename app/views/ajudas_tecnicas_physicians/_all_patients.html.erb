@@ -1,8 +1,0 @@
-<% @all_patients.each do |patient| %>
-	<tr class="<%= 'alert alert-danger' if patient.obito? %>">
-		<td><%= link_to patient.nome_doente, patient %></td>
-		<td><%= patient.rnu %></td>
-		<td><%= patient.ddn %></td>
-		<td><%= patient.morada %><td>
-	</tr>
-<% end %>

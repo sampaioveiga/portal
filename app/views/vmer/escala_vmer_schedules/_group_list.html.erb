@@ -1,8 +1,0 @@
-<li role="presentation" style="<%= 'display: none;' unless policy(:escala_vmer_user).index? %>">
-	<select id="group_selector" class="form-control">
-		<option value="all">Todos os <%= current_user.escala_vmer_user.escala_vmer_group.nome_grupo %></option>
-		<% @group_users.each do |u| %>
-			<option value="<%= u.id %>"><%= u.nome_utilizador %></option>
-		<% end %>
-	</select>
-</li>

@@ -1,8 +1,0 @@
-<%= form_for(@contact_type) do |f| %>
-	<%= render 'shared/error_messages', obj: @contact_type %>
-	
-	<%= f.label :tipo_contacto, "Tipo de contacto" %>
-	<%= f.text_field :tipo_contacto, class: 'form-control' %>
-	
-	<%= f.submit "Guardar", class: 'btn btn-primary' %>
-<% end %>

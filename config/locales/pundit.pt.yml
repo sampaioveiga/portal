@@ -1,4 +1,0 @@
----
-pt:
-  pundit:
-    default: 'Não pode executar esta ação.'
