@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Proxy configuration
   if Vagrant.has_plugin?("vagrant-proxyconf")
@@ -78,5 +78,6 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
-  config.vm.provision :shell, path: "vagrant_provision.sh"
+  config.vm.provision "shell", path: "vagrant/system_provision.sh"
+  config.vm.provision "shell", path: "vagrant/app_provision.sh", privileged: false
 end
