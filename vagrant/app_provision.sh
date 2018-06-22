@@ -9,8 +9,8 @@ source ~/.bashrc
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 # install ruby, set it global
-sudo -H -u vagrant bash -i -c 'rbenv install 2.2.3'
-sudo -H -u vagrant bash -i -c 'rbenv global 2.2.3'
+sudo -H -u vagrant bash -i -c 'rbenv install 2.2.10'
+sudo -H -u vagrant bash -i -c 'rbenv global 2.2.10'
 sudo -H -u vagrant bash -i -c 'rbenv rehash'
 # don't install documentation
 echo 'gem: --no-document' >> ~/.gemrc

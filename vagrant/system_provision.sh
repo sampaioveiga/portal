@@ -24,3 +24,4 @@ apt-get install -y postgresql postgresql-contrib postgresql-server-dev-all
 # create user
 sudo -u postgres createuser portal
 sudo -u postgres createdb portal -O portal
+sudo systemctl stop postgresql.service
