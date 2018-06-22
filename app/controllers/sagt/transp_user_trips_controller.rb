@@ -17,7 +17,7 @@ class Sagt::TranspUserTripsController < ApplicationController
 
 	def calendar
 		if current_user.transp_user.nivel_acesso == 2
-			@trips = TranspUserTrip.all
+			@trips = TranspUserTrip.last(600)
 		else
 			@trips = current_user.transp_user_trips
 		end

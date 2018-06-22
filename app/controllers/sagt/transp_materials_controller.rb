@@ -17,7 +17,7 @@ class Sagt::TranspMaterialsController < ApplicationController
 
 	def calendar
 		if current_user.transp_user.nivel_acesso == 2
-			@transports = TranspMaterial.all
+			@transports = TranspMaterial.last(600)
 		else
 			@transports = current_user.transp_materials
 		end
