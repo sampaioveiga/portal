@@ -1,4 +1,5 @@
 class Sagt::TranspUserTripsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization, except: [ :show ]
 	before_action :set_trip, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]

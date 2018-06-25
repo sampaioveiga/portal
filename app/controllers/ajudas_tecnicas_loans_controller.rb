@@ -1,4 +1,5 @@
 class AjudasTecnicasLoansController < ApplicationController
+  before_action :authenticate_user!
 	before_action :load_patient_loan_equipment, except: [ :create ]
 
 	def create

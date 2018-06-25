@@ -1,5 +1,5 @@
 class AjudasTecnicasPatientsController < ApplicationController
-	#before_action :has_access
+	before_action :authenticate_user!
 	before_action :user_just_reads, except: [ :index ]
 	before_action :load_physicians, only: [ :new, :create, :edit, :update ]
 	before_action :set_patient, only: [ :show, :edit, :update ]

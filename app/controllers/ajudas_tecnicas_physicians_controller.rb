@@ -1,5 +1,5 @@
 class AjudasTecnicasPhysiciansController < ApplicationController
-	#before_action :has_access
+	before_action :authenticate_user!
 	before_action :set_physician, only: [ :edit, :update ]
 
 	def index

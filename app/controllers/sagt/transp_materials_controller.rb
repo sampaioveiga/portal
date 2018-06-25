@@ -1,4 +1,5 @@
 class Sagt::TranspMaterialsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization, except: [ :show ]
 	before_action :set_transp_material, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_selects, only: [ :new, :create, :edit, :update ]

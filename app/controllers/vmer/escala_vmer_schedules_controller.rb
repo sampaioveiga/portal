@@ -1,4 +1,5 @@
 class Vmer::EscalaVmerSchedulesController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization, only: [ :index, :new, :create, :edit, :update ]
 	before_action :set_schedule, only: [ :show, :edit, :update, :destroy ]
 	before_action :load_group_users

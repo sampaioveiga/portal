@@ -1,4 +1,5 @@
 class Vmer::EscalaVmerMapsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	after_action :verify_authorized
 	

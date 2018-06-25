@@ -1,4 +1,5 @@
 class Sagt::TranspDestinationsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :set_destination, only: [ :edit, :update ]
 	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]

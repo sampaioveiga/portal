@@ -1,4 +1,5 @@
 class Uci::UciDevicesController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	respond_to :html, :js
 	after_action :verify_authorized, only: [ :create, :edit, :update ]

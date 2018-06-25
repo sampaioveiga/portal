@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :load_patient, only: [ :show, :edit, :update ]
 	before_action :load_dependencies, only: [ :show, :processo_sonho ]

@@ -1,5 +1,5 @@
 class SatisfSurvUsersController < ApplicationController
-	#before_action :has_access
+	before_action :authenticate_user!
 	before_action :set_user, only: [ :edit, :update, :destroy ]
 
 	def index

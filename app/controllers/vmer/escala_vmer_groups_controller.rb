@@ -1,4 +1,5 @@
 class Vmer::EscalaVmerGroupsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :set_escala_vmer_group, only: [ :edit, :update ]
 	after_action :verify_authorized, only: [ :index, :create, :edit, :update ]

@@ -1,4 +1,5 @@
 class Pneumo::UsersController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :load_users , only: [ :new, :index ]
 	before_action :set_user, only: [ :edit, :update, :destroy ]

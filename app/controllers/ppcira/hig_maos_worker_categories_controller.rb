@@ -1,4 +1,5 @@
 class Ppcira::HigMaosWorkerCategoriesController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :load_categories, only: [ :index, :create ]
 	before_action :set_category, only: [ :edit, :update ]

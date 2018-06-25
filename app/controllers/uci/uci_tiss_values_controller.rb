@@ -1,4 +1,5 @@
 class Uci::UciTissValuesController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_auhorization
 	after_action :verify_authorized, only: [ :create ]
 

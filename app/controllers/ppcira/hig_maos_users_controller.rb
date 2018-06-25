@@ -1,4 +1,5 @@
 class Ppcira::HigMaosUsersController < ApplicationController
+  before_action :authenticate_user!
 	before_action :check_authorization
 	before_action :set_hig_maos_user, only: [ :edit, :update, :destroy ]
 	before_action :load_select

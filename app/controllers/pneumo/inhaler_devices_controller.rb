@@ -1,4 +1,5 @@
 class Pneumo::InhalerDevicesController < ApplicationController
+  before_action :authenticate_user!
 	#before_action
     before_action :load_devices_and_categories, only: [ :index, :create, :edit, :update ]
     before_action :set_device, only: [ :edit, :update ]
