@@ -1,86 +1,21 @@
 <div class="col-md-12">
 
-	<div class="row">
-
-		<!-- Ajudas técnicas -->
-		<div class="col-md-5">
-			<div class="panel panel-default">
-				<%= link_to root_url() do %>
-					<h1 class="text-center"><i class="fa fa-wheelchair"></i> Ajudas técnicas</h1>
-				<% end %>
-			</div>
-		</div>
-
-		<!-- Auditorias higiene das mãos -->
-		<div class="col-md-7">
-			<div class="panel panel-default">
-				<%= link_to ppcira_hig_maos_observations_url() do %>
-					<h1 class="text-center"><i class="fa fa-hand-paper-o"></i> Auditoria higiene das mãos</h1>
-				<% end %>
-			</div>
+	<div class="col-md-6">
+		<div class="jumbotron">
+			<%= link_to contacts_users_path() do %>
+				<h1 class="text-center"><i class="fa fa-address-book"></i></h1>
+        <h2>Contactos</h2>
+			<% end %>
 		</div>
 	</div>
 
-	<div class="row">
-
-		<!-- Lista de contactos -->
-		<div class="col-md-7">
-			<div class="panel panel-default">
- 	   		<%= link_to contacts_users_path() do %>
- 	   			<h1 class="text-center"><i class="fa fa-address-book"></i> Contactos</h1>
-    		<% end %>
-			</div>
-		</div>
-	
-		<!-- Escalas VMER -->
-		<div class="col-md-5">
-			<div class="panel panel-default">
-				<%= link_to vmer_escala_vmer_schedules_path() do %>
-					<h1 class="text-center"><i class="fa fa-ambulance"></i> Escala VMER</h1>
-				<% end %>
-			</div>
+	<div class="col-md-6">
+		<div class="jumbotron">
+			<%= link_to sagt_transp_user_trips_calendar_url() do %>
+				<h1 class="text-center"><i class="fa fa-bus"></i></h1>
+        <h2 class="text-center">Requisição de transporte</h2>
+			<% end %>
 		</div>
 	</div>
-
-	<div class="row">
-
-		<!-- Fichas Doentes -->
-		<div class="col-md-5">
-			<div class="panel panel-default">
-				<%= link_to patients_path() do %>
-					<h1 class="text-center"><i class="fa fa-heartbeat"></i> Formulários Doentes</h1>
-				<% end %>
-			</div>
-		</div>
-	
-		<!-- Inquéritos satisfação -->
-		<div class="col-md-7">
-			<div class="panel panel-default">
-				<%= link_to root_url() do %>
-					<h1 class="text-center"><i class="fa fa-wpforms"></i> Inquérito de satisfação</h1>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-
-		<!-- Requisição de Transporte -->
-		<div class="col-md-7">
-			<div class="panel panel-default">
-				<%= link_to sagt_transp_user_trips_calendar_url() do %>
-					<h1 class="text-center"><i class="fa fa-bus"></i> Requisição de transporte</h1>
-				<% end %>
-			</div>
-		</div>
-
-		<!-- TODO -->
-		<div class="col-md-5">
-			<div class="panel panel-default">
-				<%= link_to root_url() do %>
-					<h1 class="text-center"><i class="fa fa-spin fa-cog"></i></h1>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  
 </div>
