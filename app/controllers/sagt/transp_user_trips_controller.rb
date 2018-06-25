@@ -6,7 +6,7 @@ class Sagt::TranspUserTripsController < ApplicationController
 
 	def index
 		if current_user.transp_user.nivel_acesso == 2
-			@q = TranspUserTrip.data_inicio_after_today.order(:data_inicio).ransack(params[:q])
+			@q = TranspUserTrip.data_inicio_after_today.order(:data_inicio).includes(:user, :ulsne_department, :transp_destination,:local_inicio, :local_fim).ransack(params[:q])
 			@trips = @q.result(distinct: true)
 		else
 			redirect_to sagt_transp_user_trips_calendar_path

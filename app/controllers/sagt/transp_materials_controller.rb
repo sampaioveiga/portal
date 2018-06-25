@@ -6,7 +6,7 @@ class Sagt::TranspMaterialsController < ApplicationController
 
 	def index
 		if current_user.transp_user.nivel_acesso == 2
-			@q = TranspMaterial.data_entrega_after_today_or_pendente.order(:data_entrega).ransack(params[:q])
+			@q = TranspMaterial.data_entrega_after_today_or_pendente.order(:data_entrega).includes(:user, :ulsne_department, :local_saida, :local_entrega).ransack(params[:q])
 			@transports = @q.result(distinct: true)
 		else
 			redirect_to sagt_transp_materials_calendar_path

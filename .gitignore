@@ -31,3 +31,4 @@ config/secrets.yml
 
 # Log files (if you are creating logs in debug mode, uncomment this)
 *.logs
+ubuntu-xenial-16.04-cloudimg-console.log

@@ -16,7 +16,7 @@ apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libread
 
 # nodeJS
 cd /tmp
-curl -sL https://deb.nodesource.com/setup_9.x | bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install -y nodejs
 
 # DB Postgres
