@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 	# homepage
 	get 'static_pages/index'
-	# teste
-	get 'static_pages/form'
+	get 'static_pages/about'
 
 	# generic routes
 	devise_for :users

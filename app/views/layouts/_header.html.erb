@@ -8,12 +8,14 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="<%= root_url() %>">
-				<%#= image_tag "Logo_ULSNE.png", id: 'logo' %>
 				<i class="fa fa-home"></i> Portal e-ULSNE
 			</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "Acerca", static_pages_about_path() %>
+        </li>
 				<% if user_signed_in? %>
 					<% if current_user.administrator %>
 						<li class="dropdown">

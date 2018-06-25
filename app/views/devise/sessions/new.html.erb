@@ -26,15 +26,17 @@
 				<% if devise_mapping.rememberable? -%>
 					<div class="field btn-group" data-toggle="buttons">
 						<label class="btn btn-default">
-							<input type="checkbox" name="user[remember_me]" id="user[remember_me]" value="1" autocomplete="off">Lembrar
+							<input type="checkbox" name="user[remember_me]" id="user[remember_me]" value="1" autocomplete="off">Recordar
 						</label>
 					</div>
-					<small>Não termina sessão por inatividade</small>
+					<small>Mantém sessão ativa</small>
 				<% end -%>
 			</div>
 		</div>
 		
 		<div class="col-md-offset-3">
 			<%= f.submit "Submeter", class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", :back, class: 'btn btn-default' %>
 		</div>
+    
 	<% end %>
