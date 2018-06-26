@@ -1,4 +1,49 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :ajudas_tecnicas_contacts
+    resources :ajudas_tecnicas_contact_types
+    resources :ajudas_tecnicas_equipments
+    resources :ajudas_tecnicas_loans
+    resources :ajudas_tecnicas_patients
+    resources :ajudas_tecnicas_physicians
+    resources :ajudas_tecnicas_users
+    resources :body_parts
+    resources :device_types
+    resources :escala_vmer_groups
+    resources :escala_vmer_schedules
+    resources :escala_vmer_users
+    resources :hig_maos_observations
+    resources :hig_maos_opportunities_clusters
+    resources :hig_maos_opportunities
+    resources :hig_maos_users
+    resources :hig_maos_worker_categories
+    resources :office_phone_numbers
+    resources :patients
+    resources :pneumo_devices_categories
+    resources :pneumo_forms_inhaler_devices
+    resources :pneumo_inhaler_devices
+    resources :pneumo_users
+    resources :pneumology_forms
+    resources :satisf_surv_surveys
+    resources :satisf_surv_users
+    resources :transp_destinations
+    resources :transp_materials
+    resources :transp_users
+    resources :transp_user_trips
+    resources :u2d_associations
+    resources :uci_devices
+    resources :uci_tiss_values
+    resources :uci_users
+    resources :uci_wounds
+    resources :ulsne_departments
+    resources :ulsne_sites
+    resources :user_phone_numbers
+    resources :wound_types
+
+    root to: "users#index"
+  end
+
 	# homepage
 	get 'static_pages/index'
 	get 'static_pages/about'
